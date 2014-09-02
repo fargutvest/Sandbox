@@ -1,0 +1,85 @@
+﻿<Window x:Name="USB_Class_Library_WPF_Demo" x:Class="USBClassLibraryWPFDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="USB Class Library WPF Demo" WindowStartupLocation="CenterScreen" MinWidth="650" ScrollViewer.VerticalScrollBarVisibility="Disabled" UseLayoutRounding="False" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Background.jpg"/>
+    </Window.Background>
+    <DockPanel LastChildFill="False">
+        <Label DockPanel.Dock="Top" x:Name="MyDeviceLabel" Content="My Device" FontSize="20" FontFamily="Segoe UI Semibold" BorderThickness="0">
+            <Label.Foreground>
+                <SolidColorBrush Color="#FF00E8FF"/>
+            </Label.Foreground>
+        </Label>
+        <Grid DockPanel.Dock="Top" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="VIDLabel" Content="VID" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+            <TextBox x:Name="VIDTextBox" TextWrapping="Wrap" LostFocus="VIDTextBox_LostFocus" Grid.Row="0" Grid.Column="1" MinWidth="50" MinHeight="23" VerticalAlignment="Center"/>
+            <Label x:Name="PIDLabel" Content="PID" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+            <TextBox x:Name="PIDTextBox" TextWrapping="Wrap" LostFocus="PIDTextBox_LostFocus" Grid.Row="0" Grid.Column="3" MinWidth="50" MinHeight="23" VerticalAlignment="Center" Margin="5,0"/>
+            <Label x:Name="MILabel" Content="MI" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+            <TextBox x:Name="MITextBox" TextWrapping="Wrap" LostFocus="MITextBox_LostFocus" Grid.Row="0" Grid.Column="5" MinWidth="50" MinHeight="23" VerticalAlignment="Center"/>
+            <Button x:Name="UpdateButton" Content="Update!" Click="UpdateButton_Click_1" Grid.Row="0" Grid.Column="6" VerticalAlignment="Center" Margin="5,0"/>
+            <CheckBox x:Name="SerialPortCheckBox" Content="Get Serial Port" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center" Foreground="White"/>
+        </Grid>
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Center" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="DeviceTypeLabel" Content="Device Type" Grid.Row="0" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DeviceTypeTextBox" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="FriendlyNameLabel" Content="Friendly Name" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="FriendlyNameTextBox" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="DeviceDescriptionLabel" Content="Device Description" Grid.Row="2" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox x:Name="DeviceDescriptionTextBox" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+            <Label x:Name="DeviceManufacturerLabel" Content="Device Manufacturer" Grid.Row="3" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DeviceManufacturerTextBox" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="DeviceClassLabel" Content="Device Class" Grid.Row="4" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DeviceClassTextBox" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="DeviceLocationLabel" Content="Device Location" Grid.Row="5" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DeviceLocationTextBox" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="DevicePathLabel" Content="Device Path" Grid.Row="6" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DevicePathTextBox" TextWrapping="Wrap" Grid.Row="6" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="DevicePhysicalObjectNameLabel" Content="Device Physical Object Name" Grid.Row="7" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DevicePhysicalObjectNameTextBox" TextWrapping="Wrap" Grid.Row="7" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="SerialPortLabel" Content="Serial Port" Grid.Row="8" Grid.Column="0" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="SerialPortTextBox" TextWrapping="Wrap" Grid.Row="8" Grid.Column="1" Opacity="0.9" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Separator DockPanel.Dock="Top" Foreground="White" Background="White" />
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="ErrorLabel" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" />
+            <Label x:Name="ConnectionStatusLabel" Content="Disconnected" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" MinWidth="80" Foreground="White" HorizontalContentAlignment="Right"/>
+        </Grid>
+    </DockPanel>
+</Window>
