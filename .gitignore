@@ -15,6 +15,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+ipch/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -212,3 +213,5 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+# Other files
