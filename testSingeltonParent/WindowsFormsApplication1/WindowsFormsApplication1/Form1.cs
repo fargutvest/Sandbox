@@ -20,16 +20,15 @@ namespace ns
 
         void test() 
         {
-            MySingleton<a>.Instance.method();
-
-            this.Text = MySingleton<a>.Instance.ToString();
-            
-            
+            //MyGenericSingleton<a>.Instance.method();
+            //this.Text = MyGenericSingleton<a>.Instance.ToString();
+            a.Instance.method();
         }
     }
 
-    public class a 
+    public class a : MyGenericSingleton<a>
     {
+        private a() { }
         public void method()
         {
 
@@ -40,6 +39,44 @@ namespace ns
     {
    
     }
+
+    public class MyGenericSingleton<T> where T : class, new()
+    {
+
+        static T _instance = null;
+        protected MyGenericSingleton() { }
+
+        public static T Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new T();
+
+                return _instance;
+            }
+        }
+
+    }
+
+    public class MySingleton
+    {
+        static MySingleton _instance = null;
+       protected MySingleton() { }
+
+        public static MySingleton Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new MySingleton();
+
+                return _instance;
+            }
+        }
+
+    }
+
 
 
 }
