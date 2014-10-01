@@ -1,0 +1,3 @@
+LIBRARY Project1
+EXPORTS
+	MyClass @1
