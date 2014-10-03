@@ -22,6 +22,13 @@ DLLEXPORT int testInt(int value)
 	return value*value;
 }
 
+DLLEXPORT int *testInt1()
+{
+//	int *arr = new int[]{1111, 2222, 3333, 4444};
+	
+	//return arr;
+	return new int[]{1111, 2222, 3333, 4444};
+}
 
 DLLEXPORT char *testChar1()
 {
@@ -49,6 +56,8 @@ DLLEXPORT char *testChar3()
 	{
 		f[i] = bufferResponce[i];
 	}
+
+
 	
 	
 	return f;

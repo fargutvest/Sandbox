@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConsoleApplication1
@@ -28,8 +29,17 @@ namespace ConsoleApplication1
 
             bool bl = bt.Equals(i);
             int hash = s.GetHashCode();
-            
 
+            string ASCII = "CP7500";
+            Regex reg = new Regex("([0-9]+)|([A-Za-z]+)");
+            MatchCollection match = reg.Matches(ASCII);
+            string symb = match[0].Value;
+            string digit = match[1].Value;
+
+
+            foreach (Match mat in match)
+                Console.WriteLine(mat);
+            Console.ReadKey();
             
         }
 

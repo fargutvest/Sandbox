@@ -19,6 +19,10 @@ namespace WindowsFormsApplication1
         static extern int testInt(int value);
 
         [DllImport(pathLib, CallingConvention = CallingConvention.Cdecl)]
+        static extern IntPtr testInt1();
+
+
+        [DllImport(pathLib, CallingConvention = CallingConvention.Cdecl)]
         static extern IntPtr testChar1();
 
         [DllImport(pathLib, CallingConvention = CallingConvention.Cdecl)]
@@ -49,6 +53,15 @@ namespace WindowsFormsApplication1
 
             tbOutput.Text = string.Format("{0} \r\n {1} \r\n {2}",
                 f.ToString(), s, sss);
+
+
+
+            IntPtr intptr1 = testInt1();
+
+            int[] arr = new int[4];
+            Marshal.Copy(intptr1, arr, 0, arr.Length);
+
+
 
         }
     }
