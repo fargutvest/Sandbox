@@ -23,15 +23,24 @@ namespace WindowsFormsApplication11
 
 
             string[] c = new string[] { "a", "b", "c" };
-            
 
-            
+
+
 
             methodA(c);
 
-            byte[] d = new byte[] {0x0, 0x1, 0x2, 0x3 };
-            byte[] dd = d;
-            methodB(dd);
+
+            while (true)
+            {
+                aaa aa = new aaa();
+                byte[] dd = aa.D;
+                methodB(dd);
+                byte[] arrr = new byte[3] { 0xff, 0xfe, 0xfc };
+
+                Array.Copy(arrr, dd, 3);
+                Adani.MeterrageTime.Instance.meter();
+            }
+
 
 
             byte bb = 0x05;
@@ -42,8 +51,8 @@ namespace WindowsFormsApplication11
             String str = "qwertyui";
 
             methodE(str);
-            
-            
+
+
 
 
 
@@ -58,6 +67,7 @@ namespace WindowsFormsApplication11
         void methodB(byte[] byteArr)
         {
             byteArr[1] = 0xff;
+
         }
 
 
@@ -73,5 +83,29 @@ namespace WindowsFormsApplication11
         }
 
 
+    }
+    public class aaa
+    {
+        Random rand;
+
+        byte[] d;
+
+        public aaa()
+        {
+            rand = new Random();
+            d = new byte[3000000];
+            rand.NextBytes(d);
+        }
+
+
+        public byte[] D
+        {
+            get
+            {
+                byte[] array = new byte[d.Length];
+                Array.Copy(d, array, d.Length);
+                return array;
+            }
+        }
     }
 }

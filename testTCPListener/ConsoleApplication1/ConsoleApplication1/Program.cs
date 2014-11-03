@@ -12,7 +12,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             TcpPortServer server = new TcpPortServer();
-            server.Open("192.168.2.133", 45678);
+            server.Open("192.168.2.133", 56789);
 
             Console.ReadKey();
         }

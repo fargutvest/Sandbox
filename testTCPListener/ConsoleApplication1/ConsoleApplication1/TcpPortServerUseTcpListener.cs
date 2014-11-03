@@ -18,12 +18,15 @@ namespace Adani
         AutoResetEvent Infinity;
         int delay = 1;
         IPEndPoint LocalIpEndPoint;
-        Byte[] bytes = new Byte[256];
+        Byte[] ReadBuffer = new Byte[256];
         String data = null;
-        
+        NetworkStream networkstream;
+        public event Action DataReceived;
+        public event Action<string> Message;
 
-        public TcpPortServer()  {}
-        
+
+        public TcpPortServer() { }
+
         public void Open(string IpLocal, ushort PortLocal)
         {
             try
@@ -31,30 +34,34 @@ namespace Adani
                 LocalIpEndPoint = new IPEndPoint(IPAddress.Parse(IpLocal), PortLocal);
                 tcplistener = new TcpListener(LocalIpEndPoint);
                 tcplistener.Start();
-                task = Task.Factory.StartNew(() => 
-                { 
+                task = Task.Factory.StartNew(() =>
+                {
                     while (!bStopTask)
                     {
+                        GenerateMessage("Waiting for a connection...");
                         Debug.WriteLine("Waiting for a connection...");
                         TcpClient tcpclient = tcplistener.AcceptTcpClient();
+                        GenerateMessage("Connected!");
                         Debug.WriteLine("Connected!");
-                        NetworkStream networkstream = tcpclient.GetStream();
+
+                        networkstream = tcpclient.GetStream();
 
                         int i;
                         try
                         {
-                            while ((i = networkstream.Read(bytes, 0, bytes.Length)) != 0)
+                            while (true)
                             {
-                                Array.Resize(ref bytes, i);
-
-                                // Send back a response.
-                                networkstream.Write(bytes, 0, bytes.Length);
-                                Debug.WriteLine("Sent: {0}", Encoding.ASCII.GetString(bytes));
+                                if ((i = networkstream.Read(ReadBuffer, 0, ReadBuffer.Length)) != 0)
+                                {
+                                    Array.Resize(ref ReadBuffer, i);
+                                    GenerateMessage(string.Format("Receive: {0}", Encoding.ASCII.GetString(ReadBuffer)));
+                                    Debug.WriteLine(string.Format("Receive: {0}", Encoding.ASCII.GetString(ReadBuffer)));
+                                    if (DataReceived != null)
+                                        DataReceived();
+                                }
                             }
-                            tcpclient.Close();
                         }
                         catch (Exception ex) { }
-
                     }
                 });
 
@@ -64,10 +71,29 @@ namespace Adani
                 Debug.WriteLine(ex.Message);
                 return;
             }
-
-
         }
-        
 
+        public void Write(byte[] bytes)
+        {
+            try
+            {
+                // Send back a response.
+                networkstream.Write(bytes, 0, bytes.Length);
+                GenerateMessage(string.Format("Send: {0}", Encoding.ASCII.GetString(bytes)));
+                Debug.WriteLine(string.Format("Send: {0}", Encoding.ASCII.GetString(bytes)));
+            }
+            catch (Exception ex) { }
+        }
+
+        public byte[] Read()
+        {
+            return ReadBuffer;
+        }
+
+        void GenerateMessage(string text)
+        {
+            if (Message != null)
+                Message(text);
+        }
     }
 }

@@ -18,6 +18,10 @@ namespace WindowsFormsApplication1
         static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
         const uint WM_KEYDOWN = 0x0100;
 
+
+        [DllImport("Project1.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern void TestPost(int id);
+
         public Form1()
         {
             InitializeComponent();
@@ -51,6 +55,11 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex) { return; }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TestPost(Convert.ToInt32(tbProcessName.Text));
         }
     }
 }

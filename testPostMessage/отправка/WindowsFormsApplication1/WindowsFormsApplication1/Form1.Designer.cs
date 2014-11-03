@@ -33,6 +33,7 @@
             this.tbProcessName = new System.Windows.Forms.TextBox();
             this.tbInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -63,7 +64,7 @@
             // 
             // tbInput
             // 
-            this.tbInput.Location = new System.Drawing.Point(16, 113);
+            this.tbInput.Location = new System.Drawing.Point(16, 173);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(256, 20);
             this.tbInput.TabIndex = 3;
@@ -72,17 +73,28 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 97);
+            this.label2.Location = new System.Drawing.Point(13, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Post message real time input:";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(16, 84);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(256, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "test c++";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbInput);
             this.Controls.Add(this.tbProcessName);
@@ -102,6 +114,7 @@
         private System.Windows.Forms.TextBox tbProcessName;
         private System.Windows.Forms.TextBox tbInput;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
     }
 }
 
