@@ -50,8 +50,15 @@ namespace WindowsFormsApplication1
         {
             if (bytes.Length < 2)
                 return;
+            if (bytes[0] != 0x0)
+                return;
+
             switch (bytes[1])
             {
+                case 0xbb: //смена ip
+                    server.Write(bytes);
+                    break;
+
                 //светодиоды
                 case 0xa0: //выключен A
                     Invoke(new Action(() => { pbLedA.BackColor = SystemColors.Control; }));

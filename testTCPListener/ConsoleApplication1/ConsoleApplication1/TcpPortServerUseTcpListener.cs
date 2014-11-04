@@ -54,8 +54,8 @@ namespace Adani
                                 if ((i = networkstream.Read(ReadBuffer, 0, ReadBuffer.Length)) != 0)
                                 {
                                     Array.Resize(ref ReadBuffer, i);
-                                    GenerateMessage(string.Format("Receive: {0}", Encoding.ASCII.GetString(ReadBuffer)));
-                                    Debug.WriteLine(string.Format("Receive: {0}", Encoding.ASCII.GetString(ReadBuffer)));
+                                    GenerateMessage(string.Format("Receive: {0}", BytesToString(ReadBuffer)));
+                                    Debug.WriteLine(string.Format("Receive: {0}", BytesToString(ReadBuffer)));
                                     if (DataReceived != null)
                                         DataReceived();
                                 }
@@ -79,8 +79,8 @@ namespace Adani
             {
                 // Send back a response.
                 networkstream.Write(bytes, 0, bytes.Length);
-                GenerateMessage(string.Format("Send: {0}", Encoding.ASCII.GetString(bytes)));
-                Debug.WriteLine(string.Format("Send: {0}", Encoding.ASCII.GetString(bytes)));
+                GenerateMessage(string.Format("Send: {0}", BytesToString(bytes)));
+                Debug.WriteLine(string.Format("Send: {0}", BytesToString(bytes)));
             }
             catch (Exception ex) { }
         }
@@ -94,6 +94,16 @@ namespace Adani
         {
             if (Message != null)
                 Message(text);
+        }
+
+        string BytesToString(byte[] bytes)
+        {
+            string text="";
+            foreach(byte b in bytes)
+            {
+                text += "0x" + b.ToString("X2")+" ";
+            }
+            return text;
         }
     }
 }

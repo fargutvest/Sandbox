@@ -17,12 +17,12 @@ using std::string;
 
 #define DLLEXPORT extern "C" __declspec(dllexport)
 
-DLLEXPORT int testInt(int value)
+DLLEXPORT int ReturnIntModify(int value)
 {
 	return value*value;
 }
 
-DLLEXPORT int *testInt1()
+DLLEXPORT int *ReturnIntArr()
 {
 //	int *arr = new int[]{1111, 2222, 3333, 4444};
 	
@@ -30,17 +30,29 @@ DLLEXPORT int *testInt1()
 	return new int[]{1111, 2222, 3333, 4444};
 }
 
-DLLEXPORT char *testChar1()
+DLLEXPORT char *ReturnCharArr()
 {
 	char *f = "testMessage";
 	return f;
 }
 
-DLLEXPORT int testChar2(char *value)
+DLLEXPORT int ReturnCharArrPointer(char *value)
 {
 	 value = "testMessage";
-	return 0;
+	return 11;
 }
+
+
+DLLEXPORT int ReturnByteArrPointer(int &lala)
+{
+	int *value = new int[4];
+	value[0] = 0x21;
+	value[1] = 0x22;
+	value[2] = 0x23;
+	lala = *value;
+	return 3;
+}
+
 
 
 DLLEXPORT char *testChar3()
