@@ -96,10 +96,13 @@ namespace WindowsFormsApplication4
             byte[] R = new byte[100];
             byte[] G = new byte[100];
             byte[] B = new byte[100];
-                
-            
-            
 
+
+
+            _bitmap.SetPixel(10, 10, Color.Red);
+            _graphics.DrawImage((Image)_bitmap, 0, 0);
+
+            /*
             for (int x = 0; x < panel1.Width; x++)
             {
                 rnd.NextBytes(R);
@@ -112,7 +115,7 @@ namespace WindowsFormsApplication4
                 }
                 
                 
-            }
+            }*/
            
 
 
