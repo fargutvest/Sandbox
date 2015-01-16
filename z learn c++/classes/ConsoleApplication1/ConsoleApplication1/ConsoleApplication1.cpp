@@ -8,9 +8,15 @@ using namespace std;
 
 class A
 {
+
+private:
+	int g;
+	int j;
+
 public:
 	int x;
 	int y;
+	int f;
 	A()
 	{
 		x = 5;
@@ -25,6 +31,7 @@ public:
 	{
 		return x + y;
 	}
+
 };
 
 class B
@@ -46,7 +53,7 @@ public:
 	{
 		b = 9;
 	}
-	
+
 	void print()
 	{
 		cout << b << endl;
@@ -65,6 +72,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	B three;
 	three = one + two;
 	three.print();
+
+	A *_a;
+	_a = new A();
+	_a->x = 34;
+	
+
+	A a;
+	a.x = 65;
+
 
 
 	return 0;
