@@ -1,0 +1,16 @@
+#include <windows.h>
+#include <stdio.h>
+#include <conio.h>
+#include <winsock.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <string.h>
+#include <string>
+#include <list>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <map>
+using std::vector;
+using std::string;
