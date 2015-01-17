@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Settings MyAttrubute="TextAttribute" MyAttribute="TextAttribute">
+	<IP>192.168.1.2</IP>
+	<MAC> C0:C1:C2:C3:C4:C5 </MAC>
+	<Port> 5555 </Port>
+	<PortImage>7777</PortImage><PortImage>7777</PortImage><PortImage>7777</PortImage><PortImage>7777</PortImage><PortImage>7777</PortImage></Settings>

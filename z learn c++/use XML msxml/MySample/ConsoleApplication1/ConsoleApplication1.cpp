@@ -15,120 +15,63 @@ using namespace std;
 
 
 
-//Моё консольное приложение будет загружать XML - документ под названием xmldata.xml
+//строка с xml документом
+CComBSTR xml = "<?xml version =\"1.0\"?><Settings MyArttribute =\"TextMyAttribute\"><IP>192.168.1.1</IP><MAC>C0:C1:C2:C3:C4:C5</MAC><Port>5555</Port></Settings>";
+
+//Обьявдение обьектов нодов
+CComPtr<IXMLDOMNode> spXMLNodeSettings;
+CComPtr<IXMLDOMNode> spXMLNodeIP;
+CComPtr<IXMLDOMNode> spXMLNodePortImage;
+
+CComQIPtr<IXMLDOMElement> spXMLElement;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	CoInitialize(NULL);
 
-	//Прежде всего приложение инициализирует библиотеку COM, а затем создаёт экземпляр парсера MSXML :
+	//Инициализация библиотеки COM, создание экземпляра парсера MSXML.
 	CComPtr<IXMLDOMDocument> spXMLDOM;
 	HRESULT hr = spXMLDOM.CoCreateInstance(__uuidof(DOMDocument));
 
-	if (FAILED(hr))
-		throw "Unable to create XML parser object";
-	if (spXMLDOM.p == NULL)
-		throw "Unable to create XML parser object";
-
-
-
-	//Если нам удалось создать экземпляр парсера, мы загружаем в него XML-документ:
+	//Загрузка XML-документа из файла.
 	VARIANT_BOOL bSuccess = false;
-	hr = spXMLDOM->load(CComVariant(L"xmldata.xml"), &bSuccess);
+	//hr = spXMLDOM->load(CComVariant(L"xmldata.xml"), &bSuccess);
 
-	if (FAILED(hr))
-		throw "Unable to load XML document into the parser";
-	if (!bSuccess)
-		throw "Unable to load XML document into the parser";
+	//Загрузка XML-документа из строки.
+	hr = spXMLDOM->loadXML(xml, &bSuccess);
 
 
+	//Поиск интересующей ноды.
+	hr = spXMLDOM->selectSingleNode(CComBSTR(L"Settings/IP"), &spXMLNodeIP);
 
-	//Поиск узла осуществляется через объект документа, поэтому мы используем IXMLDOMDocument::selectSingleNode() для обнаружения нужного узла по его имени.
-	CComBSTR bstrSS(L"xmldata/xmlnode");
-	CComPtr<IXMLDOMNode> spXMLNode;
-	hr = spXMLDOM->selectSingleNode(bstrSS, &spXMLNode);
+	//Чтение текста из ноды.
+	BSTR text;
+	spXMLNodeIP->get_text(&text);
 
-	if (FAILED(hr))
-		throw "Unable to locate 'xmlnode' XML node";
-	if (spXMLNode.p == NULL)
-		throw "Unable to locate 'xmlnode' XML node";
+	//Запись текста в ноду
+	spXMLNodeIP->put_text(CComBSTR("192.168.1.2"));
 
-
-
-	//Результатом поиска станет объект узла MSXML, IXMLDOMNode. Узел должен существовать где-то в документе, иначе поиск закончится неудачей. Моё приложение использует его как родителя для совершенно нового узла, который создаётся объектом XML-документа:
-	CComPtr<IXMLDOMNode> spXMLChildNode;
-	hr = spXMLDOM->createNode(CComVariant(NODE_ELEMENT),
-		CComBSTR("xmlchildnode"),
-		NULL,
-		&spXMLChildNode);
-
-	if (FAILED(hr))
-		throw "Unable to create 'xmlchildnode' XML node";
-	if (spXMLChildNode.p == NULL)
-		throw "Unable to create 'xmlchildnode' XML node";
+	//Создание дочерней ноды c текстом.
+	hr = spXMLDOM->selectSingleNode(CComBSTR(L"Settings"), &spXMLNodeSettings);
+	hr = spXMLDOM->createNode(CComVariant(NODE_ELEMENT), CComBSTR("PortImage"), NULL, &spXMLNodePortImage);
+	spXMLNodePortImage->put_text(CComBSTR("7777"));
+	hr = spXMLNodeSettings->appendChild(spXMLNodePortImage, NULL);
 
 
+	//Чтение аттрибута.
+	spXMLElement = spXMLNodeSettings;
+	CComVariant var;
+	spXMLElement->getAttribute(CComBSTR("MyAttribute"), &var);
 
-	//Если парсеру удалось создать новый узел, следующий шаг - разместить его в дереве XML. Метод IXMLDOMNode::appendChild() - как раз то, что нам нужно.
-	CComPtr<IXMLDOMNode> spInsertedNode;
-	hr = spXMLNode->appendChild(spXMLChildNode, &spInsertedNode);
-
-	if (FAILED(hr))
-		throw "Unable to move 'xmlchildnode' XML node";
-	if (spInsertedNode.p == NULL)
-		throw "Unable to move 'xmlchildnode' XML node";
+	//Добавление атрибута.
+	spXMLElement = spXMLNodeSettings;
+	hr = spXMLElement->setAttribute(CComBSTR(L"MyAttribute"), CComVariant(L"TextAttribute"));
 
 
+	//Сохранение в файл.
+	hr = spXMLDOM->save(CComVariant("xmldata.xml"));
 	
-	//Итак, мы уже нашли требуемый узел и добавили к нему дочерний узел; теперь посмотрим, как работать с атрибутами. Представьте себе, что вам нужно добавить к новому дочернему узлу атрибут:
-	//xml="fun"
-	
-	CComQIPtr<IXMLDOMElement> spXMLChildElement;
-	spXMLChildElement = spInsertedNode;
-	if (spXMLChildElement.p == NULL)
-		throw "Unable to query for 'xmlchildnode' XML element interface";
-
-	hr = spXMLChildElement->setAttribute(CComBSTR(L"xml"), CComVariant(L"fun"));
-	if (FAILED(hr))
-		throw "Unable to insert new attribute";
-
-
-
-
-	//Для извлечение данных предназначен метод IXMLDOMNode::get_nodeTypedValue().
-	//Тип данных задаётся с использованием атрибута dt : type, например :
-	//<model dt:type="string">SL-2</model>
-	//<year dt : type = "int">1992< / year>
-	CComVariant varValue(VT_EMPTY);
-	hr = spXMLNode->get_nodeTypedValue(&varValue);
-	if (FAILED(hr))
-		throw "Unable to retrieve 'xmltext' text";
-
-	if (varValue.vt == VT_BSTR) {
-		// Display the results... since we're not using the
-		// wide version of the STL, we need to convert the
-		// BSTR to ANSI text for display...
-
-		USES_CONVERSION;
-		LPTSTR lpstrMsg = W2T(varValue.bstrVal);
-	}
-	else {
-		// Some error
-		throw "Unable to retrieve 'xmltext' text";
-	}
-
-
-
-
-	//Наша последняя задача - сохранить обновлённое XML-дерево на диск, что мы и делаем, используя IXMLDOMDocument::save():
-	hr = spXMLDOM->save(CComVariant("updatedxml.xml"));
-	if (FAILED(hr))
-		throw "Unable to save updated XML document";
-
-
-
-
-
 	return 0;
 }
+
 
