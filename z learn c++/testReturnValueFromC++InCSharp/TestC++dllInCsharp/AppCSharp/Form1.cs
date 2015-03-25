@@ -26,6 +26,10 @@ namespace WindowsFormsApplication1
         static extern IntPtr ReturnCharArr();
 
         [DllImport(pathLib, CallingConvention = CallingConvention.Cdecl)]
+        static extern int ModifyByteArr(ref IntPtr bytes);
+
+
+        [DllImport(pathLib, CallingConvention = CallingConvention.Cdecl)]
         static extern int ReturnCharArrPointer(string value);
 
 
@@ -42,6 +46,16 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+
+            IntPtr iptr = IntPtr.Zero;
+            int ires = ModifyByteArr(ref iptr);
+            unsafe
+            {
+                tbOutput.Text = Marshal.PtrToStringBSTR(iptr);
+            }
+            
+
+            
             int f = ReturnIntModify(5);
 
             string s = "";

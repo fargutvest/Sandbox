@@ -38,13 +38,23 @@ DLLEXPORT char *ReturnCharArr()
 	return f;
 }
 
+//не работает, указатель возвращает но его в строку не преобразовать
+DLLEXPORT int ModifyByteArr(BYTE &bytes)
+{
+	BYTE* b = (BYTE*)"Hello! 123";
+	bytes = *b;
+	return 10;
+}
+
+
+//не работает
 DLLEXPORT int ReturnCharArrPointer(char *value)
 {
 	value = "testMessage";
 	return 11;
 }
 
-
+//не работает, указатель возвращает но его в строку не преобразовать
 DLLEXPORT int ReturnByteArrPointer(int &lala, int a)
 {
 
@@ -56,6 +66,7 @@ DLLEXPORT int ReturnByteArrPointer(int &lala, int a)
 	return 3;
 }
 
+//работает
 DLLEXPORT char *testChar3()
 {
 	vector <BYTE> bufferResponce;

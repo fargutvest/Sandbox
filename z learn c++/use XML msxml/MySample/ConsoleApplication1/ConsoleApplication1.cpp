@@ -16,7 +16,7 @@ using namespace std;
 
 
 //строка с xml документом
-CComBSTR xml = "<?xml version =\"1.0\"?><Settings MyArttribute =\"TextMyAttribute\"><IP>192.168.1.1</IP><MAC>C0:C1:C2:C3:C4:C5</MAC><Port>5555</Port></Settings>";
+CComBSTR xml = "<?xml version =\"1.0\"?><Settings><IP>192.168.1.1</IP><MAC>C0:C1:C2:C3:C4:C5</MAC><Port>5555</Port></Settings>";
 
 //Обьявдение обьектов нодов
 CComPtr<IXMLDOMNode> spXMLNodeSettings;

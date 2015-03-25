@@ -1,0 +1,7 @@
+<?xml version ="1.0"?>
+<Setting>
+<IP>192.168.1.1</IP>
+<MAC>C0:C1:C2:C3:C4:C5</MAC>
+<PortImageLocal>7000</PortImageLocal>
+<LineLength>760</LineLength>
+</Settings>

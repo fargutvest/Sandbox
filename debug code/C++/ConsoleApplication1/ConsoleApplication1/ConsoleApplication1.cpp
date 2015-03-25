@@ -47,45 +47,12 @@ char* widetochar(wchar_t* w_src, char* c_dest, int c_dest_max_len)
 
 int _tmain(int argc, _TCHAR* argv)
 {
-	wchar_t * xmlstr;
-	bool bConfig;
-
-	MSXML2::IXMLDOMDocumentPtr pdoc;
-	MSXML2::IXMLDOMElementPtr pdocroot;
-	_bstr_t bstr = (_bstr_t)xmlstr;
-
-	::CoInitialize(NULL);
-	HRESULT hr = pdoc.CreateInstance();
-	if (FAILED(hr))
-		return false;
-
-	VARIANT_BOOL *IsSucessfull = false;
-
-	if (!pdoc->loadXML(bstr, IsSucessfull))
-		return false;
-
-	pdocroot = pdoc->get_firstChild;
-	if (pdocroot->get_nodeName != (_bstr_t)"Detector")
-		return false;
-
-	if (bConfig)
-	{
-		pdocroot->getAttribute(TEXT("ReceptorSpecificData"),NULL);
-		widetochar(bstr, szPathToReceptorSpecificData, MAX_PATH);
-	}
-	else
-	{
-		pdocroot->getAttribute(TEXT("Port"), NULL);
-
-		if (bstr.length() > 0)
-			widetochar(bstr, szPortName, 256);
-		else
-			_snprintf(szPortName, 256, "COM1");
-
-
-	return 0;
-
+	wstring s(L"C0");
+	wstringstream ss(s);
+	int i = 0;
+	ss >> hex >> i;
 }
+
 
 
 
