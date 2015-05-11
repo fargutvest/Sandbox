@@ -25,22 +25,14 @@ namespace TestWpfDrawingDemo
         }
 
         #region Выбор интераоляции
-        private void tsmiFant_Click(object sender, EventArgs e)
-        {
-            wpfUserControl1.SetBitmapScallingMode = BitmapScalingMode.Fant;
-        }
+       
 
-        private void tsmiHighQuality_Click(object sender, EventArgs e)
+        private void tsmiBicubic_Click(object sender, EventArgs e)
         {
             wpfUserControl1.SetBitmapScallingMode = BitmapScalingMode.HighQuality;
         }
 
-        private void tsmiLinear_Click(object sender, EventArgs e)
-        {
-            wpfUserControl1.SetBitmapScallingMode = BitmapScalingMode.Linear;
-        }
-
-        private void tsmiLowQuality_Click(object sender, EventArgs e)
+        private void tsmiBilinear_Click(object sender, EventArgs e)
         {
             wpfUserControl1.SetBitmapScallingMode = BitmapScalingMode.LowQuality;
         }
@@ -50,10 +42,7 @@ namespace TestWpfDrawingDemo
             wpfUserControl1.SetBitmapScallingMode = BitmapScalingMode.NearestNeighbor;
         }
 
-        private void tsmiUnspecified_Click(object sender, EventArgs e)
-        {
-            wpfUserControl1.SetBitmapScallingMode = BitmapScalingMode.Unspecified;
-        }
+       
 
         #endregion
 
@@ -143,6 +132,11 @@ namespace TestWpfDrawingDemo
         {
             Bitmap bmp = wpfUserControl1.GetBitmapFromImage();
             bmp.Save("sample.bmp");
+        }
+
+        private void drawRectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            wpfUserControl1.DrawRect();
         }
 
 

@@ -144,6 +144,36 @@ namespace TestWpfDrawingDemo.WpfUserControl
                 CurrentScaleChanged(scaleCurrent);
         }
 
+        public void DrawRect()
+        {
+            
+            System.Windows.Shapes.Rectangle rect = new System.Windows.Shapes.Rectangle();
+
+            Line line = new Line();
+            line.X1 = 10;
+            line.X2 = 100;
+            line.Y1 = 10;
+            line.Y2 = 100;
+            line.Stroke = System.Windows.Media.Brushes.White;
+            line.StrokeThickness = 4;
+
+            Ellipse ellipse = new Ellipse();
+            ellipse.Width = 100;
+            ellipse.Height = 150;
+            SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+            mySolidColorBrush.Color = System.Windows.Media.Color.FromArgb(255, 255, 255, 0);
+            ellipse.Fill = mySolidColorBrush;
+
+
+
+            MyGrid.Children.Clear();
+            MyGrid.Children.Add(line);
+            MyGrid.Children.Add(ellipse);
+            MyGrid.Children.Add(rect);
+
+            
+        }
+
 
 
     }

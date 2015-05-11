@@ -6,11 +6,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Name="MyUserControl" SizeChanged="MyUserControl_SizeChanged">
     <Grid Background="#FF9EF504" Name="MyGrid" MouseWheel="MyGrid_MouseWheell">
+        <Image HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300" x:Name="MyImage"/>
         <Rectangle HorizontalAlignment="Left" Height="20" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" VerticalAlignment="Top" Width="20"/>
         <Rectangle HorizontalAlignment="Left" Height="20" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1.05,14.1" Margin="0,280,0,0"/>
         <Rectangle HorizontalAlignment="Left" Height="20" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1.05,14.1" Margin="280,280,0,0"/>
         <Rectangle HorizontalAlignment="Left" Height="20" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1.05,14.1" Margin="280,0,0,0"/>
-        <Image HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300" x:Name="MyImage"/>
     </Grid>
 </UserControl>
 
