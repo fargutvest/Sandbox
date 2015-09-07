@@ -75,7 +75,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>$(SolutionDir)\AppCSharp\bin\Debug\$(TargetFileName)</OutputFile>
+      <OutputFile>d:\GITREPOSITORIES\GitHub\test\z learn c++\testReturnValueFromC++InCSharp\TestC++dllInCsharp\ConsoleApplication2\bin\Debug\$(TargetFileName)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -86,7 +86,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>$(SolutionDir)\AppCSharp\bin\Debug\$(TargetFileName)</OutputFile>
+      <OutputFile>$(SolutionDir)\ConsoleApplication2\bin\Debug\$(TargetFileName)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
