@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Detector>
+  <PathImageEmule />
+  <EmuleCMDport>False</EmuleCMDport>
+  <EmuleIMGport>False</EmuleIMGport>
+  <IP>192.168.0.1</IP>
+  <CMDport>3000</CMDport>
+  <IMGport>4001</IMGport>
+  <COMportName>COM2</COMportName>
+  <BaudRate>_19200</BaudRate>
+  <TypePortCMD>Tcp</TypePortCMD>
+  <TypePortIMG>Udp</TypePortIMG>
+  <TimeoutIMG>1000</TimeoutIMG>
+  <TimeoutCMD>1000</TimeoutCMD>
+  <HeightImage>0</HeightImage>
+  <WidthImage>0</WidthImage>
+  <PixelBits>16</PixelBits>
+  <PixelBytes>2</PixelBytes>
+  <EnergyCount>2</EnergyCount>
+  <UsePxNum>False</UsePxNum>
+  <GrabMode>False</GrabMode>
+  <FGOffset>13</FGOffset>
+  <AutorisazionComand />
+  <Logging>False</Logging>
+</Detector>
