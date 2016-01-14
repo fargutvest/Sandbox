@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html><head><script src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/watch.js" async="" type="text/javascript"></script><script src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/analytics.js" async=""></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width = 1080">
+
+    
+    <title>ВКонтакте API для .Net / Хабрахабр</title>
+    
+    <meta name="yandex-verification" content="67d46b975fa41645">
+
+    <meta name="description" content="
+Добрый день, друзья!
+
+Хочу рассказать вам о своём небольшом open source проекте, а именно реализация ВКонтакте API для .Net. В общей сложности пилю его уже полтора года. Сделано еще не всё, а...">    
+    <meta name="keywords" content="вконтакте api, .net, c#">
+    
+    	<meta property="fb:app_id" content="444736788986613"> 
+<meta property="og:type" content="article"> 
+<meta property="og:url" content="http://habrahabr.ru/post/216553/"> 
+<meta property="og:title" content="ВКонтакте API для .Net"> 
+	<meta property="og:image" content="http://habrastorage.org/getpro/habr/post_images/851/458/2bf/8514582bf4e0a1f3225dfaf68b6838ad.png">
+	<link rel="image_src" href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/8514582bf4e0a1f3225dfaf68b6838ad.png"><meta property="og:image" content="http://habrastorage.org/getpro/habr/post_images/f72/8d2/cac/f728d2cac6139ca147fe042188aed976.jpg">
+	<link rel="image_src" href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/f728d2cac6139ca147fe042188aed976.jpg">
+	
+<meta property="og:description" content="Добрый день, друзья!  Хочу рассказать вам о своём небольшом open source проекте, а именно реализация ВКонтакте API для .Net. В общей сложности пилю его уже...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@habrahabr">
+
+
+    <script type="text/javascript">function adriver(a,b){};</script>
+
+      <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all.css" rel="stylesheet" media="all">
+
+      <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/posts.css" rel="stylesheet" media="all">
+  <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/comments.css" rel="stylesheet" media="all">
+  <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/forms.css" rel="stylesheet" media="all">
+  <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/highlight.css" rel="stylesheet" media="all">
+
+
+    <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/printer.css" rel="stylesheet" media="print">
+
+    
+    
+
+      <script src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all.js"></script>
+
+
+      <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery_002.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/wysiwyg.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/highlight.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery-ui-highlight.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/posts.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/comments.js"></script>
+  <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all_002.js"></script>
+
+
+
+  	<script type="text/javascript">
+	  var crtg_nid="2580";
+	  var crtg_cookiename="cto_rtt";
+	  var crtg_varname="crtg_content";
+	  function crtg_getCookie(c_name){
+		  var i,x,y,ARRCookies=document.cookie.split(";");
+		  for(i=0;i<ARRCookies.length;i++){
+			  x=ARRCookies[i].substr(0,ARRCookies[i].indexOf("="));
+			  y=ARRCookies[i].substr(ARRCookies[i].indexOf("=")+1);
+			  x=x.replace(/^\s+|\s+$/g,"");
+			  if(x==c_name){return unescape(y);}
+		   }
+		return'';
+	   }
+	var crtg_content = crtg_getCookie(crtg_cookiename);var crtg_rnd=Math.floor(Math.random()*99999999999);
+		var crtg_url=location.protocol+'//rtax.criteo.com/delivery/rta/rta.js?netId='+escape(crtg_nid);crtg_url+='&cookieName='+escape(crtg_cookiename);crtg_url+='&rnd='+crtg_rnd;crtg_url+='&varName=' + escape(crtg_varname);
+		var crtg_script=document.createElement('script');crtg_script.type='text/javascript';crtg_script.src=crtg_url;crtg_script.async=true;
+		if(document.getElementsByTagName("head").length>0)document.getElementsByTagName("head")[0].appendChild(crtg_script);
+		else
+		if(document.getElementsByTagName("body").length>0)document.getElementsByTagName("body")[0].appendChild(crtg_script);
+	</script><script async="" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/rta.js" type="text/javascript"></script>
+
+    <script>
+      var N = 5;
+      var ar_duo1 = Math.floor(Math.random()*N+1);
+    </script>
+    
+    <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/adriver.js"></script>
+
+
+    <link title="Хабрахабр / Комментарии к публикации «ВКонтакте API для .Net»" type="application/rss+xml" rel="alternate" href="http://habrahabr.ru/rss/post/216553/">
+        
+    
+    
+<script type="text/javascript">
+
+    var user_type = "guest";
+    var username = 'guest';
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-726094-1',  'auto' ); 
+
+  ga('require', 'displayfeatures');
+  ga('set', 'dimension1', user_type); // user type - guest/readonly/habrauser
+  ga('set', 'dimension2', username); // username
+
+
+  ga('send', 'pageview');
+  
+</script>
+
+
+
+<script type="text/javascript">
+var pp_gemius_identifier = new String('p8zr4.NqiIZJgD2cnP2s5fWWnIQFHrAvZ280B955gIr.f7');
+</script>
+<script src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/gemius.js"></script>
+
+
+
+
+
+
+
+    
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter24049213 = new Ya.Metrika({id:24049213,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/24049213" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  </head>
+
+  <body>
+        <script type="text/javascript">
+        $(function() {
+
+            // возвращает cookie с именем name, если есть, если нет, то undefined
+            function getBNCookie(name) {
+                var matches = document.cookie.match(new RegExp(
+                        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                  ));
+                  return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+
+            function setBNCookie(name, value, options) {
+                options = options || {};
+
+                var expires = options.expires;
+
+                if (typeof expires == "number" && expires) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + expires*1000);
+                    expires = options.expires = d;
+                }
+                if (expires && expires.toUTCString) {
+                    options.expires = expires.toUTCString();
+                }
+
+                value = encodeURIComponent(value);
+
+                var updatedCookie = name + "=" + value;
+
+                for(var propName in options) {
+                    updatedCookie += "; " + propName;
+                    var propValue = options[propName];
+                    if (propValue !== true) {
+                        updatedCookie += "=" + propValue;
+                    }
+                }
+
+                document.cookie = updatedCookie;
+            }
+
+            var bntop = $('.apps_bn');
+
+            var vbn = parseInt(getBNCookie('vbn')) || 0;
+
+            if (vbn < 3)
+            {
+                bntop.show();
+                setBNCookie('vbn', vbn + 1, { expires: 31556926, path: '/', domain: 'habrahabr.ru' });
+            }
+
+            if (/Android/i.test(navigator.userAgent))
+            {
+                $('.app_android', bntop).show();
+            }
+            else if (/iPhone/i.test(navigator.userAgent))
+            {
+                $('.app_iphone', bntop).show();
+            }
+            else if (/IEMobile|MSIE/i.test(navigator.userAgent))
+            {
+                $('.app_wp', bntop).show();
+            }
+            else
+            {
+                $('.app_anything', bntop).show();
+            }
+        });
+    </script>
+
+    <div class="apps_bn">
+        <div class="app_iphone">
+            <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=463784&amp;bt=21&amp;pid=1620360&amp;bid=3322408&amp;bn=3322408&amp;rnd=1514420851" target="_blank"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/app_ios.jpg" alt="Приложение в твоем смартфоне"></a>
+        </div>
+        <div class="app_wp">
+            <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=463784&amp;bt=21&amp;pid=1620360&amp;bid=3322414&amp;bn=3322414&amp;rnd=717208825" target="_blank"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/app_wstore.jpg" alt="Приложение в твоем смартфоне"></a>
+        </div>
+        <div class="app_android">
+            <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=463784&amp;bt=21&amp;pid=1620360&amp;bid=3322404&amp;bn=3322404&amp;rnd=1516395565" target="_blank"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/app_googleplay.jpg" alt="Приложение в твоем смартфоне"></a>
+        </div>
+        <div style="display: block;" class="app_anything">
+            <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=463784&amp;bt=21&amp;pid=1620336&amp;bid=3322335&amp;bn=3322335&amp;rnd=586566606" target="_blank"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/habraapps.jpg" alt="Приложение в твоем смартфоне"></a>
+        </div>
+    </div>
+
+    <div class="wrapper">
+      <div id="layout">
+        <div id="header">
+    <div class="userpanel silver">
+      <a href="https://habrahabr.ru/auth/login/" id="login" class="login">войти через TM ID</a>
+  </div>
+  <a class="logo " href="http://habrahabr.ru/" title="На главную страницу"></a>
+  <div class="search">
+    <form id="search_form" name="search" method="get" action="//habrahabr.ru/search/">
+      <input value="" type="submit">
+      <input autocomplete="off" name="q" x-webkit-speech="" speech="" tabindex="1" type="text">
+    </form>
+  </div>
+
+	<div class="main_menu">
+		<a href="http://habrahabr.ru/posts/top/" class="active">посты</a><a href="http://toster.ru/">q&amp;a</a><a href="http://habrahabr.ru/events/coming/">события</a><a href="http://habrahabr.ru/hubs/">хабы</a><a href="http://habrahabr.ru/companies/">компании</a>
+			<div class="banner_special">
+		<div style="width: 135px; height: 35px; text-align: center; margin: 0px auto;" title="" id="adriver_banner_318167982"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&amp;ad=459651&amp;bid=3299385&amp;bt=52&amp;bn=4&amp;pz=0&amp;xpid=BGcC1o9S-76dvQ-NJkNXmP0pM5w0&amp;ref=http:%2f%2fhabrahabr.ru%2fpost%2f216553%2f&amp;custom=1%3Dcsharp%3B2%3Dvkontakte_api%3B3%3Dnet%3B4%3D5&amp;rleurl=" onclick="adriver('adriver_banner_318167982').sendPixel('');" target="_blank"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/freelansim.png" alt="AdRiver" border="0"></a></div>
+		<script type="text/javascript">
+			$(function(){
+				var keyword = '';
+				if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+
+				var custom = {4:ar_duo1};
+					custom[1] = 'csharp';
+					custom[2] = 'vkontakte_api';
+					custom[3] = 'net';
+
+				new adriver("adriver_banner_318167982", {sid: 176776, bt: 52, bn: 4, custom: custom, keyword: keyword});
+			}());
+		</script>
+	</div>
+
+		
+	</div>
+
+</div>
+
+
+
+        
+        	
+  <div class="content_left">
+
+	
+
+
+
+
+
+
+
+
+	
+  <div class="post shortcuts_item" id="post_216553">
+  	<div class="published">21 марта в 12:38</div>
+    <h1 class="title">
+
+	    
+
+        <span class="post_title">ВКонтакте API для .Net</span>
+
+      
+
+			
+
+			
+			
+
+  	</h1>
+  	
+  	<div class="hubs">
+		<a href="http://habrahabr.ru/hub/csharp/" class="hub " title="Вы не подписаны на этот хаб">C#</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+		<a href="http://habrahabr.ru/hub/vkontakte_api/" class="hub " title="Вы не подписаны на этот хаб">Вконтакте API</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+		<a href="http://habrahabr.ru/hub/net/" class="hub " title="Вы не подписаны на этот хаб">.NET</a><span class="profiled_hub" title="Профильный хаб">*</span>
+</div>
+
+  	
+  	<div class="content html_format">
+  	<img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/8514582bf4e0a1f3225dfaf68b6838ad.png" alt="image"><br>
+Добрый день, друзья!<br>
+<br>
+Хочу рассказать вам о своём небольшом open source проекте, а именно 
+реализация ВКонтакте API для .Net. В общей сложности пилю его уже 
+полтора года. Сделано еще не всё, а что сделано под катом. <br>
+<a name="habracut"></a><br>
+Полный список реализованных методов можно посмотреть в <a href="https://vk.codeplex.com/documentation">документации</a>. Коротко, практически все методы из следующих категорий:<br>
+<ul>
+<li>пользователи;</li>
+<li>друзья;</li>
+<li>статусы;</li>
+<li>сообщения</li>
+<li>группы</li>
+<li>аудио</li>
+<li>видео</li>
+<li>данные вк</li>
+<li>служебные</li>
+<li>закладки</li>
+<li>стена (немного).</li>
+</ul><br>
+Небольшой пример как с этим работать. К примеру, давайте попробуем 
+послать сообщение «привет, друг!» пользователям из сообщества Хабрахабр 
+(проверки убраны). Данный пример показан только для демонстрации работы 
+библиотеки.<br>
+<pre><code class="cs"><span class="keyword">static</span> <span class="keyword">void</span> Main(<span class="keyword">string</span>[] args)
+        {
+            <span class="keyword">int</span> appId = <span class="number">1234567</span>; <span class="comment">// указываем id приложения</span>
+            <span class="keyword">string</span> email = <span class="string">"example@example.ru"</span>; <span class="comment">// email для авторизации</span>
+            <span class="keyword">string</span> password = <span class="string">"qwerty123"</span>; <span class="comment">// пароль</span>
+            Settings settings = Settings.All; <span class="comment">// уровень доступа к данным</span>
+
+            <span class="keyword">var</span> api = <span class="keyword">new</span> VkApi();
+            api.Authorize(appId, email, password, settings); <span class="comment">// авторизуемся</span>
+
+            <span class="keyword">var</span> <span class="keyword">group</span> = api.Utils.ResolveScreenName(<span class="string">"habr"</span>); <span class="comment">// получаем id сущности с коротким именем habr</span>
+
+            <span class="comment">// получаем id пользователей из группы, макс. кол-во записей = 1000</span>
+            <span class="keyword">int</span> totalCount; <span class="comment">// общее кол-во участников</span>
+            <span class="keyword">var</span> userIds = api.Groups.GetMembers(<span class="keyword">group</span>.Id.Value, <span class="keyword">out</span> totalCount); 
+            <span class="keyword">foreach</span> (<span class="keyword">long</span> id <span class="keyword">in</span> userIds)
+            {
+                api.Messages.Send(id, <span class="keyword">false</span>, <span class="string">"привет, друг!"</span>); <span class="comment">// посылаем сообщение пользователю</span>
+            }
+        }}
+</code></pre> <br>
+<br>
+Скачать можно с <a href="http://vk.codeplex.com/">сайта проекта</a> или <a href="http://www.nuget.org/packages/VkNet/">загрузить через Nuget</a>.<br>
+<br>
+<div style="text-align:center;"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/f728d2cac6139ca147fe042188aed976.jpg" alt="image"></div><br>
+<b>P.S.</b> Многие методы еще не реализованы и если ты хочешь поучаствовать в проекте или нашел ошибки, то дай об этом знать через <a href="http://vk.codeplex.com/">сайт</a>. 
+				<div class="polling">
+		
+
+	<form action="/json/polling/" class="poll" method="post">
+
+		<div class="poll_title">Какие категории методов реализовать дальше</div>
+
+		<input name="post_id" value="216553" type="hidden">
+		<input name="polling_question_id" value="10691" type="hidden">
+
+		<table class="answer">
+			<tbody><tr>
+
+				<td class="input">
+					<input id="vv54313" class="checkbox js-field-data" name="variant[]" value="54313" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54313">Стена</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54315" class="checkbox js-field-data" name="variant[]" value="54315" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54315">Фотографии</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54317" class="checkbox js-field-data" name="variant[]" value="54317" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54317">Виджеты</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54319" class="checkbox js-field-data" name="variant[]" value="54319" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54319">Страницы</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54321" class="checkbox js-field-data" name="variant[]" value="54321" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54321">Обсуждения</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54323" class="checkbox js-field-data" name="variant[]" value="54323" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54323">Видеозаписи</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54325" class="checkbox js-field-data" name="variant[]" value="54325" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54325">Заметки</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54327" class="checkbox js-field-data" name="variant[]" value="54327" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54327">Места</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54329" class="checkbox js-field-data" name="variant[]" value="54329" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54329">Аккаунт</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54331" class="checkbox js-field-data" name="variant[]" value="54331" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54331">Новости</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54333" class="checkbox js-field-data" name="variant[]" value="54333" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54333">Мне нравится</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54335" class="checkbox js-field-data" name="variant[]" value="54335" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54335">Опросы</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54337" class="checkbox js-field-data" name="variant[]" value="54337" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54337">Документы</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54339" class="checkbox js-field-data" name="variant[]" value="54339" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54339">Уведомления</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54341" class="checkbox js-field-data" name="variant[]" value="54341" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54341">Статистика</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54343" class="checkbox js-field-data" name="variant[]" value="54343" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54343">Поиск</label>
+				</td>
+			</tr>
+			<tr>
+
+				<td class="input">
+					<input id="vv54345" class="checkbox js-field-data" name="variant[]" value="54345" type="checkbox">
+				</td>
+
+				<td class="label">
+					<label for="vv54345">Контакт — зло, я его не использую</label>
+				</td>
+			</tr>
+		</tbody></table>
+			<p class="for_users_only_msg">Только зарегистрированные пользователи могут участвовать в опросе. <a href="https://habrahabr.ru/auth/login/">Войдите</a>, пожалуйста.</p>
+		<p class="total">Проголосовал 351 человек. Воздержалось 236 человек.</p>
+	</form>
+
+	</div>
+
+  	<div class="clear"></div> 	
+  	</div>
+    
+<ul class="tags">
+	<li><a href="http://habrahabr.ru/search/?q=%5B%D0%B2%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20api%5D&amp;target_type=posts" rel="tag">вконтакте api</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5B.net%5D&amp;target_type=posts" rel="tag">.net</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5Bc%23%5D&amp;target_type=posts" rel="tag">c#</a></li>
+</ul>
+
+    <div class="infopanel_wrapper">
+	<div class="infopanel " id="infopanel_post_216553">
+	
+				<div class="voting   ">
+	
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи."></span>
+	
+					<div class="mark positive ">
+							<span class="score" title="Всего 44: ↑35 и ↓9">+26</span>
+					</div>
+					
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи."></span>
+		
+				</div>
+	
+		<div class="pageviews" title="Просмотры поста">11063</div>
+			
+		<div class="favorite">
+				<a class="guest" href="#" onclick="return false;" title="Только зарегистрированные пользователи могут добавлять посты в избранное"></a>
+		</div>
+		<div class="favs_count" title="Количество пользователей, добавивших пост в избранное">126</div>
+		
+		
+		
+	
+	
+	
+	
+				<div class="author">
+					<a title="Автор текста" href="http://habrahabr.ru/users/azhidkov/">azhidkov</a>
+					<span class="rating" title="рейтинг пользователя">10,0</span>
+				</div>
+		
+	
+	
+		
+			<div class="share">
+				<div class="twitter">
+					<a href="http://twitter.com/intent/tweet?text=%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5+API+%D0%B4%D0%BB%D1%8F+.Net+http://habr.ru/p/216553/+via+%40habrahabr+%23habr" title="Опубликовать ссылку в Twitter" target="_blank"></a>
+				</div>
+				<div class="vkontakte">
+					<a href="http://vk.com/share.php?url=http://habrahabr.ru/post/216553/" title="Опубликовать ссылку во ВКонтакте" onclick="window.open(this.href, 'Опубликовать ссылку во Вконтакте', 'width=800,height=300'); return false"></a>
+				</div>
+				<div class="facebook">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=http://habrahabr.ru/post/216553/" title="Опубликовать ссылку в Facebook" onclick="window.open(this.href, 'Опубликовать ссылку в Facebook', 'width=640,height=436,toolbar=0,status=0'); return false"></a>
+				</div>
+				<div class="googleplus">
+					<a href="https://plus.google.com/share?url=http://habrahabr.ru/post/216553/" title="Опубликовать ссылку в Google Plus" onclick="window.open(this.href, 'Опубликовать ссылку в Google Plus', 'width=800,height=300'); return false"></a>
+				</div>
+			</div>
+	
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+
+    
+    
+	</div>
+
+
+
+		
+	<div title="" id="adriver_banner_132032996"></div>  
+
+  <script type="text/javascript">  
+	  function show_inner_banner_block(name, url){
+	  	if( typeof(name) !== 'undefined'){
+	  		$.get('/html/'+name+'/1398870503/', function(html){
+	  			$('#adriver_banner_132032996').html(html);
+	  			$('.'+name+'_inner_banner').removeClass('hidden');
+	  			if( typeof(url) !== 'undefined'){
+	  				$('.'+name+'_inner_banner .block_url').attr('href', url);
+	  			}
+	  		})
+	  	}
+	  }
+
+		$(function(){
+			var keyword = '';
+			if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+			var custom = { 4:ar_duo1 };
+				custom[1] = 'csharp';
+				custom[2] = 'vkontakte_api';
+				custom[3] = 'net';
+
+            /* Антоша не удаляй это условие блеать! Как я тестить буду? */
+            //if (true)
+            //    show_inner_banner_block('hp');
+            //else
+			    new adriver("adriver_banner_132032996", {sid: 176776, bt: 52, bn: 3, custom: custom, keyword: keyword});
+		});
+	</script>
+	
+
+
+	
+		<div class="comments_list " id="comments">
+
+  <h2 class="title ">комментарии (<span id="comments_count">17</span>)
+  
+  </h2>
+
+    <div class="comment_item" id="comment_7423493">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7423493">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7423493" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 3: ↑3 и ↓0">+3</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/gouranga/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/1bde3c7d68e4eca6a56f434680461ba5_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/gouranga/" class="username">gouranga</a><span class="comma">,</span>
+            <time>21 марта 2014 в 13:52</time>
+
+            <a href="#comment_7423493" class="link_to_comment">#</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Жаль, что нацелено на 3.5. Получается никакого async. :-(
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7423493">
+        <div class="comment_item" id="comment_7423519">
+
+    <span class="parent_id" data-parent_id="7423493"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7423519">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7423519" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 6: ↑6 и ↓0">+6</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lexdevel/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/118d0917529971e20aa3f3fb2114d19f_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/lexdevel/" class="username">lexdevel</a><span class="comma">,</span>
+            <time>21 марта 2014 в 13:59</time>
+
+            <a href="#comment_7423519" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7423519" data-parent_id="7423493" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7423493" data-id="7423519" data-parent_id="7423493" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Согласен. Было бы неплохо, если бы добавили асинхронку хотя бы в старом варианте, по типу BeginInvoke — EndInvoke. <br>
+P.S. Потенциал неплохой, я бы посоветовал портировать на WP8 и Xamarin, думаю, что будет популярно в Xamarin Store ;)
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7423519">
+        <div class="comment_item" id="comment_7425449">
+
+    <span class="parent_id" data-parent_id="7423519"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7425449">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7425449" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Petrishko/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/8ce8a3953ddc460d2540d15f84e49a73_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Petrishko/" class="username">Petrishko</a><span class="comma">,</span>
+            <time>22 марта 2014 в 01:14</time>
+
+            <a href="#comment_7425449" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7425449" data-parent_id="7423519" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7423519" data-id="7425449" data-parent_id="7423519" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Поддерживаю портирование на WP8.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7425449">
+    </div>
+</div>
+
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_7423783">
+
+    <span class="parent_id" data-parent_id="7423493"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7423783">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7423783" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 3: ↑3 и ↓0">+3</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/kekekeks/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/a93d3c79d322f7b46fa5a0cee0ffe917_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/kekekeks/" class="username">kekekeks</a><span class="comma">,</span>
+            <time>21 марта 2014 в 15:18</time>
+
+            <a href="#comment_7423783" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7423783" data-parent_id="7423493" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7423493" data-id="7423783" data-parent_id="7423493" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Самое забавное, что async отлично можно завести и на .NET 2.0, достаточно нужные классы из Mono вытащить и <a href="https://github.com/kekekeks/MonoLib">скомпилировать в dll-ку</a>. У меня где-то ещё валялась версия такой библиотеки и для .NET 4, работающая без KB, требуемого решением от мелкомягких.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7423783">
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_7423811">
+
+    <span class="parent_id" data-parent_id="7423493"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7423811">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7423811" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/TIgorA/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/2cccfc3b5d858a6351631aa37238c744_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/TIgorA/" class="username">TIgorA</a><span class="comma">,</span>
+            <time>21 марта 2014 в 15:28</time>
+
+            <a href="#comment_7423811" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7423811" data-parent_id="7423493" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7423493" data-id="7423811" data-parent_id="7423493" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            А это востребовано? Могу попробовать отделить API из своего VK unO <br>
+<a href="http://apps.microsoft.com/windows/uk-ua/app/vk-uno/87dc7d15-1241-4e75-b7c9-a0aa802714d6">apps.microsoft.com/windows/uk-ua/app/vk-uno/87dc7d15-1241-4e75-b7c9-a0aa802714d6</a>
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7423811">
+        <div class="comment_item" id="comment_7424271">
+
+    <span class="parent_id" data-parent_id="7423811"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7424271">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7424271" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/gouranga/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/1bde3c7d68e4eca6a56f434680461ba5_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/gouranga/" class="username">gouranga</a><span class="comma">,</span>
+            <time>21 марта 2014 в 17:54</time>
+
+            <a href="#comment_7424271" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7424271" data-parent_id="7423811" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7423811" data-id="7424271" data-parent_id="7423811" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Если уж реализовывать современный api-клиент на .net, то с async, конечно. Но это моё личное мнение.<br>
+Так-то понятно, что для почесывания левой пятки по пятницам вполне ОК.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7424271">
+    </div>
+</div>
+
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_7424721">
+
+    <span class="parent_id" data-parent_id="7423493"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7424721">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7424721" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/HomoLuden/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/464c86c09c52b129dffafe50637b657e_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/HomoLuden/" class="username">HomoLuden</a><span class="comma">,</span>
+            <time>21 марта 2014 в 20:02</time>
+
+            <a href="#comment_7424721" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7424721" data-parent_id="7423493" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7423493" data-id="7424721" data-parent_id="7423493" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            А в чем проблема использовать Task.StartNew(() =&gt; {...}).ContinueWith(t =&gt; {...})?<br>
+Можно свой или сторонний TaskHelper какой-то взять на вооружение. Через 
+тот-же хелпер можно прикрутить стандартное логгирование ошибок.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7424721">
+        <div class="comment_item" id="comment_7426035">
+
+    <span class="parent_id" data-parent_id="7424721"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7426035">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7426035" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/firestarter/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/firestarter/" class="username">firestarter</a><span class="comma">,</span>
+            <time>22 марта 2014 в 12:06</time>
+
+            <a href="#comment_7426035" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7426035" data-parent_id="7424721" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7424721" data-id="7426035" data-parent_id="7424721" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Наверное, в том, что HTTP запросы IO-Bound и Task.StartNew будет кушать ресурсы без необходимости. <a href="http://stackoverflow.com/questions/5018897/tpl-taskfactory-fromasync-vs-tasks-with-blocking-methods">SO</a>.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7426035">
+        <div class="comment_item" id="comment_7430491">
+
+    <span class="parent_id" data-parent_id="7426035"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7430491">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7430491" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/HomoLuden/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/464c86c09c52b129dffafe50637b657e_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/HomoLuden/" class="username">HomoLuden</a><span class="comma">,</span>
+            <time>24 марта 2014 в 13:01</time>
+
+            <a href="#comment_7430491" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7430491" data-parent_id="7426035" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7426035" data-id="7430491" data-parent_id="7426035" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Насколько я понял, в комментарии, на который я ответил, 
+автор раздосадован, что не сможет задекорировать свой метод аттрибутами 
+'async — await'. Если я прав, то Ваш пример о том же, о чем я написал, а
+ именно обойтись без сахара async-await и использовать TPL.<br>
+<br>
+Насколько я понял, преимущество Вашего примера в том, что не занимается поток из Tread Pool. Я правильно понял?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7430491">
+        <div class="comment_item" id="comment_7430767">
+
+    <span class="parent_id" data-parent_id="7430491"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7430767">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7430767" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/firestarter/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/firestarter/" class="username">firestarter</a><span class="comma">,</span>
+            <time>24 марта 2014 в 13:45</time>
+
+            <a href="#comment_7430767" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7430767" data-parent_id="7430491" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7430491" data-id="7430767" data-parent_id="7430491" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Да, но не совсем.<br>
+<br>
+Независимо от того, как реализован метод в библиотеке (с async или без) 
+его результат можно await'ить в своем методе, если он возвращает Task.<br>
+<br>
+Мой пример о том, что если метод в библиотеке реализует IAsyncResult 
+паттерн, то эффективнее будет использовать Task.FromAsync, чем 
+оборачивать синхронный метод в Task.StartNew.<br>
+<br>
+А проблема в библиотеке в том, что, она не реализует ассинхронное API ни
+ каким образом. Т.е. придется использовать Task.StartNew, что в свою 
+очередь будет не так эффективно.<br>
+<br>
+Надеюсь так понятнее.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7430767">
+        <div class="comment_item" id="comment_7434607">
+
+    <span class="parent_id" data-parent_id="7430767"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7434607">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7434607" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/HomoLuden/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/464c86c09c52b129dffafe50637b657e_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/HomoLuden/" class="username">HomoLuden</a><span class="comma">,</span>
+            <time>25 марта 2014 в 14:21</time>
+
+            <a href="#comment_7434607" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7434607" data-parent_id="7430767" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7430767" data-id="7434607" data-parent_id="7430767" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Да. Понятно.<br>
+Получается, если в Tread Pool имеется ограничение в 30 потоков, то 
+невозможно будет даже при монопольном захвате пулла запустить больше 30 
+параллельных запросов IO/Web.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7434607">
+        <div class="comment_item" id="comment_7434985">
+
+    <span class="parent_id" data-parent_id="7434607"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7434985">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7434985" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/KvanTTT/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/493682d147e76ebcac189c32b3e56214_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/KvanTTT/" class="username">KvanTTT</a><span class="comma">,</span>
+            <time>25 марта 2014 в 16:04</time>
+
+            <a href="#comment_7434985" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7434985" data-parent_id="7434607" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7434607" data-id="7434985" data-parent_id="7434607" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Вроде ограничение в 64 потока: <a href="http://msdn.microsoft.com/en-us/library/dd383719%28v=vs.110%29.aspx">http://msdn.microsoft.com/en-us/library/dd383719(v=vs.110).aspx</a>
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7434985">
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    <div class="comment_item" id="comment_7424637">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7424637">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7424637" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Stealth2011/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/Stealth2011/" class="username">Stealth2011</a><span class="comma">,</span>
+            <time>21 марта 2014 в 19:26</time>
+
+            <a href="#comment_7424637" class="link_to_comment">#</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            А почему без async и только .NET 3.5? По-моему мало 
+актуально. Я для Meridian (https://github.com/Stealth2012/meridian) 
+использую самописную Portable-библиотеку, которая поддерживает async и 
+может использоваться в проектах NET4.5/WP8/Win8.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7424637">
+        <div class="comment_item" id="comment_7425543">
+
+    <span class="parent_id" data-parent_id="7424637"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7425543">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7425543" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 5: ↑3 и ↓2">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/andreycha/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/8c1dafa9df11c2aa660cbfa102220760_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/andreycha/" class="username">andreycha</a><span class="comma">,</span>
+            <time>22 марта 2014 в 02:14</time>
+
+            <a href="#comment_7425543" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7425543" data-parent_id="7424637" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7424637" data-id="7425543" data-parent_id="7424637" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            А вы в каждый аккаунт добавляете год его создания?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7425543">
+        <div class="comment_item" id="comment_7425553">
+
+    <span class="parent_id" data-parent_id="7425543"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7425553">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7425553" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Stealth2011/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/Stealth2011/" class="username">Stealth2011</a><span class="comma">,</span>
+            <time>22 марта 2014 в 02:28</time>
+
+            <a href="#comment_7425553" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7425553" data-parent_id="7425543" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7425543" data-id="7425553" data-parent_id="7425543" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Да.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7425553">
+        <div class="comment_item" id="comment_7434141">
+
+    <span class="parent_id" data-parent_id="7425553"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7434141">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7434141" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/EvilBeaver/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/4c39449b2c273566127b8609329329e1_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/EvilBeaver/" class="username">EvilBeaver</a><span class="comma">,</span>
+            <time>25 марта 2014 в 12:31</time>
+
+            <a href="#comment_7434141" class="link_to_comment">#</a>
+            <div class="show_tree" data-id="7434141" data-parent_id="7425553" title="Показать ветку комментариев">↵</div>
+
+            <a href="#comment_7425553" data-id="7434141" data-parent_id="7425553" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Забавно. А это просто ради прикола, или имеется скрытый 
+смысл? Может, как-то анализируете потом или еще какое-то прикладное 
+применение?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7434141">
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    <div class="comment_item" id="comment_7434095">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body">
+        <div class="info  " rel="7434095">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_7434095" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Seekeer/" class="avatar"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/Seekeer/" class="username">Seekeer</a><span class="comma">,</span>
+            <time>25 марта 2014 в 12:21</time>
+
+            <a href="#comment_7434095" class="link_to_comment">#</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            О, спасибо! Как раз недавно задумал приложение по ВК, 
+поискал библиотеку и не нашёл, пришлось писать самостоятельные 
+велосипеды:)
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_7434095">
+    </div>
+</div>
+
+</div>
+
+					<p class="for_users_only_msg">Только зарегистрированные пользователи могут оставлять комментарии. <a href="https://habrahabr.ru/auth/login/">Войдите</a>, пожалуйста.</p>
+
+
+	
+<form action="/json/favorites/" method="post" id="edit_tags_form" class="hidden">
+  <input name="action" value="add" type="hidden">
+  <input name="ti" value="0" type="hidden">
+  <input name="tt" value="0" type="hidden">
+  <label>Пометьте топик понятными вам метками, если хотите</label>
+  <input autocomplete="off" name="tags_string" class="tags_string" type="text">
+  <div class="description">Метки лучше разделять запятой. Например: <i>общение, социальные сети, myspace.com, подростки, мердок</i></div>
+  <input value="Сохранить" class="submit" type="submit"> или <a href="#" class="close" onclick="return close_edit_tags()">закрыть</a>
+</form>
+    
+
+
+  </div>
+  <div class="sidebar_right">
+			<div class="banner_300x500">
+		<div title="" id="adriver_banner_1863387959"><div style="position: relative; width: 300px; height: 500px; text-align: center; margin: 0px auto;"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&amp;ad=400862&amp;bid=2554165&amp;bt=52&amp;bn=1&amp;pz=0&amp;xpid=BUrRdVq0s8yTQafGCEz_WeJNRxQU&amp;ref=http:%2f%2fhabrahabr.ru%2fpost%2f216553%2f&amp;custom=1%3Dcsharp%3B2%3Dvkontakte_api%3B3%3Dnet%3B4%3D5&amp;rleurl=" onclick="return ar_sendPix('');" target="_blank"><img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/hantim_300x500px_sharp.jpg" alt="" border="0"></a></div></div>
+		<script type="text/javascript">
+			$(function(){
+				var keyword = '';
+				if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+
+				var custom = {4:ar_duo1};
+					custom[1] = 'csharp';
+					custom[2] = 'vkontakte_api';
+					custom[3] = 'net';
+
+				new adriver("adriver_banner_1863387959", {sid: 176776, bt: 52, bn: 1, custom: custom, keyword: keyword});
+			}());
+		</script>
+	</div>
+
+		
+		
+<div class="block daily_best_posts">
+  <div class="title">Лучшее <sup>за 24 часа</sup></div>
+  <div class="posts_list">
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221487/" class="post_name">Стивен Вольфрам: “Внедряя вычисления повсюду”</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221539/" class="post_name">ФЗ-229 — руки прочь от основного мобильного счёта</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221531/" class="post_name">Linux для профессионалов: видео-монтаж (и немножко композинг)</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221489/" class="post_name">Может ли Apple читать ваши iMessage?</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221517/" class="post_name">Квест в реальности с Oculus Rift</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221563/" class="post_name">«Принципиально новый» 3D-принтер воронежской разработки</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221541/" class="post_name">Вышла версия 1.0 защищённого дистрибутива TAILS</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/samsung/blog/221511/" class="post_name">Samsung начинает выпуск SSD по технологии 3 бита на ячейку для дата-центров</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/luxoft/blog/221475/" class="post_name">Мастер-класс по нутрям .Net Framework</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/221485/" class="post_name">Взлом шифра Виженера с помощью частотного криптоанализа</a>
+      </div>
+  </div>
+  <div class="all"><a href="http://habrahabr.ru/top/">все лучшие</a></div>
+</div>
+
+		
+		
+
+
+<div class="block similar_posts">
+
+	<div class="title">Похожие посты</div>
+  <div class="posts_list">
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/212405/">Находим общих друзей людей с использованием VK API</a>
+    				<span class="when">13.02.2014</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/211198/">Постим новости с картинкой в группы Вконтакта (Perl)</a>
+    				<span class="when">04.02.2014</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/209974/">ВКонтакте представили SDK для Android</a>
+    				<span class="when">22.01.2014</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/206206/">Один день из жизни Москвы в геометках Вконтакте</a>
+    				<span class="when">16.12.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/204840/">Получаем i18n список стран, регионов, населенных пунктов из ВКонтакте</a>
+    				<span class="when">04.12.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/188102/">Простая клиентская и серверная авторизация пользователя Ajax-сайта с помощью ВКонтакте API</a>
+    				<span class="when">28.07.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/151585/">vkontakte_api: ruby-адаптер для ВКонтакте API</a>
+    				<span class="when">22.09.2012</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/135036/">Получаем доступ к методам Вконтакте Api без ведома пользователя</a>
+    				<span class="when">21.12.2011</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/124742/">ВКонтакте API. Execute: реализуем IF своими руками</a>
+    				<span class="when">22.07.2011</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/80947/">Теперь ВКонтакте API не только для Flash</a>
+    				<span class="when">16.01.2010</span>
+      </div>
+  </div>			
+</div>
+
+
+
+	    
+<div class="block similar_questions">
+	<div class="title">Вопросы по теме</div>
+
+	<div class="posts_list">
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/42534">На чем лучше писать программу?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/90985">Java binding, ошибка xamarin - как исправить?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/90633">Mono Droid авторизация в Vk - как реализовать?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/89273">Как эффективно подтянуть теорию и навыки c#?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/89127">Что использовать для парсинга UI сторонних десктоп-приложений?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/87390">C# Как из другого потока обновить control на форме?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/86996">Есть ли в С# замена type паскаля?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/86726">Какие существуют бесплатные .NET библиотеки для распознавания штрих-кодов?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/83948">Как подключиться к bluetooth гарнитуре по A2dp профилю программно?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/82938">Как программно соединиться по rdp без пароля?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/82154">Как быстро и продуктивно читать техническую литературу?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/81258">Как правильно работать с файлом ресурсов пользовательского контрола?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/81120">Как создать свой графический элемент для программы на .NET?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/79258">Как осуществить доступ и изменение объекта класса Adorner в WPF?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/78458">Desktop c# html5 выбор GUI - awesomium, xilium.cefglue?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/77948">Как решить проблему с загрузкой фото в профиль публичной страницы Вконтакте, используя VkApi?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/77532">DotNetZip падает при создании многотомных аривов, почему?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/76360">Есть ли какие нибудь библиотеки для трансформации/обработки изображений asp.net?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/76356">Как создать размытые края у Image в WindowsPhone?</a>
+		</div>
+    	<div class="post_item">
+    	    <a class="post_name" href="https://toster.ru/q/76128">Нужно ли отписываться от событий в .net winforms app?</a>
+		</div>
+  </div>			
+		
+</div>
+
+		
+		
+
+	<div class="block live_broadcast">
+		<div class="title">Что обсуждают? </div>
+
+		<div class="live_broadcast_activity">
+				<div class="posts_list">
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221571#comments" class="post_name">Crash-тест для системного аналитика</a>&nbsp;<span class="count">2</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221463#comments" class="post_name">Первомайские скидки на Амазон</a>&nbsp;<span class="count">35</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221537#comments" class="post_name">Sony установила новый рекорд плотности записи на магнитную ленту — 148 гигабит на квадратный дюйм</a>&nbsp;<span class="count">9</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221333#comments" class="post_name">Автоматическое сканирование в сетевую папку с кнопки на МФУ</a>&nbsp;<span class="count">5</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221447#comments" class="post_name">Тестировщик — больше, чем профессия</a>&nbsp;<span class="count">20</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221453#comments" class="post_name">Результаты тестирования облачных хранилищ Amazon, Google, HP, Microsoft и Rackspace</a>&nbsp;<span class="count">18</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/220961#comments" class="post_name">Про компоновку, dependency hell и обратную совместимость</a>&nbsp;<span class="count">16</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221123#comments" class="post_name">Почему нам необходима рефлексия в C++1y</a>&nbsp;<span class="count">37</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/221337#comments" class="post_name">Новые китайские домены верхнего уровня бьют рекорды</a>&nbsp;<span class="count">45</span>
+							</div>
+							<div class="post_item">
+								
+								<a href="http://habrahabr.ru/post/220017#comments" class="post_name">24-битные I2C датчики давления HP203B и HP206C от Hope Microelectronics</a>&nbsp;<span class="count">28</span>
+							</div>
+				</div>
+				<div class="all"><a href="http://habrahabr.ru/posts/">все посты</a></div>
+		</div>
+
+	</div>
+  
+			<!--  AdRiver code START. Type:AjaxJS Site: habrahabr PZ: 0 BN: 2 -->
+	
+	<div title="" id="adriver_banner_480931290" class="adbanner"></div>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			var check_scroll_position = function() {
+				var height = $(window).height();
+				var scrollTop = $(window).scrollTop();
+				var scrollBottom = $(window).scrollTop() + height;
+				var blockTop = $('#adriver_banner_480931290').position().top;
+				var show = scrollTop < blockTop && blockTop < scrollBottom;
+				//console.log('scroll', scrollTop, blockTop, scrollBottom, show)
+				if( show ){
+					//console.log('show bn2');
+					$( window ).off('scroll', check_scroll_position);
+					$( window ).trigger('show_bn2');
+				}					
+			};
+			$( window ).on('scroll', check_scroll_position);
+		
+			$( window ).on('show_bn2', function(){
+				var keyword = '';
+				if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+				var custom = {4:ar_duo1};
+					custom[1] = 'csharp';
+					custom[2] = 'vkontakte_api';
+					custom[3] = 'net';
+				new adriver("adriver_banner_480931290", {sid: 176776, bt: 52, bn: 2, custom: custom, keyword: keyword});
+			});
+		});
+	</script>
+	<!--  AdRiver code END  -->
+
+		
+<div class="block best_company">
+
+		<div class="title">Компания дня <img src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/bg_cicle_help.png" class="help-tip"></div>
+
+		<div class="company_info">
+			<div class="name">
+			 <img class="favicon" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-company-small.gif" alt="DATALABS" height="16" width="16">
+			 <div class="company_name"><a href="http://habrahabr.ru/company/datalabs/" class="title">DATALABS</a></div>
+			</div>
+
+			<p>Последний пост:
+				<a href="http://habrahabr.ru/company/datalabs/blog/220667/">Восстановление данных с флешек монолит</a>
+			</p>
+
+			<div class="buttons">
+  			<div id="fans_count">53 подписчика</div>
+			</div>
+		</div>
+
+	</div>
+
+
+		
+
+		
+	<div class="block new_vacanies">
+  <a href="http://brainstorage.me/jobs" class="title">Brainstorage</a>
+  <div class="vacancies">
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/8371">Программист - Ruby on Rails </a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/18365">Backend разработчик (Python)</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/18267">Разработчик серверной части MMORPG-проекта</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/18359">Ruby on Rails разработчик</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/18351">PHP-разработчик</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/12265">Rails-разработчик</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/14135">Веб-разработчик</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/16465">Разработчик веб-сервисов</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/18347">RubyLead (Senior Ruby Developer)</a>
+		</div>
+		<div class="job_item marked">
+			<a href="http://brainstorage.me/jobs/3859">PHP программист-разработчик (на 1С-Битрикс)</a>
+		</div>
+  </div>
+  <div class="all"><a href="http://brainstorage.me/jobs">все вакансии</a></div>
+</div>
+
+		
+	<div class="block freelansim">
+	  <a href="http://freelansim.ru/" class="title"></a>
+	  <div class="tasks">
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66443">Закодить с нуля аналог megamultipool.com</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66391">Инфографика для почтовой рассылки и responsive-странички</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66437">Разработать дизайн маркетинг - кита согласно ТЗ</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66441">Добавить поддержку mathjax на страницу комментариев форума</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66439">Доработка и исправление ошибок в проекта на Joomla</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66427">PHP-разработчик на проект с баннерной рекламой</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66421">Разработать небольшую симпатичную партнерку / SPA, AngularJS</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66431">Нужна авка для группы в контакте</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66413">Правка текстов landing page</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/66409">Создание рекламных картинок (баннеров)</a>
+				</div>
+
+	  </div>
+	  <div class="all"><a href="http://freelansim.ru/tasks">все заказы</a></div>
+	</div>
+
+		
+		
+		
+
+<div class="block similar_events">
+	<div class="title">Ближайшие события</div>
+		<div class="events_items">
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_2"></div>
+						<div class="day">06</div>
+						<div class="month">май</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/4933/">«The Heartbleed Bug» или OpenSSL как вектор атаки</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_3"></div>
+						<div class="day">07</div>
+						<div class="month">май</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/4923/">Бесплатный вебинар: «Почему SCRUM не работает?» или «SCRUM: как правильно?»</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_4"></div>
+						<div class="day">08</div>
+						<div class="month">май</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/4667/">Вебинар: Создание игр для платформы Nokia X с помощью Unity</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_0"></div>
+						<div class="day">11</div>
+						<div class="month">май</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/4827/">Первая встреча «Киев Node.js»</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_1"></div>
+						<div class="day">12</div>
+						<div class="month">май</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/4901/">Streaming Media East 2014</a>
+					</div>
+				</div>
+		</div>
+	<div class="all"><a href="http://habrahabr.ru/events/">все события</a></div>
+</div>
+
+		
+  </div>
+  <div class="clear"></div>
+
+  <script>
+    // hubs to GA
+      ga('send', 'event', 'Post_view', 'csharp (C#)',  window.location.pathname + window.location.search);
+      ga('send', 'event', 'Post_view', 'vkontakte_api (Вконтакте API)',  window.location.pathname + window.location.search);
+      ga('send', 'event', 'Post_view', 'net (.NET)',  window.location.pathname + window.location.search);
+  </script>
+
+
+        	
+	<div class="rotated_posts">
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/post/216827/" class="grey">CPU Load: когда начинать волноваться?</a>
+			</div>
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/post/215905/" class="grey">Signed Distance Field или как сделать из растра вектор</a>
+			</div>
+			<div class="rotated_post last">
+				<a href="http://habrahabr.ru/post/209080/" class="grey">Черная пятница. Как же всё было на самом деле</a>
+			</div>
+		<div class="clear"></div>
+	</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+
+        <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery_002.js"></script>
+        <script type="text/javascript">
+            $(document).ready( function(){
+
+                window.tmidLogin = function(){ return false; };
+
+                if( $.cookie('tmid_no_check') == undefined ) {
+                    var expire = new Date();
+                    expire.setMinutes(expire.getMinutes() + 10 );
+
+                    $.cookie('tmid_no_check', 1, { expires: expire } );
+
+                    $.getScript("https://id.tmtm.ru/checklogin", function(){
+                        if( window.tmidLogin() ) {
+                            window.location.href = $('#login').attr('href');
+                        }
+                    });
+
+
+                }
+            });
+
+        </script>
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // test gggg
+        // настройки всплывающих уведомлений
+        $.jGrowl.defaults.closerTemplate = '<div>Закрыть все уведомления</div>';         
+        
+        // настройки тултипов
+        $(".help-tip").tipTip({maxWidth: "300px", edgeOffset: 10});  
+        
+      });
+      // global vars
+      var g_base_url = 'habrahabr.ru';
+      var g_show_xpanel = false;
+      var g_base_fullurl = 'http://habrahabr.ru/';
+      var g_is_guest = false;
+    </script>
+    
+    <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/shortcuts.js"></script>
+    <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/to_top.js"></script>
+    <link href="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/_to_top.css" rel="stylesheet" media="all">
+
+    
+    <script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/float_block.js"></script>
+    
+    	<script type="text/javascript" src="%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5%20API%20%D0%B4%D0%BB%D1%8F%20.Net%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/a"></script>
+
+    
+    <div id="footer">
+	<dl>
+		<dd><a href="https://habrahabr.ru/auth/login/">Войти</a></dd>
+		<dd><a href="https://habrahabr.ru/auth/register/">Регистрация</a></dd>
+	</dl>
+	<dl>
+		<dt>Разделы</dt>
+
+		<!--dd><a href="http://habrahabr.ru/qa/">Q&A</a></dd-->
+		<dd><a href="http://habrahabr.ru/hubs/">Хабы</a></dd>
+		<dd><a href="http://habrahabr.ru/events/">События</a></dd>
+		<dd><a href="http://habrahabr.ru/companies/">Компании</a></dd>
+		<dd><a href="http://habrahabr.ru/users/">Пользователи</a></dd>
+	</dl>
+	<dl>
+		<dt>Посты</dt>
+		<dd><a href="http://habrahabr.ru/posts/top/">Лучшие</a></dd>
+		<dd><a href="http://habrahabr.ru/posts/collective/">Тематические</a></dd>
+		<dd><a href="http://habrahabr.ru/posts/corporative/">Корпоративные</a></dd>
+		<dd><a href="http://habrahabr.ru/sandbox/">Песочница</a></dd>
+	</dl>
+	<dl>
+		<dt>Инфо</dt>
+		<dd><a href="http://habrahabr.ru/info/about/">О сайте</a></dd>
+		<dd><a href="http://habrahabr.ru/info/help/rules/">Правила</a></dd>
+		<dd><a href="http://habrahabr.ru/info/help/">Помощь</a></dd>
+		<dd><a href="http://habrahabr.ru/info/agreement/">Соглашение</a></dd>
+	</dl>
+	<dl>
+		<dt>Услуги</dt>
+		<dd><a href="http://habrahabr.ru/info/advertising/">Реклама</a></dd>
+		<dd><a href="http://habrahabr.ru/info/advertising/corporate/">Корпоративные тарифы</a></dd>
+		<dd><a href="http://habrahabr.ru/info/advertising/workshops/">Семинары</a></dd>
+		<dd><a href="http://habrahabr.ru/special/">Спецпроекты</a></dd>
+		<dd><a href="http://habrahabr.ru/special/minsvyaz/" style="color:green;">Льготы стартапам</a></dd>
+	</dl>
+	<div class="copyright">
+
+		<div class="about">
+			<a href="http://tmtm.ru/">TM</a>
+			© 2006–2014
+			<br><br>
+			<a href="http://habrahabr.ru/feedback/">Служба поддержки</a><br><br>
+			<a href="http://m.habrahabr.ru/">Мобильная версия</a><br><br>
+			<a href="http://habrahabr.ru/apps/" style="color: #e95e51;">Мобильные приложения</a><br><br>
+
+			<div class="social_accounts">
+				<a href="https://twitter.com/habrahabr" class="tw"></a>
+				<a href="https://www.facebook.com/habrahabr.ru" class="fb"></a>
+				<a href="http://vk.com/habr" class="vk"></a>
+				<!-- <a href="" class="gp"></a> //-->
+			</div>
+
+		</div>
+	</div>
+
+</div>    
+    <div class="footer_logos">
+		
+		<div class="project brainstorage">
+			<a href="http://brainstorage.ru/" class="icon "></a>
+			<div class="text">Все мозги в одном месте</div>
+		</div>
+
+		<div class="project toster">
+			<a href="http://toster.ru/" class="icon "></a>
+			<div class="text">Q&amp;A-сервис для разработчиков</div>
+		</div>
+		
+		<div class="project freelansim">
+			<a href="http://freelansim.ru/" class="icon "></a>
+			<div class="text">Заказы для фрилансеров</div>
+		</div>
+		
+		<div class="project autokadabra">
+			<a href="http://autokadabra.ru/" class="icon "></a>
+			<div class="text ">Уютная и дружелюбная</div>
+		</div>
+		
+</div>
+
+  
+    
+  
+
+<div id="AutocompleteContainter_84be7" style="position: absolute; z-index: 9999; top: 51px; left: 1289.5px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_84be7" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="AutocompleteContainter_73251" style="position: absolute; z-index: 9999; top: 2px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_73251" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="tiptip_holder" style="max-width:300px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div><div style="display: none;" class="to_top"><div class="to_top_panel"><div class="to_top_button" title="Наверх"><span class="arrow">↑</span> <span class="label">наверх</span></div>  </div></div></body></html>

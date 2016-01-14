@@ -1,0 +1,1085 @@
+/**
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ */
+
+._1c .de1, ._1c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+._1c  {font-family: monospace; margin: 10px 20px 10px 30px;}
+._1c .imp {font-weight: bold; color: red;}
+._1c li, ._1c .li1 {font-weight: normal; vertical-align:top;}
+._1c .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+._1c .li2 {font-weight: bold; vertical-align:top;}
+._1c .kw1 {color: red; font-weight: bold;}
+._1c .kw2 {color: red;}
+._1c .kw3 {color: navy; font-weight: bold;}
+._1c .kw4 {color: red;}
+._1c .kw5 {color: navy;}
+._1c .kw6 {font-weight: bold;}
+._1c .co1 {color: green; font: italic monospace;}
+._1c .es0 {color: #000099; font-weight: bold;}
+._1c .br0 {color: blue;}
+._1c .sy0 {color: #a33;}
+._1c .st0 {color: #006F51;}
+._1c .nu0 {color: blue;}
+._1c .me1 {color: green;}
+._1c .ln-xtra, ._1c li.ln-xtra, ._1c div.ln-xtra {background-color: #ffc;}
+._1c span.xtra { display:block; }
+
+.actionscript3 .de1, .actionscript3 .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.actionscript3  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.actionscript3 .imp {font-weight: bold; color: red;}
+.actionscript3 li, .actionscript3 .li1 {font-weight: normal; vertical-align:top;}
+.actionscript3 .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.actionscript3 .li2 {font-weight: bold; vertical-align:top;}
+.actionscript3 .kw1 {color: #0033ff; font-weight: bold;}
+.actionscript3 .kw2 {color: #6699cc; font-weight: bold;}
+.actionscript3 .kw3 {color: #339966; font-weight: bold;}
+.actionscript3 .kw4 {color: #9900cc; font-weight: bold;}
+.actionscript3 .kw5 {color: #004993;}
+.actionscript3 .kw6 {color: #004993;}
+.actionscript3 .kw7 {color: #004993;}
+.actionscript3 .kw8 {color: #004993;}
+.actionscript3 .co1 {color: #009900; font: italic monospace;}
+.actionscript3 .co2 {color: #009966; font: italic monospace;}
+.actionscript3 .coMULTI {color: #3f5fbf;}
+.actionscript3 .br0 {color: #000000;}
+.actionscript3 .sy0 {color: #000066; font-weight: bold;}
+.actionscript3 .st0 {color: #990000;}
+.actionscript3 .nu0 {color: #000000; font-weight:bold;}
+.actionscript3 .me0 {color: #000000;}
+.actionscript3 .ln-xtra, .actionscript3 li.ln-xtra, .actionscript3 div.ln-xtra {background-color: #ffc;}
+.actionscript3 span.xtra { display:block; }
+
+.asm .de1, .asm .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.asm  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.asm .imp {font-weight: bold; color: red;}
+.asm li, .asm .li1 {font-weight: normal; vertical-align:top;}
+.asm .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.asm .li2 {font-weight: bold; vertical-align:top;}
+.asm .kw1 {color: #00007f; font-weight: bold;}
+.asm .kw2 {color: #0000ff; font-weight: bold;}
+.asm .kw3 {color: #00007f;}
+.asm .kw4 {color: #000000; font-weight: bold;}
+.asm .kw5 {color: #000000; font-weight: bold;}
+.asm .co1 {color: #666666; font: italic monospace;}
+.asm .co2 {color: #adadad; font: italic monospace;}
+.asm .es0 {color: #000099; font-weight: bold;}
+.asm .br0 {color: #009900; font-weight: bold;}
+.asm .sy0 {color: #339933;}
+.asm .st0 {color: #7f007f;}
+.asm .nu0 {color: #0000ff;}
+.asm .ln-xtra, .asm li.ln-xtra, .asm div.ln-xtra {background-color: #ffc;}
+.asm span.xtra { display:block; }
+
+.bash .de1, .bash .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.bash  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.bash .imp {font-weight: bold; color: red;}
+.bash li, .bash .li1 {font-weight: normal; vertical-align:top;}
+.bash .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.bash .li2 {font-weight: bold; vertical-align:top;}
+.bash .kw1 {color: #000000; font-weight: bold;}
+.bash .kw2 {color: #c20cb9; font-weight: bold;}
+.bash .kw3 {color: #7a0874; font-weight: bold;}
+.bash .co0 {color: #666666; font: italic monospace;}
+.bash .co1 {color: #800000;}
+.bash .co2 {color: #cc0000; font: italic monospace;}
+.bash .co3 {color: #000000; font-weight: bold;}
+.bash .co4 {color: #666666;}
+.bash .es1 {color: #000099; font-weight: bold;}
+.bash .es2 {color: #007800;}
+.bash .es3 {color: #007800;}
+.bash .es4 {color: #007800;}
+.bash .es5 {color: #780078;}
+.bash .es_h {color: #000099; font-weight: bold;}
+.bash .br0 {color: #7a0874; font-weight: bold;}
+.bash .sy0 {color: #000000; font-weight: bold;}
+.bash .st0 {color: #ff0000;}
+.bash .st_h {color: #ff0000;}
+.bash .nu0 {color: #000000;}
+.bash .re0 {color: #007800;}
+.bash .re1 {color: #007800;}
+.bash .re2 {color: #007800;}
+.bash .re4 {color: #007800;}
+.bash .re5 {color: #660033;}
+.bash .ln-xtra, .bash li.ln-xtra, .bash div.ln-xtra {background-color: #ffc;}
+.bash span.xtra { display:block; }
+
+.basic4gl .de1, .basic4gl .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.basic4gl  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.basic4gl .imp {font-weight: bold; color: red;}
+.basic4gl li, .basic4gl .li1 {font-weight: normal; vertical-align:top;}
+.basic4gl .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.basic4gl .li2 {font-weight: bold; vertical-align:top;}
+.basic4gl .kw1 {color: #000080; font-weight: bold;}
+.basic4gl .kw2 {color: #FF0000;}
+.basic4gl .kw3 {color: #0000FF;}
+.basic4gl .co1 {color: #657CC4; font: italic monospace;}
+.basic4gl .br0 {color: #000080;}
+.basic4gl .sy0 {color: #0000FF;}
+.basic4gl .st0 {color: #008000;}
+.basic4gl .nu0 {color: #000080; font-weight: bold;}
+.basic4gl .ln-xtra, .basic4gl li.ln-xtra, .basic4gl div.ln-xtra {background-color: #ffc;}
+.basic4gl span.xtra { display:block; }
+
+.c .de1, .c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.c .imp {font-weight: bold; color: red;}
+.c li, .c .li1 {font-weight: normal; vertical-align:top;}
+.c .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.c .li2 {font-weight: bold; vertical-align:top;}
+.c .kw1 {color: #b1b100;}
+.c .kw2 {color: #000000; font-weight: bold;}
+.c .kw3 {color: #000066;}
+.c .kw4 {color: #993333;}
+.c .co1 {color: #666666; font: italic monospace;}
+.c .co2 {color: #339933;}
+.c .coMULTI {color: #808080; font: italic monospace;}
+.c .es0 {color: #000099; font-weight: bold;}
+.c .es1 {color: #000099; font-weight: bold;}
+.c .es2 {color: #660099; font-weight: bold;}
+.c .es3 {color: #660099; font-weight: bold;}
+.c .es4 {color: #660099; font-weight: bold;}
+.c .es5 {color: #006699; font-weight: bold;}
+.c .br0 {color: #009900;}
+.c .sy0 {color: #339933;}
+.c .st0 {color: #ff0000;}
+.c .nu0 {color: #0000dd;}
+.c .nu6 {color: #208080;}
+.c .nu8 {color: #208080;}
+.c .nu12 {color: #208080;}
+.c .nu16 {color:#800080;}
+.c .nu17 {color:#800080;}
+.c .nu18 {color:#800080;}
+.c .nu19 {color:#800080;}
+.c .me1 {color: #202020;}
+.c .me2 {color: #202020;}
+.c .ln-xtra, .c li.ln-xtra, .c div.ln-xtra {background-color: #ffc;}
+.c span.xtra { display:block; }
+
+.cpp .de1, .cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.cpp .imp {font-weight: bold; color: red;}
+.cpp li, .cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp .kw1 {color: #0000ff;}
+.cpp .kw2 {color: #0000ff;}
+.cpp .kw3 {color: #0000dd;}
+.cpp .kw4 {color: #0000ff;}
+.cpp .co1 {color: #666666;}
+.cpp .co2 {color: #339900;}
+.cpp .coMULTI {color: #ff0000; font: italic monospace;}
+.cpp .es0 {color: #000099; font-weight: bold;}
+.cpp .es1 {color: #000099; font-weight: bold;}
+.cpp .es2 {color: #660099; font-weight: bold;}
+.cpp .es3 {color: #660099; font-weight: bold;}
+.cpp .es4 {color: #660099; font-weight: bold;}
+.cpp .es5 {color: #006699; font-weight: bold;}
+.cpp .br0 {color: #008000;}
+.cpp .sy0 {color: #008000;}
+.cpp .sy1 {color: #000080;}
+.cpp .sy2 {color: #000040;}
+.cpp .sy3 {color: #000040;}
+.cpp .sy4 {color: #008080;}
+.cpp .st0 {color: #FF0000;}
+.cpp .nu0 {color: #0000dd;}
+.cpp .nu6 {color: #208080;}
+.cpp .nu8 {color: #208080;}
+.cpp .nu12 {color: #208080;}
+.cpp .nu16 {color:#800080;}
+.cpp .nu17 {color:#800080;}
+.cpp .nu18 {color:#800080;}
+.cpp .nu19 {color:#800080;}
+.cpp .me1 {color: #007788;}
+.cpp .me2 {color: #007788;}
+.cpp .ln-xtra, .cpp li.ln-xtra, .cpp div.ln-xtra {background-color: #ffc;}
+.cpp span.xtra { display:block; }
+
+.cpp-qt .de1, .cpp-qt .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp-qt  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.cpp-qt .imp {font-weight: bold; color: red;}
+.cpp-qt li, .cpp-qt .li1 {font-weight: normal; vertical-align:top;}
+.cpp-qt .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.cpp-qt .li2 {font-weight: bold; vertical-align:top;}
+.cpp-qt .kw1 {color: #000000; font-weight:bold;}
+.cpp-qt .kw2 {color: #0057AE;}
+.cpp-qt .kw3 {color: #2B74C7;}
+.cpp-qt .kw4 {color: #0057AE;}
+.cpp-qt .kw5 {color: #22aadd;}
+.cpp-qt .co1 {color: #888888;}
+.cpp-qt .co2 {color: #006E28;}
+.cpp-qt .coMULTI {color: #888888; font: italic monospace;}
+.cpp-qt .es0 {color: #000099; font-weight: bold;}
+.cpp-qt .es1 {color: #000099; font-weight: bold;}
+.cpp-qt .es2 {color: #660099; font-weight: bold;}
+.cpp-qt .es3 {color: #660099; font-weight: bold;}
+.cpp-qt .es4 {color: #660099; font-weight: bold;}
+.cpp-qt .es5 {color: #006699; font-weight: bold;}
+.cpp-qt .br0 {color: #006E28;}
+.cpp-qt .sy0 {color: #006E28;}
+.cpp-qt .st0 {color: #BF0303;}
+.cpp-qt .nu0 {color: #B08000;}
+.cpp-qt .nu6 {color: #208080;}
+.cpp-qt .nu8 {color: #208080;}
+.cpp-qt .nu12 {color: #208080;}
+.cpp-qt .nu16 {color:#800080;}
+.cpp-qt .nu17 {color:#800080;}
+.cpp-qt .nu18 {color:#800080;}
+.cpp-qt .nu19 {color:#800080;}
+.cpp-qt .me1 {color: #2B74C7;}
+.cpp-qt .me2 {color: #2B74C7;}
+.cpp-qt .me3 {color: #2B74C7;}
+.cpp-qt .ln-xtra, .cpp-qt li.ln-xtra, .cpp-qt div.ln-xtra {background-color: #ffc;}
+.cpp-qt span.xtra { display:block; }
+
+.csharp .de1, .csharp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.csharp  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.csharp .imp {font-weight: bold; color: red;}
+.csharp li, .csharp .li1 {font-weight: normal; vertical-align:top;}
+.csharp .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.csharp .li2 {font-weight: bold; vertical-align:top;}
+.csharp .kw1 {color: #0600FF; font-weight: bold;}
+.csharp .kw2 {color: #FF8000; font-weight: bold;}
+.csharp .kw3 {color: #008000;}
+.csharp .kw4 {color: #6666cc; font-weight: bold;}
+.csharp .kw5 {color: #000000;}
+.csharp .co1 {color: #008080; font: italic monospace;}
+.csharp .co2 {color: #008080;}
+.csharp .co3 {color: #008080;}
+.csharp .coMULTI {color: #008080; font: italic monospace;}
+.csharp .es0 {color: #008080; font-weight: bold;}
+.csharp .es_h {color: #008080; font-weight: bold;}
+.csharp .br0 {color: #008000;}
+.csharp .sy0 {color: #008000;}
+.csharp .st0 {color: #666666;}
+.csharp .st_h {color: #666666;}
+.csharp .nu0 {color: #FF0000;}
+.csharp .me1 {color: #0000FF;}
+.csharp .me2 {color: #0000FF;}
+.csharp .ln-xtra, .csharp li.ln-xtra, .csharp div.ln-xtra {background-color: #ffc;}
+.csharp span.xtra { display:block; }
+
+.css .de1, .css .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.css  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.css .imp {font-weight: bold; color: red;}
+.css li, .css .li1 {font-weight: normal; vertical-align:top;}
+.css .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.css .li2 {font-weight: bold; vertical-align:top;}
+.css .kw1 {color: #000000; font-weight: bold;}
+.css .kw2 {color: #993333;}
+.css .co1 {color: #a1a100;}
+.css .co2 {color: #ff0000; font: italic monospace;}
+.css .coMULTI {color: #808080; font: italic monospace;}
+.css .es0 {color: #000099; font-weight: bold;}
+.css .es2 {color: #000099; font-weight: bold;}
+.css .br0 {color: #00AA00;}
+.css .sy0 {color: #00AA00;}
+.css .st0 {color: #ff0000;}
+.css .nu0 {color: #cc66cc;}
+.css .re0 {color: #cc00cc;}
+.css .re1 {color: #6666ff;}
+.css .re2 {color: #3333ff;}
+.css .re3 {color: #933;}
+.css .ln-xtra, .css li.ln-xtra, .css div.ln-xtra {background-color: #ffc;}
+.css span.xtra { display:block; }
+
+.delphi .de1, .delphi .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.delphi  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.delphi .imp {font-weight: bold; color: red;}
+.delphi li, .delphi .li1 {font-weight: normal; vertical-align:top;}
+.delphi .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.delphi .li2 {font-weight: bold; vertical-align:top;}
+.delphi .kw1 {color: #000000; font-weight: bold;}
+.delphi .kw2 {color: #000000; font-weight: bold;}
+.delphi .kw3 {color: #000066;}
+.delphi .kw4 {color: #000066; font-weight: bold;}
+.delphi .co1 {color: #808080; font: italic monospace;}
+.delphi .co2 {color: #008000; font: italic monospace;}
+.delphi .coMULTI {color: #808080; font: italic monospace;}
+.delphi .es0 {color: #ff0000; font-weight: bold;}
+.delphi .br0 {color: #000066;}
+.delphi .sy0 {color: #000066;}
+.delphi .sy1 {color: #000066;}
+.delphi .sy2 {color: #000066;}
+.delphi .sy3 {color: #000066;}
+.delphi .st0 {color: #ff0000;}
+.delphi .nu0 {color: #0000ff;}
+.delphi .me1 {color: #006600;}
+.delphi .re0 {color: #9ac;}
+.delphi .re1 {color: #ff0000;}
+.delphi .ln-xtra, .delphi li.ln-xtra, .delphi div.ln-xtra {background-color: #ffc;}
+.delphi span.xtra { display:block; }
+
+.fortran .de1, .fortran .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.fortran  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.fortran .imp {font-weight: bold; color: red;}
+.fortran li, .fortran .li1 {font-weight: normal; vertical-align:top;}
+.fortran .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.fortran .li2 {font-weight: bold; vertical-align:top;}
+.fortran .kw1 {color: #b1b100;}
+.fortran .kw2 {color: #000000; font-weight: bold;}
+.fortran .kw3 {color: #000066;}
+.fortran .kw4 {color: #993333;}
+.fortran .co1 {color: #666666; font: italic monospace;}
+.fortran .co2 {color: #339933;}
+.fortran .coMULTI {color: #808080; font: italic monospace;}
+.fortran .es0 {color: #000099; font-weight: bold;}
+.fortran .br0 {color: #009900;}
+.fortran .sy0 {color: #339933;}
+.fortran .st0 {color: #ff0000;}
+.fortran .nu0 {color: #cc66cc;}
+.fortran .me1 {color: #202020;}
+.fortran .me2 {color: #202020;}
+.fortran .ln-xtra, .fortran li.ln-xtra, .fortran div.ln-xtra {background-color: #ffc;}
+.fortran span.xtra { display:block; }
+
+.haskell .de1, .haskell .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.haskell  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.haskell .imp {font-weight: bold; color: red;}
+.haskell li, .haskell .li1 {font-weight: normal; vertical-align:top;}
+.haskell .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.haskell .li2 {font-weight: bold; vertical-align:top;}
+.haskell .kw1 {color: #06c; font-weight: bold;}
+.haskell .kw2 {color: #06c; font-weight: bold;}
+.haskell .kw3 {font-weight: bold;}
+.haskell .kw4 {color: #cccc00; font-weight: bold;}
+.haskell .kw5 {color: maroon;}
+.haskell .co1 {color: #5d478b; font: italic monospace;}
+.haskell .co2 {color: #339933; font-weight: bold;}
+.haskell .co3 {color: #5d478b; font: italic monospace;}
+.haskell .coMULTI {color: #5d478b; font: italic monospace;}
+.haskell .es0 {background-color: #3cb371; font-weight: bold;}
+.haskell .br0 {color: green;}
+.haskell .sy0 {color: #339933; font-weight: bold;}
+.haskell .st0 {background-color: #3cb371;}
+.haskell .nu0 {color: red;}
+.haskell .me1 {color: #060;}
+.haskell .ln-xtra, .haskell li.ln-xtra, .haskell div.ln-xtra {background-color: #ffc;}
+.haskell span.xtra { display:block; }
+
+.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.html4strict  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.html4strict .imp {font-weight: bold; color: red;}
+.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+.html4strict .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.html4strict .li2 {font-weight: bold; vertical-align:top;}
+.html4strict .kw2 {color: #000000; font-weight: bold;}
+.html4strict .kw3 {color: #000066;}
+.html4strict .es0 {color: #000099; font-weight: bold;}
+.html4strict .br0 {color: #66cc66;}
+.html4strict .sy0 {color: #66cc66;}
+.html4strict .st0 {color: #ff0000;}
+.html4strict .nu0 {color: #cc66cc;}
+.html4strict .sc-2 {color: #404040;}
+.html4strict .sc-1 {color: #808080; font: italic monospace;}
+.html4strict .sc0 {color: #00bbdd;}
+.html4strict .sc1 {color: #ddbb00;}
+.html4strict .sc2 {color: #009900;}
+.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+.html4strict span.xtra { display:block; }
+
+.html5 .de1, .html5 .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.html5  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.html5 .imp {font-weight: bold; color: red;}
+.html5 li, .html5 .li1 {font-weight: normal; vertical-align:top;}
+.html5 .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.html5 .li2 {font-weight: bold; vertical-align:top;}
+.html5 .kw2 {color: #000000; font-weight: bold;}
+.html5 .kw3 {color: #000066;}
+.html5 .es0 {color: #000099; font-weight: bold;}
+.html5 .br0 {color: #66cc66;}
+.html5 .sy0 {color: #66cc66;}
+.html5 .st0 {color: #ff0000;}
+.html5 .nu0 {color: #cc66cc;}
+.html5 .sc-2 {color: #404040;}
+.html5 .sc-1 {color: #808080; font: italic monospace;}
+.html5 .sc0 {color: #00bbdd;}
+.html5 .sc1 {color: #ddbb00;}
+.html5 .sc2 {color: #009900;}
+.html5 .ln-xtra, .html5 li.ln-xtra, .html5 div.ln-xtra {background-color: #ffc;}
+.html5 span.xtra { display:block; }
+
+.java5 .de1, .java5 .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.java5  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.java5 .imp {font-weight: bold; color: red;}
+.java5 li, .java5 .li1 {font-weight: normal; vertical-align:top;}
+.java5 .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.java5 .li2 {font-weight: bold; vertical-align:top;}
+.java5 .kw1 {color: #000000;  font-weight: bold;}
+.java5 .kw2 {color: #000000; font-weight: bold;}
+.java5 .kw3 {color: #006600; font-weight: bold;}
+.java5 .kw4 {color: #006600; font-weight: bold;}
+.java5 .kw5 {color: #003399; font-weight: bold;}
+.java5 .kw6 {color: #003399; font-weight: bold;}
+.java5 .kw7 {color: #003399; font-weight: bold;}
+.java5 .kw8 {color: #003399; font-weight: bold;}
+.java5 .kw9 {color: #003399; font-weight: bold;}
+.java5 .kw10 {color: #003399; font-weight: bold;}
+.java5 .kw11 {color: #003399; font-weight: bold;}
+.java5 .kw12 {color: #003399; font-weight: bold;}
+.java5 .kw13 {color: #003399; font-weight: bold;}
+.java5 .kw14 {color: #003399; font-weight: bold;}
+.java5 .kw15 {color: #003399; font-weight: bold;}
+.java5 .kw16 {color: #003399; font-weight: bold;}
+.java5 .kw17 {color: #003399; font-weight: bold;}
+.java5 .kw18 {color: #003399; font-weight: bold;}
+.java5 .kw19 {color: #003399; font-weight: bold;}
+.java5 .kw20 {color: #003399; font-weight: bold;}
+.java5 .kw21 {color: #003399; font-weight: bold;}
+.java5 .kw22 {color: #003399; font-weight: bold;}
+.java5 .kw23 {color: #003399; font-weight: bold;}
+.java5 .kw24 {color: #003399; font-weight: bold;}
+.java5 .kw25 {color: #003399; font-weight: bold;}
+.java5 .kw26 {color: #003399; font-weight: bold;}
+.java5 .kw27 {color: #003399; font-weight: bold;}
+.java5 .kw28 {color: #003399; font-weight: bold;}
+.java5 .kw29 {color: #003399; font-weight: bold;}
+.java5 .kw30 {color: #003399; font-weight: bold;}
+.java5 .kw31 {color: #003399; font-weight: bold;}
+.java5 .kw32 {color: #003399; font-weight: bold;}
+.java5 .kw33 {color: #003399; font-weight: bold;}
+.java5 .kw34 {color: #003399; font-weight: bold;}
+.java5 .kw35 {color: #003399; font-weight: bold;}
+.java5 .kw36 {color: #003399; font-weight: bold;}
+.java5 .kw37 {color: #003399; font-weight: bold;}
+.java5 .kw38 {color: #003399; font-weight: bold;}
+.java5 .kw39 {color: #003399; font-weight: bold;}
+.java5 .kw40 {color: #003399; font-weight: bold;}
+.java5 .kw41 {color: #003399; font-weight: bold;}
+.java5 .kw42 {color: #003399; font-weight: bold;}
+.java5 .kw43 {color: #003399; font-weight: bold;}
+.java5 .kw44 {color: #003399; font-weight: bold;}
+.java5 .kw45 {color: #003399; font-weight: bold;}
+.java5 .kw46 {color: #003399; font-weight: bold;}
+.java5 .kw47 {color: #003399; font-weight: bold;}
+.java5 .kw48 {color: #003399; font-weight: bold;}
+.java5 .kw49 {color: #003399; font-weight: bold;}
+.java5 .kw50 {color: #003399; font-weight: bold;}
+.java5 .kw51 {color: #003399; font-weight: bold;}
+.java5 .kw52 {color: #003399; font-weight: bold;}
+.java5 .kw53 {color: #003399; font-weight: bold;}
+.java5 .kw54 {color: #003399; font-weight: bold;}
+.java5 .kw55 {color: #003399; font-weight: bold;}
+.java5 .kw56 {color: #003399; font-weight: bold;}
+.java5 .kw57 {color: #003399; font-weight: bold;}
+.java5 .kw58 {color: #003399; font-weight: bold;}
+.java5 .kw59 {color: #003399; font-weight: bold;}
+.java5 .kw60 {color: #003399; font-weight: bold;}
+.java5 .kw61 {color: #003399; font-weight: bold;}
+.java5 .kw62 {color: #003399; font-weight: bold;}
+.java5 .kw63 {color: #003399; font-weight: bold;}
+.java5 .kw64 {color: #003399; font-weight: bold;}
+.java5 .kw65 {color: #003399; font-weight: bold;}
+.java5 .kw66 {color: #003399; font-weight: bold;}
+.java5 .kw67 {color: #003399; font-weight: bold;}
+.java5 .kw68 {color: #003399; font-weight: bold;}
+.java5 .kw69 {color: #003399; font-weight: bold;}
+.java5 .kw70 {color: #003399; font-weight: bold;}
+.java5 .kw71 {color: #003399; font-weight: bold;}
+.java5 .kw72 {color: #003399; font-weight: bold;}
+.java5 .kw73 {color: #003399; font-weight: bold;}
+.java5 .kw74 {color: #003399; font-weight: bold;}
+.java5 .kw75 {color: #003399; font-weight: bold;}
+.java5 .kw76 {color: #003399; font-weight: bold;}
+.java5 .kw77 {color: #003399; font-weight: bold;}
+.java5 .kw78 {color: #003399; font-weight: bold;}
+.java5 .kw79 {color: #003399; font-weight: bold;}
+.java5 .kw80 {color: #003399; font-weight: bold;}
+.java5 .kw81 {color: #003399; font-weight: bold;}
+.java5 .kw82 {color: #003399; font-weight: bold;}
+.java5 .kw83 {color: #003399; font-weight: bold;}
+.java5 .kw84 {color: #003399; font-weight: bold;}
+.java5 .kw85 {color: #003399; font-weight: bold;}
+.java5 .kw86 {color: #003399; font-weight: bold;}
+.java5 .kw87 {color: #003399; font-weight: bold;}
+.java5 .kw88 {color: #003399; font-weight: bold;}
+.java5 .kw89 {color: #003399; font-weight: bold;}
+.java5 .kw90 {color: #003399; font-weight: bold;}
+.java5 .kw91 {color: #003399; font-weight: bold;}
+.java5 .kw92 {color: #003399; font-weight: bold;}
+.java5 .kw93 {color: #003399; font-weight: bold;}
+.java5 .kw94 {color: #003399; font-weight: bold;}
+.java5 .kw95 {color: #003399; font-weight: bold;}
+.java5 .kw96 {color: #003399; font-weight: bold;}
+.java5 .kw97 {color: #003399; font-weight: bold;}
+.java5 .kw98 {color: #003399; font-weight: bold;}
+.java5 .kw99 {color: #003399; font-weight: bold;}
+.java5 .kw100 {color: #003399; font-weight: bold;}
+.java5 .kw101 {color: #003399; font-weight: bold;}
+.java5 .kw102 {color: #003399; font-weight: bold;}
+.java5 .kw103 {color: #003399; font-weight: bold;}
+.java5 .kw104 {color: #003399; font-weight: bold;}
+.java5 .kw105 {color: #003399; font-weight: bold;}
+.java5 .kw106 {color: #003399; font-weight: bold;}
+.java5 .kw107 {color: #003399; font-weight: bold;}
+.java5 .kw108 {color: #003399; font-weight: bold;}
+.java5 .kw109 {color: #003399; font-weight: bold;}
+.java5 .kw110 {color: #003399; font-weight: bold;}
+.java5 .kw111 {color: #003399; font-weight: bold;}
+.java5 .kw112 {color: #003399; font-weight: bold;}
+.java5 .kw113 {color: #003399; font-weight: bold;}
+.java5 .kw114 {color: #003399; font-weight: bold;}
+.java5 .kw115 {color: #003399; font-weight: bold;}
+.java5 .kw116 {color: #003399; font-weight: bold;}
+.java5 .kw117 {color: #003399; font-weight: bold;}
+.java5 .kw118 {color: #003399; font-weight: bold;}
+.java5 .kw119 {color: #003399; font-weight: bold;}
+.java5 .kw120 {color: #003399; font-weight: bold;}
+.java5 .kw121 {color: #003399; font-weight: bold;}
+.java5 .kw122 {color: #003399; font-weight: bold;}
+.java5 .kw123 {color: #003399; font-weight: bold;}
+.java5 .kw124 {color: #003399; font-weight: bold;}
+.java5 .kw125 {color: #003399; font-weight: bold;}
+.java5 .kw126 {color: #003399; font-weight: bold;}
+.java5 .kw127 {color: #003399; font-weight: bold;}
+.java5 .kw128 {color: #003399; font-weight: bold;}
+.java5 .kw129 {color: #003399; font-weight: bold;}
+.java5 .kw130 {color: #003399; font-weight: bold;}
+.java5 .kw131 {color: #003399; font-weight: bold;}
+.java5 .kw132 {color: #003399; font-weight: bold;}
+.java5 .kw133 {color: #003399; font-weight: bold;}
+.java5 .kw134 {color: #003399; font-weight: bold;}
+.java5 .kw135 {color: #003399; font-weight: bold;}
+.java5 .kw136 {color: #003399; font-weight: bold;}
+.java5 .kw137 {color: #003399; font-weight: bold;}
+.java5 .kw138 {color: #003399; font-weight: bold;}
+.java5 .kw139 {color: #003399; font-weight: bold;}
+.java5 .kw140 {color: #003399; font-weight: bold;}
+.java5 .kw141 {color: #003399; font-weight: bold;}
+.java5 .kw142 {color: #003399; font-weight: bold;}
+.java5 .kw143 {color: #003399; font-weight: bold;}
+.java5 .kw144 {color: #003399; font-weight: bold;}
+.java5 .kw145 {color: #003399; font-weight: bold;}
+.java5 .kw146 {color: #003399; font-weight: bold;}
+.java5 .kw147 {color: #003399; font-weight: bold;}
+.java5 .kw148 {color: #003399; font-weight: bold;}
+.java5 .kw149 {color: #003399; font-weight: bold;}
+.java5 .kw150 {color: #003399; font-weight: bold;}
+.java5 .kw151 {color: #003399; font-weight: bold;}
+.java5 .kw152 {color: #003399; font-weight: bold;}
+.java5 .kw153 {color: #003399; font-weight: bold;}
+.java5 .kw154 {color: #003399; font-weight: bold;}
+.java5 .kw155 {color: #003399; font-weight: bold;}
+.java5 .kw156 {color: #003399; font-weight: bold;}
+.java5 .kw157 {color: #003399; font-weight: bold;}
+.java5 .kw158 {color: #003399; font-weight: bold;}
+.java5 .kw159 {color: #003399; font-weight: bold;}
+.java5 .kw160 {color: #003399; font-weight: bold;}
+.java5 .kw161 {color: #003399; font-weight: bold;}
+.java5 .kw162 {color: #003399; font-weight: bold;}
+.java5 .kw163 {color: #003399; font-weight: bold;}
+.java5 .kw164 {color: #003399; font-weight: bold;}
+.java5 .kw165 {color: #003399; font-weight: bold;}
+.java5 .kw166 {color: #003399; font-weight: bold;}
+.java5 .co1 {color: #666666; font: italic monospace;}
+.java5 .co2 {color: #006699;}
+.java5 .co3 {color: #008000; font: italic monospace; font-weight: bold;}
+.java5 .coMULTI {color: #666666; font: italic monospace;}
+.java5 .es0 {color: #000099; font-weight: bold;}
+.java5 .br0 {color: #009900;}
+.java5 .sy0 {color: #339933;}
+.java5 .st0 {color: #0000ff;}
+.java5 .nu0 {color: #cc66cc;}
+.java5 .me1 {color: #006633;}
+.java5 .me2 {color: #006633;}
+.java5 .ln-xtra, .java5 li.ln-xtra, .java5 div.ln-xtra {background-color: #ffc;}
+.java5 span.xtra { display:block; }
+
+.javascript .de1, .javascript .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.javascript  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.javascript .imp {font-weight: bold; color: red;}
+.javascript li, .javascript .li1 {font-weight: normal; vertical-align:top;}
+.javascript .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.javascript .li2 {font-weight: bold; vertical-align:top;}
+.javascript .kw1 {color: #000066; font-weight: bold;}
+.javascript .kw2 {color: #003366; font-weight: bold;}
+.javascript .kw3 {color: #000066;}
+.javascript .co1 {color: #006600; font: italic monospace;}
+.javascript .co2 {color: #009966; font: italic monospace;}
+.javascript .coMULTI {color: #006600; font: italic monospace;}
+.javascript .es0 {color: #000099; font-weight: bold;}
+.javascript .br0 {color: #009900;}
+.javascript .sy0 {color: #339933;}
+.javascript .st0 {color: #3366CC;}
+.javascript .nu0 {color: #CC0000;}
+.javascript .me1 {color: #660066;}
+.javascript .ln-xtra, .javascript li.ln-xtra, .javascript div.ln-xtra {background-color: #ffc;}
+.javascript span.xtra { display:block; }
+
+.lisp .de1, .lisp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.lisp  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.lisp .imp {font-weight: bold; color: red;}
+.lisp li, .lisp .li1 {font-weight: normal; vertical-align:top;}
+.lisp .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.lisp .li2 {font-weight: bold; vertical-align:top;}
+.lisp .kw1 {color: #b1b100;}
+.lisp .co1 {color: #808080; font: italic monospace;}
+.lisp .coMULTI {color: #808080; font: italic monospace;}
+.lisp .es0 {color: #000099; font-weight: bold;}
+.lisp .br0 {color: #66cc66;}
+.lisp .sy0 {color: #66cc66;}
+.lisp .st0 {color: #ff0000;}
+.lisp .nu0 {color: #cc66cc;}
+.lisp .me0 {color: #555;}
+.lisp .me1 {color: #555;}
+.lisp .ln-xtra, .lisp li.ln-xtra, .lisp div.ln-xtra {background-color: #ffc;}
+.lisp span.xtra { display:block; }
+
+.matlab .de1, .matlab .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.matlab  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.matlab .imp {font-weight: bold; color: red;}
+.matlab li, .matlab .li1 {font-weight: normal; vertical-align:top;}
+.matlab .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.matlab .li2 {font-weight: bold; vertical-align:top;}
+.matlab .kw1 {color: #0000FF;}
+.matlab .kw2 {color: #0000FF;}
+.matlab .co1 {color: #228B22;}
+.matlab .co2 {color:#A020F0;}
+.matlab .br0 {color: #080;}
+.matlab .sy0 {color: #080;}
+.matlab .nu0 {color: #33f;}
+.matlab .re0 {color: #33f;}
+.matlab .ln-xtra, .matlab li.ln-xtra, .matlab div.ln-xtra {background-color: #ffc;}
+.matlab span.xtra { display:block; }
+
+.mysql .de1, .mysql .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.mysql  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.mysql .imp {font-weight: bold; color: red;}
+.mysql li, .mysql .li1 {font-weight: normal; vertical-align:top;}
+.mysql .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.mysql .li2 {font-weight: bold; vertical-align:top;}
+.mysql .kw1 {color: #990099; font-weight: bold;}
+.mysql .kw2 {color: #990099; font-weight: bold;}
+.mysql .kw3 {color: #9900FF; font-weight: bold;}
+.mysql .kw4 {color: #999900; font-weight: bold;}
+.mysql .kw5 {color: #999900; font-weight: bold;}
+.mysql .kw6 {color: #FF9900; font-weight: bold;}
+.mysql .kw7 {color: #FF9900; font-weight: bold;}
+.mysql .kw8 {color: #9900FF; font-weight: bold;}
+.mysql .kw9 {color: #9900FF; font-weight: bold;}
+.mysql .kw10 {color: #CC0099; font-weight: bold;}
+.mysql .kw11 {color: #CC0099; font-weight: bold;}
+.mysql .kw12 {color: #009900;}
+.mysql .kw13 {color: #000099;}
+.mysql .kw14 {color: #000099;}
+.mysql .kw15 {color: #000099;}
+.mysql .kw16 {color: #000099;}
+.mysql .kw17 {color: #000099;}
+.mysql .kw18 {color: #000099;}
+.mysql .kw19 {color: #000099;}
+.mysql .kw20 {color: #000099;}
+.mysql .kw21 {color: #000099;}
+.mysql .kw22 {color: #000099;}
+.mysql .kw23 {color: #000099;}
+.mysql .kw24 {color: #000099;}
+.mysql .kw25 {color: #000099;}
+.mysql .kw26 {color: #000099;}
+.mysql .kw27 {color: #00CC00;}
+.mysql .coMULTI {color: #808000; font: italic monospace;}
+.mysql .co1 {color: #808080; font: italic monospace;}
+.mysql .co2 {color: #808080; font: italic monospace;}
+.mysql .es0 {color: #004000; font-weight: bold;}
+.mysql .es1 {color: #008080; font-weight: bold;}
+.mysql .br0 {color: #FF00FF;}
+.mysql .sy1 {color: #CC0099;}
+.mysql .sy2 {color: #000033;}
+.mysql .st0 {color: #008000;}
+.mysql .nu0 {color: #008080;}
+.mysql .ln-xtra, .mysql li.ln-xtra, .mysql div.ln-xtra {background-color: #ffc;}
+.mysql span.xtra { display:block; }
+
+.objc .de1, .objc .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.objc  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.objc .imp {font-weight: bold; color: red;}
+.objc li, .objc .li1 {font-weight: normal; vertical-align:top;}
+.objc .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.objc .li2 {font-weight: bold; vertical-align:top;}
+.objc .kw1 {color: #a61390;}
+.objc .kw2 {color: #a61390;}
+.objc .kw3 {color: #a61390;}
+.objc .kw4 {color: #a61390;}
+.objc .kw5 {color: #400080;}
+.objc .kw6 {color: #2a6f76;}
+.objc .kw7 {color: #400080;}
+.objc .kw8 {color: #2a6f76;}
+.objc .kw9 {color: #400080;}
+.objc .co1 {color: #6e371a;}
+.objc .co2 {color: #11740a; font: italic monospace;}
+.objc .co3 {color: #bf1d1a;}
+.objc .coMULTI {color: #11740a; font: italic monospace;}
+.objc .es0 {color: #2400d9;}
+.objc .br0 {color: #002200;}
+.objc .sy0 {color: #002200;}
+.objc .st0 {color: #bf1d1a;}
+.objc .nu0 {color: #2400d9;}
+.objc .ln-xtra, .objc li.ln-xtra, .objc div.ln-xtra {background-color: #ffc;}
+.objc span.xtra { display:block; }
+
+.oracle11 .de1, .oracle11 .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.oracle11  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.oracle11 .imp {font-weight: bold; color: red;}
+.oracle11 li, .oracle11 .li1 {font-weight: normal; vertical-align:top;}
+.oracle11 .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.oracle11 .li2 {font-weight: bold; vertical-align:top;}
+.oracle11 .kw1 {color: #993333; font-weight: bold; text-transform: uppercase;}
+.oracle11 .co1 {color: #808080; font: italic monospace;}
+.oracle11 .es0 {color: #000099; font-weight: bold;}
+.oracle11 .br0 {color: #66cc66;}
+.oracle11 .sy0 {color: #66cc66;}
+.oracle11 .st0 {color: #ff0000;}
+.oracle11 .nu0 {color: #cc66cc;}
+.oracle11 .me1 {color: #ff0000;}
+.oracle11 .ln-xtra, .oracle11 li.ln-xtra, .oracle11 div.ln-xtra {background-color: #ffc;}
+.oracle11 span.xtra { display:block; }
+
+.pascal .de1, .pascal .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.pascal  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.pascal .imp {font-weight: bold; color: red;}
+.pascal li, .pascal .li1 {font-weight: normal; vertical-align:top;}
+.pascal .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.pascal .li2 {font-weight: bold; vertical-align:top;}
+.pascal .kw1 {color: #000000; font-weight: bold;}
+.pascal .kw2 {color: #000000; font-weight: bold;}
+.pascal .kw3 {color: #000066;}
+.pascal .kw4 {color: #000066; font-weight: bold;}
+.pascal .co1 {color: #666666; font: italic monospace;}
+.pascal .coMULTI {color: #666666; font: italic monospace;}
+.pascal .es0 {color: #000099; font-weight: bold;}
+.pascal .es_h {color: #000099; font-weight: bold;}
+.pascal .br0 {color: #009900;}
+.pascal .sy0 {color: #339933;}
+.pascal .st0 {color: #ff0000;}
+.pascal .st_h {color: #ff0000;}
+.pascal .nu0 {color: #cc66cc;}
+.pascal .me1 {color: #0066ee;}
+.pascal .ln-xtra, .pascal li.ln-xtra, .pascal div.ln-xtra {background-color: #ffc;}
+.pascal span.xtra { display:block; }
+
+.perl6 .de1, .perl6 .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.perl6  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.perl6 .imp {font-weight: bold; color: red;}
+.perl6 li, .perl6 .li1 {font-weight: normal; vertical-align:top;}
+.perl6 .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.perl6 .li2 {font-weight: bold; vertical-align:top;}
+.perl6 .kw1 {color: #b1b100;}
+.perl6 .kw2 {color: #000000; font-weight: bold;}
+.perl6 .kw3 {color: #000066;}
+.perl6 .co1 {color: #666666; font: italic monospace;}
+.perl6 .co2 {color: #009966; font: italic monospace;}
+.perl6 .co3 {color: #0000ff;}
+.perl6 .co4 {color: #cc0000; font: italic monospace;}
+.perl6 .co5 {color: #666666; font: italic monospace;}
+.perl6 .coMULTI {color: #666666; font: italic monospace;}
+.perl6 .es0 {color: #000099; font-weight: bold;}
+.perl6 .es_h {color: #000099; font-weight: bold;}
+.perl6 .br0 {color: #009900;}
+.perl6 .sy0 {color: #339933;}
+.perl6 .st0 {color: #ff0000;}
+.perl6 .st_h {color: #ff0000;}
+.perl6 .nu0 {color: #cc66cc;}
+.perl6 .me1 {color: #006600;}
+.perl6 .me2 {color: #006600;}
+.perl6 .re0 {color: #0000ff;}
+.perl6 .ln-xtra, .perl6 li.ln-xtra, .perl6 div.ln-xtra {background-color: #ffc;}
+.perl6 span.xtra { display:block; }
+
+.php .de1, .php .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.php  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.php .imp {font-weight: bold; color: red;}
+.php li, .php .li1 {font-weight: normal; vertical-align:top;}
+.php .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.php .li2 {font-weight: bold; vertical-align:top;}
+.php .kw1 {color: #b1b100;}
+.php .kw2 {color: #000000; font-weight: bold;}
+.php .kw3 {color: #990000;}
+.php .kw4 {color: #009900; font-weight: bold;}
+.php .co1 {color: #666666; font: italic monospace;}
+.php .co2 {color: #666666; font: italic monospace;}
+.php .co3 {color: #0000cc; font: italic monospace;}
+.php .co4 {color: #009933; font: italic monospace;}
+.php .coMULTI {color: #666666; font: italic monospace;}
+.php .es0 {color: #000099; font-weight: bold;}
+.php .es1 {color: #000099; font-weight: bold;}
+.php .es2 {color: #660099; font-weight: bold;}
+.php .es3 {color: #660099; font-weight: bold;}
+.php .es4 {color: #006699; font-weight: bold;}
+.php .es5 {color: #006699; font-weight: bold; font: italic monospace;}
+.php .es6 {color: #009933; font-weight: bold;}
+.php .es_h {color: #000099; font-weight: bold;}
+.php .br0 {color: #009900;}
+.php .sy0 {color: #339933;}
+.php .sy1 {color: #000000; font-weight: bold;}
+.php .st0 {color: #0000ff;}
+.php .st_h {color: #0000ff;}
+.php .nu0 {color: #cc66cc;}
+.php .nu8 {color: #208080;}
+.php .nu12 {color: #208080;}
+.php .nu19 {color:#800080;}
+.php .me1 {color: #004000;}
+.php .me2 {color: #004000;}
+.php .re0 {color: #000088;}
+.php .ln-xtra, .php li.ln-xtra, .php div.ln-xtra {background-color: #ffc;}
+.php span.xtra { display:block; }
+
+.prolog .de1, .prolog .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.prolog  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.prolog .imp {font-weight: bold; color: red;}
+.prolog li, .prolog .li1 {font-weight: normal; vertical-align:top;}
+.prolog .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.prolog .li2 {font-weight: bold; vertical-align:top;}
+.prolog .kw1 {color: #990000;}
+.prolog .co1 {color: #666666; font: italic monospace;}
+.prolog .coMULTI {color: #666666; font: italic monospace;}
+.prolog .es0 {color: #000099; font-weight: bold;}
+.prolog .es_h {color: #000099; font-weight: bold;}
+.prolog .br0 {color: #009900;}
+.prolog .sy0 {color: #339933;}
+.prolog .sy1 {color: #339933;}
+.prolog .sy2 {color: #339933;}
+.prolog .sy3 {color: #339933;}
+.prolog .sy4 {color: #339933;}
+.prolog .sy5 {color: #339933;}
+.prolog .sy6 {color: #339933;}
+.prolog .st0 {color: #0000ff;}
+.prolog .st_h {color: #0000ff;}
+.prolog .nu0 {color: #800080;}
+.prolog .re0 {color: #008080;}
+.prolog .ln-xtra, .prolog li.ln-xtra, .prolog div.ln-xtra {background-color: #ffc;}
+.prolog span.xtra { display:block; }
+
+.python .de1, .python .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.python  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.python .imp {font-weight: bold; color: red;}
+.python li, .python .li1 {font-weight: normal; vertical-align:top;}
+.python .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.python .li2 {font-weight: bold; vertical-align:top;}
+.python .kw1 {color: #ff7700;font-weight:bold;}
+.python .kw2 {color: #008000;}
+.python .kw3 {color: #dc143c;}
+.python .kw4 {color: #0000cd;}
+.python .co1 {color: #808080; font: italic monospace;}
+.python .coMULTI {color: #808080; font: italic monospace;}
+.python .es0 {color: #000099; font-weight: bold;}
+.python .br0 {color: black;}
+.python .sy0 {color: #66cc66;}
+.python .st0 {color: #483d8b;}
+.python .nu0 {color: #ff4500;}
+.python .me1 {color: black;}
+.python .ln-xtra, .python li.ln-xtra, .python div.ln-xtra {background-color: #ffc;}
+.python span.xtra { display:block; }
+
+.qbasic .de1, .qbasic .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.qbasic  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.qbasic .imp {font-weight: bold; color: red;}
+.qbasic li, .qbasic .li1 {font-weight: normal; vertical-align:top;}
+.qbasic .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.qbasic .li2 {font-weight: bold; vertical-align:top;}
+.qbasic .kw1 {color: #a1a100;}
+.qbasic .kw3 {color: #000066;}
+.qbasic .co1 {color: #808080;}
+.qbasic .co2 {color: #808080;}
+.qbasic .co3 {color: #8080C0;}
+.qbasic .es0 {color: #000099;}
+.qbasic .br0 {color: #66cc66;}
+.qbasic .sy0 {color: #66cc66;}
+.qbasic .st0 {color: #ff0000;}
+.qbasic .nu0 {color: #cc66cc;}
+.qbasic .re1 {color: #cc66cc;}
+.qbasic .re2 {color: #339933;}
+.qbasic .ln-xtra, .qbasic li.ln-xtra, .qbasic div.ln-xtra {background-color: #ffc;}
+.qbasic span.xtra { display:block; }
+
+.rails .de1, .rails .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.rails  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.rails .imp {font-weight: bold; color: red;}
+.rails li, .rails .li1 {font-weight: normal; vertical-align:top;}
+.rails .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.rails .li2 {font-weight: bold; vertical-align:top;}
+.rails .kw1 {color:#9966CC; font-weight:bold;}
+.rails .kw2 {color:#0000FF; font-weight:bold;}
+.rails .kw3 {color:#CC0066; font-weight:bold;}
+.rails .kw4 {color:#CC00FF; font-weight:bold;}
+.rails .kw5 {color:#5A0A0A; font-weight:bold;}
+.rails .co1 {color:#008000; font-style:italic monospace;}
+.rails .coMULTI {color:#000080; font-style:italic monospace;}
+.rails .es0 {color:#000099;}
+.rails .br0 {color:#006600; font-weight:bold;}
+.rails .sy0 {color:#006600; font-weight:bold;}
+.rails .st0 {color:#996600;}
+.rails .nu0 {color:#006666;}
+.rails .me1 {color:#9900CC;}
+.rails .re0 {color:#ff6633; font-weight:bold;}
+.rails .re1 {color:#0066ff; font-weight:bold;}
+.rails .re2 {color:#6666ff; font-weight:bold;}
+.rails .re3 {color:#ff3333; font-weight:bold;}
+.rails .ln-xtra, .rails li.ln-xtra, .rails div.ln-xtra {background-color: #ffc;}
+.rails span.xtra { display:block; }
+
+.ruby .de1, .ruby .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.ruby  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.ruby .imp {font-weight: bold; color: red;}
+.ruby li, .ruby .li1 {font-weight: normal; vertical-align:top;}
+.ruby .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.ruby .li2 {font-weight: bold; vertical-align:top;}
+.ruby .kw1 {color:#9966CC; font-weight:bold;}
+.ruby .kw2 {color:#0000FF; font-weight:bold;}
+.ruby .kw3 {color:#CC0066; font-weight:bold;}
+.ruby .kw4 {color:#CC00FF; font-weight:bold;}
+.ruby .co1 {color:#008000; font-style:italic monospace;}
+.ruby .co4 {color: #cc0000; font: italic monospace;}
+.ruby .coMULTI {color:#000080; font-style:italic monospace;}
+.ruby .es0 {color:#000099;}
+.ruby .br0 {color:#006600; font-weight:bold;}
+.ruby .sy0 {color:#006600; font-weight:bold;}
+.ruby .st0 {color:#996600;}
+.ruby .nu0 {color:#006666;}
+.ruby .me1 {color:#9900CC;}
+.ruby .re0 {color:#ff6633; font-weight:bold;}
+.ruby .re1 {color:#0066ff; font-weight:bold;}
+.ruby .re2 {color:#6666ff; font-weight:bold;}
+.ruby .re3 {color:#ff3333; font-weight:bold;}
+.ruby .ln-xtra, .ruby li.ln-xtra, .ruby div.ln-xtra {background-color: #ffc;}
+.ruby span.xtra { display:block; }
+
+.sql .de1, .sql .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.sql  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.sql .imp {font-weight: bold; color: red;}
+.sql li, .sql .li1 {font-weight: normal; vertical-align:top;}
+.sql .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.sql .li2 {font-weight: bold; vertical-align:top;}
+.sql .kw1 {color: #993333; font-weight: bold;}
+.sql .co1 {color: #808080; font: italic monospace;}
+.sql .coMULTI {color: #808080; font: italic monospace;}
+.sql .es0 {color: #000099; font-weight: bold;}
+.sql .br0 {color: #66cc66;}
+.sql .sy0 {color: #66cc66;}
+.sql .st0 {color: #ff0000;}
+.sql .nu0 {color: #cc66cc;}
+.sql .ln-xtra, .sql li.ln-xtra, .sql div.ln-xtra {background-color: #ffc;}
+.sql span.xtra { display:block; }
+
+.tsql .de1, .tsql .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.tsql  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.tsql .imp {font-weight: bold; color: red;}
+.tsql li, .tsql .li1 {font-weight: normal; vertical-align:top;}
+.tsql .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.tsql .li2 {font-weight: bold; vertical-align:top;}
+.tsql .kw1 {color: #0000FF;}
+.tsql .kw2 {color: #FF00FF;}
+.tsql .kw3 {color: #AF0000;}
+.tsql .kw4 {color: #AF0000;}
+.tsql .co1 {color: #008080;}
+.tsql .coMULTI {color: #008080;}
+.tsql .es0 {color: #000099; font-weight: bold;}
+.tsql .br0 {color: #808080;}
+.tsql .sy0 {color: #808080;}
+.tsql .st0 {color: #FF0000;}
+.tsql .nu0 {color: #000;}
+.tsql .me1 {color: #202020;}
+.tsql .me2 {color: #202020;}
+.tsql .ln-xtra, .tsql li.ln-xtra, .tsql div.ln-xtra {background-color: #ffc;}
+.tsql span.xtra { display:block; }
+
+.unknown .de1, .unknown .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.unknown  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.unknown .imp {font-weight: bold; color: red;}
+.unknown li, .unknown .li1 {font-weight: normal; vertical-align:top;}
+.unknown .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.unknown .li2 {font-weight: bold; vertical-align:top;}
+.unknown .kw1 {color: #0000ff;}
+.unknown .kw2 {color: #0000ff;}
+.unknown .kw3 {color: #0000dd;}
+.unknown .kw4 {color: #0000ff;}
+.unknown .co1 {color: #666666;}
+.unknown .co2 {color: #339900;}
+.unknown .coMULTI {color: #ff0000; font: italic monospace;}
+.unknown .es0 {color: #000099; font-weight: bold;}
+.unknown .es1 {color: #000099; font-weight: bold;}
+.unknown .es2 {color: #660099; font-weight: bold;}
+.unknown .es3 {color: #660099; font-weight: bold;}
+.unknown .es4 {color: #660099; font-weight: bold;}
+.unknown .es5 {color: #006699; font-weight: bold;}
+.unknown .br0 {color: #008000;}
+.unknown .sy0 {color: #008000;}
+.unknown .sy1 {color: #000080;}
+.unknown .sy2 {color: #000040;}
+.unknown .sy3 {color: #000040;}
+.unknown .sy4 {color: #008080;}
+.unknown .st0 {color: #FF0000;}
+.unknown .nu0 {color: #0000dd;}
+.unknown .nu6 {color: #208080;}
+.unknown .nu8 {color: #208080;}
+.unknown .nu12 {color: #208080;}
+.unknown .nu16 {color:#800080;}
+.unknown .nu17 {color:#800080;}
+.unknown .nu18 {color:#800080;}
+.unknown .nu19 {color:#800080;}
+.unknown .me1 {color: #007788;}
+.unknown .me2 {color: #007788;}
+.unknown .ln-xtra, .unknown li.ln-xtra, .unknown div.ln-xtra {background-color: #ffc;}
+.unknown span.xtra { display:block; }
+
+.vb .de1, .vb .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.vb  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.vb .imp {font-weight: bold; color: red;}
+.vb li, .vb .li1 {font-weight: normal; vertical-align:top;}
+.vb .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.vb .li2 {font-weight: bold; vertical-align:top;}
+.vb .kw1 {color: #F660AB; font-weight: bold;}
+.vb .kw2 {color: #E56717; font-weight: bold;}
+.vb .kw3 {color: #8D38C9; font-weight: bold;}
+.vb .kw4 {color: #151B8D; font-weight: bold;}
+.vb .kw5 {color: #00C2FF; font-weight: bold;}
+.vb .kw6 {color: #3EA99F; font-weight: bold;}
+.vb .co1 {color: #008000;}
+.vb .es0 {color: #800000; font-weight: bold;}
+.vb .st0 {color: #800000;}
+.vb .ln-xtra, .vb li.ln-xtra, .vb div.ln-xtra {background-color: #ffc;}
+.vb span.xtra { display:block; }
+
+.vbnet .de1, .vbnet .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.vbnet  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.vbnet .imp {font-weight: bold; color: red;}
+.vbnet li, .vbnet .li1 {font-weight: normal; vertical-align:top;}
+.vbnet .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.vbnet .li2 {font-weight: bold; vertical-align:top;}
+.vbnet .kw1 {color: #0600FF;}
+.vbnet .kw2 {color: #FF8000;}
+.vbnet .kw3 {color: #008000;}
+.vbnet .kw4 {color: #FF0000;}
+.vbnet .kw5 {color: #804040;}
+.vbnet .kw6 {color: #0600FF;}
+.vbnet .kw7 {color: #0600FF;}
+.vbnet .kw8 {color: #0600FF;}
+.vbnet .co1 {color: #008080; font: italic monospace;}
+.vbnet .coMULTI {color: #008080; font: italic monospace;}
+.vbnet .es0 {color: #008080; font-weight: bold;}
+.vbnet .br0 {color: #000000;}
+.vbnet .sy0 {color: #008000;}
+.vbnet .st0 {color: #808080;}
+.vbnet .nu0 {color: #FF0000;}
+.vbnet .me1 {color: #0000FF;}
+.vbnet .ln-xtra, .vbnet li.ln-xtra, .vbnet div.ln-xtra {background-color: #ffc;}
+.vbnet span.xtra { display:block; }
+
+.xml .de1, .xml .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.xml  {font-family: monospace; margin: 10px 20px 10px 30px;}
+.xml .imp {font-weight: bold; color: red;}
+.xml li, .xml .li1 {font-weight: normal; vertical-align:top;}
+.xml .ln {width:1px;text-align:right;margin:0;padding:0px 10px 0px 3px;vertical-align:top;}
+.xml .li2 {font-weight: bold; vertical-align:top;}
+.xml .es0 {color: #000099; font-weight: bold;}
+.xml .br0 {color: #66cc66;}
+.xml .sy0 {color: #66cc66;}
+.xml .st0 {color: #ff0000;}
+.xml .nu0 {color: #cc66cc;}
+.xml .sc-1 {color: #808080; font: italic monospace;}
+.xml .sc0 {color: #00bbdd;}
+.xml .sc1 {color: #ddbb00;}
+.xml .sc2 {color: #339933;}
+.xml .sc3 {color: #009900;}
+.xml .re0 {color: #000066;}
+.xml .re1 {color: #000000; font-weight: bold;}
+.xml .re2 {color: #000000; font-weight: bold;}
+.xml .ln-xtra, .xml li.ln-xtra, .xml div.ln-xtra {background-color: #ffc;}
+.xml span.xtra { display:block; }

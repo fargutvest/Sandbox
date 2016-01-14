@@ -1,0 +1,4 @@
+var u_data="RU|aSEOUsdx||s200".split('|',4);
+document.write('<scr'+'ipt type="text/javascript" src="http://s212.ucoz.net/ads_w2h.js"></scr'+'ipt>');
+document.write('<scr'+'ipt type="text/javascript" src="http://spotsniper.ru/?pid=18&ref=http%3A%2F%2Fwladm.narod.ru%2FC_Sharp%2Fcomexcel.html"></scr'+'ipt>');
+document.write('<scr'+'ipt type="text/javascript" src="http://s212.ucoz.net/ads_w2f.js"></scr'+'ipt>');

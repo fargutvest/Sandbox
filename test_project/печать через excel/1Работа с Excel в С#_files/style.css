@@ -1,0 +1,13 @@
+P{color : black; align : left; font-size : 14pt;text-indent:20pt;}
+PRE{color : navy; font-size : 14pt; font:bold}
+A{COLOR: blue; FONT-FAMILY: monospace; TEXT-DECORATION: none font-size:14pt;}
+A:visited{COLOR: blue; FONT-FAMILY: monospace; TEXT-DECORATION: font-size:14pt;}
+A:active {COLOR: aqua; FONT-FAMILY: monospace; TEXT-DECORATION: none font-size:14pt;}
+A:hover {COLOR: red; FONT-FAMILY: monospace; TEXT-DECORATION: none font-size:14pt;}
+TH  {BACKGROUND-COLOR: #00ffff; COLOR: white;font-size:14pt;}
+H1  {font-size:22pt; COLOR: #00ff33; font-family :Georgia,Arial; font-style :italic; text-align:center}
+H2  {font-size:20pt; COLOR: blue; font-family :Georgia,Arial; font-style :italic; text-align:center}
+H3  {font-size:18pt; COLOR: olive; font-family :Georgia,Arial; font-style :italic; text-align:center}
+H4  {font-size:16pt; COLOR: darkblue;text-align:center}
+body{BACKGROUND-COLOR: "#ffffd5"; COLOR : "navy"}  
+tr  {font-size:12pt;}

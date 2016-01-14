@@ -1,0 +1,463 @@
+
+.documentHeader {
+height: 40px;
+width: 100%;
+background: url(../gfx/head_bg.gif) #003366;
+}
+
+.mainBody {
+width: 100%;
+height: 100%;
+overflow: auto;
+margin: 0px;
+padding-top: 5px;
+position: relative;
+top: -11px;
+_top: -48px;
+}
+H2 {
+margin: 0px;
+margin-bottom: 10px;
+padding-left: 20px;
+background-image: url(../gfx/dotH2.png);
+background-repeat: no-repeat;
+color: #70869E;
+font-weight: bold;
+text-align: left;
+font-size: 12px;
+}
+.bgWhite {
+background-color: white;
+}
+.bold {
+font-weight: bold;
+}
+.invisible {
+display: none;
+}
+
+TABLE .evenRow {
+background-color: #F2F2F2;
+}
+TABLE .divider {
+padding: 0px;
+background-image: url(../gfx/tab_dots.gif);
+background-repeat: repeat-x;
+height: 1px;
+width: 100%;
+}
+TH {
+text-align: left;
+white-space: nowrap;
+background-color: #E0DFE3;
+padding-left: 5px;
+padding-right: 5px;
+font: 12px Tahoma, Verdana, sans-serif;
+font-weight: bold;
+}
+.tdDivider {
+background-image: url(../gfx/tab_divider.gif);
+background-repeat: no-repeat;
+white-space: nowrap;
+}
+.captionCell {
+text-align: left;
+padding: 1px 5px 1px 5px;
+}
+.valueCell {
+text-align: right;
+width: 105px;
+padding: 1px 5px 1px 5px;		
+}
+.ellipsis {
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+display: block;
+}
+.documentTitle {
+color: #7F7F7F;
+font-weight: 900;
+font-size: 14px;
+text-align: left !important;
+}
+.documentTitle IMG{
+vertical-align: middle;
+margin-right: 10px;
+}
+.hr {
+padding: 0px;
+height: 10px;
+background: url(../gfx/tab_dots.gif) repeat-x 0 0;
+margin: 9px 0px 15px 0px;
+}
+.hr IMG {
+position: relative;
+top: 1px;
+_position: static;
+_margin-top: 1px;
+}
+.button {
+background-color: #E0DFE3;
+font: normal 12px Arial, Helvetica, sans-serif;
+}
+.unlock {
+_overflow: visible;
+_padding-left: 7px;
+_padding-right: 7px;
+}
+
+.tab_UL, .tab_UR, .tab_UM {
+width: 14px;
+height: 32px;
+float: left;
+padding: 0px;
+margin: 0px;
+border: 0px;
+}
+.tab_UL {
+background-image: url(../gfx/tab_cornerUL.gif);
+}
+.tab_UR {
+background-image: url(../gfx/tab_cornerUR.gif);
+}
+.tab_UM {
+background-image: url(../gfx/tab_bgTop.gif);
+vertical-align: middle;
+}
+.tab_UM IMG {
+position: relative;
+top: -3px;
+left: -58px;
+}
+.tab_LL, .tab_LR, .tab_LM {
+width: 14px;
+height: 15px;
+float: left;
+padding: 0px;
+margin: 0px;
+border: 0px;
+}
+.tab_LL {
+background-image: url(../gfx/tab_cornerLL.png);
+}
+.tab_LR {
+background-image: url(../gfx/tab_cornerLR.png);
+}
+.tab_LM {
+background-image: url(../gfx/tab_bgBottom.png);
+}
+.tab_caption {
+font-weight: bold;
+color: white;
+position: relative;
+top: 10px;
+}
+
+.eventDialogBody {
+position: absolute;
+left: 0px;
+top: 0px;
+z-index: 1001;
+opacity: 0;
+filter: alpha(opacity=0);
+display: none;
+}
+.eventDialog, .connectionLost {
+background: white;
+width: 425px;
+}
+.eventDialog .dialogBody, .connectionLost .dialogBody{
+height: 195px;
+border: 1px solid #C0C0C0;
+padding: 3px;
+}
+.connectionLost .dialogBody{
+height: 150px;
+}
+.eventDialog .dialogBg {
+height: 195px;
+background: url(../gfx/load_bg.jpg);
+background-position: left;
+background-repeat: no-repeat;
+}
+.connectionLost .dialogBody .buttonBar {
+top: 111px;
+}
+.connectionLost .dialogBg {
+height: 150px;
+background: url(../gfx/accessdenied_bg.jpg);
+background-position: left;
+background-repeat: no-repeat;
+}
+.dialogBg .content {
+padding-top: 5px;
+padding-left: 84px;
+}
+.connectionLost .content {
+padding-top: 15px;
+padding-left: 150px;
+}
+.dialogBody BUTTON {
+position: relative;
+top: 18px;
+left: 325px;
+}
+.steps {
+width: auto;
+height: auto;
+padding: 5px;
+margin-top: 18px;
+white-space: nowrap;
+text-align: left !important;
+}
+	
+.header {
+height: 40px;
+min-width: 740px;
+border-collapse: collapse;
+}
+.header .left, .header .right {
+position: absolute;
+top: 0px;
+width: 5px;
+height: 40px;
+}
+.header .left {
+left: 0px;
+background: url(../gfx/head_cornerL.png) 0 0 no-repeat;		
+}
+.header .right {
+right: 0px;
+background: url(../gfx/head_cornerR.png) 0 0 no-repeat;		
+}
+.header .center {
+width: 100%;
+height: 40px;
+background: url(../gfx/head_bg.gif) 0 0 repeat-x;
+}
+.header .companyLogo {
+position: relative;
+left: 10px;
+top: 8px;
+cursor: pointer;
+}
+.header .topicTitle {
+position: relative;
+left: 350px;
+top: -16px;
+_top: -18px;
+}
+.topicTitle .content {
+position: relative;
+top: -26px;
+left: 42px;
+font-weight: bold;
+font-size: 14px;
+color: white;
+white-space: nowrap;
+}
+.header .options {
+position: relative;
+top: 6px;
+float: right;
+z-index: 1001;
+}
+.options .caption {
+font-weight: bold;
+color: white;
+white-space: nowrap;
+padding-left: 5px;
+padding-right: 10px;
+}
+.options IMG {
+position: relative;
+top: 5px;
+padding-left: 20px;
+}
+.activeArea {
+cursor: pointer;
+}
+
+.wwwFilters {
+margin-bottom: 50px;
+}
+.wwwFilters TD {
+padding: 3px 0px 3px 0px;
+}
+.wwwFilters .captionTD {
+font-weight: bold;
+padding-top: 4px;
+}
+.wwwFilters .valueTD {
+width: 35px;
+padding-top: 2px;
+_width: 23px;
+}
+.wwwFilters .descriptionTD {
+padding-bottom: 10px;
+}
+.wwwFilters .noteTD {
+padding-top: 15px;
+}
+.wwwFilters .buttonTD {
+padding-top: 15px;
+}	
+
+.changePassword {
+margin-bottom: 50px;
+}
+.changePassword TD {
+padding: 3px 0px 3px 0px;
+}
+.changePassword .descriptionTD {
+width: 150px !important;
+_width: 145px !important;
+padding-right: 5px;
+}
+.changePassword .dataTD {
+text-align: left;
+width: 100%;
+}
+.changePassword .noteTD {
+padding-top: 15px;
+}
+.changePassword .buttonTD {
+padding-top: 15px;
+}	
+.changePassword .status {
+font-weight: bold;
+color: #FE660D;
+}
+.changePassword .reason {
+padding-bottom: 10px;
+}
+
+.changeLang .descriptionTD {
+padding-right: 15px;
+}
+.changeLang .buttonTD {
+padding-top: 15px;
+}
+
+.httpPolicy TD, .httpPolicy .th {
+background: url(../gfx/tab_dots.gif) repeat-x 0 100%;
+padding: 3px 5px 3px 5px;
+}
+.httpPolicy .th {
+font-weight: bold;
+background-color: #E0DFE3;
+}
+.httpPolicy .vertDivider {
+background: none;
+padding: 0px;
+width: 3px;
+white-space: nowrap;
+background: url(../gfx/dot_gray.gif) repeat-y;
+background-position: center;
+}
+.httpPolicy .ruleStatus SPAN {
+position: relative;
+bottom: 3px;
+left: 3px;
+}
+
+.userQuota {
+margin-bottom: 50px;
+}
+.userQuota .dataLabel {
+padding-left: 60px
+}
+.userQuota .dateLabel {
+padding-left: 5px
+}
+.userQuota .numberLabel {
+padding-left: 10px;
+}
+.userQuota .iconTD {
+padding: 10px 0px 10px 10px;
+}
+.userQuota .progressTD {
+width: 150px;
+}
+.noQuota {
+color: green;
+}
+
+.progressBar {
+width: 119px;
+height: 13px;
+_height: 17px;
+overflow: hidden;
+text-align: center;
+vertical-align: middle;
+border: 1px solid black;
+padding: 1px;
+margin: 0px;
+background-color: white;
+}
+.progressBar .progress {
+_float: left;
+height: 13px;
+background: #FEB86D;
+position: relative;
+top: -13px;
+z-index: 1;
+}
+.progressBar .alert {
+background: #FE660D;
+}
+.progressBar .percNum {
+position: relative;
+width: 100%;
+font-weight: bold;
+z-index: 2;
+}	
+.failure {
+font-weight: bold;
+color: #FE660D;
+}
+.displayPrint {
+display: none;
+}
+.noBorder {
+border: 0px !important;
+}
+.grayText {
+color: #70869E !important;
+} 
+@media print {
+.noPrint {
+display: none;
+}
+.displayPrint {
+display: block;
+}
+}
+
+#ras td, #ras th {
+padding:5px 1em;
+}
+#ras tbody td {
+width:100px;
+border-bottom:1px dotted black;
+}
+#ras td.C2,#ras td.C3, #ras td.C4, #ras tfoot {
+text-align:center;
+}
+#ras td.C5, #ras td.C6 {
+text-align:right;
+padding-right:1em;
+}
+#ras th {
+text-align: center;
+}
+#ras tfoot * {
+padding-top:1em;
+}
+.hide {
+display:none;
+}
+#dialupUpdate { 
+display:none;
+}

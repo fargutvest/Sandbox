@@ -1,0 +1,1180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html data-savefrom-tab-data="{&quot;module&quot;:&quot;lm&quot;,&quot;tooltip&quot;:&quot;Найдено ссылок: 0&quot;}" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru"><head><script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/context_static_r619.js" type="text/javascript"></script><script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/context_static_r619.js" type="text/javascript"></script><script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/cnt.js" type="text/javascript" async=""></script><script async="true" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/context.js" type="text/javascript"></script><script async="true" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/context.js" type="text/javascript"></script>
+<!-- base href="http://www.cyberforum.ru/" --><!--[if IE]></base><![endif]--> <link rel="canonical" href="http://www.cyberforum.ru/csharp-net/thread325790.html"> <!-- base href="http://www.cyberforum.ru/" --> <meta http-equiv="Content-Type" content="text/html; charset=windows-1251"> <meta name="keywords" content="Управление,ячейками,в,MS,Excel, Управление ячейками в MS Excel, компьютерный форум программистов киберфорум сайберфорум сайбер компьютеры программирование софт"> <meta name="description" content="Всем привет! Проблема такая: создаю документ MS Excel, кидаю в него данные. Код C# 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 Microsoft . Office . Interop . Excel . Application ObjExcel = new Microsoft "> <meta name="verify-v1" content="z+WrViDt9OodkKaYoo8+s1dOXfL/ka6bQ0jBGkxrRAQ="> <meta name="yandex-verification" content="7313400c5792ee7b"> <meta name="msvalidate.01" content="F8DD8BF8D2F28E27DEEDE322E0C4A048"> <meta name="wmail-verification" content="33380466938a2eaf">  <style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.7 PL3 CSS
+* Style: 'Обычный стиль'; Style ID: 1
+*/
+@import url("http://www.cyberforum.ru/clientscript/vbulletin_css/style-c63b6874-00001.css");
+</style> <link rel="stylesheet" type="text/css" href="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_important.css">  <script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/ga.js" async="" type="text/javascript"></script><script async="" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/cbgapi.loaded_0"></script><script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/yahoo-dom-event.js"></script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/connection-min.js"></script> <script type="text/javascript"> <!--
+var SESSIONURL = "";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// --> </script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_global.js"></script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_menu.js"></script> <link rel="alternate" type="application/rss+xml" title="Форум программистов и сисадминов CyberForum.ru RSS Feed" href="http://www.cyberforum.ru/external.php?type=RSS2"> <link rel="alternate" type="application/rss+xml" title="C# .NET - CyberForum.ru - RSS Feed" href="http://www.cyberforum.ru/external.php?type=RSS2&amp;forumids=18"> <link type="application/opensearchdescription+xml" rel="search" href="http://www.cyberforum.ru/opensearch.xml" title="CyberForum.ru"> <link rel="stylesheet" href="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/geshi.css" type="text/css" media="screen"> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_thanks_collapse.js"></script> <script gapi_processed="true" type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/plusone.js">
+  {lang: 'ru'}
+</script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/jquery.js"></script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_vbpost.js"></script> <script type="text/javascript">
+function initSpoilers(context)
+{
+    var context = context || 'body';
+    $('div.spoiler-head', $(context))
+        .click(function(){
+            $(this).toggleClass('unfolded');
+            $(this).next('div.spoiler-body').slideToggle('fast');
+        })
+    ;
+}
+
+$(document).ready(function(){
+    initSpoilers('body');
+});
+</script> <link rel="stylesheet" type="text/css" href="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/spoiler.css"> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/combo"></script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_thanks.js"></script><script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_thanks_collapse.js"></script><style type="text/css"> <!--
+.admincomment {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 10px;
+ color: #FFFFFF;
+}
+.modcomment {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 10px;
+ color: #FFFFFF;
+}
+.maincomm {
+ border: 1px;
+ border-left: 1px solid #8394B2;
+ border-top: 1px solid #8394B2;
+ border-right: 1px solid #8394B2;
+ border-bottom: 1px solid #8394B2;
+}
+--> </style> <title> Управление ячейками в MS Excel - C# .NET - CyberForum.ru</title> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_post_loader.js"></script> <style type="text/css" id="vbulletin_showthread_css"> <!--
+	
+	#links div { white-space: nowrap; }
+	#links img { vertical-align: middle; }
+	--> </style> <style type="text/css">
+		span.sortarrow {position:absolute;}
+		span.sortarrow img {border:0;}
+		a.sortheader {text-decoration:none; display:block; width:100%;}
+	</style> <script type="text/javascript">
+		var IMGDIR_BUTTON = "images/buttons";
+	</script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/sorttable.js"></script> <style id="ya_share_style" type="text/css">.b-share-popup-wrap{z-index:1073741823;position:absolute;width:500px}.b-share-popup{position:absolute;z-index:1073741823;border:1px solid #888;background:#FFF;color:#000}.b-share-popup-wrap .b-share-popup_down{top:0}.b-share-popup-wrap .b-share-popup_up{bottom:0}.b-share-popup-wrap_state_hidden{position:absolute!important;top:-9999px!important;right:auto!important;bottom:auto!important;left:-9999px!important;visibility:hidden!important}.b-share-popup,x:nth-child(1){border:0;padding:1px!important}@media all and (resolution = 0dpi){.b-share-popup,x:nth-child(1),x:-o-prefocus{padding:0!important;border:1px solid #888}}.b-share-popup__i{display:-moz-inline-box;display:inline-block;padding:5px 0!important;overflow:hidden;vertical-align:top;white-space:nowrap;visibility:visible;background:#FFF;-webkit-box-shadow:0 2px 9px rgba(0,0,0,0.6);-moz-box-shadow:0 2px 9px rgba(0,0,0,0.6);box-shadow:0 2px 9px rgba(0,0,0,0.6)}.b-share-popup__item{font:1em/1.25em Arial,sans-serif;display:block;padding:5px 15px!important;white-space:nowrap;background:#FFF}.b-share-popup__item,a.b-share-popup__item:link,a.b-share-popup__item:visited{text-decoration:none!important;border:0!important}a.b-share-popup__item{cursor:pointer}a.b-share-popup__item .b-share-popup__item__text{display:inline;text-decoration:underline;color:#1a3dc1}a.b-share-popup__item:hover{word-spacing:0}a.b-share-popup__item:hover .b-share-popup__item__text{color:#F00;cursor:pointer}.b-share-popup__icon{display:-moz-inline-box;display:inline-block;margin:-3px 0 0 0;padding:0 5px 0 0!important;vertical-align:middle}.b-share-popup__icon_input{width:21px;height:16px;margin-top:-6px;padding:0!important}.b-share-popup__icon__input{margin-right:0;margin-left:2px;vertical-align:top}.b-share-popup__spacer{display:block;padding-top:10px!important}.b-share-popup__header{font:86%/1em Verdana,sans-serif;display:block;padding:10px 15px 5px 15px!important;color:#999}.b-share-popup__header_first{padding-top:5px!important}.b-share-popup__input{font:86%/1em Verdana,sans-serif;display:block;padding:5px 15px!important;color:#999;text-align:left}.b-share-popup__input__input{font:1em/1em Verdana,sans-serif;display:block;width:10px;margin:5px 0 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;resize:none;text-align:left;direction:ltr}.b-share-popup_down .b-share-popup_with-link .b-share-popup__input_link{position:absolute;top:5px;right:0;left:0}.b-share-popup_up .b-share-popup_with-link .b-share-popup__input_link{position:absolute;right:0;bottom:5px;left:0}.b-share-popup_down .b-share-popup_with-link{padding-top:55px!important}.b-share-popup_up .b-share-popup_with-link{padding-bottom:55px!important}.b-share-popup_down .b-share-popup_expandable .b-share-popup__main{padding-bottom:25px!important}.b-share-popup_up .b-share-popup_expandable .b-share-popup__main{padding-top:25px!important}.b-share-popup_down .b-share-popup_yandexed{padding-bottom:10px!important}.b-share-popup_up .b-share-popup_yandexed{padding-top:10px!important}.b-share-popup__yandex{position:absolute;right:4px;bottom:2px;font:78.125%/1em Verdana,sans-serif;padding:3px!important;background:transparent}a.b-share-popup__yandex:link,a.b-share-popup__yandex:visited{color:#c6c5c5;text-decoration:none}a.b-share-popup__yandex:link:hover,a.b-share-popup__yandex:visited:hover{color:#F00;text-decoration:underline}.b-share-popup_up .b-share-popup__yandex{top:2px;bottom:auto}.b-share-popup_expandable .b-share-popup__yandex{right:auto;left:4px}.b-share-popup_to-right .b-share-popup_expandable .b-share-popup__yandex{right:4px;left:auto}.b-share-popup__expander .b-share-popup__item{position:absolute;bottom:5px;font:86%/1em Verdana,sans-serif;margin:10px 0 0;padding:5px 10px!important;cursor:pointer;color:#999;background:transparent}.b-share-popup_to-right,.b-share-popup_to-right .b-share-popup__expander{direction:rtl}.b-share-popup_to-right .b-share-popup__expander .b-share-popup__icon{padding:0 0 0 5px!important}.b-share-popup_up .b-share-popup__expander .b-share-popup__item{top:-5px;bottom:auto}.b-share-popup__expander .b-share-popup__item:hover .b-share-popup__item__text{text-decoration:underline}.b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup__expander .b-ico_action_larr,.b-share-popup_full .b-share-popup__expander .b-ico_action_larr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup__expander .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__item__text_expand{display:none}.b-share-popup_to-right .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_full .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_larr{display:inline}.b-ico_action_rarr,.b-ico_action_larr{width:8px;height:7px;border:0}.b-share-popup__main,.b-share-popup__extra{direction:ltr;vertical-align:bottom;text-align:left}.b-share-popup_down .b-share-popup__main,.b-share-popup_down .b-share-popup__extra{vertical-align:top}.b-share-popup__main{display:-moz-inline-stack;display:inline-block}.b-share-popup__extra{display:none;margin:0 -10px 0 0}.b-share-popup_full .b-share-popup__extra{display:-moz-inline-stack;display:inline-block}.b-share-popup_to-right .b-share-popup__extra{margin:0 0 0 -10px}.b-share-popup__tail{position:absolute;width:21px;height:10px;margin:0 0 0 -11px}.b-share-popup_down .b-share-popup__tail{top:-10px;background:url(//yandex.st/share/static/b-share-popup_down__tail.gif) 0 0 no-repeat}.b-share-popup_up .b-share-popup__tail{bottom:-10px;background:url(//yandex.st/share/static/b-share-popup_up__tail.gif) 0 0 no-repeat}.b-share-popup_down .b-share-popup__tail,x:nth-child(1){top:-9px;background-image:url(//yandex.st/share/static/b-share-popup_down__tail.png)}.b-share-popup_up .b-share-popup__tail,x:nth-child(1){bottom:-9px;background-image:url(//yandex.st/share/static/b-share-popup_up__tail.png)}@media all and (resolution = 0dpi){.b-share-popup_down .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{top:-10px;background-image:url(//yandex.st/share/static/b-share-popup_down__tail.gif)}.b-share-popup_up .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{bottom:-10px;background-image:url(//yandex.st/share/static/b-share-popup_up__tail.gif)}}.b-share-popup .b-share-popup_show_form_mail,.b-share-popup .b-share-popup_show_form_html{padding:0!important}.b-share-popup .b-share-popup_show_form_mail .b-share-popup__main,.b-share-popup .b-share-popup_show_form_html .b-share-popup__main,.b-share-popup .b-share-popup_show_form .b-share-popup__main,.b-share-popup .b-share-popup_show_form_mail .b-share-popup__extra,.b-share-popup .b-share-popup_show_form_html .b-share-popup__extra,.b-share-popup .b-share-popup_show_form .b-share-popup__extra{height:15px;padding:0!important;overflow:hidden;visibility:hidden}.b-share-popup_show_form_mail .b-share-popup__expander,.b-share-popup_show_form_html .b-share-popup__expander,.b-share-popup_show_form .b-share-popup__expander,.b-share-popup_show_form_mail .b-share-popup__input_link,.b-share-popup_show_form_html .b-share-popup__input_link,.b-share-popup_show_form .b-share-popup__input_link{display:none}.b-share-popup__form{position:relative;display:none;overflow:hidden;padding:5px 0 0!important;margin:0 0 -15px;white-space:normal}.b-share-popup_show_form_mail .b-share-popup__form_mail,.b-share-popup_show_form_html .b-share-popup__form_html,.b-share-popup_show_form .b-share-popup__form{display:block}.b-share-popup__form__link{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline;padding:5px!important;margin:0 0 5px 10px;text-decoration:underline;cursor:pointer;color:#1a3dc1}.b-share-popup__form__button{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline;margin:5px 0 0 15px}.b-share-popup__form__close{font:86%/1.4545em Verdana,sans-serif;float:right;display:inline;padding:5px!important;margin:0 10px 5px 0;cursor:pointer;color:#999}a.b-share-popup__form__link:hover,a.b-share-popup__form__close:hover{text-decoration:underline;color:#F00}.b-share-popup_font_fixed .b-share-popup__item{font-size:12.8px}.b-share-popup_font_fixed .b-share-popup__header,.b-share-popup_font_fixed .b-share-popup__input,.b-share-popup_font_fixed .b-share-popup__expander .b-share-popup__item,.b-share-popup_font_fixed .b-share-popup__form__link,.b-share-popup_font_fixed .b-share-popup__form__button,.b-share-popup_font_fixed .b-share-popup__form__close{font-size:11px}.b-share-popup_font_fixed .b-share-popup__yandex{font-size:10px}.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url(//yandex.st/share/static/b-share-form-button.png) 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url(//yandex.st/share/static/b-share-form-button.png)}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url(//yandex.st/share/static/b-share-icon_size_14.png)}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 3px 1px 4px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;cursor:pointer;text-align:left;text-decoration:none!important;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:#F00}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #e4e4e4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#e4e4e4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1a3dc1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url(//yandex.st/share/static/b-share-form-button_share__icon.png) 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7b7b7b}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url(//yandex.st/share/static/b-share-icon.png) 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_greader{background-position:0 -204px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}.b-share-icon_gplus{background-position:0 -426px}.b-share-icon_pocket{background-position:0 -443px}.b-share-icon_surfingbird{background-position:0 -460px}.b-share-icon_pinterest{background-position:0 -477px}.b-share_theme_dark .b-share-icon{background:url(//yandex.st/share/static/b-share-icons__theme_dark.png) 99px 0 no-repeat}.b-share_theme_dark .b-share-icon_odnoklassniki{background-position:-4px -3px}.b-share_theme_dark .b-share-icon_vkontakte{background-position:-24px -3px}.b-share_theme_dark .b-share-icon_twitter{background-position:-44px -3px}.b-share_theme_dark .b-share-icon_facebook{background-position:-64px -3px}.b-share_theme_dark .b-share-icon_lj{background-position:-85px -3px}.b-share_theme_dark .b-share-icon_yaru{background-position:-105px -3px}.b-share_theme_dark .b-share-popup .b-share-icon_odnoklassniki,.b-share_theme_dark .b-share-icon_odnoklassniki:hover{background-position:-4px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_vkontakte,.b-share_theme_dark .b-share-icon_vkontakte:hover{background-position:-24px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_twitter,.b-share_theme_dark .b-share-icon_twitter:hover{background-position:-44px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_facebook,.b-share_theme_dark .b-share-icon_facebook:hover{background-position:-64px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_lj,.b-share_theme_dark .b-share-icon_lj:hover{background-position:-85px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_yaru,.b-share_theme_dark .b-share-icon_yaru:hover{background-position:-105px -28px}.b-share_theme_dark .b-share__text{color:#fff}.b-share_theme_dark .b-share-form-button_share .b-share-form-button__icon{background-image:url("//yandex.st/share/static/b-share-form-button_share__icon_dark.png")}.b-share_theme_dark .b-share-form-button{color:#fff!important;opacity:.8}.b-share_theme_dark .b-share__handle:hover .b-share-form-button,.b-share_theme_dark .b-share-form-button:hover{opacity:1;cursor:pointer}.b-share_theme_dark .b-share-form-button,.b-share_theme_dark .b-share-form-button__before,.b-share_theme_dark .b-share-form-button__after{background:transparent}.b-share_theme_dark .b-share-popup__i{background-color:#333;border-radius:10px;-webkit-box-shadow:0 2px 9px rgba(255,255,255,0.6);-moz-box-shadow:0 2px 9px rgba(255,255,255,0.6);box-shadow:0 2px 9px rgba(255,255,255,0.6)}.b-share_theme_dark .b-share__text{color:#AAA}.b-share_theme_dark .b-share-popup{color:#AAA;border-radius:10px;background-color:#333;background-color:rgba(50,50,50,0.3)}.b-share_theme_dark .b-share-popup__item{background:transparent;color:#ccc}.b-share_theme_dark .b-share-popup .b-share-popup__item__text{color:#ccc}.b-share_theme_counter .b-share{display:inline-block;vertical-align:middle}.b-share-counter{display:none;float:left;margin:3px 6px 3px 3px;color:#fff;font:14px Arial,sans-serif;line-height:18px}.b-share_theme_counter .b-share_type_small .b-share-counter{margin:2px 6px 2px 1px;font-size:11px;line-height:14px}.b-share_theme_counter .b-share-btn__counter .b-share-counter{display:block}.b-share-btn__counter{text-decoration:none}.b-share_theme_counter .b-share-btn__wrap{position:relative;float:left;margin-left:5px}.b-share_theme_counter .b-share_type_small .b-share-btn__wrap{margin-left:4px}.b-share_theme_counter .b-share-btn__wrap:first-child{margin-left:0}.b-share_theme_counter .b-share__link{display:inline-block;cursor:pointer;-webkit-border-radius:3px;border-radius:3px}.b-share_theme_counter .b-share_type_small .b-share__link{-webkit-border-radius:2px;border-radius:2px}.b-share_theme_counter .b-share-icon{display:block;float:left;width:24px;height:24px;background-image:url(//yandex.st/share/static/b-share_counter_large.png);background-position:-20px 0}.b-share_theme_counter .b-share_type_small .b-share-icon{width:18px;height:18px;background-image:url(//yandex.st/share/static/b-share_counter_small.png)}.b-share_theme_counter .b-share-icon_facebook{background-position:0 0}.b-share_theme_counter .b-share-btn__facebook{background-color:#3c5a98}.b-share_theme_counter .b-share-btn__facebook:hover{background-color:#30487a}.b-share_theme_counter .b-share-btn__facebook:active{border-top:2px solid #24365a;background-color:#334d81}.b-share_theme_counter .b-share-icon_moimir{background-position:0 -29px}.b-share_theme_counter .b-share-btn__moimir{background-color:#226eb7}.b-share_theme_counter .b-share-btn__moimir:hover{background-color:#1b5892}.b-share_theme_counter .b-share-btn__moimir:active{border-top:2px solid #14426d;background-color:#1d5e9c}.b-share_theme_counter .b-share-icon_vkontakte{background-position:0 -58px}.b-share_theme_counter .b-share-btn__vkontakte{background-color:#48729e}.b-share_theme_counter .b-share-btn__vkontakte:hover{background-color:#3a5b7e}.b-share_theme_counter .b-share-btn__vkontakte:active{border-top:2px solid #2b445e;background-color:#3d6186}.b-share_theme_counter .b-share-icon_twitter{background-position:0 -87px}.b-share_theme_counter .b-share-btn__twitter{background-color:#00aced}.b-share_theme_counter .b-share-btn__twitter:hover{background-color:#008abe}.b-share_theme_counter .b-share-btn__twitter:active{border-top:2px solid #00668d;background-color:#0092ca}.b-share_theme_counter .b-share-icon_odnoklassniki{background-position:0 -116px}.b-share_theme_counter .b-share-btn__odnoklassniki{background-color:#ff9f4d}.b-share_theme_counter .b-share-btn__odnoklassniki:hover{background-color:#cc7f3e}.b-share_theme_counter .b-share-btn__odnoklassniki:active{border-top:2px solid #975e2e;background-color:#d98742}.b-share_theme_counter .b-share-icon_gplus{background-position:0 -145px}.b-share_theme_counter .b-share-btn__gplus{background-color:#c25234}.b-share_theme_counter .b-share-btn__gplus:hover{background-color:#9b422a}.b-share_theme_counter .b-share-btn__gplus:active{border-top:2px solid #73311f;background-color:#a5462c}.b-share_theme_counter .b-share-icon_yaru{background-position:0 -174px}.b-share_theme_counter .b-share-btn__yaru{background-color:#d83933}.b-share_theme_counter .b-share-btn__yaru:hover{background-color:#ad2e29}.b-share_theme_counter .b-share-btn__yaru:active{border-top:2px solid #80221e;background-color:#b8312b}.b-share_theme_counter .b-share__link:active{height:22px}.b-share_theme_counter .b-share_type_small .b-share__link:active{height:16px}.b-share_theme_counter .b-share__link:active .b-share-icon,.b-share_theme_counter .b-share__link:active .b-share-counter{position:relative;top:-1px}.b-share_theme_counter .b-share__link::after{position:absolute;top:0;right:0;bottom:0;left:0;content:"";background-image:url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)}.b-share_theme_counter .b-share__handle{height:auto;padding:0!important}</style><script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/29317.js" type="text/javascript"></script><style type="text/css">body .ya-partner .ya-partner__hidden {
+    display: none !important;
+}
+ .ya-partner {
+    font-size: 100% !important;
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    line-height: normal !important;
+    border-radius: 4px 4px 4px 4px !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+}
+ .ya-partner__l-table, .ya-partner__l-tr, .ya-partner__l-td {
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: auto !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: middle !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+}
+ .ya-partner__domain-link {
+    text-decoration: none !important;
+}
+ .ya-partner__domain-link:hover {
+    text-decoration: underline !important;
+}
+ .ya-partner, .ya-partner__ads-l, .ya-partner__ads-l em, .ya-partner__ads-r, .ya-partner__item, .ya-partner__title-link-text, .ya-partner__text, .ya-partner__domain-link, .ya-partner__region, ya-partner__pic-container, ya-partner__pic, .ya-partner__list tbody, .ya-partner__list tr, .ya-partner__list td {
+    font-size: inherit !important;
+    font-style: normal !important;
+    text-indent: 0 !important;
+}
+ .ya-partner_text_clickable a.ya-partner__text {
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+ .ya-partner_text_clickable a.ya-partner__text:hover {
+    text-decoration: underline !important;
+}
+ .ya-partner__pic-container {
+    display: block !important;
+    margin: 3px 0 !important;
+}
+ .ya-partner__item_piclayout_left .ya-partner__pic-container {
+    margin: 0 0.4em 0 0 !important;
+}
+ .ya-partner__item_piclayout_float .ya-partner__pic-container {
+    margin: 0.4em 0.4em 0 0 !important;
+    float: left !important;
+}
+ .ya-partner__item_piclayout_float .ya-partner__address, .ya-partner__item_piclayout_float .ya-partner__domain-link, .ya-partner__item_piclayout_float .ya-partner__region {
+    white-space: nowrap !important;
+}
+ .ya-partner__clearfix {
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: both !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: auto !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: 0 !important;
+    letter-spacing: normal !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+    font-size: 0 !important;
+    display: block !important;
+}
+ .ya-partner__pic, .ya-partner__pic:link, .ya-partner__pic:hover, .ya-partner__pic:visited {
+    background: transparent 0 0 no-repeat scroll !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+    display: block !important;
+}
+ .ya-partner yatag {
+    text-align: left !important;
+    font-family: inherit !important;
+}
+ .ya-partner__list {
+    display: block !important;
+    line-height: normal !important;
+    font-size: inherit !important;
+    text-indent: 0 !important;
+}
+ .ya-partner__title-link, .ya-partner__address, .ya-partner__ads-link {
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+    font-size: inherit !important;
+    font-style: normal !important;
+    display: inline !important;
+}
+ a.ya-partner__address:link, a.ya-partner__address:hover, a.ya-partner__address:visited {
+    text-decoration: underline !important;
+}
+ .ya-partner__address {
+    margin-right: 0.3em !important;
+}
+ a.ya-partner__ads-link:link, a.ya-partner__ads-link:hover, a.ya-partner__ads-link:visited {
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+ .ya-partner__ads-link em {
+    font-style: normal !important;
+    font-weight: normal !important;
+    background: none repeat scroll 0 0 transparent !important;
+}
+ .ya-partner__item {
+    border-radius: 4px 4px 4px 4px !important;
+    border: none !important;
+    padding: 0.2em 0.3em !important;
+    line-height: normal !important;
+}
+ body .ya-partner__item_pos_last {
+    margin-bottom: 0 !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__item_pos_first, .ya-partner_ads_inner-up-down .ya-partner__item_pos_first, .ya-partner_ads_inner-down .ya-partner__item_pos_last {
+    border-radius: 0 4px 4px 4px !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__item_pos_last, .ya-partner_ads_inner-up-down .ya-partner__item_pos_last {
+    border-radius: 4px 4px 4px 0 !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__item_pos_first.ya-partner__item_pos_last {
+    border-radius: 4px 4px 4px 0 !important;
+}
+ .ya-partner__url {
+    font-size: 87% !important;
+    display: block !important;
+}
+ .ya-partner__hide-urls .ya-partner__list .ya-partner__url {
+    display: none !important;
+}
+ .ya-partner__warn {
+    font-size: 70% !important;
+    border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    -webkit-border-radius: 2px !important;
+    padding: 0.25em 0.3em 0.25em !important;
+    line-height: 1.1em !important;
+}
+ .ya-partner__agewarn-cont {
+    padding-left: .3em !important;
+    display: inline-block !important;
+    float: right !important;
+}
+ .ya-partner__text .ya-partner__agewarn-cont {
+    display: none !important;
+}
+ .ya-partner__hide-urls .ya-partner__text .ya-partner__agewarn-cont {
+    display: inline-block !important;
+    padding-left: 0 !important;
+}
+ yatag.ya-partner__agewarn {
+    font: normal normal 85% Tahoma, Arial, sans-serif !important;
+    border-radius: 5px !important;
+    padding: 0 1px !important;
+    vertical-align: baseline !important;
+}
+ .ya-partner__url .ya-partner__agewarn {
+    font-size: 90% !important;
+}
+ .ya-partner__ads {
+    white-space: nowrap !important;
+    font-size: 87% !important;
+}
+ .ya-partner__icon {
+    font: 0/0 a !important;
+    margin: 0 4px -2px 0 !important;
+    vertical-align: baseline !important;
+    border: 0 !important;
+    display: inline !important;
+    width: 16px !important;
+    height: 16px !important;
+    float: none !important;
+}
+ .ya-partner__ads-link {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+    line-height: normal !important;
+    white-space: nowrap !important;
+}
+ .ya-partner__ads-l {
+    display: inline-block !important;
+    position: relative !important;
+    background: none repeat scroll 0 0 transparent !important;
+    padding-right: .75em !important;
+}
+ .ya-partner__ads-r {
+    display: inline-block !important;
+    margin-left: -5px !important;
+    padding: 0 0 0 10px !important;
+}
+ .ya-partner__ads-r .ya-partner__ads-link {
+    margin: 0 5px 0 0 !important;
+}
+ a.ya-partner__ads-link-r,a.ya-partner__ads-link-r:link,a.ya-partner__ads-link-r:hover,a.ya-partner__ads-link-r:visited,a.ya-partner__ads-link-r:active,a.ya-partner__ads-link-r:focus,a.ya-partner__ads-link-l,a.ya-partner__ads-link-l:link,a.ya-partner__ads-link-l:hover,a.ya-partner__ads-link-l:visited,a.ya-partner__ads-link-l:active,a.ya-partner__ads-link-l:focus {
+    font-weight: normal !important;
+}
+ a.ya-partner__title-link,a.ya-partner__title-link:link,a.ya-partner__title-link:hover,a.ya-partner__title-link:visited,a.ya-partner__title-link:active,a.ya-partner__title-link:focus {
+    font-weight: normal !important;
+    line-height: normal !important;
+    text-decoration: none !important;
+}
+ a.ya-partner__title-link .ya-partner__title-link-text,a.ya-partner__title-link .ya-partner__title-link-text:link,a.ya-partner__title-link .ya-partner__title-link-text:hover,a.ya-partner__title-link .ya-partner__title-link-text:visited,a.ya-partner__title-link .ya-partner__title-link-text:active,a.ya-partner__title-link .ya-partner__title-link-text:focus {
+    display: inline !important;
+    text-decoration: underline !important;
+}
+ .ya-partner_text_clickable a.ya-partner__title-link .ya-partner__title-link-text, .ya-partner_text_clickable a.ya-partner__address {
+    text-decoration: none !important;
+}
+ .ya-partner_text_clickable a.ya-partner__title-link:hover .ya-partner__title-link-text, .ya-partner_text_clickable a.ya-partner__address:hover {
+    text-decoration: underline !important;
+}
+ .ya-partner_ads-up .ya-partner__ads {
+    position: relative !important;
+    display: block !important;
+}
+ .ya-partner_ads-up .ya-partner__ads-l {
+    padding-bottom: 1px !important;
+    vertical-align: top !important;
+    border-radius: 4px 0 0 0 !important;
+    -moz-border-radius: 4px 0 0 0 !important;
+    -webkit-border-radius: 4px 0 0 0 !important;
+}
+ .ya-partner_ads-up .ya-partner__ads-r {
+    padding-bottom: 1px !important;
+    vertical-align: top !important;
+    border-radius: 0 0 4px 0 !important;
+    -moz-border-radius: 0 0 4px 0 !important;
+    -webkit-border-radius: 0 0 4px 0 !important;
+}
+ .ya-partner_ads-down .ya-partner__ads {
+    position: absolute !important;
+    bottom: 0 !important;
+}
+ .ya-partner_ads-down .ya-partner__list {
+    padding-bottom: 1em !important;
+}
+ .ya-partner_ads-down .ya-partner__ads-l {
+    border-radius: 0 0 0 3px !important;
+    -moz-border-radius: 0 0 0 3px !important;
+    -webkit-border-radius: 0 0 0 3px !important;
+}
+ .ya-partner_ads-down .ya-partner__ads-r {
+    border-radius: 0 4px 0 0 !important;
+    -moz-border-radius: 0 4px 0 0 !important;
+    -webkit-border-radius: 0 4px 0 0 !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__list {
+    margin: 0 0 1em !important;
+}
+ .ya-partner_ads-up-down .ya-partner__list {
+    margin: 1em 0 !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-l, .ya-partner_ads-up-down .ya-partner__ads-l {
+    border-radius: 3px 0 0 0 !important;
+    -moz-border-radius: 3px 0 0 0 !important;
+    -webkit-border-radius: 3px 0 0 0 !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-l {
+    position: absolute !important;
+    top: 0 !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-link {
+    display: inline-block !important;
+    padding-bottom: 2px !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-r .ya-partner__ads-link {
+    padding-bottom: 1px !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-r, .ya-partner_ads-up-down .ya-partner__ads-r {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 0 4px 4px !important;
+    -moz-border-radius: 0 0 4px 4px !important;
+    -webkit-border-radius: 0 0 4px 4px !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-r {
+    left: 0 !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-r {
+    border-radius: 0 0 3px 3px !important;
+    -moz-border-radius: 0 0 3px 3px !important;
+    -webkit-border-radius: 0 0 3px 3px !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-link, .ya-partner_ads-up-down .ya-partner__ads-link {
+    margin-left: 5px !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads {
+    display: block !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads-l, .ya-partner_ads_inner-up .ya-partner__ads-r {
+    vertical-align: top !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads-l {
+    border-radius: 4px 0 0 0 !important;
+    -moz-border-radius: 4px 0 0 0 !important;
+    -webkit-border-radius: 4px 0 0 0 !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads-r {
+    border-radius: 0 4px 0 0 !important;
+    -moz-border-radius: 0 4px 0 0 !important;
+    -webkit-border-radius: 0 4px 0 0 !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads {
+    display: block !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads-l {
+    border-radius: 0 0 0 4px !important;
+    -moz-border-radius: 0 0 0 4px !important;
+    -webkit-border-radius: 0 0 0 4px !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads-r {
+    border-radius: 0 0 4px 0 !important;
+    -moz-border-radius: 0 0 4px 0 !important;
+    -webkit-border-radius: 0 0 4px 0 !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads-link, .ya-partner_ads-down .ya-partner__ads-link {
+    display: inline-block !important;
+    padding-bottom: 1px !important;
+}
+ .ya-partner_ads_only-arrow .ya-partner__ads {
+    margin-right: 0.5em !important;
+}
+ .ya-partner_margin_yes .ya-partner__icon {
+    margin-left: -20px !important;
+}
+ .ya-partner_margin_yes .ya-partner__item {
+    padding-left: 20px !important;
+}
+ .ya-partner__wrap-fit {
+    display: block !important;
+    zoom: 1 !important;
+    position: relative !important;
+    padding-bottom: 1px !important;
+    font-size: inherit !important;
+    border-radius: 4px 4px 4px 4px !important;
+}
+ .ya-partner_type_flat .ya-partner__title-link, .ya-partner_type_flat .ya-partner__text, .ya-partner_type_flat .ya-partner__url {
+    display: inline !important;
+    vertical-align: baseline !important;
+}
+ :root .ya-partner_type_flat {
+    display: table\0/IE9 !important;
+    width: 100%\0/IE9 !important;
+}
+ :root .ya-partner_type_flat.ya-partner_border.ya-partner_ads-down .ya-partner__ads {
+    bottom: 1px\0/IE9 !important;
+}
+ .ya-partner_type_flat .ya-partner__item {
+    display: block !important;
+    line-height: normal !important;
+}
+ .ya-partner_type_flat .ya-partner__text {
+    padding-left: 0.5em !important;
+}
+ .ya-partner_type_flat .ya-partner__warn {
+    display: block !important;
+    margin-top: 0.3em !important;
+}
+ .ya-partner_type_flat .ya-partner__text .ya-partner__agewarn-cont {
+    float: none !important;
+}
+ .ya-partner_type_flat .ya-partner__text .ya-partner__clearfix {
+    display: none !important;
+}
+ .ya-partner_type_flat .ya-partner__l-td {
+    vertical-align: middle !important;
+}
+ .ya-partner_type_flat .ya-partner__l-table {
+    width: 100% !important;
+}
+ .ya-partner_type_flat .ya-partner__l-pic-td {
+    width: 1px !important;
+}
+ .ya-partner_type_flat .ya-partner__item_pic_yes .ya-partner__text {
+    display: block !important;
+}
+ .ya-partner_theme_flat_inner .ya-partner__item {
+    margin-bottom: 0.5em !important;
+}
+ .ya-partner_theme_flat_inner .ya-partner__item_pos_last {
+    margin-bottom: 0 !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__list {
+}
+ .ya-partner_type_flat-simple .ya-partner__url {
+    display: block !important;
+    margin-top: 0.3em !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__item {
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__item_pic_yes {
+    padding-top: .2em !important;
+    padding-bottom: .2em !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__text {
+    padding-left: 0 !important;
+}
+#ya_partner_0 .ya-partner__title-link-text:visited {
+    color: #000080 !important;
+}
+ #ya_partner_0 .ya-partner__title-link-text:link {
+    color: #000080 !important;
+}
+ #ya_partner_0 .ya-partner__title-link-text:hover {
+    color: #0066FF !important;
+}
+ #ya_partner_0 .ya-partner__title-link-text {
+    color: #000080 !important;
+    font-size: 107% !important;
+    font-weight: bold !important;
+}
+ #ya_partner_0 .ya-partner__region {
+    color: #666666 !important;
+}
+ #ya_partner_0 .ya-partner__domain-link {
+    color: #666666 !important;
+}
+ #ya_partner_0 .ya-partner__address {
+    color: #666666 !important;
+}
+ #ya_partner_0 .ya-partner {
+    font-family: inherit !important;
+    color: #000000 !important;
+    font-size: 1em !important;
+    background: undefined !important;
+    border-radius: 0 !important;
+}
+ #ya_partner_0 .ya-partner__text {
+    font-family: inherit !important;
+    color: #000000 !important;
+}
+ #ya_partner_0 .ya-partner_ads-down .ya-partner__ads-l {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+}
+ #ya_partner_0 .ya-partner_ads-up .ya-partner__ads-l {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+}
+ #ya_partner_0 .ya-partner__wrap-fit {
+    border-radius: 0 !important;
+}
+ #ya_partner_0 .ya-partner__item {
+    border-radius: 0 !important;
+}
+ #ya_partner_0 .ya-partner__warn {
+    border: 1px solid #CFCFCF !important;
+    background-color: #FCFCFC !important;
+}
+ #ya_partner_0 .ya-partner__agewarn {
+    border: 1px solid #CFCFCF !important;
+    background-color: #FCFCFC !important;
+}
+ #ya_partner_0 a.ya-partner__ads-link-r:link {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_0 a.ya-partner__ads-link-r:hover {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_0 a.ya-partner__ads-link-r:visited {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_0 a.ya-partner__ads-link-l:link {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_0 a.ya-partner__ads-link-l:hover {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_0 a.ya-partner__ads-link-l:visited {
+    text-decoration: underline !important;
+    color: #000 !important;
+}</style><style type="text/css">
+#ya_partner_1 .ya-partner__title-link-text:visited {
+    color: #000080 !important;
+}
+ #ya_partner_1 .ya-partner__title-link-text:link {
+    color: #000080 !important;
+}
+ #ya_partner_1 .ya-partner__title-link-text:hover {
+    color: #0066FF !important;
+}
+ #ya_partner_1 .ya-partner__title-link-text {
+    color: #000080 !important;
+    font-size: 107% !important;
+    font-weight: bold !important;
+}
+ #ya_partner_1 .ya-partner__region {
+    color: #666666 !important;
+}
+ #ya_partner_1 .ya-partner__domain-link {
+    color: #666666 !important;
+}
+ #ya_partner_1 .ya-partner__address {
+    color: #666666 !important;
+}
+ #ya_partner_1 .ya-partner {
+    font-family: inherit !important;
+    color: #000000 !important;
+    font-size: 1em !important;
+    background: undefined !important;
+    border-radius: 0 !important;
+}
+ #ya_partner_1 .ya-partner__text {
+    font-family: inherit !important;
+    color: #000000 !important;
+}
+ #ya_partner_1 .ya-partner_ads-down .ya-partner__ads-l {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+}
+ #ya_partner_1 .ya-partner_ads-up .ya-partner__ads-l {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+}
+ #ya_partner_1 .ya-partner__wrap-fit {
+    border-radius: 0 !important;
+}
+ #ya_partner_1 .ya-partner__item {
+    border-radius: 0 !important;
+}
+ #ya_partner_1 .ya-partner__warn {
+    border: 1px solid #CFCFCF !important;
+    background-color: #FCFCFC !important;
+}
+ #ya_partner_1 .ya-partner__agewarn {
+    border: 1px solid #CFCFCF !important;
+    background-color: #FCFCFC !important;
+}
+ #ya_partner_1 a.ya-partner__ads-link-r:link {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_1 a.ya-partner__ads-link-r:hover {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_1 a.ya-partner__ads-link-r:visited {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_1 a.ya-partner__ads-link-l:link {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_1 a.ya-partner__ads-link-l:hover {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_1 a.ya-partner__ads-link-l:visited {
+    text-decoration: underline !important;
+    color: #000 !important;
+}</style><script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/DApdIl1POHK40000ZhD0J205XPKe1vwc6hq1bgxvDEQwyzisJzCiX105aRj025aC" type="text/javascript"></script></head> <body data-savefrom-link-count="128" onload=""> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-595018-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>  <script src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/watch.js" type="text/javascript"></script> <script type="text/javascript">
+try { var yaCounter29317 = new Ya.Metrika({id:29317,
+          trackLinks:true,type:1});}
+catch(e) { }
+</script> <noscript><div><img src="//mc.yandex.ru/watch/29317?cnt-class=1" style="position:absolute; left:-9999px;" alt="" /></div></noscript>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <table style="margin: 0px 0px 5px 0px;"><tbody><tr> <td valign="middle" width="285px" align="left"><a href="http://www.cyberforum.ru/"><img title="Форум программистов и сисадминов CyberForum.ru" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/cyberforum_logo.jpg" alt="Форум программистов и сисадминов CyberForum.ru" border="0" height="50px"></a></td> <td valign="middle" width="100%" align="right"> <div style="float: right;"> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/share.js" charset="utf-8"></script> <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="none" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,moikrug,gplus"><span class="b-share"><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link b-share-btn__yaru" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a><a rel="nofollow" target="_blank" title="Мой Круг" class="b-share__handle b-share__link b-share-btn__moikrug" href="http://share.yandex.ru/go.xml?service=moikrug&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="moikrug"><span class="b-share-icon b-share-icon_moikrug"></span></a><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span></a></span></div> </div> </td> </tr></tbody></table><div class="vbmenu_popup" id="vbbloglinks_menu" style="display: none; margin-top: 3px; position: absolute; z-index: 50;" align="left"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="vbmenu_option vbmenu_option_alink"><a href="http://www.cyberforum.ru/blogs/">Блоги программистов и сисадминов</a></td> </tr> </tbody></table> </div>  <table class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="1"> <tbody><tr> <td class="alt1" width="100%"> <table border="0" cellpadding="0" cellspacing="0"> <tbody><tr valign="bottom"> <td><a href="http://www.cyberforum.ru/csharp-net/thread325790.html#" onclick="history.back(1); return false;"><img title="Вернуться" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/navbits_start.gif" alt="Вернуться" border="0"></a></td> <td>&nbsp;</td> <td width="100%"><span class="navbar"><a href="http://www.cyberforum.ru/" accesskey="1">Форум программистов и сисадминов CyberForum.ru</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/programming/">Форум программистов</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/net-framework/">Форум .NET</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/csharp-net/">Форум C# .NET</a></span> </td> </tr> <tr> <td class="navbar" style="font-size:12pt; padding-top:5px" colspan="3"><a href="http://www.cyberforum.ru/csharp-net/thread325790.html"><img title="Перезагрузить страницу" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/navbits_finallink_ltr.gif" alt="Перезагрузить страницу" border="0"></a> <h1>
+	 Управление ячейками в MS Excel
+
+</h1></td> </tr> </tbody></table> </td> <td class="alt2" style="padding:0px" nowrap="nowrap">  <form action="http://www.cyberforum.ru/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)"> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_md5.js"></script> <table border="0" cellpadding="0" cellspacing="3"> <tbody><tr> <td class="smallfont" style="white-space: nowrap;"><label for="navbar_username">E-mail</label></td> <td><input class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="20" accesskey="u" tabindex="101" value="E-mail" onfocus="if (this.value == 'E-mail') this.value = '';" type="text"></td> <td class="smallfont" nowrap="nowrap"><label for="cb_cookieuser_navbar"><input name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" checked="checked" type="checkbox">Запомнить?</label></td> </tr> <tr> <td class="smallfont"><label for="navbar_password">Пароль</label></td> <td><input class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="20" tabindex="102" type="password"></td> <td><input class="button" value="Вход" tabindex="104" title="Введите адрес вашей электронной почты и пароль, чтобы войти, или нажмите кнопку 'Регистрация', чтобы зарегистрироваться." accesskey="s" type="submit"></td> </tr> <tr><td class="smallfont" colspan="2"><a href="http://www.cyberforum.ru/login.php?do=lostpw">Восстановить пароль</a></td> <td class="smallfont"><a href="http://www.cyberforum.ru/register.php">Регистрация</a></td> </tr> <tr> <td class="smallfont" colspan="3"></td> </tr> </tbody></table> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="login" type="hidden"> <input name="vb_login_md5password" type="hidden"> <input name="vb_login_md5password_utf" type="hidden"> </form>  </td> </tr> </tbody></table>   <div class="tborder" style="padding:1px; border-top-width:0px"> <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0"> <tbody><tr align="center"> <td class="vbmenu_control"><a href="http://www.cyberforum.ru/announcement.php?a=3">Правила</a></td> <td class="vbmenu_control"><a style="cursor: pointer;" id="vbbloglinks" href="http://www.cyberforum.ru/blogs/">Блоги <img alt="" title="" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/menu_open.gif" border="0"></a><script type="text/javascript">vbmenu_register("vbbloglinks");</script></td> <td class="vbmenu_control"><a style="cursor: pointer;" id="community" href="http://www.cyberforum.ru/csharp-net/thread325790.html?nojs=1#community" rel="nofollow" accesskey="6">Сообщество <img alt="" title="" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/menu_open.gif" border="0"></a> <script type="text/javascript"> vbmenu_register("community"); </script></td> <td class="vbmenu_control"><a href="http://www.cyberforum.ru/search.php" rel="nofollow">Поиск</a></td> </tr> </tbody></table> </div>  <table class="tborder" style="margin: 10px 0px 0px 0px;" width="100%" align="center" border="0" cellpadding="5" cellspacing="1"><tbody><tr> <td class="alt1" width="100%" align="center"> <script type="text/javascript"><!--
+google_ad_client = "ca-pub-6796001588681838";
+/* cyberforum.ru.header, 980x120 */
+google_ad_slot = "4392515799";
+google_ad_width = 980;
+google_ad_height = 120;
+//--> </script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:120px;margin:0;padding:0;position:relative;visibility:visible;width:980px"><ins id="aswift_0_anchor" style="display:block;border:none;height:120px;margin:0;padding:0;position:relative;visibility:visible;width:980px"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" scrolling="no" width="980" frameborder="0" height="120"></iframe></ins></ins> </td> </tr></tbody></table> <br>   <div class="vbmenu_popup" id="community_menu" style="display:none;margin-top:3px" align="left"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr><td class="thead">Ссылки сообщества</td></tr> <tr><td class="vbmenu_option"><a href="http://www.cyberforum.ru/groups/">Социальные группы</a></td></tr> </tbody></table> </div>   <div class="vbmenu_popup" id="navbar_search_menu" style="display:none;margin-top:3px" align="left"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="thead">Поиск по форуму</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/search.php?do=process" method="post"> <input name="do" value="process" type="hidden"> <input name="quicksearch" value="1" type="hidden"> <input name="childforums" value="1" type="hidden"> <input name="exactname" value="1" type="hidden"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <div><input class="bginput" name="query" size="25" tabindex="1001" type="text"><input class="button" value="Вперёд" tabindex="1004" type="submit"></div> <div style="margin-top:5px"> <label for="rb_nb_sp0"><input name="showposts" value="0" id="rb_nb_sp0" tabindex="1002" checked="checked" type="radio">Отобразить темы</label>
+						&nbsp;
+						<label for="rb_nb_sp1"><input name="showposts" value="1" id="rb_nb_sp1" tabindex="1003" type="radio">Отображать сообщения</label> </div> </form> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/tags/" rel="nofollow">Поиск по метке</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php" accesskey="4" rel="nofollow">Расширенный поиск</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/post_thanks.php?do=findallthanks">Найти все сообщения с благодарностями</a></td> </tr><tr> <td class="thead">Поиск по блогам</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/blog_search.php?do=dosearch" method="post"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="dosearch" type="hidden"> <input name="quicksearch" value="1" type="hidden"> <div><input class="bginput" name="text" size="25" tabindex="2003" type="text"><input class="button" value="Вперёд" tabindex="2004" type="submit"></div> </form> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/blogs/tags/" rel="nofollow">Поиск по метке</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/blog_search.php?do=search">Расширенный поиск</a></td> </tr> <tr> <td class="thead">Поиск пользователей</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/members/list/" method="post"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="getall" type="hidden"> <div><input class="bginput" name="ausername" size="25" title="Имя" type="text"><input class="button" value="Вперёд" type="submit"></div> </form> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/memberlist.php?do=search">Расширенный поиск пользователей</a></td> </tr> <tr><td class="thead">Мои сообщения и темы</td></tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?do=finduser&amp;u=0">Мои сообщения</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?do=process&amp;showposts=0&amp;starteronly=1&amp;exactname=1&amp;searchuser=%CD%E5%E7%E0%F0%E5%E3%E8%F1%F2%F0%E8%F0%EE%E2%E0%ED%ED%FB%E9">Мои темы</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?do=process&amp;showposts=0&amp;starteronly=0&amp;exactname=1&amp;searchuser=%CD%E5%E7%E0%F0%E5%E3%E8%F1%F2%F0%E8%F0%EE%E2%E0%ED%ED%FB%E9">Темы с моими сообщениями</a></td> </tr> </tbody></table> </div>    <div class="vbmenu_popup" id="pagenav_menu" style="display:none"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="thead" nowrap="nowrap">К странице...</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/" method="get" onsubmit="return this.gotopage()" id="pagenav_form"> <input class="bginput" id="pagenav_itxt" style="font-size:11px" size="4" type="text"> <input class="button" id="pagenav_ibtn" value="Вперёд" type="button"> </form> </td> </tr> </tbody></table> </div>  <a name="poststop" id="poststop"></a>  <table style="margin-bottom:3px" width="100%" border="0" cellpadding="0" cellspacing="0"> <tbody><tr valign="bottom"> <td class="smallfont" width="240px" align="left"> <a target="_blank" href="http://www.cyberforum.ru/newreply.php?do=newreply&amp;noquote=1&amp;p=1793321" rel="nofollow"><img title="Ответ" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/reply.gif" alt="Ответ" border="0"></a> <a target="_blank" href="http://www.cyberforum.ru/newthread.php?do=newthread&amp;f=18" rel="nofollow"><img title="Создать новую тему" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/newthread.gif" alt="Создать новую тему" border="0"></a></td> <td class="smallfont" style="padding-left: 5px;"></td> <td class="smallfont" align="left"></td> </tr> </tbody></table>   <table class="tborder" style="border-bottom-width:0px" width="100%" align="center" border="0" cellpadding="5" cellspacing="1"> <tbody><tr> <td class="tcat" width="100%"> <div class="smallfont">
+		
+		&nbsp;
+		</div> </td> <td style="cursor: pointer;" class="vbmenu_control" id="threadsearch" nowrap="nowrap"> <a href="http://www.cyberforum.ru/csharp-net/thread325790.html?nojs=1#goto_threadsearch">Поиск в этой теме</a> <script type="text/javascript"> vbmenu_register("threadsearch"); </script> <img alt="" title="" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/menu_open.gif" border="0"> </td> </tr> </tbody></table>   </div> </div> </div>   <div id="posts">  <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit1793321" style="padding:0px 0px 5px 0px">  <table id="post1793321" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post1793321"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			25.06.2011, 11:57
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post1793321.html" target="_blank" id="postcount1793321" name="1"><strong>1</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername"><font color="#991199">nio</font></span> </div> <div class="smallfont">Модератор</div> <div class="smallfont">
+					&nbsp;<br><img title="Аватар для nio" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/avatar29094_1.gif" alt="Аватар для nio" width="100" border="0" height="100"> </div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 14.06.2009</div> <div>Адрес: Беларусь</div> <div>
+					Сообщений: <b>7,042</b> </div> <div>Репутация: <span id="repdisplay_1793321_29094" title="Репутация пользователя"><b>4654</b></span> (<span id="repdisplay_1793321_29094" title="Благодарностей за сообщения">2573</span>)</div> <div>Записей в блоге: <a href="http://www.cyberforum.ru/blogs/29094/">2</a></div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_1793321" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="Вопрос" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon5.gif" alt="Вопрос" border="0"> <strong>Управление ячейками в MS Excel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_1793321">
+
+			
+			Всем привет!<br>
+Проблема такая: создаю документ MS Excel, кидаю в него данные. <br> <table class="csharp"><thead><tr><td colspan="2" class="head">Код C#</td></tr></thead><tbody><tr class="li1"><td><div id="221542073" style="overflow: auto; width: 750px; height: 302px"><table><tbody><tr class="li1"><td class="ln"><pre class="de1">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="de1"><pre class="de1">Microsoft<span class="sy0">.</span><span class="me1">Office</span><span class="sy0">.</span><span class="me1">Interop</span><span class="sy0">.</span><span class="me1">Excel</span><span class="sy0">.</span><span class="me1">Application</span> ObjExcel <span class="sy0">=</span> <span class="kw3">new</span> Microsoft<span class="sy0">.</span><span class="me1">Office</span><span class="sy0">.</span><span class="me1">Interop</span><span class="sy0">.</span><span class="me1">Excel</span><span class="sy0">.</span><span class="me1">Application</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Microsoft<span class="sy0">.</span><span class="me1">Office</span><span class="sy0">.</span><span class="me1">Interop</span><span class="sy0">.</span><span class="me1">Excel</span><span class="sy0">.</span><span class="me1">Workbook</span> ObjWorkBook<span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Microsoft<span class="sy0">.</span><span class="me1">Office</span><span class="sy0">.</span><span class="me1">Interop</span><span class="sy0">.</span><span class="me1">Excel</span><span class="sy0">.</span><span class="me1">Worksheet</span> ObjWorkSheet<span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ObjWorkBook <span class="sy0">=</span> ObjExcel<span class="sy0">.</span><span class="me1">Workbooks</span><span class="sy0">.</span><span class="me1">Open</span><span class="br0">(</span>saveFileDialog1<span class="sy0">.</span><span class="me1">FileName</span>,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span>,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Type<span class="sy0">.</span><span class="me1">Missing</span>, Type<span class="sy0">.</span><span class="me1">Missing</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ObjWorkSheet <span class="sy0">=</span> <span class="br0">(</span>Microsoft<span class="sy0">.</span><span class="me1">Office</span><span class="sy0">.</span><span class="me1">Interop</span><span class="sy0">.</span><span class="me1">Excel</span><span class="sy0">.</span><span class="me1">Worksheet</span><span class="br0">)</span>ObjWorkBook<span class="sy0">.</span><span class="me1">Sheets</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="sy0">;</span>
+&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ObjWorkSheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">2</span>, <span class="nu0">2</span><span class="br0">]</span> <span class="sy0">=</span> <span class="st0">"Hi!"</span><span class="sy0">;</span>
+<span class="co1">//тут нужно менять стиль ячейки</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ObjExcel<span class="sy0">.</span><span class="me1">Visible</span> <span class="sy0">=</span> <span class="kw1">true</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ObjExcel<span class="sy0">.</span><span class="me1">UserControl</span> <span class="sy0">=</span> <span class="kw1">true</span><span class="sy0">;</span></pre></td></tr></tbody></table></div></td></tr></tbody></table>Теперь
+ нужно для ячеек, в которые вставлены данные применить различные стили 
+(шрифты, цвет, выравнивание, формат данных) и сделать обводку границ. <br>
+Кто-нибудь знает, как такое сделать или где почитать об этом?
+
+		</div>  <div id="ad1" style="margin-top: 5px;"> <script type="text/javascript"><!--
+google_ad_client = "ca-pub-6796001588681838";
+/* cyberforum.ru.firstpost, 336x280 */
+google_ad_slot = "7752057143";
+google_ad_width = 336;
+google_ad_height = 280;
+//--> </script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" scrolling="no" width="336" frameborder="0" height="280"></iframe></ins></ins> </div> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="nio вне форума" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_offline.gif" alt="nio вне форума" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/share.js" charset="utf-8"></script> <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,moikrug,gplus"><span class="b-share"><a class="b-share__handle" id="ya-share-0.20695296755949133-1376044046270" data-hdirection="" data-vdirection=""><span class="b-share-form-button b-share-form-button_share"><i class="b-share-form-button__before"></i><i class="b-share-form-button__icon"></i>Поделиться…<i class="b-share-form-button__after"></i></span></a><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link b-share-btn__yaru" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a><a rel="nofollow" target="_blank" title="Мой Круг" class="b-share__handle b-share__link b-share-btn__moikrug" href="http://share.yandex.ru/go.xml?service=moikrug&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="moikrug"><span class="b-share-icon b-share-icon_moikrug"></span></a><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span></a></span></div> </td> </tr> </tbody></table> <div id="post_thanks_box_1793321"></div>   <div style="margin: 5px 0px 0px 0px">  <table class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="1"> <thead> <tr> <td class="tcat">
+					Другие темы раздела
+				</td> <td class="tcat" align="right"> <span class="smallfont">Форум программистов C#. Вопросы использования языка программирования C# .NET. Помощь в решении задач. </span></td> </tr> </thead> <tbody><tr> <td class="alt1" valign="top" width="50%" align="left"> <strong><a target="_blank" href="http://www.cyberforum.ru/csharp-net/thread325793.html">Движение объектов по полю и их форматирование C# .NET </a></strong><br><span class="smallfont">Программа
+ создает кружок в указанном кликом мышки месте, который движется и 
+отскакивает от красных стенок как бильярдный шар. В любой момент можно 
+остановить и возобновить анимацию. Необходимо реализовать возможность 
+добавления нескольких кружков, задавать направление их движения кликом 
+мыши,.... Движение объектов по полю и их форматирование</span> </td> <td class="alt1" valign="top" width="50%" align="left"> <strong><a target="_blank" href="http://www.cyberforum.ru/csharp-net/thread325887.html">Версия http Протокола C# .NET </a></strong><br><span class="smallfont">Собсно сабж, как е1 изменить. 
+Т.е. сейчас при httpWebRequest'e версия протокола стоит 1.1 
+Мне нужно поставить 1.0.. Версия http Протокола</span> </td></tr></tbody> </table>  </div> </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit1793643" style="padding:0px 0px 5px 0px">  <table id="post1793643" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post1793643"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			25.06.2011, 15:10
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post1793643.html" target="_blank" id="postcount1793643" name="2"><strong>2</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername">Петррр</span> </div> <div class="smallfont">Thug Life</div> <div class="smallfont">
+					&nbsp;<br><img title="Аватар для Петррр" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/avatar121468_6.gif" alt="Аватар для Петррр" width="75" border="0" height="100"> </div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 28.10.2010</div> <div>Адрес: Бомбей</div> <div>
+					Сообщений: <b>5,386</b> </div> <div>Репутация: <span id="repdisplay_1793643_121468" title="Репутация пользователя"><b>3503</b></span> (<span id="repdisplay_1793643_121468" title="Благодарностей за сообщения">2475</span>)</div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_1793643" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>Re: управление ячейками в MS EXcel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_1793643">
+
+			
+			Читать можно на MSDN, да ты и сам это знаешь.<br> <br> <font size="1"><font color="grey"><i>Добавлено через 12 минут</i></font></font><br> <table class="csharp"><thead><tr><td colspan="2" class="head">Код C#</td></tr></thead><tbody><tr class="li1"><td><div id="39233461" style="overflow: auto; width: 750px; height: 510px"><table><tbody><tr class="li1"><td class="ln"><pre class="de1">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="de1"><pre class="de1"><span class="kw1">using</span> <span class="co3">System</span><span class="sy0">;</span>
+<span class="kw1">using</span> <span class="co3">Excel </span><span class="sy0">=</span> Microsoft<span class="sy0">.</span><span class="me1">Office</span><span class="sy0">.</span><span class="me1">Interop</span><span class="sy0">.</span><span class="me1">Excel</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw4">class</span> Program
+<span class="br0">{</span>
+&nbsp; &nbsp; <span class="kw1">static</span> <span class="kw4">void</span> Main<span class="br0">(</span><span class="kw4">string</span><span class="br0">[</span><span class="br0">]</span> args<span class="br0">)</span>
+&nbsp; &nbsp; <span class="br0">{</span>
+&nbsp; &nbsp; &nbsp; &nbsp; Excel<span class="sy0">.</span><span class="me1">Application</span> application <span class="sy0">=</span> <span class="kw3">new</span> Excel<span class="sy0">.</span><span class="me1">Application</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">Object</span> missing <span class="sy0">=</span> Type<span class="sy0">.</span><span class="me1">Missing</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//добавили книгу</span>
+&nbsp; &nbsp; &nbsp; &nbsp; application<span class="sy0">.</span><span class="me1">Workbooks</span><span class="sy0">.</span><span class="me1">Add</span><span class="br0">(</span>missing<span class="br0">)</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; Excel<span class="sy0">.</span><span class="me1">Worksheet</span> sheet <span class="sy0">=</span> <span class="br0">(</span>Excel<span class="sy0">.</span><span class="me1">Worksheet</span><span class="br0">)</span>application<span class="sy0">.</span><span class="me1">ActiveSheet</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//вписываем текст</span>
+&nbsp; &nbsp; &nbsp; &nbsp; sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="sy0">=</span> <span class="st0">"hi!"</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span><span class="br0">(</span>Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span>sheet<span class="sy0">.</span><span class="me1">Columns</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">ColumnWidth</span> <span class="sy0">=</span> <span class="nu0">15</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//жирность</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">Font</span><span class="sy0">.</span><span class="me1">Bold</span> <span class="sy0">=</span> <span class="kw1">true</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//размер шрифта</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">Font</span><span class="sy0">.</span><span class="me1">Size</span> <span class="sy0">=</span> <span class="nu0">16</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//название шрифта</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">Font</span><span class="sy0">.</span><span class="me1">Name</span> <span class="sy0">=</span> <span class="st0">"Times New Roman"</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//стиль границы</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">Borders</span><span class="br0">[</span>Excel<span class="sy0">.</span><span class="me1">XlBordersIndex</span><span class="sy0">.</span><span class="me1">xlEdgeBottom</span><span class="br0">]</span><span class="sy0">.</span><span class="me1">LineStyle</span> <span class="sy0">=</span> Excel<span class="sy0">.</span><span class="me1">XlLineStyle</span><span class="sy0">.</span><span class="me1">xlDouble</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//толщина границы</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">Borders</span><span class="br0">[</span>Excel<span class="sy0">.</span><span class="me1">XlBordersIndex</span><span class="sy0">.</span><span class="me1">xlEdgeBottom</span><span class="br0">]</span><span class="sy0">.</span><span class="me1">Weight</span> <span class="sy0">=</span> Excel<span class="sy0">.</span><span class="me1">XlBorderWeight</span><span class="sy0">.</span><span class="me1">xlMedium</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//выравнивание по горизонтали</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">HorizontalAlignment</span> <span class="sy0">=</span> Excel<span class="sy0">.</span><span class="me1">XlHAlign</span><span class="sy0">.</span><span class="me1">xlHAlignCenter</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//выравнивание по вертикали</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="kw1">as</span> Excel<span class="sy0">.</span><span class="me1">Range</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">VerticalAlignment</span> <span class="sy0">=</span> Excel<span class="sy0">.</span><span class="me1">XlVAlign</span><span class="sy0">.</span><span class="me1">xlVAlignCenter</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//объединение ячеек</span>
+&nbsp; &nbsp; &nbsp; &nbsp; sheet<span class="sy0">.</span><span class="me1">get_Range</span><span class="br0">(</span>sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">2</span>, <span class="nu0">2</span><span class="br0">]</span>, sheet<span class="sy0">.</span><span class="me1">Cells</span><span class="br0">[</span><span class="nu0">4</span>, <span class="nu0">4</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">.</span><span class="me1">Merge</span><span class="br0">(</span>missing<span class="br0">)</span><span class="sy0">;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; application<span class="sy0">.</span><span class="me1">Visible</span> <span class="sy0">=</span> <span class="kw1">true</span><span class="sy0">;</span>
+&nbsp; &nbsp; <span class="br0">}</span>
+<span class="br0">}</span>
+&nbsp;</pre></td></tr></tbody></table></div></td></tr></tbody></table> </div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="Петррр вне форума" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_offline.gif" alt="Петррр вне форума" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_1793643"></div>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2899605" style="padding:0px 0px 5px 0px">  <table id="post2899605" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2899605"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			11.04.2012, 15:31
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2899605.html" target="_blank" id="postcount2899605" name="3"><strong>3</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername">shefkzn</span> </div> <div class="smallfont">Новичок</div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 28.09.2009</div> <div>
+					Сообщений: <b>4</b> </div> <div>Репутация: <span id="repdisplay_2899605_40882" title="Репутация пользователя"><b>1</b></span> (<span id="repdisplay_2899605_40882" title="Благодарностей за сообщения">1</span>)</div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2899605" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="Радость" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon7.gif" alt="Радость" border="0"> <strong>Re: управление ячейками в MS EXcel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2899605">
+
+			
+			Вот <a href="http://www.cyberforum.ru/redirector.php?url=aHR0cCUzQSUyRiUyRnd3dy54bi0tODBhZ3BraGtvci5uZXQlMkYyMDEyJTJGYy1leGNlbC0lMjVEMCUyNUIzJTI1RDElMjU4MCUyNUQwJTI1QjAlMjVEMCUyNUJEJTI1RDAlMjVCOCUyNUQxJTI1ODYlMjVEMSUyNThCLSUyNUQxJTI1OEYlMjVEMSUyNTg3JTI1RDAlMjVCNSUyNUQwJTI1QjklMjVEMCUyNUJBJTI1RDAlMjVCOC0lMjVEMCUyNUJGJTI1RDElMjU4MCUyNUQwJTI1QkUlMjVEMCUyNUIzJTI1RDElMjU4MCUyNUQwJTI1QjAlMjVEMCUyNUJDJTI1RDAlMjVCRCUyNUQwJTI1QkUlMjVEMCUyNUI1LSUyNUQwJTI1QjclMjVEMCUyNUIwJTI1RDAlMjVCNCUyNUQwJTI1QjAlMjVEMCUyNUJEJTI1RDAlMjVCOCUyNUQwJTI1QjUtJTI1RDAlMjVCMyUyNUQxJTI1ODAlMjVEMCUyNUIwJTI1RDAlMjVCRCUyNUQwJTI1QjglMjVEMSUyNTg2LSUyNUQxJTI1OEYlMjVEMSUyNTg3JTI1RDAlMjVCNSUyNUQwJTI1QjklMjVEMCUyNUJBJTI1RDAlMjVCOA==" target="_blank" title="xn--80agpkhkor.net/2012/c-excel-%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B-%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B8-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86-%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B8" rel="nofollow">тут</a> есть короткое, но толковое описание того как работать с границами ячейки
+
+		</div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="shefkzn вне форума" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_offline.gif" alt="shefkzn вне форума" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_2899605"></div>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2900505" style="padding:0px 0px 5px 0px">  <table id="post2900505" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2900505"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			11.04.2012, 19:33
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2900505.html" target="_blank" id="postcount2900505" name="4"><strong>4</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername"><font color="#b5a642">Памирыч</font></span> </div> <div class="smallfont">Почетный модератор</div> <div class="smallfont">
+					&nbsp;<br><img title="Аватар для Памирыч" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/avatar93029_13.gif" alt="Аватар для Памирыч" width="64" border="0" height="64"> </div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 11.04.2010</div> <div>Адрес: Деревня Курган</div> <div>
+					Сообщений: <b>7,247</b> </div> <div>Репутация: <span id="repdisplay_2900505_93029" title="Репутация пользователя"><b>10836</b></span> (<span id="repdisplay_2900505_93029" title="Благодарностей за сообщения">3031</span>)</div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2900505" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>Re: Управление ячейками в MS EXcel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">  <div style="margin-bottom: 5px;"> <script type="text/javascript"><!--
+google_ad_client = "ca-pub-6796001588681838";
+/* cyberforum.ru.centerpost, 336x280 */
+google_ad_slot = "5800659153";
+google_ad_width = 336;
+google_ad_height = 280;
+//--> </script> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><ins id="aswift_2_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;" scrolling="no" width="336" frameborder="0" height="280"></iframe></ins></ins> </div>  <div id="post_message_2900505"> <b>nio</b>, я обычно нужное действие записываю макрорекордером и смотрю код записанного макроса
+
+		</div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="Памирыч на форуме" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_online.gif" alt="Памирыч на форуме" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_2900505"></div>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2901069" style="padding:0px 0px 5px 0px">  <table id="post2901069" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2901069"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			11.04.2012, 21:39
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2901069.html" target="_blank" id="postcount2901069" name="5"><strong>5</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername">Speedy Gonzales</span> </div> <div class="smallfont">Новичок</div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 22.10.2010</div> <div>Адрес: Ленинград</div> <div>
+					Сообщений: <b>44</b> </div> <div>Репутация: <span id="repdisplay_2901069_120248" title="Репутация пользователя"><b>4</b></span> (<span id="repdisplay_2901069_120248" title="Благодарностей за сообщения">4</span>)</div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2901069" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>Re: Управление ячейками в MS EXcel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2901069"> <div "=""> <div style="padding-left:20px;"> <div class="bbcode_container"> <div class="bbcode_quote"> <div class="btbtbt"> <div class="quote_container"> <div class="bbcode_quote_container"></div> <div class="bbcode_postedby"> <img title="Цитата" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/quote_icon.png" alt="Цитата">
+								Сообщение от <strong>Памирыч</strong> <a href="http://www.cyberforum.ru/csharp-net/thread325790.html#post2900505" rel="nofollow"><img title="Посмотреть сообщение" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/viewpost-right.png" alt="Посмотреть сообщение" border="0"></a> </div> <div class="message"><b>nio</b>, я обычно нужное действие записываю макрорекордером и смотрю код записанного макроса</div> </div> </div> </div> </div> </div> </div>
+ да, да. Совершенно верно, запускается Excel, запускается запись кода 
+макроса, выполняются нужные действия: объединение, форматирование, 
+выделение цветом и т.д. И затем просматривается сам записанный код и 
+вставляется в C#.<br>
+Если при выполнении кода из C# окно Excel видимо, то можно как мультик 
+смотреть как ячейки преобразовываются последовательно записному коду 
+скрипта. На многих производит впечатление. <img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/smile3.gif" alt="" title=":)" class="inlineimg" border="0"> </div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="Speedy Gonzales вне форума" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_offline.gif" alt="Speedy Gonzales вне форума" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_2901069"></div>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2901082" style="padding:0px 0px 5px 0px">  <table id="post2901082" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2901082"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			11.04.2012, 21:42
+			
+			
+
+&nbsp;<b>[ТС]</b> </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2901082.html" target="_blank" id="postcount2901082" name="6"><strong>6</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername"><font color="#991199">nio</font></span> </div> <div class="smallfont">Модератор</div> <div class="smallfont">
+					&nbsp;<br><img title="Аватар для nio" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/avatar29094_1.gif" alt="Аватар для nio" width="100" border="0" height="100"> </div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 14.06.2009</div> <div>Адрес: Беларусь</div> <div>
+					Сообщений: <b>7,042</b> </div> <div>Репутация: <span id="repdisplay_2901082_29094" title="Репутация пользователя"><b>4654</b></span> (<span id="repdisplay_2901082_29094" title="Благодарностей за сообщения">2573</span>)</div> <div>Записей в блоге: <a href="http://www.cyberforum.ru/blogs/29094/">2</a></div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2901082" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>Re: Управление ячейками в MS Excel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2901082"> <b>shefkzn</b>, <b>Памирыч</b>, откопали же <img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/ag.gif" alt="" title=":D" class="inlineimg" border="0"><br>
+Но все-равно спасибо <img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/smile3.gif" alt="" title=":)" class="inlineimg" border="0"> </div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="nio вне форума" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_offline.gif" alt="nio вне форума" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_2901082"></div>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2902088" style="padding:0px 0px 5px 0px"> <div style="margin: 0px 0px 5px 0px"> <table class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA" colspan="2">  <a name="post2902088"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			12.04.2012, 06:07
+			
+			 </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <span class="bigusername">Yandex</span> <div class="smallfont">Объявления</div> </td> <td class="alt1" style="border-right: 1px solid #AAAAAA" align="left">  <div id="yandex_ad"><div id="ya_partner_1" style="background:transparent none no-repeat scroll 0 0 !important;border:none !important;border-radius:none !important;border-spacing:0 !important;border-collapse:collapse !important;-moz-box-sizing:content-box !important;box-sizing:content-box !important;clear:none !important;clip:auto !important;color:inherit !important;cursor:auto !important;empty-cells:show !important;float:none !important;font:inherit !important;font-variant:normal !important;font-weight:normal !important;height:auto !important;letter-spacing:normal !important;line-height:normal !important;margin:0 !important;max-height:none !important;max-width:none !important;min-height:0 !important;min-width:0 !important;outline:none !important;overflow:visible !important;padding:0 !important;position:static !important;table-layout:auto !important;text-align:left !important;text-decoration:none !important;text-indent:0 !important;text-transform:none !important;vertical-align:baseline !important;visibility:visible !important;white-space:normal !important;width:auto !important;word-spacing:normal !important;z-index:auto !important;display:block !important;"><yatag class="ya-partner_ads-up ya-partner_theme_flat  ya-partner ya-partner_type_flat ya-partner_type_flat-simple"><yatag class="ya-partner__ads"><yatag class="ya-partner__ads-l"><a href="http://direct.yandex.ru/?partner" class="ya-partner__ads-link ya-partner__ads-link-l" target="_blank">Яндекс.Директ</a></yatag><yatag class="ya-partner__ads-r"><a href="http://direct.yandex.ru/search?from=http://www.cyberforum.ru/csharp-net/thread325790.html&amp;ref-page=29317" class="ya-partner__ads-link ya-partner__ads-link-r" target="_blank">Все объявления</a></yatag></yatag><yatag class="ya-partner__list"><yatag class="ya-partner__item ya-partner__item_pos_first"><a href="http://an.yandex.ru/count/DApdIZu9sYS40000ZhD0J205XPKe1vK2cm5kGxS2Am4qYBTMSS02YQTcmucOYXoUfXgz0PsiLqeEbgxvDEQwyzisJzCiX105ag8-eyUcAugdyQ9lgW6bgT8O0f6xG0XP38-n3Nv00f-_D36229ED2PbxGeoGpKQWa3v9hv3DHfIGkGsdZRUee3f29AJ00000606i4QxsJRX4wZU1umImjhUM5m6n0R8Gk_m3I3MD4iK90duK?stat-id=2&amp;test-tag=1073" class="ya-partner__title-link" target="_blank"><yatag class="ya-partner__title-link-text">Автошкола «Крутой поворот»(Минск)</yatag></a> <yatag class="ya-partner__text">Центр! Гибкий график теории и&nbsp;вождения! Высокое качество обучения! <yatag class="ya-partner__agewarn-cont"><yatag class="ya-partner__agewarn">18+</yatag></yatag><yatag class="ya-partner__clearfix"></yatag></yatag> <yatag class="ya-partner__url"><a class="ya-partner__address" href="http://an.yandex.ru/count/DApdIWpH9fq40000ZhD0J205XPKe1vK2cm5kGxS2Am4qYBTMSS02YQTcmucOYXoUfXgz0PsiLqeEbgxvDEQwyzisJzCiX105ag8-eyUcAugdyQ9lgWUbgT8O0f6xG0XP38-n3Nv00f-_D36229ED2PbxGeoGpKQWa3v9hv3DHfIGkGsdZRUee3f29AJ00000606i4QxsJRX4wZU1umImjhUM5m6n0R8Gk_m3I3MD4iK90duK?stat-id=2&amp;test-tag=1073" target="_blank">Адрес&nbsp;и&nbsp;телефон</a>&nbsp;<yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/DApdIZu9sYS40000ZhD0J205XPKe1vK2cm5kGxS2Am4qYBTMSS02YQTcmucOYXoUfXgz0PsiLqeEbgxvDEQwyzisJzCiX105ag8-eyUcAugdyQ9lgW6bgT8O0f6xG0XP38-n3Nv00f-_D36229ED2PbxGeoGpKQWa3v9hv3DHfIGkGsdZRUee3f29AJ00000606i4QxsJRX4wZU1umImjhUM5m6n0R8Gk_m3I3MD4iK90duK?stat-id=2&amp;test-tag=1073" target="_blank">avtopovorot.by</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag><yatag class="ya-partner__agewarn-cont"><yatag class="ya-partner__agewarn">18+</yatag></yatag><yatag class="ya-partner__clearfix"></yatag></yatag></yatag><yatag class="ya-partner__item"><a href="http://an.yandex.ru/count/DApdIeZtJWK40000ZhD0J205XPKe1vK2cm5kGxS2Am4rYBYabm02YQ9He1AOYXoUfXgz0PsYxee9bgxvDEQwyzisJzCiX105agu7fSQc7ugdkwHkgW6bgwaM0f6xG0XP38-n3Nv00f-_D36229ED2PbxGeoG9pYWa9Wwhv0dE9IGkGsdXhQeeAaj6gJ00000606i4QxsJRX4wZU1umImjhUM5m6n0R8Gk_m3I3MD4iK90duK?stat-id=2&amp;test-tag=1073" class="ya-partner__title-link" target="_blank"><img class="ya-partner__icon" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/avtovirtuoz.png" alt=""><yatag class="ya-partner__title-link-text">Автошкола ВиртуозАвто! В&nbsp;Минске!</yatag></a> <yatag class="ya-partner__text">Учебные классы у&nbsp;м.Уручье и&nbsp;пл.Я.Коласа! Удобный график! Суперакция!</yatag> <yatag class="ya-partner__url"><a class="ya-partner__address" href="http://an.yandex.ru/count/DApdIhelihy40000ZhD0J205XPKe1vK2cm5kGxS2Am4rYBYabm02YQ9He1AOYXoUfXgz0PsYxee9bgxvDEQwyzisJzCiX105agu7fSQc7ugdkwHkgWUbgwaM0f6xG0XP38-n3Nv00f-_D36229ED2PbxGeoG9pYWa9Wwhv0dE9IGkGsdXhQeeAaj6gJ00000606i4QxsJRX4wZU1umImjhUM5m6n0R8Gk_m3I3MD4iK90duK?stat-id=2&amp;test-tag=1073" target="_blank">Адрес&nbsp;и&nbsp;телефон</a>&nbsp;<yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/DApdIeZtJWK40000ZhD0J205XPKe1vK2cm5kGxS2Am4rYBYabm02YQ9He1AOYXoUfXgz0PsYxee9bgxvDEQwyzisJzCiX105agu7fSQc7ugdkwHkgW6bgwaM0f6xG0XP38-n3Nv00f-_D36229ED2PbxGeoG9pYWa9Wwhv0dE9IGkGsdXhQeeAaj6gJ00000606i4QxsJRX4wZU1umImjhUM5m6n0R8Gk_m3I3MD4iK90duK?stat-id=2&amp;test-tag=1073" target="_blank">avtovirtuoz.by</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag></yatag></yatag><yatag class="ya-partner__item"><a href="http://an.yandex.ru/count/DApdIeC5-C440000ZhD0J205XPKe1vK2cm5kGxS2Am4sYBnNQR02YQkqOmEOeaoylfwc6hq1dQU6jGMMhlaqvhhpspPFqoo440MIfzg3bAOgYgLFWZog0QMh1uu1aRj025aCZwdcOlcVli2p8GwJZGcPEKACaBOre92OEg-GjZMKb1GkfugfgAen90oam00001W1h16kzasuHEetWUC4iBQtbXS1iG6o4Bly0qWrZHB52G9_5000?stat-id=2&amp;test-tag=1073" class="ya-partner__title-link" target="_blank"><yatag class="ya-partner__title-link-text">Штрих-код в&nbsp;1С.</yatag></a> <yatag class="ya-partner__text">Комплекс работ по&nbsp;организации учета товара по&nbsp;штрих-коду. Обращайтесь <yatag class="ya-partner__agewarn-cont"><yatag class="ya-partner__agewarn">18+</yatag></yatag><yatag class="ya-partner__clearfix"></yatag></yatag> <yatag class="ya-partner__url"><a class="ya-partner__address" href="http://an.yandex.ru/count/DApdIeELeUq40000ZhD0J205XPKe1vK2cm5kGxS2Am4sYBnNQR02YQkqOmEOeaoylfwc6hq1dQU6jGMMhlaqvhhpspPFqoo440MIfzg3bAOgYgLFWZog1wMh1uu1aRj025aCZwdcOlcVli2p8GwJZGcPEKACaBOre92OEg-GjZMKb1GkfugfgAen90oam00001W1h16kzasuHEetWUC4iBQtbXS1iG6o4Bly0qWrZHB52G9_5000?stat-id=2&amp;test-tag=1073" target="_blank">Адрес&nbsp;и&nbsp;телефон</a>&nbsp;<yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/DApdIeC5-C440000ZhD0J205XPKe1vK2cm5kGxS2Am4sYBnNQR02YQkqOmEOeaoylfwc6hq1dQU6jGMMhlaqvhhpspPFqoo440MIfzg3bAOgYgLFWZog0QMh1uu1aRj025aCZwdcOlcVli2p8GwJZGcPEKACaBOre92OEg-GjZMKb1GkfugfgAen90oam00001W1h16kzasuHEetWUC4iBQtbXS1iG6o4Bly0qWrZHB52G9_5000?stat-id=2&amp;test-tag=1073" target="_blank">1cka.by</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag><yatag class="ya-partner__agewarn-cont"><yatag class="ya-partner__agewarn">18+</yatag></yatag><yatag class="ya-partner__clearfix"></yatag></yatag></yatag><yatag class="ya-partner__item ya-partner__item_pos_last"><a href="http://an.yandex.ru/count/DApdIlHAoK840000ZhD0J205XPKe1vK2cm5kGxS2Am4tYBf_Oq03YQHoPiYO1vwc6hq1dQ8s00MMhlaqvhhpspPFqoo440MIf6AhjgOpYg0Ngrwg0QMjIkm1aRj025aCZwdcOlcVli2p8GwJZGcPEKACa0aze90-IQ-G2JsKa_esfuLygADCdmcam00001W1h16kzasuHEetWUC4iBQtbXS1iG6o4Bly0qWrZHB52G9y5000?stat-id=2&amp;test-tag=1073" class="ya-partner__title-link" target="_blank"><img class="ya-partner__icon" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/www.png" alt=""><yatag class="ya-partner__title-link-text">Сканеры штрих кодов в&nbsp;Смоленске!</yatag></a> <yatag class="ya-partner__text">Торговое оборудование: Сканеры штрих-кодов, POS-терминалы, регистраторы.</yatag> <yatag class="ya-partner__url"><a class="ya-partner__address" href="http://an.yandex.ru/count/DApdIlJQa6u40000ZhD0J205XPKe1vK2cm5kGxS2Am4tYBf_Oq03YQHoPiYO1vwc6hq1dQ8s00MMhlaqvhhpspPFqoo440MIf6AhjgOpYg0Ngrwg1wMjIkm1aRj025aCZwdcOlcVli2p8GwJZGcPEKACa0aze90-IQ-G2JsKa_esfuLygADCdmcam00001W1h16kzasuHEetWUC4iBQtbXS1iG6o4Bly0qWrZHB52G9y5000?stat-id=2&amp;test-tag=1073" target="_blank">Адрес&nbsp;и&nbsp;телефон</a>&nbsp;<yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/DApdIlHAoK840000ZhD0J205XPKe1vK2cm5kGxS2Am4tYBf_Oq03YQHoPiYO1vwc6hq1dQ8s00MMhlaqvhhpspPFqoo440MIf6AhjgOpYg0Ngrwg0QMjIkm1aRj025aCZwdcOlcVli2p8GwJZGcPEKACa0aze90-IQ-G2JsKa_esfuLygADCdmcam00001W1h16kzasuHEetWUC4iBQtbXS1iG6o4Bly0qWrZHB52G9y5000?stat-id=2&amp;test-tag=1073" target="_blank">legasoft.ru</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag></yatag></yatag></yatag></yatag></div></div> <script type="text/javascript">
+(function(w, d, n, s, t) {
+w[n] = w[n] || [];
+w[n].push(function() {
+Ya.Direct.insertInto(29317, "yandex_ad", {
+stat_id: 1823142,
+site_charset: "windows-1251",
+ad_format: "direct",
+font_size: 1,
+type: "flat",
+limit: 3,
+title_font_size: 1,
+site_bg_color: "F4F4F4",
+title_color: "000080",
+url_color: "666666",
+text_color: "000000",
+hover_color: "0066FF",
+favicon: true
+});
+});
+t = d.documentElement.firstChild;
+s = d.createElement("script");
+s.type = "text/javascript";
+s.src = "http://an.yandex.ru/system/context.js";
+s.setAttribute("async", "true");
+t.insertBefore(s, t.firstChild);
+})(window, document, "yandex_context_callbacks");
+</script> </td> </tr> </tbody></table> </div> <table id="post2902088" class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2902088"><img title="Старый" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			12.04.2012, 06:07
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2902088.html" target="_blank" id="postcount2902088" name="7"><strong>7</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername"><font color="#b5a642">Памирыч</font></span> </div> <div class="smallfont">Почетный модератор</div> <div class="smallfont">
+					&nbsp;<br><img title="Аватар для Памирыч" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/avatar93029_13.gif" alt="Аватар для Памирыч" width="64" border="0" height="64"> </div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 11.04.2010</div> <div>Адрес: Деревня Курган</div> <div>
+					Сообщений: <b>7,247</b> </div> <div>Репутация: <span id="repdisplay_2902088_93029" title="Репутация пользователя"><b>10836</b></span> (<span id="repdisplay_2902088_93029" title="Благодарностей за сообщения">3031</span>)</div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2902088" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>Re: Управление ячейками в MS Excel</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2902088"> <div style="padding:0px 20px 0px 20px"><br> <font class="smallfont" color="#888888"> <b>Не по теме:</b><br> <div "=""> <div style="padding-left:20px;"> <div class="bbcode_container"> <div class="bbcode_quote"> <div class="btbtbt"> <div class="quote_container"> <div class="bbcode_quote_container"></div> <div class="bbcode_postedby"> <img title="Цитата" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/quote_icon.png" alt="Цитата">
+								Сообщение от <strong>nio</strong> <a href="http://www.cyberforum.ru/csharp-net/thread325790.html#post2901082" rel="nofollow"><img title="Посмотреть сообщение" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/viewpost-right.png" alt="Посмотреть сообщение" border="0"></a> </div> <div class="message">откопали же</div> </div> </div> </div> </div> </div> </div> <img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/huh.gif" alt="" title=":wall:" class="inlineimg" border="0"><br>
+Е-мое, я-то чем смотрел <img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/huh.gif" alt="" title=":wall:" class="inlineimg" border="0"><img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/negative.gif" alt="" title=":negative:" class="inlineimg" border="0"> </font> </div> </div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="Памирыч на форуме" class="inlineimg" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/user_online.gif" alt="Памирыч на форуме" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" valign="top" align="left"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_2902088"></div>   <div style="background-color: #FFFACD; border: 1px solid #CDBFA2; margin: 10px 0px 5px 0px; padding: 7px; text-align:center; font-size: 15px"> <b>После <a href="http://www.cyberforum.ru/register.php">регистрации</a> реклама в сообщениях будет скрыта.</b> </div> </div> </div> </div> </div>  <div id="lastpost"></div></div>   <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left">   <table style="margin-top:-2px" width="100%" border="0" cellpadding="0" cellspacing="0"> <tbody><tr valign="top"> <td class="smallfont" width="240px"> <a target="_blank" href="http://www.cyberforum.ru/newreply.php?do=newreply&amp;noquote=1&amp;p=2902088" rel="nofollow"><img title="Ответ" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/reply.gif" alt="Ответ" border="0"></a> <a target="_blank" href="http://www.cyberforum.ru/newthread.php?do=newthread&amp;f=18" rel="nofollow"><img title="Создать новую тему" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/newthread.gif" alt="Создать новую тему" border="0"></a></td> </tr> </tbody></table>  <table> <tbody><tr> <td width="100%"></td> <td> </td> </tr> </tbody></table>  <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/vbulletin_lightbox.js"></script> <script type="text/javascript"> <!--
+	vBulletin.register_control("vB_Lightbox_Container", "posts", 1);
+	//--> </script>  <br> <table class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="1"> <thead> <tr> <td class="tcat" colspan="2" width="100%">
+			Похожие темы<a name="similarthreads"></a> </td> </tr> </thead> <tbody> <tr class="thead" align="center"> <td class="thead">Тема</td> <td class="thead" width="10%" nowrap="nowrap">Автор</td>  </tr> <tr> <td class="alt1" align="left"> <b>VBA</b> <a target="_blank" href="http://www.cyberforum.ru/vba/thread502677.html"> <b>Управление страницами в Excel</b></a><br><span class="smallfont">Всем
+ здрасте. 
+Люди добрые, может кто знает, как в Excele определить какая это 
+страница, и если это например страница 2 и на най нет данных а только 
+например МП и подписи, то при печати уменьшить масштаб до заданного 
+размера. Это решение необходимо для массовой распечатки документов (есть
+ лист-база...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">Perceff</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>VBA</b> <a target="_blank" href="http://www.cyberforum.ru/vba/thread488245.html"> <b>Работа с ячейками в Excel</b></a><br><span class="smallfont">Может это скорее вопрос не по ВБА, а по Экселю. 
+Есть табличка, у которой нельзя менять ширину столбцов. 
+И есть текст на том же листе, который надо напечатать под таблицей. 
+Если я объединяю ячейки на нужную ширину - текст не переносится, а если не объединяю - то переносится по размерам своего...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">grigan</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>VBA</b> <a target="_blank" href="http://www.cyberforum.ru/vba/thread463278.html"> <b>управление COM ,LPT макросом EXCEL</b></a><br><span class="smallfont">Open
+ 'COM2:' For Output As #1 
+    Get #1, 1, qqq 
+    Close #1 
+Пробовал так -виснет, судя по всему если к порту не подключено ни какое 
+устройство невозможно закончить процес чтения или записи в порт т.к.нет 
+ответа о принятии байта или отпрправлении из порта. 
+А хотелось бы как в Ассемблер считать...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">feord</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>Visual Basic</b> <a target="_blank" href="http://www.cyberforum.ru/visual-basic/thread462105.html"> <b>Управление Excel-шаблоном из VB</b></a><br><span class="smallfont">Добрый
+ день. 
+Все началось с простой идеи использования Excel для формирования 
+произвольных отчетов: 
+0. Подготовленный юзером Excel-шаблон заносится в blob-поле БД; 
+Последующая работа ведется уже не с XLS-файлом а его образом в blob'e 
+(из соображений контроля доступа). Здесь все нормально. 
+1. На...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">pwa</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>C++ Builder</b> <a target="_blank" href="http://www.cyberforum.ru/cpp-builder/thread2217.html"> <b>Управление Excel из С++ Builder 6</b></a><br><span class="smallfont">Друзья спаите, помогите!!! Нужно написать метод записи строки в ячейку Exsel. 
+ 
+class ExServer 
+{ 
+public: 
+ 
+ExServer(); 
+~ExServer(); 
+ 
+bool ExcelOpen();  //открывает Excel</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">Гость</span></td>  </tr> </tbody> </table>  <br>     <div class="vbmenu_popup" id="threadsearch_menu" style="display:none"> <form action="http://www.cyberforum.ru/search.php?do=process&amp;searchthreadid=325790" method="post"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="thead">Поиск в этой теме<a name="goto_threadsearch"></a></td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="process" type="hidden"> <input name="searchthreadid" value="325790" type="hidden"> <input class="bginput" name="query" size="25" type="text"><input class="button" value="Вперёд" type="submit"><br> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?searchthreadid=325790">Расширенный поиск</a></td> </tr> </tbody></table> </form> </div>     <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0"> <tbody><tr valign="bottom"> <td valign="top" width="100%"> </td> <td class="smallfont" align="right"> <table border="0" cellpadding="0" cellspacing="0"> </table> </td> </tr> </tbody></table>  <table width="100%"><tbody><tr> <td align="left"> <script type="text/javascript" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/share.js" charset="utf-8"></script> <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,moikrug,gplus"><span class="b-share"><a class="b-share__handle" id="ya-share-0.9193232740296736-1376044046271" data-hdirection="" data-vdirection=""><span class="b-share-form-button b-share-form-button_share"><i class="b-share-form-button__before"></i><i class="b-share-form-button__icon"></i>Поделиться…<i class="b-share-form-button__after"></i></span></a><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link b-share-btn__yaru" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a><a rel="nofollow" target="_blank" title="Мой Круг" class="b-share__handle b-share__link b-share-btn__moikrug" href="http://share.yandex.ru/go.xml?service=moikrug&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="moikrug"><span class="b-share-icon b-share-icon_moikrug"></span></a><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span></a></span></div> </td> <td align="right"> <span class="smallfont">Текущее время: <span class="time">14:27</span>. Часовой пояс GMT +4.</span> </td> </tr></tbody></table><table class="tborder" style="margin: 10px 0px 0px 0px;" width="100%" align="center" border="0" cellpadding="5" cellspacing="1"><tbody><tr> <td class="alt1" width="100%" align="center">  <div id="yandex_ad"></div> <script type="text/javascript">
+(function(w, d, n, s, t) {
+w[n] = w[n] || [];
+w[n].push(function() {
+Ya.Direct.insertInto(29317, "yandex_ad", {
+stat_id: 2,
+site_charset: "windows-1251",
+ad_format: "direct",
+font_size: 1,
+type: "flat",
+limit: 4,
+title_font_size: 1,
+site_bg_color: "F4F4F4",
+title_color: "000080",
+url_color: "666666",
+text_color: "000000",
+hover_color: "0066FF",
+favicon: true
+});
+});
+t = d.documentElement.firstChild;
+s = d.createElement("script");
+s.type = "text/javascript";
+s.src = "http://an.yandex.ru/system/context.js";
+s.setAttribute("async", "true");
+t.insertBefore(s, t.firstChild);
+})(window, document, "yandex_context_callbacks");
+</script> </td> </tr></tbody></table> <br> </div> </div> </div>   <form action="http://www.cyberforum.ru/" method="get" style="clear:left"> <table class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr> <td class="tfoot"> <select name="langid" onchange="switch_id(this, 'lang')"> <optgroup label="Выбор языка"> <option value="3" class="">-- English (EN)</option> <option value="2" class="" selected="selected">-- Russian (RU)</option> </optgroup> </select> </td> <td class="tfoot" width="50%"> <span class="smallfont">КиберФорум - форум программистов, компьютерный форум, программирование</span> </td> <td class="tfoot" colspan="2" width="100%" align="right"> <div class="smallfont"> <strong> <a href="http://www.cyberforum.ru/advert.php" rel="nofollow">Реклама</a> -
+				<a href="http://www.cyberforum.ru/sendmessage.php" rel="nofollow" accesskey="9">Обратная связь</a> -
+				
+				
+				
+				
+				
+				
+				
+				<a href="http://www.cyberforum.ru/csharp-net/thread325790.html#top" onclick="self.scrollTo(0, 0); return false;">Вверх</a> </strong> </div> </td> </tr> </tbody></table> <table class="tborder" width="100%" align="center" border="0" cellpadding="5" cellspacing="0"> <tbody><tr class="alt1" align="right"> <td class="smallfont" width="500px" align="left"> 
+		Powered by vBulletin® Version 3.8.7 PL3<br>Copyright ©2000 - 2013, vBulletin Solutions, Inc.
+		 </td><td width="300px" align="right"> <script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t12.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров за 24"+
+" часа, посетителей за 24 часа и за сегодня' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/hit.gif" alt="" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" width="88" border="0" height="31"></a>  <script type="text/javascript">//<![CDATA[
+var a='',js=10;try{a+=';r='+escape(document.referrer);}catch(e){}try{a+=';j='+navigator.javaEnabled();js=11;}catch(e){}
+try{s=screen;a+=';s='+s.width+'*'+s.height;a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth);js=12;}catch(e){}
+try{if(typeof((new Array).push('t'))==="number")js=13;}catch(e){}
+try{document.write('<a href="http://top.mail.ru/jump?from=1495058">'+
+'<img src="http://d0.cd.b6.a1.top.mail.ru/counter?id=1495058;t=49;js='+js+a+';rand='+Math.random()+
+'" alt="Рейтинг@Mail.ru" style="border:0;" height="31" width="88" \/><\/a>');}catch(e){}//]]></script><a href="http://top.mail.ru/jump?from=1495058"><img title="Рейтинг@Mail.ru" src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/counter.gif" alt="Рейтинг@Mail.ru" style="border:0;" width="88" height="31"></a> <noscript><p><a href="http://top.mail.ru/jump?from=1495058"> <img src="http://d0.cd.b6.a1.top.mail.ru/counter?js=na;id=1495058;t=49" 
+style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /></a></p></noscript>   <span id="openstat1131905"><a href="http://rating.openstat.ru/site/1131905" target="_blank"><img src="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru_files/digits.gif" alt="Openstat" border="0"></a></span> <script type="text/javascript">
+var openstat = { counter: 1131905, image: 5081, color: "c3c3c3", next: openstat, track_links: "ext" };
+(function(d, t, p) {
+var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
+var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+})(document, "script", document.location.protocol);
+</script>  </td> </tr> </tbody></table> <div class="smallfont" align="center"> </div>  </form> <script type="text/javascript"> <!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//--> </script>  <div style="display:none">   </div> 
+<script type="text/javascript">
+//<![CDATA[
+
+window.orig_onload = window.onload;
+window.onload = function() {
+var cpost=document.location.hash.substring(1);var cpost2='';if(cpost){ var ispost=cpost.substring(0,4)=='post';if(ispost)cpost2='post_'+cpost.substring(4);if((cobj = fetch_object(cpost))||(cobj = fetch_object(cpost2))){cobj.scrollIntoView(true);}else if(ispost){cpostno = cpost.substring(4,cpost.length);if(parseInt(cpostno)>0){location.replace('http://www.cyberforum.ru/showthread.php?p='+cpostno);};} }
+
+if(typeof window.orig_onload == "function") window.orig_onload();
+}
+
+//]]>
+</script>
+ <div class="b-share-popup-wrap b-share-popup-wrap_state_hidden" id="ya-share-0.20695296755949133-1376044046270-popup"><div class="b-share-popup b-share-popup_down b-share-popup_to-right"><div class="b-share-popup__i"><div class="b-share-popup__main  b-share-popup_yandexed"><div class="b-share-popup__header b-share-popup__header_first">Поделитесь с друзьями</div><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="yaru"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_yaru"></span></span><span class="b-share-popup__item__text">Я.ру</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="vkontakte"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_vkontakte"></span></span><span class="b-share-popup__item__text">ВКонтакте</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="odnoklassniki"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_odnoklassniki"></span></span><span class="b-share-popup__item__text">Одноклассники</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="twitter"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_twitter"></span></span><span class="b-share-popup__item__text">Twitter</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="facebook"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_facebook"></span></span><span class="b-share-popup__item__text">Facebook</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="moimir"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_moimir"></span></span><span class="b-share-popup__item__text">Мой Мир</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="lj"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_lj"></span></span><span class="b-share-popup__item__text">LiveJournal</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="gplus"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_gplus"></span></span><span class="b-share-popup__item__text">Google Plus</span></a><a href="http://api.yandex.ru/share/" class="b-share-popup__yandex">Яндекс</a></div></div><div class="b-share-popup__tail"></div></div></div><div class="b-share-popup-wrap b-share-popup-wrap_state_hidden" id="ya-share-0.9193232740296736-1376044046271-popup"><div class="b-share-popup b-share-popup_down b-share-popup_to-right"><div class="b-share-popup__i"><div class="b-share-popup__main  b-share-popup_yandexed"><div class="b-share-popup__header b-share-popup__header_first">Поделитесь с друзьями</div><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="yaru"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_yaru"></span></span><span class="b-share-popup__item__text">Я.ру</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="vkontakte"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_vkontakte"></span></span><span class="b-share-popup__item__text">ВКонтакте</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="odnoklassniki"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_odnoklassniki"></span></span><span class="b-share-popup__item__text">Одноклассники</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="twitter"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_twitter"></span></span><span class="b-share-popup__item__text">Twitter</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="facebook"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_facebook"></span></span><span class="b-share-popup__item__text">Facebook</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="moimir"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_moimir"></span></span><span class="b-share-popup__item__text">Мой Мир</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="lj"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_lj"></span></span><span class="b-share-popup__item__text">LiveJournal</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-net%2Fthread325790.html&amp;title=%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D1%87%D0%B5%D0%B9%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B2%20MS%20Excel%20-%20C%23%20.NET%20-%20CyberForum.ru" class="b-share-popup__item" data-service="gplus"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_gplus"></span></span><span class="b-share-popup__item__text">Google Plus</span></a><a href="http://api.yandex.ru/share/" class="b-share-popup__yandex">Яндекс</a></div></div><div class="b-share-popup__tail"></div></div></div></body></html>

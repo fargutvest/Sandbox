@@ -1,0 +1,13 @@
+﻿<Page x:Class="WpfApplication1.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Page2">
+
+    <Grid>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="118" Uid="label1" Height="69" Name="label1" />
+    </Grid>
+</Page>

@@ -1,0 +1,823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">   
+<title>Штрихкод в C# и ASP.NET</title>
+<meta http-equiv="content-language" content="ru">
+<meta name="description" content="Генерация штрихкодов в консольных приложениях на C# и скриптах ASP.NET">
+<meta name="keywords" content="C#, штрихкод, ASP.NET, EAN-13, Data Matrix, QR code, CODE 128, PDF417">
+<link href="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/ss.css" rel="stylesheet" type="text/css">
+
+
+<link rel="alternate" hreflang="ru" href="http://strokescribe.com/ru/barcode-c-sharp-asp-net.html">
+
+<meta name="AUTHOR" content="StrokeScribe">
+<meta name="COPYRIGHT" content="StrokeScribe, 2008-2013">
+<meta name="Classification" content="04610">
+<meta name="coverage" content="Worldwide">
+<meta http-equiv="Window-target" content="_top">
+
+<link rel="shortcut icon" href="http://pic.strokescribe.com/favicon.ico">
+
+<link rel="dns-prefetch" href="http://www.google.com/">
+<link rel="dns-prefetch" href="http://www2.clustrmaps.com/">
+<link rel="dns-prefetch" href="http://www.facebook.com/">
+<link rel="dns-prefetch" href="http://www.google-analytics.com/">
+<link rel="dns-prefetch" href="http://static.ak.fbcdn.net/">
+
+
+
+
+<script src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">function f(){if (top !=self)top.location.href=self.location.href+'?f=';}</script> </head>  
+
+<body onload="f();">
+  
+
+  
+<div id="container">
+  <img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/strokescribe-logo.png" alt="StrokeScribe header" title="Welcome to StrokeScribe" height="70" width="993">
+
+<div id="side_nav">
+
+<table style="margin-left:15px;margin-bottom:15px;">
+<tbody><tr>
+	
+	<td>
+		<a href="http://vkontakte.ru/share.php?url=http%3a%2f%2fstrokescribe.com%2fru%2fbarcode-c-sharp-asp-net.html&amp;image=http%3A%2F%2Fpic.strokescribe.com/pic/strokescribe-activex-screenshot-excel.png" title="Поделиться Вконтакте"><img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/B.png" style="vertical-align:middle" alt="Поделиться - Вконтакте" height="20" width="19"></a>
+	</td>
+	<td>
+		<a href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&amp;st._surl=http%3a%2f%2fstrokescribe.com%2fru%2fbarcode-c-sharp-asp-net.html" title="Поделиться в Одноклассниках"><img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/OK.png" style="vertical-align:middle" alt="Поделиться в Одноклассниках" height="20" width="19"></a>
+	</td>
+	<td>
+		<iframe src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/like.htm" style="border:none; overflow:hidden; width:120px; height:20px; vertical-align:bottom" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+	</td>
+</tr>
+</tbody></table>
+
+
+<ul><li><a href="http://strokescribe.com/ru/about.html"><img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/globe.png" style="vertical-align:middle" alt="Ru" height="19" width="18"> Русский </a> </li><li><a href="http://strokescribe.com/en/about.html"><img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/globe.png" style="vertical-align:middle" alt="En" height="19" width="18"> English </a> </li></ul>
+
+
+
+
+<ul>
+          <li><a href="http://strokescribe.com/ru/about.html">Описание</a></li>
+          <li><a href="http://strokescribe.com/ru/download.html">Скачать</a></li>
+	  <li><a href="http://strokescribe.com/ru/price.html">Купить</a></li>
+          <li><a href="http://strokescribe.com/ru/contacts.html">Контакты</a></li>
+	  <li><a href="http://strokescribe.com/ru/barcode-properties-and-methods.html">Документация</a></li>
+	  <li><a href="http://strokescribe.com/ru/developer-zone.html" title="Для входа потребуется указать лицензионный ключ разработчика в качестве пароля">Разработчикам (только v4)</a></li>
+</ul>
+
+<ul>
+	  <li class="head">Смотрите также:</li>
+
+	  <li>
+	  	<a href="http://strokescribe.com/ru/serial-port-about.html" title="Чтение данных с RS-232, RS-485 и USB-адаптеров последовательного порта через ActiveX">Последовательный порт<br>RS-232/ActiveX</a></li>
+	    <li><a href="http://strokescribe.com/ru/barcode-office-addin.html">Office barcode add-in</a></li>
+</ul>
+
+<ul>
+	  <li class="head">Полезная информация:</li>
+
+	  <li><a href="http://strokescribe.com/ru/ECI.html">Коды Extended Channel Interpretations (ECI)</a></li>
+	  
+	  <li><a href="http://strokescribe.com/ru/gs1-country-prefixes.html">Коды стран GS1</a></li>
+   	  <li><a href="http://strokescribe.com/ru/gs1-ai-list.html" title="Список поддерживаемых GS1 AI">Поддерживаемые GS1 AI</a>
+   	  </li>
+
+</ul>
+
+<ul>
+	  <li class="head">Как напечатать:</li>
+
+ 	  <li>
+  	  	<a href="http://strokescribe.com/ru/ean-13.html" title="Штрихкод EAN-13 в Excel, 1С7/8 и javascript">EAN-13</a>
+  	  </li>
+	  <li><a href="http://strokescribe.com/ru/EAN14.html">EAN-14</a></li>
+  	  <li><a href="http://strokescribe.com/ru/CODE128.html" title="CODE-128 в Excel, 1С, HTML и C#">CODE 128</a></li>
+  	  <li><a href="http://strokescribe.com/ru/gs1-128-ean-128.html">GS1-128/EAN-128</a></li>
+  	  <li><a href="http://strokescribe.com/ru/gs1-datamatrix.html">GS1 DATAMATRIX</a></li>
+
+	  <li><a href="http://strokescribe.com/ru/ITF-14-word-excel-c-sharp-javascript.html">ITF-14</a></li>
+	  <li><a href="http://strokescribe.com/ru/pdf417-word-excel-csharp-1%d1%81-javascript.html">PDF417</a></li>
+	  <li><a href="http://strokescribe.com/ru/qr-code-excel-word-csharp-javascript.html" title="Штрихкоды QR в Excel, 1С и javascript">QR Code</a></li>
+	  <li><a href="http://strokescribe.com/ru/data-matrix-excel-word-csharp-javascript-1c.html">Data Matrix</a></li>
+
+	  <li><a href="http://strokescribe.com/ru/aztec-barcode-excel-word-csharp-javascript.html" title="Создание штрихкодов Aztec в Excel, Word, C# и Javascript">Aztec</a>
+	  </li>
+	  
+</ul>
+
+<ul>
+	  
+	  <li class="head">StrokeScribe в примерах:</li>
+
+	  <li class="right"><a href="http://strokescribe.com/ru/barcode-c-sharp-asp-net.html">C#/ASP.NET</a></li>
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/%d0%bf%d0%b5%d1%87%d0%b0%d1%82%d1%8c-%d1%88%d1%82%d1%80%d0%b8%d1%85%d0%ba%d0%be%d0%b4%d0%b0-%d0%b2-javascript.html">Javascript</a></li>
+      <li class="right"><a href="http://strokescribe.com/ru/barcode-visual-basic-6.html">Visual Basic 6</a></li>
+      
+      <li class="right"><a href="http://strokescribe.com/ru/create-barcode-excel-vba.html">Excel + VBA (все версии)</a></li> 
+      <li class="right"><a href="http://strokescribe.com/ru/create-barcode-word-vba.html">Word + VBA (все версии)</a></li>
+      
+      <li class="right"><a href="http://strokescribe.com/ru/word-excel-xp-%d1%81%d0%be%d0%b7%d0%b4%d0%b0%d0%bd%d0%b8%d0%b5-%d1%88%d1%82%d1%80%d0%b8%d1%85%d0%ba%d0%be%d0%b4%d0%b0.html">Word/Excel XP/2003</a></li>
+
+
+	  <li class="right"><a href="http://strokescribe.com/ru/word-xp-create-barcode.html">Word XP + ActiveX/VBA</a></li>
+          <li class="right"><a href="http://strokescribe.com/ru/access-xp-create-barcode.html">Access XP</a></li>
+
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-word-2007.html">Word 2007 + Document</a></li>
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-word-2007-activex.html">Word 2007 + ActiveX/VBA</a></li>
+
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-excel-2007.html">Excel 2007 + Document</a></li>
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-excel-2007-activex.html">Excel 2007 + ActiveX/VBA</a></li>
+
+
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-word-2010.html">Word 2010 + Document</a></li>
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-word-2010-activex.html">Word 2010 + ActiveX/VBA</a></li>
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-excel-2010.html">Excel 2010 + Document</a></li>
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-excel-2010-activex.html">Excel 2010 + ActiveX/VBA</a></li>
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-access-2010.html">Access 2010</a></li>
+
+ 
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-coreldraw-vba.html">CorelDRAW/VBA</a></li>
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/acad2010.html">AutoCAD 2010</a></li>
+	  <li class="right"><a href="http://strokescribe.com/ru/solidworks-2011.html">SolidWorks 2011</a></li>
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/create-barcode-delphi-2009.html">Delphi 2009</a></li>
+
+	  <li class="right"><a href="http://strokescribe.com/ru/1c-7.7-enterprise-create-barcode.html">1C 7.7</a></li>
+	  <li class="right"><a href="http://strokescribe.com/ru/1c-8-create-barcode.html">1C: Предприятие 8.1</a></li>
+	  
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/1%d1%81-8.2-%d0%bf%d0%b5%d1%87%d0%b0%d1%82%d1%8c-%d1%88%d1%82%d1%80%d0%b8%d1%85%d0%ba%d0%be%d0%b4%d0%b0.html">1C: Предприятие 8.2</a></li>
+	  
+	  
+	  
+	  <li class="right"><a href="http://strokescribe.com/ru/barcode-object-sql-server.html">SQL Server</a></li>
+ </ul>
+
+
+
+
+
+
+
+
+</div>
+	 
+
+     	<div id="main_content">
+<table border="0" width="100%">
+<tbody><tr>
+	<td>
+		<h1>Штрихкод в C# и ASP.NET</h1>
+	</td>
+	<td align="right">
+		
+
+<script type="text/javascript">
+	function srch()
+	{
+	  location.href='http://www.google.com/search?q=site:strokescribe.com ' + document.search.txt.value;
+	}
+</script>
+
+
+
+<form name="search" action="javascript:srch()">
+<input name="txt" type="text">
+	<input value="Поиск" onclick="srch()" type="button">
+</form>
+
+<br>
+
+
+ <iframe src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/like_002.htm" style="border:none; overflow:hidden; width:100px; height:70px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+<br>
+
+
+	<a style="font-size:10px;text-decoration:none; border-bottom:1px dotted;color:#3B5999;" href="http://strokescribe.com/ru/wall.html">Есть, что сказать?</a>
+	</td>
+</tr>
+</tbody></table>
+
+<table style="border: 1px solid #660000; border-width: 0px 0px 1px 0px; margin-bottom: 20px" width="100%">
+<tbody><tr>
+	<td>
+		Быстрый переход:
+	</td>
+	<td>
+		<a href="#streaming">Работа с потоками (streaming)</a> | <a href="#c%23-asp-net">Штрихкод в ASP.NET/C#</a><br> 
+		 <a href="#activex-c%23-forms">Использование ActiveX с формами</a><br>
+		<a href="#c%23-ean-13">EAN-13</a> | <a href="#c%23-pdf417">PDF417</a> | <a href="#c%23-data-matrix">Data Matrix</a> |
+		 <a href="#c%23-qr-code">QR Code</a>
+	</td>
+</tr>
+</tbody></table>
+
+<p>
+Примеры демонстрируют создание штрихкодов различных типов (CODE 128, QR 
+Code, Data Matrix и др.) из консольных приложений на C# и 
+скриптов ASP.NET с помощью библиотеки StrokeScribe. Первый пример 
+содержит простейшие действия по сохранению штрихкода в 
+файле формата <b>BMP</b>.
+Второй пример демонстрирует работу с картинками штрихкодов через 
+интерфейс IStream напрямую в оперативной памяти.
+Данный метод не создает временных файлов для хранения штрихкода и может 
+применяться в скриптах ASP.NET и при работе с базами данных.
+</p>
+
+<div class="dividersm"></div>
+		
+<h2><a name="c-sharp-console-app">Штрихкод в консольных приложениях и сервисах на C#</a></h2>
+		
+<p>Чтобы протестировать этот пример, создайте новый проект консольного приложения на C#.
+Затем выполните <b>Project-&gt;Add Reference</b> из меню Visual Studio menu:
+</p>  
+<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_008.png" alt="Меню Project в Visual Studio" title="Выполните 'Project-&gt;Add Reference' из меню Visual Studio" height="276" width="340">
+		 
+<p>Перейдите во вкладку <b>COM</b> и выберите <b>StrokeScribe Class</b>.
+Данное действие создаст класс-оболочку (StrokeScribeClass), упрощающий вызов методов COM-объекта из c#-приложения.
+Здесь показана работа с диалогом <b>Add Reference</b> в Visual Studio 2010. В VS2012 найдите вкладку <b>COM-&gt;Type Libraries</b> слева
+диалоговой панели.  
+</p>  
+<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_003.png" alt="Добавление ссылки на COM-объект в проект" title="Откройте вкладку 'COM' и выберите 'StrokeScribe Class'" height="406" width="482">
+
+<p><a name="c-sharp-console-app-code">Скопируйте</a> этот код в ваш проект на c#:
+</p>  
+
+<div class="program_code"><pre><code>
+using STROKESCRIBECLSLib;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StrokeScribeClass ss = new StrokeScribeClass();
+            
+            ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.CODE128B;
+            ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "123ABCDEF";
+            ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#FontColor">FontColor</a> = 0x000000; <span>//0xff0000=синий, 0x00ff00=зеленый, 0x0000ff=красный</span>
+            
+            int width = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+            int rc = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>("barcode.bmp", enumFormats.BMP, width*2, width);
+            if (rc != 0)
+                System.Console.Write(ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#ErrorDescription">ErrorDescription</a>);
+        }
+    }
+}
+</code></pre></div>
+<br>
+<table border="0" width="100%">
+	<tbody><tr>
+		<td>
+		<p>Запустите проект и найдите файл <b>barcode.bmp</b> в папке проекта - это будет картинка со штрихкодом <b>CODE 128</b>,
+		кодирующим строку <b>"123ABCDEF"</b>. Чтобы выбрать другой тип штрихкода, измените значение свойства 
+		<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a>.
+		</p>
+		<p>
+		В качестве дополнительного примера модификации свойств штрихкода, мы изменим цвет модулей штрихкода.
+		Свойство <a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#FontColor">FontColor</a> задает цвет полос (для одномерных штрихкодов) и прямоугольных модулей
+		(для 2D-штрихкодов). Чтобы изменить цвет фона под штрихкодом, обратитесь к свойству
+		<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BkgndColor">BkgndColor</a>.
+		Значение цвета может быть задано в шестнадцатиричной форме: 0x000000 - черный, 0x0000ff - красный, 0xff0000 - синий,
+		 0xffffff - белый.
+		</p>  
+		</td>
+		<td>
+			<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_005.png" alt="Пример картинки со штрихкодом CODE 128" title="Найдите файл barcode.bmp в папке c#-проекта" height="100" width="200">
+		</td>
+	</tr>
+</tbody></table>
+
+<p>
+<a name="bitmap-size-selection">Несколько</a> слов о выборе размера битовой матрицы (BMP/JPG/PNG/GIF) для сохранения штрихкода.
+Поскольку ширина каждого модуля (или полосы) может быть только целым числом и все модули должны иметь одинаковую ширину,
+метод <i>SavePicture</i> не может масштабировать штрихкод произвольным образом. Если при вызове метода SavePicture для ширины будет задано
+некоторое "неудобное" значение, то штрихкод будет отображен с полями справа и слева. Чтобы уменьшить размер ненужных полей,
+всегда выбирайте размеры картинки пропорциональными значениям, возвращаемым свойствами 
+<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a> и BitmapH. BitmapH позволяет определить требуемую высоту для 2D-штрихкода 
+(например, QR Code или Data Matrix). Для одномерных штрихкодов (CODE 128, EAN-13) допустимо задавать любое значение высоты.
+</p>
+<p>Ширина и высота растровых картинок задается в пикселах. Размеры изображений в формате WMF - в TWIP (1/1440 дюйма).
+Вы можете задать произвольные значения для размеров штрихкода, сохраняемого в векторном формате (WMF/EMF).
+</p>
+
+
+<div class="dividersm"></div>       	
+
+
+<h2><a name="streaming">Сохранение штрихкода в оперативной памяти с помощью IStream</a></h2>
+
+<p>Пример генерации штрихкода из приложения на c# без использования файлов BMP/JPG для временного хранения изображения штрихкода.
+ Код может быть использован в скриптах ASP.NET и в приложениях для работы с базами данных.
+</p> 
+<p>Чтобы протестировать данный пример, создайте проект консольного 
+c#-приложения и добавьте ссылку на StrokeScribe Class, как описано
+в предыдущем примере.
+</p>
+
+<div class="program_code"><pre><code>
+using STROKESCRIBECLSLib;
+using System.IO;
+using CT = System.Runtime.InteropServices.ComTypes;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StrokeScribeClass ss = new StrokeScribeClass();
+
+            ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.CODE128;
+            ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "123ABC567";
+
+            int width = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+            CT.<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa380034%28v=vs.85%29.aspx">IStream</a> istream=(CT.IStream)ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#GetPicture">GetPicture</a>(enumFormats.GIF, width*2, width);
+            if(ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Error">Error</a>&gt;0)
+            {
+                System.Console.Write(ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#ErrorDescription">ErrorDescription</a>);
+                return;
+            }
+
+            CT.STATSTG stat;
+            istream.Stat(out stat, 0);
+
+            byte[] buf = new byte[stat.cbSize];
+            istream.Read(buf, (int)stat.cbSize, System.IntPtr.Zero);
+
+            MemoryStream ms = new MemoryStream(buf);
+
+            FileStream fs = File.OpenWrite("code128.gif");
+            ms.WriteTo(fs);
+            fs.Close();
+        }
+    }
+}
+</code></pre></div>
+<br>
+<p>
+Как и в предыдущем примере, код генерирует картинку со штрихкодом формата <b>CODE 128</b>. Картинка создается в формате <b>GIF</b>,
+что удобно для Web-приложений. Кроме того, штрихкод остается в оперативной памяти, создание временного файла не требуется.
+</p>
+<p>
+Метод <i>GetPicture</i> возвращает указатель на потоковый интерфейс IStream. Чтобы получить размер созданной картинки в байтах, используется
+метод <i>Stat</i> от интерфейса IStream. Чтобы получить массив байт, составляющих изображение, вызовите метод <i>Read</i>.
+Приведенный здесь код сохраняет массив байтов в GIF-файле, а скрипт ASP.NET может передать этот массив в <i>Response.BinaryWrite(buf)</i>,
+чтобы отправить изображение штрихкода в браузер (см. пример ниже). 
+ </p>
+<p>
+За рекомендациями по выбору размера растрового файла обращайтесь к предыдущему примеру.
+</p>
+
+
+<div class="dividersm"></div>       	
+
+
+<h2><a name="c#-asp-net">Штрихкод в C#-скриптах ASP.NET</a></h2>
+
+<p>Пример генерации штрихкода из ASP.NET-скрипта на c# и отображения 
+результата на web-странице.
+Как и в предыдущем примере, для хранения картинки со штрихкодом 
+используется интерфейс IStream, позволяющий хранить штрихкод в 
+оперативной
+памяти, без использования временных файлов.
+</p> 
+<p>Приведенный ниже c#-скрипт создает изображение в формате <b>GIF</b>, содержащее штрихкод <b>CODE 128</b>.
+Данные для создания штрихкода берутся из параметра <i>data</i>, передаваемого через HTTP-запрос.  
+</p> 
+<p>Вторая часть примера - код HTML-страницы, которая отображает сгенерированный штрихкод с помощью тэга <i>&lt;img&gt;</i>.
+Вы можете изменить данные, которые будут помещены в штрихкод, смодифицировав параметр запроса: <i>barcode.aspx?data=123abcde</i>.
+Скопируйте код скрипта в каталог <b>inetpub\wwwroot</b>.
+</p>
+<p>
+Перед запуском примера Вам потребуется создать interop assembly для 
+StrokeScribe Class.
+Создайте новый ASP.NET-проект или новое консольное приложение на c# и 
+добавьте в него ссылку на StrokeScribe Class, как это показано 
+в <a href="#c-sharp-console-app">первом</a> примере.
+После сборки проекта Вы найдете файл Interop.STROKESCRIBECLSLib.DLL в <b>obj\Debug</b> или <b>obj\Release</b> в папке проекта.
+Скопируйте DLL в <b>inetpub\wwwroot\bin</b>, чтобы библиотека могла быть загружена из IIS.
+Обратите также внимание на директивы <b>@Register</b> и <b>@Import</b> в приведенном ниже c#-скрипте.  
+</p>
+
+<div class="program_code"><pre><code>
+<span>//barcode.aspx - скопируйте файл в inetpub\wwwroot</span>
+
+&lt;%@ Page Language="C#"  Debug="true" %&gt;
+
+&lt;%@ <a href="http://msdn.microsoft.com/en-us/library/c76dd5k1%28VS.100%29.aspx">Register</a> Tagprefix="STROKESCRIBECLSLib" 
+   Namespace="STROKESCRIBECLSLib" 
+   Assembly="Interop.STROKESCRIBECLSLib, Culture=neutral"
+%&gt;
+    
+&lt;%@ <a href="http://msdn.microsoft.com/en-us/library/eb44kack%28VS.100%29.aspx">Import</a> Namespace="STROKESCRIBECLSLib" %&gt;
+&lt;%@ Import Namespace="CT=System.Runtime.InteropServices.ComTypes" %&gt;
+
+&lt;%
+   String data=Request.QueryString["data"];
+   StrokeScribeClass ss;
+   ss = new StrokeScribeClass();
+   ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.CODE128;
+
+   ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = data;
+   CT.IStream istream = 
+     (CT.IStream)ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#GetPicture">GetPicture</a>(enumFormats.GIF, ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>, ss.BitmapW/3);
+   if(ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Error">Error</a>&gt;0)
+   {
+      //при возникновении ошибки, отправьте содержимое ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#ErrorDescription">ErrorDescription</a> в log-файл
+      return;
+   }
+
+   Response.Clear();
+   Response.ClearHeaders();
+    
+   Response.ContentType = "image/GIF";
+   Response.AddHeader("Content-Disposition", "attachment; filename=barcode.gif");
+
+   <span>//Поскольку BinaryWrite не принимает IStream напрямую,</span>
+   <span>//потребуется скопировать данные из iStream в промежуточный байтовый массив.</span>
+   <span>//Далее, массив может быть передан в BinaryWrite.</span>
+   CT.STATSTG stat;
+   istream.Stat(out stat, 0);
+
+   byte[] buf = new byte[stat.cbSize];
+   istream.Read(buf, (int)stat.cbSize, System.IntPtr.Zero);
+	
+   Response.BinaryWrite(buf);
+%&gt;
+</code></pre></div>
+
+<p>
+Пример HTML-кода для отображения картинки со штрихкодом. Измените параметр <i>data=</i>, чтобы изменить содержимое штрихкода.  
+</p>
+<div class="program_code"><pre><code>
+<span>&lt;!-- default.aspx - скопируйте в папку inetpub\wwwroot --&gt; </span>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Barcode Test&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Barcode test&lt;/h1&gt;
+    &lt;img src="barcode.aspx?data=123abcde" style="width: 20mm; height: 10mm"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<br>
+
+<div class="dividersm"></div>
+
+
+<h2><a name="c#-ean-13">EAN-13 в консольных приложениях на C# и скриптах ASP.NET</a></h2>
+<table border="0" width="100%">
+	<tbody><tr>
+		<td>
+			<p>Чтобы создать штрихкод стандарта EAN-13, смодифицируйте значение свойства <i>Alphabet</i>, как показано в примере ниже.
+			EAN-13 не имеет никаких дополнительных настроек, влияющих на генерацию штрихкода. Не рекомендуется также изменять
+			цвет линий штрихкода, так как это приводит к уменьшению контраста и ухудшению читаемости штрихкода лазерными сканерами.
+			</p>
+		</td>
+		<td>
+			<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c.png" alt="EAN-13 в консольном c#-приложении" title="Пример генерации EAN-13 из консольного приложения на c#" height="100" width="300">
+		</td>
+	</tr>
+</tbody></table>
+<p>Вы можете послать полный, 13-разрядный код EAN в свойство <i>Text</i> - код будет проверен на правильность контрольной суммы
+ и в свойство <a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Error">Error</a> будет записано ненулевое значение в случае возникновения ошибки. 
+</p>  
+<p>Также Вы можете отправить первые 12 цифр кода EAN в свойство <i>Text</i>. Контрольный разряд будет автоматически вычислен и
+добавлен в штрихкод. 
+</p>
+
+<p>Скопируйте приведенный ниже фрагмент кода в <a href="#c-sharp-console-app-code">пример</a> консольного c#-приложения.
+Код создаст BMP-файл с картинкой штрихкода EAN-13:
+</p>
+			
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.EAN13;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "123456789012";
+int width = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>; //замечания по выбору размеров см. <a href="#bitmap-size-selection">здесь</a>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>("ean-13.bmp", enumFormats.BMP, width, width/2);
+</code></pre></div>
+
+<p>Данный фрагмент кода предназначен для модификации примера с интерфейсом <a href="#streaming">ISteram</a> и примера c#-скрипта для
+<a href="#c%23-asp-net">ASP.NET</a>.
+</p>
+
+<div class="program_code"><pre><code>
+ss.Alphabet = enumAlphabet.EAN13;
+ss.Text = "123456789012";
+int width = ss.BitmapW;
+CT.IStream istream = 
+     (CT.IStream)ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#GetPicture">GetPicture</a>(enumFormats.GIF, width, width/2);
+</code></pre></div>
+
+
+<p>Если требуется создать компактный образ EAN-13, без чистых зон по бокам, установите <i>ss.HBorderSize = 0</i>.
+</p>
+
+<div class="dividersm"></div>
+
+<h2><a name="c#-pdf417">PDF417 в консольных C#-приложениях и скриптах ASP.NET</a></h2>
+
+<table border="0">
+	<tbody><tr>
+		<td width="90%">
+			<p>Чтобы создать штрихкод PDF417, Вам потребуется изменить значение свойства <i>Alphabet</i>, как показано в примере ниже.
+			</p>
+		</td>
+		<td>
+			<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_007.png" alt="PDF417 создан в консольном c#-приложении" title="Пример генерации PDF417 из программы на c#" height="17" width="225">
+		</td>
+	</tr>
+</tbody></table>
+<p>
+Чтобы задать желаемое количество строк или столбцов в PDF417, задайте ненулевые значения свойствам <i>PDF417Rows</i> и <i>PDF417Cols</i>.
+ПО умолчанию, энкодер автоматически подбирает эти настройки, чтобы обеспечит правильные соотношения размеров модулей штрихкода.
+</p>
+<p> 
+Свойство <i>PDF417ErrLevel</i> управляет уровнем коррекции ошибок в штрихкоде PDF417. По умолчанию энкодер самостоятельно выбирает уровень 
+коррекции согласно рекомендациям ISO/IEC 15438. 
+</p>
+		
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.PDF417;
+ss.Text = "1234ABCDE5678EFGHIJKLM";
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#PDF417Cols">PDF417Rows</a> = 5;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#PDF417Cols">PDF417Cols</a> = 8;
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapH</a>;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>("pdf417.bmp", enumFormats.BMP, w, h);
+</code></pre></div>
+
+<p>Данный фрагмент кода создает картинку с наименьшими размерами - 
+ширина модуля составляет 1 пиксел. Чтобы создать штрихкод больших
+ размеров, задайте одинаковые множители для  <i>w</i> и <i>h</i>, чтобы сохранить пропорции в размерах модулей:
+</p>
+
+<div class="program_code"><pre><code>
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapH</a>;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>("pdf417.bmp", enumFormats.BMP, w*3, h*3);
+</code></pre></div>
+
+<p>Вы можете указать любые значения для w и h, большие чем указано в свойствах <i>BitmapW</i> и <i>BitmapH</i>, но учтите
+<a href="#bitmap-size-selection">рекомендации</a> по выбору размера битовой матрицы из первого примера.
+Если Вы хотите сохранить PDF417 в векторном формате, то допустимо указывать любые значения для ширины и высоты, но учтите, что
+форматы EMF/WMF не предназначены для Web-страниц. 
+</p>
+
+<p>Пример кода ниже передает картинку с PDF417 в формате GIF через потоковый интерфейс IStream.
+Скопируйте код в пример работы с <a href="#streaming">IStream</a> или в пример c#-скрипта для <a href="#c%23-asp-net">ASP.NET</a>.
+</p>
+
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.PDF417;
+ss.Text = "1234ABCDE5678EFGHIJKLM";
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapH</a>;
+CT.IStream istream = 
+     (CT.IStream)ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#GetPicture">GetPicture</a>(enumFormats.GIF, w, h);
+</code></pre></div>
+
+
+<div class="dividersm"></div>
+
+<h2><a name="c#-data-matrix">Data Matrix в консольных C#-приложениях и скриптах ASP.NET</a></h2>
+
+<table border="0">
+	<tbody><tr>
+		<td width="90%">
+			<p>Штрихкод <b>Data Matrix</b> создается, когда свойство <i>Alphabet</i> установлено в <i>enumAlphabet.DATAMATRIX</i>.
+			</p>
+			<p>Для Data Matrix доступны следующие настройки: <i>DataMatrixMinSize</i>
+ - фиксирует минимальный размер штрихкода, 
+			используемый для кодирования пользовательских данных. На рисунке 
+справа показан штрихкод Data Matrix, для которого минимальный
+			размер матрицы - 32x32 модуля.
+			Хотя матрицы размерами 12x12 достаточно для хранения строки 
+"1234ABCDE", будет использована матрица большего размера,
+			заданного через свойство DataMatrixMinSize. 
+			</p>  
+		</td>
+		<td>
+			<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_002.png" alt="Data Matrix сгенерирован кодом на c#" title="Пример штрихкода Data Matrix, сгенерированного кодом на c#" height="76" width="76">
+		</td>
+	</tr>
+</tbody></table>
+<p>Свойство <i>ECI</i> указывает кодовую страницу, в которой закодирован текст внутри штрихкода. 
+Используйте это свойство, только если известно, что принимающее оборудование и программное обеспечение ECI-совместимы.
+</p>  
+<p>
+Свойство <i>UTF8</i> позволяет кодировать не-ASCII символы для чтения на смартфонах.
+</p>  
+<p>
+Приведенный ниже код создает штрихкод с модулями размером 2x2 пиксела. Измените множители для <i>w*</i> и <i>h*</i> в вызове
+метода <i>SavePicture</i>, чтобы получить картинку больших или меньших размеров.
+</p>
+<p>Скопируйте фрагмент кода в <a href="#c-sharp-console-app-code">пример</a> консольного приложения на c#.
+</p>
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.DATAMATRIX;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#DataMatrixMinSize">DataMatrixMinSize</a> = 32;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#ECI">ECI</a> = 0;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#UTF8">UTF8</a> = false;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "1234ABCDE";
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.BitmapH;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>("datamatrix.bmp", enumFormats.BMP, w*2, h*2);
+</code></pre></div>
+<p>
+Если требуется создать Data Matrix с высоким разрешением, то используйте векторный формат WMF вместо растрового BMP.
+Полный список поддерживаемых графических форматов приведен в документации по <a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>.
+</p>
+
+<p>Чтобы создать Data Matrix из c#-скрипта для ASP.NET, смодифицируйте пример для <a href="#c%23-asp-net">ASP.NET</a>, как показано ниже:
+</p>
+
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.DATAMATRIX;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#DataMatrixMinSize">DataMatrixMinSize</a> = 32;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "1234ABCDE";
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.BitmapH;
+CT.IStream istream = (CT.IStream)ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#GetPicture">GetPicture</a>(enumFormats.GIF, w, h);
+</code></pre></div>
+
+
+
+<div class="dividersm"></div>
+
+<h2><a name="c#-qr-code">QR Code в консольных C#-приложениях и скриптах ASP.NET</a></h2>
+
+<table border="0">
+	<tbody><tr>
+		<td width="90%">
+			<p>Штрихкод <b>QR Code</b> генерируется при установке свойства <i>Alphabet = enumAlphabet.QRCODE</i>.
+			</p>
+			<p>Для ручного управления уровнем коррекции ошибок измените значение свойства <i>QrECL</i>	(по умолчанию <i>QrECL=M</i>).
+			 Установка <i>QrECL=H</i> позволяет восстановить до 30% данных в случае повреждения штрихкода, но размер блока
+			 коррекции будет достигать 60 процентов от емкости матрицы.  
+			</p>
+		</td>
+		<td>
+			<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_006.png" alt="QR Code создан в c#-приложении" title="Пример создания QR Code из кода на c#" height="118" width="118">
+		</td>
+	</tr>
+</tbody></table>
+
+<p>
+Свойство <i>QrMinVersion</i> позволяет задать минимальную версию матрицы для кодирования пользовательских данных.
+На рисунке справа показан QR Code с 10ой версией матрицы.
+</p>
+<p>Свойство <i>ECI</i> указывает кодовую страницу, в которой закодирован текст внутри штрихкода. 
+Используйте это свойство, только если известно, что принимающее оборудование и программное обеспечение ECI-совместимы.
+</p>  
+<p>
+Если <i>UTF8=true</i>, то не-ASCII символы кодируются в системе UTF-8. Установите это свойство, если требуется считывание не-ASCII
+содержимого на смартфонах.
+</p>  
+<p>
+Метод <i>SavePicture</i> создает штрихкод с модулями размером 2x2 пиксела. Чтобы изменить размеры изображения, измените множители
+для <i>w*</i> и <i>h*</i>. Используйте формат WMF для изображений с высоким разрешением или если планируется вставка
+штрихкода в приложения Microsoft Office.
+</p>
+<p>Смодифицируйте <a href="#c-sharp-console-app-code">пример</a> консольного приложения, как показано ниже:
+</p>
+		
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.QRCODE;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#QrECL">QrECL</a> = enumQR_ECL.M;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#QrMinVersion">QrMinVersion</a> = 10;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#ECI">ECI</a> = 0;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#UTF8">UTF8</a> = false;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "1234567890ABCdef";
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.BitmapH;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#SavePicture">SavePicture</a>("qr-code.bmp", enumFormats.BMP, w*2, h*2);
+</code></pre></div>
+
+
+<p>Чтобы сгенерировать QR Code из c#-скрипта для ASP.NET, смодифицируйте пример для <a href="#c%23-asp-net">ASP.NET</a> следующим образом:
+</p>
+<div class="program_code"><pre><code>
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Alphabet">Alphabet</a> = enumAlphabet.QRCODE;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#QrECL">QrECL</a> = enumQR_ECL.M;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#ECI">ECI</a> = 0;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#UTF8">UTF8</a> = false;
+ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#Text">Text</a> = "1234567890ABCdef";
+int w = ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#BitmapW-BitmapH">BitmapW</a>;
+int h = ss.BitmapH;
+CT.IStream istream = (CT.IStream)ss.<a href="http://strokescribe.com/ru/barcode-properties-and-methods.html#GetPicture">GetPicture</a>(enumFormats.GIF, w, h);
+</code></pre></div>
+
+
+<div class="dividersm"></div>
+
+<h2><a name="activex-c#-forms">Использование StrokeScribe ActiveX с C#-формами</a></h2>
+
+<p>1. В Visual Studio перейдите в <b>Toolbox</b> и выполните <b>Choose Items</b>:
+</p>  
+<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/visual-studio-toolbox.png" alt="Toolbox в Visual Studio 2010" title="Выполните Toolbox-&gt;Choose Items" height="187" width="343">
+
+<p>2. В диалоге <b>Choose Toolbox Items</b> перейдите во вкладку <b>COM Components</b> и выберите <b>StrokeScribeControl</b>.
+</p>  
+<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/visual-studio-add-activex.png" alt="Диалог 'Choose Toolbox Items' в Visual Studio" title="Во вкладке 'COM Components' выберите 'StrokeScribe Control'" height="471" width="653">
+
+<p>3. На панели <b>Toolbox</b> отыщите <b>StrokeScribe Control</b> и перетащите его на форму:
+</p>  
+<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/visual-studio-toolbox-activex-control.png" alt="Перетаскивание ActiveX из Toolbox на форму" title="Выделите и перетащите StrokeScribe ActiveX из Toolbox на форму" height="124" width="282">
+
+<p>4. Разместите кнопку на форме:
+</p>  
+<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/c_004.png" alt="Форма со StrokeScribe Activex и кнопкой" title="На форме разместите кнопку рядом со StrokeScribe Activex" height="195" width="265">
+
+<p>5. Двойным щелчком на кнопке откройте редактор кода и скопируйте следующий пример в тело функции button1_Click():
+</p>  
+
+<div class="program_code"><pre><code>
+axStrokeScribe1.Alphabet = STROKESCRIBELib.enumAlphabet.CODE128B;
+axStrokeScribe1.CtlText = "12345678";
+</code></pre></div>
+<br>
+
+
+
+</div>
+
+
+<br clear="all">
+<div id="footer">
+<!--
+<div class="dividersm"></div>
+-->
+
+<!--
+<td>Есть, что сказать? Напишите на нашей <a href='wall.html'>стене</a>.</td>-->
+
+<!--
+<div class="fb-like" data-href="http://strokescribe.com" data-send="false" data-width="80" data-show-faces="false" data-layout="button_count"></div>
+-->
+
+<!--
+<script type="text/javascript">
+function replaceImage(img)
+{
+    img.onload = null;
+    img.src = "http://www2.clustrmaps.com/stats/maps-no_clusters/strokescribe.com-thumb.jpg";
+}
+</script>
+-->
+
+
+<table height="110" border="0" width="100%">
+<tbody><tr valign="bottom">
+	<td>
+		  <a href="http://strokescribe.com/en/contacts.html">Контакты</a> |
+		  <a href="http://strokescribe.com/ss.rss">RSS</a> |
+			Copyright 2008-2013 strokescribe.com
+	</td>
+	<td width="100px">
+		 <!--
+		<a href="http://www2.clustrmaps.com/user/1c4c1b86">
+			<img src="http://pic.strokescribe.com/pic/clustrmaps-blank.png" width="160" height="106"
+			alt="Статистика посещений"
+			onload="replaceImage(this);">
+		</a>
+		-->
+		
+		<a href="http://www2.clustrmaps.com/user/1c4c1b86">
+			<img src="%D0%A8%D1%82%D1%80%D0%B8%D1%85%D0%BA%D0%BE%D0%B4%20%D0%B2%20C%23%20%D0%B8%20ASP.NET_files/strokescribe.jpg" alt="Locations of visitors to this page" title="Click on map to see statistics" height="106" width="160">
+		</a>
+		
+	</td>
+</tr>
+</tbody></table>
+
+
+<script type="text/javascript"> 
+  var _gaq = _gaq || []; 
+  _gaq.push(['_setAccount', 'UA-34036784-1']); 
+  _gaq.push(['_setSiteSpeedSampleRate', 50]); 
+  _gaq.push(['_trackPageview']); 
+         
+  (function() { 
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
+   })(); 
+</script> 
+                          </div>
+
+</div>
+
+  
+    
+  
+</body></html>
