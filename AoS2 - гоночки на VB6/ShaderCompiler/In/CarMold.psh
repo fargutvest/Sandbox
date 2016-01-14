@@ -1,0 +1,7 @@
+ps_2_0
+
+dcl v0 //diffuse
+
+lrp r0, c2.a, v0, c2
+mov oC0, r0
+

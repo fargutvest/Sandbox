@@ -1,0 +1,13 @@
+BODY, H1, H2, TD {
+
+font: 11px Tahoma, Verdana, sans-serif;
+}
+BUTTON {
+font: 11px Tahoma, Verdana, sans-serif;
+margin: 0px;
+vertical-align: middle;
+white-space: nowrap
+}
+IMG {
+border: 0px;
+}

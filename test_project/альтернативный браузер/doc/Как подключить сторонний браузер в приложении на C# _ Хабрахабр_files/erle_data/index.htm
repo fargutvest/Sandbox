@@ -1,0 +1,89 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1251"></head><body leftmargin="0" topmargin="0" scroll="no" marginheight="0" marginwidth="0">
+<!-- AdRiver (c) Flash Loader
+	 Last edited by Alexandr Zonov 10.03.2011 -->
+<script type="text/javascript">
+var ar_img			= 'mfn-135x35-2.jpg'||'',
+	ar_swf			= ''||'',
+	ar_flashver		= parseInt('8')||0,
+	ar_quality		= 'best',
+	ar_gif_href		= '',
+	ar_wmode		= 'opaque',
+	ar_flash_pixel	= '',
+	ar_gif_pixel	= '';
+
+function ar_flver(d,n,m,f){n=navigator;f='Shockwave Flash';if((m=n.mimeTypes)&&(m=m["application/x-shockwave-flash"])&&m.enabledPlugin&&(n=n.plugins)&&n[f]){d=n[f].description}else if(window.ActiveXObject){try{d=(new ActiveXObject((f+'.'+f).replace(/ /g,''))).GetVariable('$version')}catch(e){}}return parseInt(d?d.replace(/\D+/,'').split(/\D+/)[0]:0)}
+function ar_p(p,v){return typeof(v)=='undefined'?'':p+'='+v}
+function ar_fp(p,v){return '<param name="'+p+'" value="'+v+'">'}
+function httplize(s){return ((/^\/\//).test(s)?location.protocol:'')+s}
+
+function extendL(l,r){for(var i in l)l[i]=r[i]||l[i];return l}
+function obj2str(o){var l=[];for(var i in o)l.push(ar_p(i,o[i]));return l.join("&")}
+function str2obj(s){var a=s.split("&"),o={},p;for(var i in a){p=a[i].split("=");o[p[0]]=p[1]}return o}
+
+var url = location.href,
+	_ = str2obj(url.substr(url.indexOf("?")+1)).html_params;
+if (_){
+	function rndRep(s){return s.replace(/!\[rnd\]/g,_.rnd)}
+	function ar_c(s){return !s||(/^http(s|):\/\/|^\/\//i).test(s)?s:_.comppath+s}
+	function ar_sendPix(s,b,i){if(!s)return;s=rndRep(s.replace(/!\[ref\]/,escape(document.referrer||'unknown')));if(b=document.body){i=document.createElement('IMG');i.style.position='absolute';i.style.width=i.style.height='0px';i.onload=i.onerror=function(){b.removeChild(i);i=b=null};i.src=s;b.insertBefore(i,b.firstChild);}else new Image().src=s;return true}
+
+	_ = str2obj(unescape(_));
+	_.target = _.target&&_.target.indexOf('_top')!=-1 ? '_top' : '_blank';
+	_.comppath = url.substring(0, url.indexOf('index.html'));
+	_.rhost = _.rhost || 'ad.adriver.ru';
+	_.ar_pass = unescape(_.ar_pass || '');
+
+	ar_redirect = _.url ? unescape(_.url) : ('//' + _.rhost + '/cgi-bin/click.cgi?'
+		+ obj2str(extendL({bid: 0, ntype: _.ar_ntype, sid: 0, bn: 0, ad: 0, nid: 0, bt: 0, pz: 0, rnd: 0}, _)) + "&rleurl=");
+
+	ar_wmode = ar_wmode||'opaque';
+	ar_quality = ar_quality||'best';
+	ar_swf = rndRep(ar_c(ar_swf));
+	ar_img = rndRep(ar_c(ar_img));
+	ar_gif_href = rndRep(ar_gif_href);
+
+	var ar_plugin = ar_flver()>=ar_flashver&&ar_swf!='',
+		ar_metrics = ar_p(' width', _.width) + ar_p(' height', _.height);
+
+	if (url.indexOf('mngcgi')==-1) ar_sendPix(httplize(rndRep(ar_plugin ? ar_flash_pixel : ar_gif_pixel)));
+
+	var ar_flashvars = 'link1=' + escape(httplize(ar_redirect))
+		+ ar_p('&target', _.target)
+		+ ar_p('&ar_comppath', escape(httplize(_.comppath)))
+		+ ar_p('&ar_pass', escape(_.ar_pass))
+		+ ar_p('&ar_bid', _.bid)
+		+ ar_p('&ar_bt', _.bt)
+		+ ar_p('&ar_ad', _.ad)
+		+ ar_p('&ar_nid', _.nid)
+		+ ar_p('&ar_rnd', _.rnd)
+		+ ar_p('&ar_ntype', _.ar_ntype)
+		+ ar_p('&ar_sliceid', _.sliceid)
+		+ ar_p('&ar_sid', _.sid);
+
+	var ar_html = window.ActiveXObject
+		? '<object id="ar_flash" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"' + ar_metrics + '>'
+			+ ar_fp('movie', ar_swf)
+			+ ar_fp('wmode', ar_wmode)
+			+ ar_fp('quality', ar_quality)
+			+ ar_fp('flashvars', ar_flashvars)
+			+ ar_fp('play', 'true')
+			+ ar_fp('loop', 'true')
+			+ ar_fp('menu', 'false')
+			+ ar_fp('allowScriptAccess', 'always')
+			+ ar_fp('allowFullScreen', 'true')
+			+ '</object>'
+		: '<embed type="application/x-shockwave-flash" menu=false allowFullScreen=true allowScriptAccess=always play=true loop=true src="'
+			+ ar_swf + '" wmode=' + ar_wmode + ' quality=' + ar_quality + ' flashvars="' + ar_flashvars + '"'
+			+ ar_metrics + '>';
+
+	document.write(ar_plugin
+		? '<scr'+'ipt src="/flashloader.js"><\/scr'+'ipt>'
+		: ar_img
+			? '<a href="' + ar_redirect + escape(ar_gif_href) + '" onclick="return ar_sendPix(\''+_.ar_pass+'\');" target=' + _.target + '><img src="'
+				+ ar_img + '"' + ar_metrics + ' alt="" border=0></a>'
+			: '');
+}
+</script><a href="http://ad.adriver.ru/cgi-bin/click.cgi?bid=2841887&amp;ntype=0&amp;sid=176776&amp;bn=0&amp;ad=417569&amp;nid=0&amp;bt=25&amp;pz=0&amp;rnd=654047372&amp;rleurl=" onclick="return ar_sendPix('');" target="_blank"><img src="index_data/mfn-135x35-2.jpg" alt="" border="0" height="35" width="135"></a>
+
+</body></html>

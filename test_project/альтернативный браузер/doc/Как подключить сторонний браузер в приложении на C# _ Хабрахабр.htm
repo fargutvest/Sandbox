@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width = 1080">
+    
+    <title>Как подключить сторонний браузер в приложении на C# / Хабрахабр</title>
+    <meta name="description" content="
+
+В определенный момент мне стало некомфортно использовать стандартный контрол WebBrowser, предлагаемый Visual Studio. 
+Причин было несколько: 
+1. Использовался IE-движок, что само по себе уже...">    
+    <meta name="keywords" content="c#, браузеры, Awesomium, xulrunner">
+    
+    	<meta property="fb:app_id" content="437464306275519"> 
+<meta property="og:type" content="article"> 
+<meta property="og:url" content="http://habrahabr.ru/post/170015/"> 
+<meta property="og:title" content="Как подключить сторонний браузер в приложении на C#"> 
+	<meta property="og:image" content="http://onlinesaler.ru/images/hab1.jpg">
+	<link rel="image_src" href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/hab1.jpg"><meta property="og:image" content="http://aikutto.files.wordpress.com/2010/10/referansekle3.png">
+	<link rel="image_src" href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/referansekle3.png"><meta property="og:image" content="http://almaer.com/blog/uploads/chromewinsize.png">
+	<link rel="image_src" href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/chromewinsize.png">
+	
+<meta property="og:description" content="В определенный момент мне стало некомфортно использовать стандартный контрол WebBrowser, предлагаемый Visual Studio.  Причин было несколько:  1. Использовался...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@habrahabr">
+
+
+      <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all.css" rel="stylesheet" media="all">
+
+
+      <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/posts.css" rel="stylesheet" media="all">
+  <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/comments.css" rel="stylesheet" media="all">
+  <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/forms.css" rel="stylesheet" media="all">
+  <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/highlight.css" rel="stylesheet" media="all">
+  <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all_002.css" rel="stylesheet" media="all">
+  
+    <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/printer.css" rel="stylesheet" media="print">
+
+  
+
+      <script src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/watch.js" async="" type="text/javascript"></script><script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all_002.js"></script>
+    
+    
+    
+
+  
+  
+  
+  
+      <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery_002.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/wysiwyg.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/highlight.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery-ui-highlight.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/posts.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/comments.js"></script>
+  <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/all.js"></script>
+
+
+      <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/adriver.js"></script>
+
+    <link title="Хабрахабр / Комментарии к публикации «Как подключить сторонний браузер в приложении на C#»" type="application/rss+xml" rel="alternate" href="http://habrahabr.ru/rss/post/170015/">
+        
+      <script type="text/javascript">
+      var _gaq = window._gaq || [];
+      window.onerror = function(msg, url, line) {
+          //var preventErrorAlert = true;
+          //_gaq.push(['_trackEvent', 'JS Error', msg, navigator.userAgent + ' -> ' + url + " : " + line]);
+          //return preventErrorAlert;
+      };
+      
+      jQuery.error = function (message) {
+          _gaq.push(['_trackEvent', 'jQuery Error', message, navigator.userAgent]);
+      }
+      </script>
+       
+  <script src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/ga.js" async="true"></script></head>
+
+  <body>
+   <div class="wrapper">
+      
+      <div id="layout">
+        <div id="header">
+  <div class="userpanel silver">
+      <a href="https://auth.habrahabr.ru/login/" class="login">войти</a> <a href="https://auth.habrahabr.ru/register/">зарегистрироваться</a>
+  </div>
+  <a class="logo " href="http://habrahabr.ru/" title="На главную страницу"></a>
+  <div class="search">
+    <form id="search_form" name="search" method="get" action="/search/">
+      <input value="" type="submit">
+      <input autocomplete="off" name="q" x-webkit-speech="" speech="" tabindex="1" type="text">
+    </form>
+  </div>
+
+	<div class="main_menu">
+		<a href="http://habrahabr.ru/posts/top/" class="active">посты</a><a href="http://habrahabr.ru/qa/">q&amp;a</a><a href="http://habrahabr.ru/events/coming/">события</a><a href="http://habrahabr.ru/hubs/">хабы</a><a href="http://habrahabr.ru/companies/">компании</a>
+		<div class="banner_special">
+
+		<script type="text/javascript">
+			(function(){
+				var custom = [];
+				/* custom params */
+					custom[1] = 'browsers';
+					custom[2] = 'csharp';
+					custom[3] = 'net';
+				/* end of custom params */
+				var std = {gender:100, age:101},i;for(i in std){try{custom[std[i]]=eval(i)}catch(e){} }
+				custom.getStd = function(){for(var i=0,j,s=[];i<this.length;i++){if(this[i])s.push((!j?(j=1,i+'='):'')+escape(this[i]));else j=0}return s.length?'&custom='+s.join(';'):''};
+				var RndNum4NoCash = Math.round(Math.random() * 1000000000), ar_Tail = escape(document.referrer || 'unknown');
+				document.write('<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?' + 'sid=176776&target=top&w=135&h=35&bt=25&pz=0&rnd=' +
+				RndNum4NoCash + '&tail256=' + ar_Tail + custom.getStd() + '" frameborder=0 vspace=0 hspace=0 width=135 height=35 marginwidth=0'
+				+ ' marginheight=0 scrolling=no></iframe>');
+			})();
+ 		</script><iframe src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/erle.htm" vspace="0" hspace="0" marginwidth="0" marginheight="0" frameborder="0" height="35" scrolling="no" width="135"></iframe>
+	
+
+</div>
+		
+	</div>
+
+</div>
+
+
+
+        
+        
+
+	
+  <div class="content_left">
+
+	
+
+
+
+
+
+
+
+
+	
+  <div class="post shortcuts_item" id="post_170015">
+  	<div class="published">19 февраля в 23:04</div>
+    <h1 class="title">
+
+	    
+
+        <span class="post_title">Как подключить сторонний браузер в приложении на C#</span>
+
+      <span class="flag flag_tutorial" title="Обучающий материал">tutorial</span>
+
+			<a href="http://habrahabr.ru/info/help/karma/#recovery" class="flag flag_recovery" title="Реабилитационный пост от пользователя с отрицательной кармой">recovery mode</a>
+
+      
+			
+			
+
+  	</h1>
+  	
+  	<div class="hubs">
+		<a href="http://habrahabr.ru/hub/browsers/" class="hub " title="Вы не подписаны на этот хаб">Браузеры</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+		<a href="http://habrahabr.ru/hub/csharp/" class="hub " title="Вы не подписаны на этот хаб">C#</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+		<a href="http://habrahabr.ru/hub/net/" class="hub " title="Вы не подписаны на этот хаб">.NET</a><span class="profiled_hub" title="Профильный хаб">*</span>
+</div>
+
+  	
+  	<div class="content html_format">
+  	<img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/hab1.jpg" alt="image"><br>
+<br>
+В определенный момент мне стало некомфортно использовать стандартный контрол WebBrowser, предлагаемый Visual Studio. <br>
+Причин было несколько: <br>
+1. Использовался IE-движок, что само по себе уже сильный аргумент.<br>
+2. Кривая работа с JS.<br>
+3. Отсутствие масштабирования.<br>
+4. Если запустить на машине, где стоит IE6, то все его «достоинства» переносятся на приложение.<br>
+<br>
+В итоге был начат поиск альтернативных решений.<br>
+Было рассмотрено 2 SDK. xulrunner(Mozilla) и Awesomium(Chrome)<br>
+<br>
+Подключение обоих происходит примерно одинаково, но на всякий случай опишу оба.<br>
+<a name="habracut"></a><br>
+<br>
+<img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/referansekle3.png" alt="image"><br>
+<b>1. xulrunner</b><br>
+шаг 1<br>
+Идем на офицальный сайт <a href="http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/">http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/</a><br>
+Выбираем подходящую нам версию.<br>
+Тут хотелось бы сделать маленькое отступление. Чем позднее версия, тем 
+она тяжелее: к примеру, 1.9v весит 21Мб., а уже 19v весит 32Мб. Помимо 
+этого каждая следующая версия требует все больше ресурсов. Забегая 
+вперед скажу, что это и стало основной причиной отказа от этой SDK.<br>
+<br>
+По данной ссылке заходим в папку с выбранной версией, далее sdk/xulrunner-X.X.en-US.win32.sdk.zip<br>
+<br>
+шаг 2<br>
+Скачиваем и распаковываем содержимое. Нас интересует из архива только 
+папочка bin. Копируем ее в папку с приложением и переименовываем в 
+xulrunner. Имя можно и другое, но чтобы не было различий с моим 
+описанием, лучше имя сделать такое.<br>
+<br>
+шаг 3<br>
+Для работы с этой SDK нам потребуется библиотека Skybound.GeckoFX.bin.v1.9.1.0 Ее можно скачать тут <a href="http://code.google.com/p/geckofx/">http://code.google.com/p/geckofx/</a><br>
+Данная библиотека работает xulrunner версии 1.9. <br>
+Если вы решили использовать более позднюю версию, то нужно искать Skybound.GeckoFX 2.0, она подходит для версий 2.0 и выше.<br>
+<br>
+шаг 4<br>
+В нашем приложении добавляем в References Skybound.Gecko.dll из скачанного архива<br>
+<br>
+шаг 5<br>
+Правим класс Program:<br>
+<pre><code class="cs">    <span class="keyword">static</span> <span class="keyword">class</span> Program
+    {
+        [STAThread]
+        <span class="keyword">static</span> <span class="keyword">void</span> Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(<span class="keyword">false</span>);
+            Application.Run(<span class="keyword">new</span> Form2());
+        }
+    }
+</code></pre><br>
+<br>
+Инициализируем контрол браузера:<br>
+<pre><code class="cs"><span class="keyword">string</span> path = <span class="string">"C:\\Program Files (x86)\\xulrunner\\"</span>;   <span class="comment">//Путь к распакованной и переименованной папке bin из архива SDK</span>
+    Skybound.Gecko.Xpcom.Initialize(path);
+    webBrowser1 = <span class="keyword">new</span> Skybound.Gecko.GeckoWebBrowser();
+    webBrowser1.Parent = <span class="keyword">this</span>.panel1;
+    webBrowser1.Dock = DockStyle.Fill;
+    <span class="keyword">string</span> u = <span class="string">"http://www.ya.ru"</span>;
+
+    <span class="comment">//Загрузка выбранной страницы</span>
+    webBrowser1.Navigate(u);
+
+</code></pre><br>
+По данному коду родительской панелью будет panel1<br>
+<br>
+шаг 6<br>
+Чтобы выполнить программно какой-либо JavaScript пришлось идти на 
+ухищрения, т.к. то ли функции, которые для этого по идее предназначены 
+не дописаны в этой версии, то ли что-то еще. Но выход я нашел только 
+такой:<br>
+<br>
+<pre><code class="cs">webBrowser1.Navigate(<span class="string">"javascript:ImGecko()"</span>);</code></pre><br>
+<br>
+Минусом является то, что нельзя получить результат обработки, только в виде alert();<br>
+Данная проблема также стала причиной того, что я начал искать замену и пришел к Awesomium<br>
+<br>
+<img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/chromewinsize.png" alt="image"><br>
+<br>
+<b>2. Awesomium</b><br>
+шаг 1<br>
+Скачиваем SDK по ссылке <a href="http://awesomium.com/">http://awesomium.com/</a><br>
+На сайте имеется две версии — стабильная(1.6.5) и тестовая(1.7). Тестовая в целом работает лучше.<br>
+Для работы нам понадобятся файлы <br>
+Awesomium.Core.dll<br>
+Awesomium.dll<br>
+Awesomium.Windows.Controls.Design.dll<br>
+Awesomium.Windows.Controls.dll<br>
+Awesomium.Windows.Forms.dll<br>
+<br>
+шаг 2<br>
+Подключаем к проекту библиотеки<br>
+Awesomium.Core.dll<br>
+Awesomium.Windows.Forms.dll<br>
+<br>
+шаг 3<br>
+В Toolbox кликаем правой кнопкой и выбираем Choose Items. Далее жмем 
+browse и подключаем Awesomium.Windows.Forms.dll, после этого у нас 
+появится новые контролы WebControl, AddressBox и т.д. Нам в первую 
+очередь важен WebControl<br>
+<br>
+шаг 4<br>
+Размещаем контрол в дизайне<br>
+<br>
+шаг 5 <br>
+Примеры использования различных функций.<br>
+<br>
+Открытие страниц<br>
+<pre><code class="cs">webControl1.LoadURL(<span class="string">"http://ya.ru"</span>); </code></pre><br>
+<br>
+Загрузка Cookies<br>
+<pre><code class="cs"><span class="keyword">string</span> cookie;  <span class="comment">// Строка с cookie которые нужно подключить</span>
+<span class="keyword">string</span> domen; <span class="comment">// Домен </span>
+<span class="keyword">string</span>[] mascook;
+mascook = cookie.Split(<span class="string">';'</span>);
+
+Awesomium.Core.WebCore.ClearCookies();
+<span class="keyword">foreach</span> (<span class="keyword">string</span> cook <span class="keyword">in</span> mascook)
+     Awesomium.Core.WebCore.SetCookie(<span class="string">"http://"</span> + domen, cook + <span class="string">"; domain="</span> + domen, <span class="keyword">true</span>, <span class="keyword">true</span>);
+</code></pre><br>
+<br>
+Получение значений переменных mx и my<br>
+<pre><code class="cs">            Awesomium.Core.JSValue x = webControl1.ExecuteJavascriptWithResult(<span class="string">"mx"</span>, <span class="number">500</span>);
+            Awesomium.Core.JSValue y = webControl1.ExecuteJavascriptWithResult(<span class="string">"my"</span>, <span class="number">500</span>);
+
+</code></pre><br>
+500 — это таймаут.<br>
+<br>
+Вызов JS функции<br>
+<br>
+<pre><code class="cs">webControl1.CallJavascriptFunction(<span class="string">""</span>, <span class="string">"al"</span>, <span class="keyword">new</span> Awesomium.Core.JSValue[] {});</code></pre><br>
+<br>
+al — это имя функции<br>
+второй параметр передает значения в фунцию. В данном случае он пустой.<br>
+<br>
+Приведенные примеры работают на Awesomium 1.6.5, в версии 1.7 немного 
+изменена архитектура и некоторые методы могут отсутствовать или 
+вызываться по другому.<br>
+<br>
+<b>Выводы</b><br>
+На текущий момент во всех проектах, где нужен браузер, использую 
+Awesomium: он и работает стабильнее и функционал побогаче. Нагрузка от 
+него небольшая. Единственный минус — это то, что не отрабатывает клик 
+правой кнопкой по флешу, потому нельзя поменять необходимые 
+параметры(возможно я просто не разобрался как). В остальном данная SDK 
+меня во всем устроила. 
+  	<div class="clear"></div> 	
+  	</div>
+    <ul class="tags">
+	<li><a href="http://habrahabr.ru/search/?q=%5Bc%23%5D&amp;target_type=posts" rel="tag">c#</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5B%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%D1%8B%5D&amp;target_type=posts" rel="tag">браузеры</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5BAwesomium%5D&amp;target_type=posts" rel="tag">Awesomium</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5Bxulrunner%5D&amp;target_type=posts" rel="tag">xulrunner</a></li>
+</ul>
+
+    <div class="infopanel_wrapper">
+	<div class="infopanel " id="infopanel_post_170015">
+	
+				<div class="voting   ">
+	
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи."></span>
+	
+					<div class="mark positive ">
+							<span class="score" title="Всего 77: ↑67 и ↓10">+57</span>
+					</div>
+					
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи."></span>
+		
+				</div>
+	
+		<div class="pageviews" title="Просмотры поста">21035</div>
+			
+		<div class="favorite">
+				<a class="guest" href="#" onclick="return false;" title="Только зарегистрированные пользователи могут добавлять посты в избранное"></a>
+		</div>
+		<div class="favs_count" title="Количество пользователей, добавивших пост в избранное">409</div>
+		
+		
+		
+	
+	
+	
+	
+				<div class="author">
+					<a title="Автор текста" href="http://habrahabr.ru/users/Violetdrug/">Violetdrug</a>
+					<span class="rating" title="рейтинг пользователя">4,0</span>
+				</div>
+		
+	
+	
+		
+			<div class="share">
+				<div class="twitter">
+					<a href="http://twitter.com/intent/tweet?text=%D0%9A%D0%B0%D0%BA+%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C+%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9+%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%BD%D0%B0+C%23+%23habr+http://habr.ru/p/170015/" title="Опубликовать ссылку в Twitter" target="_blank"></a>
+				</div>
+				<div class="vkontakte">
+					<a href="http://vk.com/share.php?url=http://habrahabr.ru/post/170015/" title="Опубликовать ссылку во ВКонтакте" onclick="window.open(this.href, 'Опубликовать ссылку во Вконтакте', 'width=800,height=300'); return false"></a>
+				</div>
+				<div class="facebook">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=http://habrahabr.ru/post/170015/" title="Опубликовать ссылку в Facebook" onclick="window.open(this.href, 'Опубликовать ссылку в Facebook', 'width=640,height=436,toolbar=0,status=0'); return false"></a>
+				</div>
+				<div class="googleplus">
+					<a href="https://plus.google.com/share?url=http://habrahabr.ru/post/170015/" title="Опубликовать ссылку в Google Plus" onclick="window.open(this.href, 'Опубликовать ссылку в Google Plus', 'width=800,height=300'); return false"></a>
+				</div>
+			</div>
+	
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+
+    
+    
+	</div>
+
+
+
+	
+<style type="text/css">
+	.post_inner_banner.alfaclick20_inner_banner {overflow:hidden;text-align:center;height:67px;border:1px solid #d4d4d4;border-radius:15px;background: url(/images/posts/inner_post_banner/alfaclick20/logo.png) no-repeat 20px 12px;}
+	.post_inner_banner.alfaclick20_inner_banner  a.alfalink {display:block;position:absolute;top:12px;left:18px;color:#eb312d;width:30px;height:42px;}
+	.post_inner_banner.alfaclick20_inner_banner  a.alfa {vertical-align:top;margin-top:16px;display:inline-block;color:#eb312d;font-size:16px;border:1px solid #ee2e22;border-radius:15px;padding:5px 10px;}
+	.post_inner_banner.alfaclick20_inner_banner  .ironman {display:inline-block;background: url(/images/posts/inner_post_banner/alfaclick20/ironman.png) no-repeat;width:180px;height:67px;}
+	.post_inner_banner.alfaclick20_inner_banner .alfaone {margin-right:50px;}
+	.post_inner_banner.alfaclick20_inner_banner .alfatwo {margin-right:30px;}
+	.post_inner_banner.alfaclick20_inner_banner .alfathree {margin-right:40px;}
+	@media (max-width: 1300px) { 
+		.post_inner_banner.alfaclick20_inner_banner .alfaone {margin-left:50px;}
+		.post_inner_banner.alfaclick20_inner_banner .alfathree {margin-right:20px;}
+		.post_inner_banner.alfaclick20_inner_banner .alfafour {}
+	}
+	@media (max-width: 1200px) { 
+		.post_inner_banner.alfaclick20_inner_banner .alfaone {margin-left:50px;margin-right:20px;}
+		.post_inner_banner.alfaclick20_inner_banner .alfatwo {margin-right:10px;}
+		.post_inner_banner.alfaclick20_inner_banner .alfathree {margin-right:20px;}
+	}
+	@media (max-width: 1100px) { 
+		.post_inner_banner.alfaclick20_inner_banner .alfaone {margin-left:30px;}
+		.post_inner_banner.alfaclick20_inner_banner .alfatwo {margin-right:10px;}
+		.post_inner_banner.alfaclick20_inner_banner .alfathree {margin-right:10px;}
+	}
+</style>
+<div class="alfaclick20_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=398663&amp;bt=21&amp;bid=2536141&amp;bn=2536141&amp;rnd=793043413" class="alfalink"></a>
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=398663&amp;bt=21&amp;bid=2562310&amp;bn=2562310&amp;rnd=738964705" class="alfa alfaone">«Альфа-Клик 2.0»</a>
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=398663&amp;bt=21&amp;pid=1170584&amp;bid=2562317&amp;bn=2562317&amp;rnd=564129589" class="alfa alfatwo">Подключить</a>
+	<div class="ironman alfathree"></div>
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=398663&amp;bt=21&amp;pid=1170585&amp;bid=2562503&amp;bn=2562503&amp;rnd=1923962480" class="alfa alfafour">Трейлер</a>
+</div>
+<style type="text/css">
+	.post_inner_banner.badoo_inner_banner .badoo_left {float:left;background: url(/images/posts/inner_post_banner/badoo/badoo_post_left.png) no-repeat;width:152px;height:71px;}
+	.post_inner_banner.badoo_inner_banner .badoo_center {width:99.9%;text-align:center;line-height:69px;font-family:'PT Sans', sans-serif;font-size:18px;color:#000;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9;border-radius:13px;height:69px;}
+	.post_inner_banner.badoo_inner_banner #badoo_logo {display:inline-block;position:relative;top:5px;width:76px;height:22px;margin:3px 10px 0 10px;background: url(/images/posts/inner_post_banner/badoo/badoo_post_logo.png) no-repeat;}
+</style>
+<div class="badoo_inner_banner post_inner_banner hidden">
+	<a class="block_url" href="">
+		<div class="badoo_left"></div>
+		<div class="badoo_center">
+			Developers, stick with Russians – work in <span id="badoo_logo"></span> London
+		</div>
+	</a>
+</div>
+<style type="text/css">
+	.post_inner_banner.acerw511_inner_banner {overflow:hidden;text-align:left;height:67px;border:1px solid #d4d4d4;border-radius:15px;background: url(/images/posts/inner_post_banner/microsoft/acerw511.png) no-repeat right top;}
+	.post_inner_banner.acerw511_inner_banner  a.acertab {display:block;position:absolute;top:20px;left:18px;color:#000;font-size:22px;font-family:Verdana,'PT Sans', sans-serif;font-weight:bolder;}
+	.post_inner_banner.acerw511_inner_banner  a.acerw511 {vertical-align:top;margin-top:16px;display:inline-block;color:#2dc1eb;font-size:16px;font-weight:bold;font-family:'PT Sans', sans-serif;border:1px solid #2dc1eb;border-radius:15px;padding:5px 20px;}
+	.post_inner_banner.acerw511_inner_banner  .ironman {display:inline-block;background: url(/images/posts/inner_post_banner/acerw511/ironman.png) no-repeat;width:180px;height:67px;}
+	.post_inner_banner.acerw511_inner_banner .acontest {margin-left:330px;}
+	.post_inner_banner.acerw511_inner_banner .arules {margin-left:20px;}
+</style>
+<div class="acerw511_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=407691&amp;bt=21&amp;bid=2656283&amp;bn=2656283&amp;rnd=305218494" class="acertab">Acer Iconia TAB W511</a>
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=407691&amp;bt=21&amp;bid=2656283&amp;bn=2656283&amp;rnd=305218494" class="acerw511 acontest">Конкурс</a>
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=407691&amp;bt=21&amp;bid=2656284&amp;bn=2656284&amp;rnd=318496636" class="acerw511 arules">Правила</a>
+</div>
+<style type="text/css">
+	.post_inner_banner.alfamobile_inner_banner {overflow:hidden;text-align:center;height:67px;border:1px solid #d4d4d4;border-radius:15px;}
+	.post_inner_banner.alfamobile_inner_banner a {text-decoration:none;color:#000;}
+	.post_inner_banner.alfamobile_inner_banner .logo {background: url(/images/posts/inner_post_banner/alfamobile/logo.png) no-repeat 20px 12px;width:47px;height:54px;}
+	.post_inner_banner.alfamobile_inner_banner div {display:block;float:left;text-align:left;font-size:12px;}
+	.post_inner_banner.alfamobile_inner_banner .shape {background: url(/images/posts/inner_post_banner/alfamobile/shapes.png) no-repeat 0 0;padding-left:30px;margin-top:20px;}
+	.post_inner_banner.alfamobile_inner_banner .shape.sam_one {background-position:0 -2px;width:105px;margin-left:25px;}
+	.post_inner_banner.alfamobile_inner_banner .shape.sam_two {background-position:-157px -3px;width:100px;margin-left:15px;}
+	.post_inner_banner.alfamobile_inner_banner .shape.sam_three {background-position:-289px 0px;width:140px;margin-left:15px;}
+	.post_inner_banner.alfamobile_inner_banner .sam_buttons {width:258px;height:36px;margin-top:15px;margin-right:20px;float:right;}
+	.post_inner_banner.alfamobile_inner_banner .sam_buttons a {font-size:14px;font-weight:bold;padding:0 10px;line-height:38px;color:#fff;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+	.post_inner_banner.alfamobile_inner_banner .sam_buttons a.ios {display:inline-block;height:36px;background: #f12f16;}
+	.post_inner_banner.alfamobile_inner_banner .sam_buttons a.ios:before{
+	 width:12px;
+	 height:20px;
+	 content: '';
+	 display: inline-block;
+	 background: url(/images/posts/inner_post_banner/alfamobile/icons.png) no-repeat left top;
+	 margin-right: 10px;
+	 vertical-align: text-bottom;
+  }
+	 
+	
+	.post_inner_banner.alfamobile_inner_banner .sam_buttons a.android {display:inline-block;height:36px;margin-left:5px;background: #abc430;}
+	.post_inner_banner.alfamobile_inner_banner .sam_buttons a.android:before{
+	 width:16px;
+	 height:21px;
+	 content: '';
+	 display: inline-block;
+	 background: url(/images/posts/inner_post_banner/alfamobile/icons.png) no-repeat right top;
+	 margin-right: 10px;
+	 vertical-align: text-bottom;
+  }
+
+	@media (max-width: 1300px) {
+		.post_inner_banner.alfamobile_inner_banner .shape {margin-left:5px !important;}
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_one {margin-left:15px !important;}
+	}
+	@media (max-width: 1200px) {
+		.post_inner_banner.alfamobile_inner_banner .shape {margin-left:0px !important;}
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_one {margin-left:5px !important;width:90px;}
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_two {margin-left:5px !important;width:80px;}
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_three {margin-left:5px !important;width:125px;}
+		.post_inner_banner.alfamobile_inner_banner .sam_buttons {margin-right:3px;}
+	}
+	@media (max-width: 1100px) {
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_three {display:none;}
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_one {margin-left:25px !important;}
+		.post_inner_banner.alfamobile_inner_banner .shape.sam_one {margin-left:15px !important;}
+		.post_inner_banner.alfamobile_inner_banner .sam_buttons {margin-right:20px;}
+	}
+</style>
+<div class="alfamobile_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=410118&amp;bt=21&amp;pid=1222177&amp;bid=2689787&amp;bn=2689787&amp;rnd=614210270" target="_blank">
+		<div class="logo"></div>
+		<div class="shape sam_one">Переводы с<br>карты на карту</div>
+		<div class="shape sam_two">Переводы<br>через QR-Код</div>
+		<div class="shape sam_three">Новая функция<br><b>«Мой контроль»</b></div>
+	</a>
+	<div class="sam_buttons">
+		<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=410118&amp;bt=21&amp;pid=1222177&amp;bid=2689798&amp;bn=2689798&amp;rnd=794660216" class="ios" target="_blank">на iOS</a>
+		<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=410118&amp;bt=21&amp;pid=1222177&amp;bid=2689803&amp;bn=2689803&amp;rnd=1862219896" class="android" target="_blank">на Android</a>
+	</div>
+</div>
+<style type="text/css">
+	.post_inner_banner.nokia_lumia9251_inner_banner {overflow:hidden;text-align:center;height:67px;border:1px solid #d4d4d4;border-radius:15px;background: url(/images/posts/inner_post_banner/nokia/lumia925_2.png) no-repeat right;}
+	.post_inner_banner.nokia_lumia9251_inner_banner a {text-decoration:none;color:#000;}
+	.post_inner_banner.nokia_lumia9251_inner_banner .logo {background: url(/images/posts/inner_post_banner/nokia/lumia925_1.png) no-repeat 20px 12px;width:111px;height:57px;}
+	.post_inner_banner.nokia_lumia9251_inner_banner div {display:block;float:left;text-align:left;font-size:12px;}
+	.post_inner_banner.nokia_lumia9251_inner_banner .slogan {font-size:16px;margin-left:20px;line-height:69px;}
+
+	@media (max-width: 1300px) {
+
+	}
+	@media (max-width: 1200px) {
+		.post_inner_banner.nokia_lumia9251_inner_banner {background-position:right -30px top; }
+	}
+	@media (max-width: 1100px) {
+		.post_inner_banner.nokia_lumia9251_inner_banner {background-position:right -90px top; }
+	}
+</style>
+<div class="nokia_lumia9251_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=416392&amp;bt=21&amp;bid=2770333&amp;bn=2770333&amp;rnd=916072093" target="_blank" class="block_url">
+		<div class="logo"></div>
+		<div class="slogan">Возьми Lumia 925 на тест-драйв <b>сейчас</b>.</div>
+	</a>
+</div>
+<style type="text/css">
+	.post_inner_banner.nokia_lumia9252_inner_banner {overflow:hidden;text-align:center;height:69px;border:1px solid #d4d4d4;border-radius:15px;background: url(/images/posts/inner_post_banner/nokia/lumia925_r.png) no-repeat right;}
+	.post_inner_banner.nokia_lumia9252_inner_banner a {text-decoration:none;color:#000;}
+	.post_inner_banner.nokia_lumia9252_inner_banner .logo {background: url(/images/posts/inner_post_banner/nokia/lumia925_all.png) no-repeat -494px 4px;width:111px;height:61px;}
+	.post_inner_banner.nokia_lumia9252_inner_banner div {display:block;float:left;text-align:left;font-size:12px;}
+	.post_inner_banner.nokia_lumia9252_inner_banner .slogan {font-size:16px;margin-left:20px;margin-top:14px;}
+
+	.post_inner_banner.nokia_lumia9252_inner_banner .on3 {background: url(/images/posts/inner_post_banner/nokia/lumia925_all.png) no-repeat 0 4px;width:61px;height:65px;margin-left:60px;}
+	.post_inner_banner.nokia_lumia9252_inner_banner .tw0 {background: url(/images/posts/inner_post_banner/nokia/lumia925_all.png) no-repeat -158px 4px;width:61px;height:65px;margin-left:20px;}
+	.post_inner_banner.nokia_lumia9252_inner_banner .thr33 {background: url(/images/posts/inner_post_banner/nokia/lumia925_all.png) no-repeat -291px 4px;width:61px;height:65px;margin-left:20px;}
+
+
+	@media (max-width: 1300px) {
+		.post_inner_banner.nokia_lumia9252_inner_banner .on3 {margin-left:20px;}
+		.post_inner_banner.nokia_lumia9252_inner_banner .tw0 {margin-left:20px;}
+		.post_inner_banner.nokia_lumia9252_inner_banner .thr33 {margin-left:20px;}
+	}
+	@media (max-width: 1200px) {
+		.post_inner_banner.nokia_lumia9252_inner_banner .thr33 {display:none;}
+	}
+	@media (max-width: 1100px) {
+		.post_inner_banner.nokia_lumia9252_inner_banner .tw0 {display:none;}
+	}
+</style>
+<div style="display: block;" class="nokia_lumia9252_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=416392&amp;bt=21&amp;bid=2770334&amp;bn=2770334&amp;rnd=1456847961" target="_blank" class="block_url">
+		<div class="logo"></div>
+		<div class="slogan"><b>Впечатляющие возможности</b><br>в стильном тонком корпусе из металла</div>
+		<div class="on3"></div>
+		<div class="tw0"></div>
+		<div class="thr33"></div>
+	</a>
+</div>
+<style type="text/css">
+	.post_inner_banner.intel_aic2013_inner_banner {overflow:hidden;text-align:center;height:69px;border:1px solid #d4d4d4;border-radius:15px;background: url(/images/posts/inner_post_banner/intel/aic2013_right.png) no-repeat right 5px top;}
+	.post_inner_banner.intel_aic2013_inner_banner a {text-decoration:none;color:#000;display:block;height:69px;}
+	.post_inner_banner.intel_aic2013_inner_banner .logo {background: url(/images/posts/inner_post_banner/intel/aic2013_left.png) no-repeat 0 0;width:111px;height:69px;}
+	.post_inner_banner.intel_aic2013_inner_banner div {display:block;float:left;text-align:left;font-size:12px;}
+	.post_inner_banner.intel_aic2013_inner_banner .slogan {font-size:17px;margin-left:5px;margin-top:12px;font-weight:bold;}
+	.post_inner_banner.intel_aic2013_inner_banner .br {float:none;}
+	@media (max-width: 1300px) {
+		.post_inner_banner.intel_aic2013_inner_banner {background: url(/images/posts/inner_post_banner/intel/aic2013_mini.png) no-repeat right 5px top;}
+		.post_inner_banner.intel_aic2013_inner_banner .br {display:none;}
+		.post_inner_banner.intel_aic2013_inner_banner .slogan {margin-top:25px;margin-left:50px;}
+	}
+	@media (max-width: 1200px) {
+		.post_inner_banner.intel_aic2013_inner_banner .slogan {margin-left:5px;}
+	}
+	@media (max-width: 1100px) {
+		.post_inner_banner.intel_aic2013_inner_banner .br {display:block;}
+		.post_inner_banner.intel_aic2013_inner_banner .slogan {margin-top:12px;}
+	}
+</style>
+<div class="intel_aic2013_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=416463&amp;bt=21&amp;bid=2770807&amp;bn=2770807&amp;rnd=430025836" target="_blank" class="block_url">
+		<div class="logo"></div>
+		<div class="slogan">Intel® App<div class="br"></div> Innovation Contest</div>
+	</a>
+</div>
+<style type="text/css">
+	.post_inner_banner.megafon4g_inner_banner {overflow:hidden;text-align:center;height:69px;border:1px solid #d4d4d4;border-radius:15px;background: url(/images/posts/inner_post_banner/megafon/4g_bg.png) no-repeat right;}
+	.post_inner_banner.megafon4g_inner_banner a {text-decoration:none;color:#000;}
+	.post_inner_banner.megafon4g_inner_banner .logo {background: url(/images/posts/inner_post_banner/megafon/4g_slogan.png) no-repeat 22px 24px;width:209px;height:46px;}
+	.post_inner_banner.megafon4g_inner_banner .line {background: url(/images/posts/inner_post_banner/megafon/4g_line.png) no-repeat;width:11px;height:69px;margin-left:15px;}
+	.post_inner_banner.megafon4g_inner_banner div {display:block;float:left;text-align:left;font-size:12px;}
+	.post_inner_banner.megafon4g_inner_banner .burum {background: url(/images/posts/inner_post_banner/megafon/4g_boomburum.png) no-repeat;padding-left:58px;font-size:15px;line-height:19px;margin-left:20px;margin-top:7px;height:69px;padding-top:7px;}
+	.post_inner_banner.megafon4g_inner_banner .evolution {font-size:15px;line-height:19px;margin-left:30px;margin-top:14px;}
+
+	@media (max-width: 1300px) {
+		.post_inner_banner.megafon4g_inner_banner .burum {margin-left:10px;}
+		.post_inner_banner.megafon4g_inner_banner .evolution {margin-left:15px;}
+	}
+	@media (max-width: 1200px) {
+		.post_inner_banner.megafon4g_inner_banner .evolution {display:none;}
+		.post_inner_banner.megafon4g_inner_banner .burum {margin-left:60px;}
+	}
+	@media (max-width: 1100px) {
+		.post_inner_banner.megafon4g_inner_banner .burum {margin-left:20px;}
+	}
+</style>
+<div class="megafon4g_inner_banner post_inner_banner hidden">
+	<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=420545&amp;bt=21&amp;bid=2835240&amp;bn=2835240&amp;rnd=1261816566" target="_blank" class="block_url">
+		<div class="logo"></div>
+		<div class="line"></div>
+		<div class="burum"><b>Boomburum</b><br>исследует LTE</div>
+		<div class="evolution">Эволюция средств связи<br>в путешествии по России</div>
+	</a>
+</div>
+
+<script type="text/javascript">
+
+	//show_inner_banner_block('megafon4g');
+	
+function show_inner_banner_block(name, url) {
+	if( typeof(name) !== 'undefined') {
+		if( $('.'+name+'_inner_banner').size() > 0) {
+			$('.'+name+'_inner_banner').show();
+		}
+	}
+
+	if( typeof(url) !== 'undefined') {
+		$('.'+name+'_inner_banner .block_url').attr('href', url);
+	}
+}
+</script>
+
+<div title="" id="adriver_banner_1586921565"></div>
+<script type="text/javascript">
+new adriver("adriver_banner_1586921565", {sid:179440, bt:52, bn:3});
+</script>
+
+
+	
+		<div class="comments_list " id="comments">
+
+  <h2 class="title ">комментарии (<span id="comments_count">30</span>)
+  
+  </h2>
+
+    <div class="comment_item" id="comment_5896407">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896407">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896407" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 1: ↑1 и ↓0">+1</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/BlackSwan/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/BlackSwan/" class="username">BlackSwan</a><span class="comma">,</span>
+				<time>19 февраля 2013 в 23:34<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5896407" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Спасибо большое. А то я однажды искал webKit под C# по попадались 
+только одни ужасы вида обёртки вокруг хромиума. Будем пробовать :) 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896407">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5896445">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896445">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896445" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 7: ↑7 и ↓0">+7</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/impwx/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_19422.png" alt=""></a>
+				<a href="http://habrahabr.ru/users/impwx/" class="username">impwx</a><span class="comma">,</span>
+				<time>19 февраля 2013 в 23:41<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5896445" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Мы на работе используем <a href="https://github.com/chillitom/CefSharp">CefSharp</a> — тоже очень неплохо себя зарекомендовал. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896445">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5896529">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896529">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896529" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 1: ↑1 и ↓0">+1</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/northicewind/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/northicewind/" class="username">northicewind</a><span class="comma">,</span>
+				<time>19 февраля 2013 в 23:58</time>
+				
+				<a href="#comment_5896529" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Стоило посмотреть еще в сторону <a href="https://bitbucket.org/xilium/xilium.cefglue/overview">xilium.cefglue</a>. Использовал в одном проекте, остался доволен. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896529">
+		<div class="comment_item" id="comment_5896551">
+	
+	<span class="parent_id" data-parent_id="5896529"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896551">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896551" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:01<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5896551" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5896551" data-parent_id="5896529" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896529" data-id="5896551" data-parent_id="5896529" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Сколько весит библиотека? 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896551">
+		<div class="comment_item" id="comment_5896589">
+	
+	<span class="parent_id" data-parent_id="5896551"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896589">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896589" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/northicewind/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/northicewind/" class="username">northicewind</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:12</time>
+				
+				<a href="#comment_5896589" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5896589" data-parent_id="5896551" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896551" data-id="5896589" data-parent_id="5896551" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Сейчас точно не скажу, но в комплекте с самим CEF3 емнип чуть меньше 60мб. Где-то 56мб — 58мб. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896589">
+		<div class="comment_item" id="comment_5896613">
+	
+	<span class="parent_id" data-parent_id="5896589"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896613">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896613" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:17</time>
+				
+				<a href="#comment_5896613" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5896613" data-parent_id="5896589" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896589" data-id="5896613" data-parent_id="5896589" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				xulrunner весит около 10Мб<br>
+Awesomium около 20Мб<br>
+подразумеваю полный комплект для работы.<br>
+Я специально выбирал по легче, т.к. программу скачивают в регионах где инет слабый. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896613">
+		<div class="comment_item" id="comment_5896641">
+	
+	<span class="parent_id" data-parent_id="5896613"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896641">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896641" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 2: ↑2 и ↓0">+2</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/northicewind/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/northicewind/" class="username">northicewind</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:29</time>
+				
+				<a href="#comment_5896641" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5896641" data-parent_id="5896613" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896613" data-id="5896641" data-parent_id="5896613" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Прошу прощения. Это я вместе с debug сборкой сказал. Сам CEF3 + 
+xilium.cefglue весят около 35мб, но это с видео кодеками и поддержкой 
+WebGL. Если попробовать собрать без всего этого, то будет меньше  
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896641">
+	</div>
+</div>
+
+	</div>
+</div>
+
+	</div>
+</div>
+
+	</div>
+</div>
+
+		<div class="comment_item" id="comment_5957715">
+	
+	<span class="parent_id" data-parent_id="5896529"></span>
+	<div class="comment_body">
+			<div class="info " rel="5957715">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5957715" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/fddima/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/fddima/" class="username">fddima</a><span class="comma">,</span>
+				<time> 5 марта 2013 в 19:57</time>
+				
+				<a href="#comment_5957715" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5957715" data-parent_id="5896529" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896529" data-id="5957715" data-parent_id="5896529" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Кстати автору xilium.cefglue, — т.е. мне — очень интересны отзывы, пожелания и прочее. :) 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5957715">
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5896599">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="author_banned">НЛО прилетело и опубликовало эту надпись здесь</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896599">
+		<div class="comment_item" id="comment_5896617">
+	
+	<span class="parent_id" data-parent_id="5896599"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896617">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896617" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:19</time>
+				
+				<a href="#comment_5896617" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5896617" data-parent_id="5896599" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896599" data-id="5896617" data-parent_id="5896599" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Я когда с gecko на Awesomium перешел, не мог нарадоваться. И код приятный и мануал имеется. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896617">
+		<div class="comment_item" id="comment_5896649">
+	
+	<span class="parent_id" data-parent_id="5896617"></span>
+	<div class="comment_body">
+			<div class="author_banned">НЛО прилетело и опубликовало эту надпись здесь</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896649">
+	</div>
+</div>
+
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5896627">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896627">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896627" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 12: ↑10 и ↓2">+8</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/tangro/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/tangro/" class="username">tangro</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:24</time>
+				
+				<a href="#comment_5896627" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				&gt;В определенный момент мне стало некомфортно использовать стандартный контрол <b>WebBrouser</b><br>
+<br>
+А я даже знаю почему — компилятор постоянно писал «класс не найден», да? 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896627">
+		<div class="comment_item" id="comment_5896633">
+	
+	<span class="parent_id" data-parent_id="5896627"></span>
+	<div class="comment_body">
+			<div class="info " rel="5896633">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5896633" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 3: ↑3 и ↓0">+3</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 00:27</time>
+				
+				<a href="#comment_5896633" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5896633" data-parent_id="5896627" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5896627" data-id="5896633" data-parent_id="5896627" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Уже все пошутили над этой опечаткой) <br>
+Исправлено. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5896633">
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5897013">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5897013">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5897013" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 1: ↑1 и ↓0">+1</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/kamilgarey/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_44948.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/kamilgarey/" class="username">kamilgarey</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 02:59</time>
+				
+				<a href="#comment_5897013" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Из браузерных контролов пользовался <a href="http://code.google.com/p/open-webkit-sharp/">OpenWebKitSharp</a> <br>
+<br>
+Неплохо. Только много чего тянет — потому тяжёлый( + 50 m).<br>
+<br>
+И ещё Json Parser из коробки заменил на <a href="http://www.nuget.org/packages/Newtonsoft.Json">Newtonsoft</a> 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5897013">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5897241">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5897241">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5897241" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 2: ↑2 и ↓0">+2</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Indexator/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_43758.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Indexator/" class="username">Indexator</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 07:40</time>
+				
+				<a href="#comment_5897241" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Не ожидал, что есть столько альтернатив стандартному контролу (один 
+из тех постов, где комменты увеличивают его ценность). Спасибо за 
+наводки! :) 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5897241">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5901677">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5901677">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5901677" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/IlyaMS/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_24305.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/IlyaMS/" class="username">IlyaMS</a><span class="comma">,</span>
+				<time>20 февраля 2013 в 20:23</time>
+				
+				<a href="#comment_5901677" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Awesomium отличная штука, юзал его в дипломной работе.<br>
+Проект был на WPF, так что кому актуально — есть и WPF-ная версия, с ней
+ все отлично (но процесс «прикручивания» контрола, естественно, будет 
+отличаться). 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5901677">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5902981">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5902981">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5902981" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/vba/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/vba/" class="username">vba</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 02:26</time>
+				
+				<a href="#comment_5902981" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Право не знаю из какого нафталина вы достали скайбоунд и geckofx с 
+гуглкода. А глядя на ваши муки с ними аж слезы наворачиваются. Оба этих 
+проекта мертвы, сударь. А вот их логическое продолжение — <a href="https://bitbucket.org/geckofx/geckofx-18.0">bitbucket.org/geckofx/geckofx-18.0</a>
+ они выходят примерно след в след за новыми версиями firefox/xulrunner. 
+Проект живой и там есть и поддержка winforms для любителей античности и 
+wpf для любителей ретро. <br>
+<br>
+Awesomium так себе, у него даже лицензия вражеская. А ведь есть такие проекты как Xilium.CefGlue (его уже упоминали). 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5902981">
+		<div class="comment_item" id="comment_5903149">
+	
+	<span class="parent_id" data-parent_id="5902981"></span>
+	<div class="comment_body">
+			<div class="info " rel="5903149">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5903149" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 05:00<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5903149" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5903149" data-parent_id="5902981" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5902981" data-id="5903149" data-parent_id="5902981" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Каждая следующая версия FF все тяжелее и тяжелее, как по нагрузке, так и по объему, а для меня очень важен был каждый Мб. <br>
+На тот момент когда я от него отказался(примерно 1.5 года назад) самая стабильная была именно описанная версия. <br>
+И если бы не проблемы обработки JS я бы на ней остался.<br>
+<br>
+К сравнению xulrunner 1.9v весил 10Мб и кушал оперативы около 20Мб<br>
+А тот же Awesomium весит 20Мб и оперативы съедает около 60Мб<br>
+<br>
+В общем каждый сам решает, какие параметры при выборе ему важнее. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5903149">
+		<div class="comment_item" id="comment_5904545">
+	
+	<span class="parent_id" data-parent_id="5903149"></span>
+	<div class="comment_body">
+			<div class="info " rel="5904545">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5904545" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark positive ">
+							<span class="score" title="Всего 1: ↑1 и ↓0">+1</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/vba/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/vba/" class="username">vba</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 13:44</time>
+				
+				<a href="#comment_5904545" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5904545" data-parent_id="5903149" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5903149" data-id="5904545" data-parent_id="5903149" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Не забывайте что в случае с ФФ и с Хромиумом с каждым выпуском 
+прибавляются и багфиксы и исправления критических дыр безопасности. 
+Встраивание браузера это конечно хорошо но не для критических 
+приложений. Там еще есть одна большая проблема все движки браузеров 
+поддерживают пока только х32 архитектуру есть найт билды под х64 но они 
+остаются найтами. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5904545">
+	</div>
+</div>
+
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5903785">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5903785">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5903785" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_56739.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="username">Seganapa</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 10:52</time>
+				
+				<a href="#comment_5903785" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Предупреждение 1 Несоответствие между архитектурой процессора 
+проекта «MSIL», построение которого выполняется, и архитектурой 
+процессора ссылки «Awesomium.Core, Version=1.7.0.3, Culture=neutral, 
+PublicKeyToken=e1a0d7c8071a5214, processorArchitecture=x86», «x86». Это 
+несоответствие может привести к ошибкам во время выполнения. Попробуйте 
+изменить целевую архитектуру процессора для проекта с помощью диспетчера
+ конфигураций, чтобы согласовать архитектуры процессоров для проекта и 
+ссылок, или используйте зависимость от ссылок с архитектурой процессора,
+ соответствующей целевой архитектуре процессора проекта. 
+WindowsFormsApplication7<br>
+<br>
+Как выправить? Что не так? Делаю как описано… 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5903785">
+		<div class="comment_item" id="comment_5903789">
+	
+	<span class="parent_id" data-parent_id="5903785"></span>
+	<div class="comment_body">
+			<div class="info " rel="5903789">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5903789" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/FireStorm/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/FireStorm/" class="username">FireStorm</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 10:53</time>
+				
+				<a href="#comment_5903789" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5903789" data-parent_id="5903785" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5903785" data-id="5903789" data-parent_id="5903785" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				В свойствах проекта выберите Build -&gt; Platform target -&gt; x86. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5903789">
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5903915">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5903915">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5903915" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_56739.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="username">Seganapa</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 11:17</time>
+				
+				<a href="#comment_5903915" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Еще не могу найти Awesomium.dll, где его брать?<br>
+ 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5903915">
+		<div class="comment_item" id="comment_5903999">
+	
+	<span class="parent_id" data-parent_id="5903915"></span>
+	<div class="comment_body">
+			<div class="info " rel="5903999">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5903999" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 11:34<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5903999" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5903999" data-parent_id="5903915" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5903915" data-id="5903999" data-parent_id="5903915" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				в 1.7 версии Awesomium.dll лежит в build -&gt;bin<br>
+остальные wrappers-&gt;AwesomiumNET-&gt;Assemblies<br>
+Еще хотел добавить, что в 1.7 немного отлечается архитектура, они ввели понятие сессий.<br>
+Чуть позже допишу статью с пометкой для этой версии. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5903999">
+		<div class="comment_item" id="comment_5904051">
+	
+	<span class="parent_id" data-parent_id="5903999"></span>
+	<div class="comment_body">
+			<div class="info " rel="5904051">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5904051" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_56739.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="username">Seganapa</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 11:45</time>
+				
+				<a href="#comment_5904051" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5904051" data-parent_id="5903999" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5903999" data-id="5904051" data-parent_id="5903999" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Было бы чудесно! Подскажите как просто загрузить страницу 1.7, а то LoadURL пишет устарел…<br>
+ 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5904051">
+		<div class="comment_item" id="comment_5904635">
+	
+	<span class="parent_id" data-parent_id="5904051"></span>
+	<div class="comment_body">
+			<div class="info " rel="5904635">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5904635" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 13:57<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5904635" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5904635" data-parent_id="5904051" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5904051" data-id="5904635" data-parent_id="5904051" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				<code>webControl1.Source = new Uri("http://www.google.com/ncr");</code><br>
+в папке wrappers\AwesomiumNET\Samples\Windows Forms\CSharp\WinFormsSample<br>
+есть пример, он реализован не через контрол, но в целом в нем есть, что подсмотреть.<br>
+там же рядом лежит папка с примерами использования JS 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5904635">
+	</div>
+</div>
+
+	</div>
+</div>
+
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5904785">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5904785">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5904785" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_56739.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="username">Seganapa</a><span class="comma">,</span>
+				<time>21 февраля 2013 в 14:12<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_5904785" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Поздно написал… Sorry! 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5904785">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5929871">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5929871">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5929871" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_56739.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="username">Seganapa</a><span class="comma">,</span>
+				<time>27 февраля 2013 в 10:56</time>
+				
+				<a href="#comment_5929871" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				awesomium отличный контрол. Только вот с Proxy разобраться не получается. Для прокси нужно юзать сессии?  
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5929871">
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_5938707">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="5938707">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5938707" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_56739.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/Seganapa/" class="username">Seganapa</a><span class="comma">,</span>
+				<time> 1 марта 2013 в 11:11</time>
+				
+				<a href="#comment_5938707" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Почему так не работает?<br>
+<pre><code class="cs">WebPreferences ds = <span class="keyword">new</span> WebPreferences();
+            ds.ProxyConfig = <span class="string">"myproxy:80"</span>;
+            <span class="keyword">using</span> (WebSession session = WebCore.CreateWebSession(ds))
+            {
+                webControl1.Source = <span class="keyword">new</span> Uri(<span class="string">"http://google.com"</span>);
+                
+            }
+</code></pre><br>
+<br>
+Как правильно сделать? 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5938707">
+		<div class="comment_item" id="comment_5940539">
+	
+	<span class="parent_id" data-parent_id="5938707"></span>
+	<div class="comment_body">
+			<div class="info " rel="5940539">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_5940539" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_69287.jpg" alt=""></a>
+				<a href="http://habrahabr.ru/users/Violetdrug/" class="username">Violetdrug</a><span class="comma">,</span>
+				<time> 1 марта 2013 в 16:12</time>
+				
+				<a href="#comment_5940539" class="link_to_comment">#</a>
+					<div class="show_tree" data-id="5940539" data-parent_id="5938707" title="Показать ветку комментариев">↵</div>
+					
+					<a href="#comment_5938707" data-id="5940539" data-parent_id="5938707" class="to_parent">↑</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Документации для 1.7 пока к сожалению нет. Все примеры для 1.6.3. Рискну предположить, раз это версия <br>
+1.7 Final Release Candidate, возможно часть функционала там просто еще не работает. Я пока использую 1.6.3. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_5940539">
+	</div>
+</div>
+
+	</div>
+</div>
+
+    <div class="comment_item" id="comment_6152779">
+	
+	<span class="parent_id" data-parent_id="0"></span>
+	<div class="comment_body">
+			<div class="info " rel="6152779">
+				<div class="folding-dot-holder"><div class="folding-dot"></div></div>
+				<div id="voting_6152779" class="voting   ">
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+					<div class="mark  ">
+							<span class="score" title="Всего 0: ↑0 и ↓0">0</span> 
+					</div>	 
+				</div>
+				<a href="http://habrahabr.ru/users/AlexP11223/" class="avatar"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/stub-user-small.gif" alt=""></a>
+				<a href="http://habrahabr.ru/users/AlexP11223/" class="username">AlexP11223</a><span class="comma">,</span>
+				<time>18 апреля 2013 в 19:04<span class="time_changed"> (комментарий был изменён)</span></time>
+				
+				<a href="#comment_6152779" class="link_to_comment">#</a>
+				<span class="to_chidren"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="message html_format ">
+				Немного попробовал Awesomium 1.7 для автоматизации действий на 
+сложных страницах со скриптами, где просто парсить HTML и отправлять 
+запросы сложно.<br>
+<br>
+Как-то не очень понравилось:<br>
+1. Заполнение полей, кликанье кнопок и т.п. только через выполнение Javascript. <br>
+2. (баг?) DocumentReady срабатывает когда документ еще не готов или 
+как-то так. Он не null, но getElementById не находил на странице 
+элементы, если Thread.Sleep(250), то ок. Решил так:<br>
+<pre><code class="cs">    WbAws.LoadingFrameCompleted += OnLoadingFrameCompleted;
+    WbAws.Source = <span class="keyword">new</span> Uri(<span class="string">"http://google.com"</span>);
+    
+    <span class="keyword">private</span> <span class="keyword">void</span> OnLoadingFrameCompleted(...)
+    { 
+       <span class="keyword">if</span> (webView == <span class="keyword">null</span> || !webView.IsLive || webView.ParentView != <span class="keyword">null</span> || !e.IsMainFrame)
+         <span class="keyword">return</span>;
+
+        LoadingFrameCompleted -= OnLoadingFrameCompleted;
+    }
+</code></pre><br>
+<br>
+Еще столкнулся со странным багом в инсталлере: он почему-то закинул 
+примеры (Samples) не в Documents\Visual Studio, как указано в ридми, а в
+ корень совершенно другого диска, в папку VS10_PROJECTS (ее там не 
+было), еле нашел, в вин8 еще и ярлык на них не создался на стартовом 
+экране. Причем также и на виртуальной с машине. 
+			</div>
+			<div class="reply_form_placeholder"></div>
+			<div class="reply">
+				
+			</div>
+	</div>
+	
+	<div class="reply_comments" id="reply_comments_6152779">
+	</div>
+</div>
+
+</div>
+					<p class="for_users_only_msg">Только зарегистрированные пользователи могут оставлять комментарии. <a href="https://auth.habrahabr.ru/login/">Войдите</a>, пожалуйста.</p>
+
+
+	
+<form action="/json/favorites/" method="post" id="edit_tags_form" class="hidden">
+  <input name="action" value="add" type="hidden">
+  <input name="ti" value="0" type="hidden">
+  <input name="tt" value="0" type="hidden">
+  <label>Пометьте топик понятными вам метками, если хотите</label>
+  <input autocomplete="off" name="tags_string" class="tags_string" type="text">
+  <div class="description">Метки лучше разделять запятой. Например: <i>общение, социальные сети, myspace.com, подростки, мердок</i></div>
+  <input value="Сохранить" class="submit" type="submit"> или <a href="#" class="close" onclick="return close_edit_tags()">закрыть</a>
+</form>
+    
+
+
+  </div>
+  <div class="sidebar_right">
+			
+	
+		<div class="banner_300x500">
+		<div title="" id="adriver_banner_1863387959"><div style="position: relative; width: 300px; height: 500px; text-align: center; margin: 0px auto;"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&amp;ad=400862&amp;bid=2554165&amp;bt=52&amp;bn=1&amp;pz=0&amp;xpid=Bs88lzZDo7hCfoysxEeUvGf4Iqj0&amp;ref=http:%2f%2fhabrahabr.ru%2fpost%2f170015%2f&amp;custom=1%3Dbrowsers%3B2%3Dcsharp%3B3%3Dnet&amp;rleurl=" onclick="return ar_sendPix('');" target="_blank"><img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/hantim_300x500px_sharp.jpg" alt="" border="0"></a></div></div>
+		<script type="text/javascript">
+			(function(){
+				var custom = {};
+					custom[1] = 'browsers';
+					custom[2] = 'csharp';
+					custom[3] = 'net';
+				
+				var std = {},i;for(i in
+				std){try{custom[std[i]]=eval(i)}catch(e){} }
+				new adriver("adriver_banner_1863387959", {sid: 176776, bt: 52, bn: 1, custom:
+				custom});
+			}());
+		</script>
+		</div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+<div class="block daily_best_posts">
+  <div class="title">Лучшее <sup>за 24 часа</sup></div>
+  <div class="posts_list">
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192604/" class="post_name">Джефф Дин из компании Google — это Чак Норрис нашего времени</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192586/" class="post_name">Конец света от LG</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192632/" class="post_name">Последствия реформы РАН: Рейдерский захват власти в МГТУ МИРЭА</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192622/" class="post_name">Фоторепортаж из сердца китайского интернет-гиганта Alibaba Group</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/badoo/blog/192538/" class="post_name">Code coverage в Badoo</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192588/" class="post_name">Мини-ПК под Linux за 45 долларов</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/mailru/blog/192676/" class="post_name">Унификация интерфейсов: опыт e-commerce-проектов</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192546/" class="post_name">[NES] Пишем редактор уровней для Prince of Persia. Глава четвертая. Он сам бежит! Или скелет в шкафу</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/192648/" class="post_name">Автоматические жалюзи на Arduino</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/pvs-studio/blog/192624/" class="post_name">Большой Калькулятор выходит из под контроля</a>
+      </div>
+  </div>
+  <div class="all"><a href="http://habrahabr.ru/top/">все лучшие</a></div>
+</div>
+
+		
+		
+
+
+<div class="block similar_posts">
+
+	<div class="title">Похожие посты</div>
+  <div class="posts_list">
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/191308/">Браузеры и частота их падения</a>
+    				<span class="when">25.08.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/183826/">Awesomium для C++</a>
+    				<span class="when">19.06.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/181326/">Возвращение «браузера для гиков»? Слово в защиту Opera Next 15 (философский топик)</a>
+    				<span class="when">29.05.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/170429/">Браузеры генома</a>
+    				<span class="when">23.02.2013</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/153451/">Презентация Яндекс.Браузера</a>
+    				<span class="when">04.10.2012</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/122568/">Каким браузером вы пользуетесь в смартфоне с Android 2.x</a>
+    				<span class="when">24.06.2011</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/119320/">Что объясняет тенденцию использования Браузеров?</a>
+    				<span class="when">16.05.2011</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/115629/">Рынок браузеров в рунете</a>
+    				<span class="when">16.03.2011</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/114767/">Браузер как условие анонимности</a>
+    				<span class="when">02.03.2011</span>
+      </div>
+    	<div class="post_item">
+    				<a class="post_name" href="http://habrahabr.ru/post/100681/">Война браузеров. Лето 2010</a>
+    				<span class="when">05.08.2010</span>
+      </div>
+  </div>			
+</div>
+
+
+
+		
+		
+
+	<div class="block live_broadcast">
+		<div class="title">Прямой эфир &nbsp;<sup><span class="dotted tab open" data-type="live_broadcast_activity">посты</span> 
+																											 &nbsp;<span class="dotted tab " data-type="qa_activity">q&amp;a</span></sup></div>
+
+		<div class="live_broadcast_activity ">
+				<div class="posts_list">
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/PopeyetheSailor/" class="user_name">PopeyetheSailor</a> →
+								<a href="http://habrahabr.ru/post/192640/#comment_6692856" class="post_name">1967 года рождения и моложе</a>&nbsp;<span class="count">5</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/stifff/" class="user_name">stifff</a> →
+								<a href="http://habrahabr.ru/post/192632/#comment_6692854" class="post_name">Последствия реформы РАН: Рейдерский захват власти в МГТУ МИРЭА</a>&nbsp;<span class="count">127</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/Mezomish/" class="user_name">Mezomish</a> →
+								<a href="http://habrahabr.ru/post/192202/#comment_6692852" class="post_name">Парень зарегистрировал платный номер и зарабатывает на рекламщиках</a>&nbsp;<span class="count">136</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/inout/" class="user_name">inout</a> →
+								<a href="http://habrahabr.ru/post/192664/#comment_6692850" class="post_name">Пожар на фабрике Hynix в Китае</a>&nbsp;<span class="count">32</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/lubezniy/" class="user_name">lubezniy</a> →
+								<a href="http://habrahabr.ru/post/192622/#comment_6692848" class="post_name">Фоторепортаж из сердца китайского интернет-гиганта Alibaba Group</a>&nbsp;<span class="count">17</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/lebowski/" class="user_name">lebowski</a> →
+								<a href="http://habrahabr.ru/post/192586/#comment_6692844" class="post_name">Конец света от LG</a>&nbsp;<span class="count">80</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/AYrm/" class="user_name">AYrm</a> →
+								<a href="http://habrahabr.ru/post/192636/#comment_6692842" class="post_name">Горшочек, вари!</a>&nbsp;<span class="count">104</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/Renius/" class="user_name">Renius</a> →
+								<a href="http://habrahabr.ru/post/192654/#comment_6692840" class="post_name">11 интернет-порталов под угрозой блокировки из-за заявления «НТВ-Профит»</a>&nbsp;<span class="count">84</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/Mihrutkin/" class="user_name">Mihrutkin</a> →
+								<a href="http://habrahabr.ru/post/192662/#comment_6692838" class="post_name">MK 809III Android Mini PC: компьютер в кармане</a>&nbsp;<span class="count">23</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/users/sergstor/" class="user_name">sergstor</a> →
+								<a href="http://habrahabr.ru/post/190612/#comment_6692836" class="post_name">На какой площадке развивать свой инфобизнес?</a>&nbsp;<span class="count">4</span>
+							</div>
+				</div>
+				<div class="all"><a href="http://habrahabr.ru/posts/">все посты</a></div>
+		</div>
+
+		<div class="qa_activity hidden">
+				
+			
+			
+					<div class="posts_list">
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/mastini/" class="user_name">mastini</a> →
+									<a href="http://habrahabr.ru/qa/46342/#comment_219796" class="post_name">Сделать прозрачное туннелирование трафика (с сохранением ip) в Linux</a>&nbsp;<span class="count">4</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/ZUZ/" class="user_name">ZUZ</a> →
+									<a href="http://habrahabr.ru/qa/46356/#answer_173774" class="post_name">Турбофильм очень подвел и разочаровал. Чем заменить?</a>&nbsp;<span class="count">1</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/might/" class="user_name">might</a> →
+									<a href="http://habrahabr.ru/qa/46348/#answer_173772" class="post_name">Верстка под Android, насколько актуально?</a>&nbsp;<span class="count">2</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/noonesshadow/" class="user_name">noonesshadow</a> →
+									<a href="http://habrahabr.ru/qa/46354/#comment_219788" class="post_name">Microsoft Forefront TMG: плюсы и минусы</a>&nbsp;<span class="count">2</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/mpetrunin/" class="user_name">mpetrunin</a> →
+									<a href="http://habrahabr.ru/qa/46346/#comment_219784" class="post_name">Корпуса для серверной материнки (Intel W2600CR2) нестандартного форм-фактора (больше E-ATX)</a>&nbsp;<span class="count">2</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/hostadmin/" class="user_name">hostadmin</a> →
+									<a href="http://habrahabr.ru/qa/46350/#comment_219772" class="post_name">Как у вас построена работа с почтой (на разных устройствах и компьютерах)?</a>&nbsp;<span class="count">3</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/kenny_opennix/" class="user_name">kenny_opennix</a> →
+									<a href="http://habrahabr.ru/qa/46310/#answer_173762" class="post_name">Является ли почтовая рассылка публикацией?</a>&nbsp;<span class="count">1</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/unwrecker/" class="user_name">unwrecker</a> →
+									<a href="http://habrahabr.ru/qa/46322/#comment_219746" class="post_name">Вопрос к пользователям Odroid-U2</a>&nbsp;<span class="count">1</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/moonsly/" class="user_name">moonsly</a> →
+									<a href="http://habrahabr.ru/qa/46334/#answer_173752" class="post_name">Определение схожести текстов по тегам</a>&nbsp;<span class="count">1</span>
+								</div>
+								<div class="post_item">
+									<a href="http://habrahabr.ru/users/FedLab/" class="user_name">FedLab</a> →
+									<a href="http://habrahabr.ru/qa/46298/#comment_219740" class="post_name">Поменяли ли вы смартфон на хороший планшет + простой мобильный телефон?</a>&nbsp;<span class="count">21</span>
+								</div>
+					</div>
+					<div class="all"><a href="http://habrahabr.ru/qa/">все вопросы</a></div>
+		</div>  
+	</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.live_broadcast .tab').click(function(){
+				$('.live_broadcast .tab').removeClass('open')
+				$(this).addClass('open')
+
+				$('.live_broadcast_activity').hide()
+				$('.qa_activity').hide()
+
+				$('.' + $(this).data('type')).show();
+
+			})
+		})
+	</script>
+
+
+
+  
+		
+
+<div id="htmlblock_placeholder"><style>
+	.sidebar_right .block.softline_eset_nod32_htmlblock{background: #F0F0E7;text-align: left;position: relative;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock .logo{margin:0px auto 0px;width:260px;height:28px;background: url(/images/sidebar/htmlblock/softline_eset_nod32/logo.png) no-repeat;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock .line{background: #e1e2d3;height:6px;margin: 20px 0;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock .ptitle{color:#004a50;font-size:18px;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock .btitle{font-weight:bold;color:#5ba085;font-size:36px;}
+
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul{padding-top:30px;margin-bottom:30px;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul li{margin-bottom:20px;font-size:14px;}	
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul li .icon1{background: url(/images/sidebar/htmlblock/softline_eset_nod32/li.png) no-repeat 0 0px;width:49px;height:35px;display: inline-block;vertical-align: middle;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul li .icon2{background: url(/images/sidebar/htmlblock/softline_eset_nod32/li.png) no-repeat 0 -54px;width:49px;height:33px;display: inline-block;vertical-align: middle;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul li .icon3{background: url(/images/sidebar/htmlblock/softline_eset_nod32/li.png) no-repeat 0 -110px;width:49px;height:28px;display: inline-block;vertical-align: middle;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul li .icon4{background: url(/images/sidebar/htmlblock/softline_eset_nod32/li.png) no-repeat 0 -159px;width:49px;height:39px;display: inline-block;vertical-align: middle;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock ul li .text{font-size:13px;color:#000000;margin-left: 10px;display: inline-block;vertical-align: middle;width: 200px;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock .bottom_buttons .more{background: url(/images/sidebar/htmlblock/softline_eset_nod32/button.png) no-repeat left top;width:261px;height:36px;display: inline-block;}
+	.sidebar_right .block.softline_eset_nod32_htmlblock .bottom_buttons{border-top:1px dashed #bdbcb5;background: #e6e7dc;text-align: center;-webkit-border-bottom-right-radius: 5px;-webkit-border-bottom-left-radius: 5px;-moz-border-radius-bottomright: 5px;-moz-border-radius-bottomleft: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;margin:0px -20px -15px;padding:20px 20px;margin-top:20px;}
+</style>
+        
+
+
+<div class="block softline_eset_nod32_htmlblock">
+	<div class="logo"></div>
+	<div class="line"></div>
+	<div class="ptitle">лицензии</div>
+	<div class="btitle">ESET NOD32</div>
+	<div class="ptitle">со скидкой</div>
+
+	<ul>
+		<li><div class="icon1"></div><div class="text">Высокий уровень безопасности<br> данных</div></li>
+		<li><div class="icon2"></div><div class="text">Защита от неизвестных угроз</div></li>
+		<li><div class="icon3"></div><div class="text">Защита от внешних вторжений и<br>фильтрация трафика</div></li>
+		<li><div class="icon4"></div><div class="text">Контроль съемных носителей</div></li>
+	</ul>
+	
+	<div class="bottom_buttons">
+		<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&amp;ad=375512&amp;bt=21&amp;bid=2801657&amp;bn=2801657&amp;rnd=1936912944" class="more block_url"></a>
+	</div>
+</div>
+
+
+</div>
+
+	<script type="text/javascript">
+	var htmlblock_hidden = true;
+	/*
+	var check_window_position = function(name, html, url){
+		console.log('check_window_position',name, html, url);
+		var screen_top = window.pageYOffset
+		var screen_bottom = window.pageYOffset + $(window).height()
+		var htmlblock_placeholder_top = $('#htmlblock_placeholder').offset().top // + ($(window).height() / 2 )
+		if( screen_top < htmlblock_placeholder_top && htmlblock_placeholder_top < screen_bottom ){
+			if ( htmlblock_hidden ){
+				
+				$('.'+name+'_htmlblock').removeClass('hidden');
+				if( typeof(url) !== 'undefined'){
+					$('.'+name+'_htmlblock .block_url').attr('href', url);
+				}
+				if (name == 'ie10_2' || name == 'ie10_3'){
+					var imgie = new Image(1,1);
+					imgie.src = 'http://view.atdmt.com/MRR/view/442774355/direct/01/';
+				}
+
+				htmlblock_hidden = false
+			}
+		}
+	}
+	*/
+	
+	function show_html_block(name, url){
+
+		if( typeof(name) !== 'undefined'){
+			$.get('/json/html/'+name+'/', function(html){
+				$('#htmlblock_placeholder').html(html);
+				$('.'+name+'_htmlblock').removeClass('hidden');
+				if( typeof(url) !== 'undefined'){
+
+					$('.'+name+'_htmlblock .block_url').attr('href', url);
+				}
+			})
+		}
+	}
+	</script>
+
+	<div title="" id="adriver_banner_327292689"></div>
+
+	<script src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/jquery_002.js"></script>
+	<script type="text/javascript">
+
+		//if ( true)
+		//  show_html_block('softline_eset_nod32');
+		//else
+			new adriver("adriver_banner_327292689", {sid:179440, bt:52, sz:'html', bn:2});
+	</script>
+		
+<div class="block best_company">
+
+		<div class="title">Компания дня <img src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/bg_cicle_help.png" class="help-tip"></div>
+
+		<div class="company_info">
+			<div class="name">
+			 <img class="favicon" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/small_72919.png" alt="Apps4All" height="16" width="16">
+			 <div class="company_name"><a href="http://habrahabr.ru/company/apps4all/" class="title">Apps4All</a></div>
+			</div>
+
+			<p>Последний пост:
+				<a href="http://habrahabr.ru/company/apps4all/blog/192436/">Android 4.4 получил имя Kit Kat (+1 миллиард активированных устройств)</a>
+			</p>
+
+			<div class="buttons">
+  			<div id="fans_count">1272 подписчика</div>
+			</div>
+		</div>
+
+	</div>
+
+
+		
+
+		
+	<div class="block new_vacanies">
+  <a href="http://hantim.ru/" class="title">Хантим</a>
+  <div class="vacancies">
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/8821-razrabotchik-ruby-on-rails">Разработчик Ruby on Rails</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/18254-programmist-python">Программист Python</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/22028-team-lead-rukovoditel-komandy-razrabotki">Team lead/Руководитель команды разработки</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/22430-javascript-razrabotchik">Javascript разработчик</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/23212-ruby-programmist-na-populyarnyy-proekt">Ruby-программист на популярный проект</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/23272-trebuetsya-opytnyy-razrabotchik-dlya-symfony2-proekta">Требуется опытный разработчик для Symfony2-проекта.</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/21610-razrabotchik-asp-net">Разработчик ASP.NET</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/17540-senior-php-developer">Senior PHP Developer</a>&nbsp;→ <a href="http://abc-gruppen.hantim.ru/jobs" class="company_name">ABC-Gruppen AB</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/23048-php-programmist">PHP-программист</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://hantim.ru/jobs/17296-php-mysql-programmist-90000r-v-mesyats">PHP/MySQL программист (90000р в месяц)</a>
+		</div>
+  </div>
+  <div class="all"><a href="http://hantim.ru/">все вакансии</a></div>
+</div>
+
+		
+	<div class="block freelansim">
+	  <a href="http://freelansim.ru/" class="title"></a>
+	  <div class="tasks">
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35398">Календарь можно замутить его в виде моста (вантового)</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35396">Доработка сайта Opencart</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35390">Верстка под Drupal на арабском языке</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35374">Верстка сайта</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35388">Перенос сайта на CMS Битрикс</a>
+				</div>
+				<div class="task marked">
+					<a href="http://freelansim.ru/tasks/35384">Настроить Windows терминал</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35382">Рерайт, перевод с английского</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35378">Требуется талант, увлеченный психологией - копирайт</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35376">WEB программист удаленно</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/35214">Создание сайта на базе opencart</a>
+				</div>
+
+	  </div>
+	  <div class="all"><a href="http://freelansim.ru/tasks">все заказы</a></div>
+	</div>
+
+		
+		
+		
+
+<div class="block similar_events">
+	<div class="title">Ближайшие события</div>
+		<div class="events_items">
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_5"></div>
+						<div class="day">06</div>
+						<div class="month">сен</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/3188/">MoscowJS Meetup 9th</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_5"></div>
+						<div class="day">06</div>
+						<div class="month">сен</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/3240/">Бесплатный вебинар «Сетевая безопасность проще: все функции в одном устройстве”</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_6"></div>
+						<div class="day">07</div>
+						<div class="month">сен</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/2924/">«Battle Hack» в Москве: российский этап мирового сражения</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_6"></div>
+						<div class="day">07</div>
+						<div class="month">сен</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/3156/">IT Jam 2013</a>
+					</div>
+				</div>
+				<div class="event_item">
+						<div class="date">
+						<div class="dayname dayname_6"></div>
+						<div class="day">07</div>
+						<div class="month">сен</div>
+						</div>
+					<div class="title">
+						<a href="http://habrahabr.ru/events/3094/">Конференция '.Net Day' в Одессе</a>
+					</div>
+				</div>
+		</div>
+	<div class="all"><a href="http://habrahabr.ru/events/">все события</a></div>
+</div>
+
+		
+  </div>
+  <div class="clear"></div>
+
+  
+        	
+	<div class="rotated_posts">
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/post/190468/" class="grey">Пересёк границу — потерял электронные книги</a>
+			</div>
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/company/JetBrains/blog/179815/" class="grey">IntelliJ IDEA положена в основу новой Android Studio</a>
+			</div>
+			<div class="rotated_post last">
+				<a href="http://habrahabr.ru/post/185574/" class="grey">Петиция против «антипиратского» закона стала доступна на сайте «Российская общественная инициатива»</a>
+			</div>
+		<div class="clear"></div>
+	</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // test gggg
+        // настройки всплывающих уведомлений
+        $.jGrowl.defaults.closerTemplate = '<div>Закрыть все уведомления</div>';         
+        
+        // настройки тултипов
+        $(".help-tip").tipTip({maxWidth: "300px", edgeOffset: 10});  
+        
+      });
+      // global vars
+      var g_base_url = 'habrahabr.ru';
+      var g_show_xpanel = false;
+      var g_base_fullurl = 'http://habrahabr.ru/';
+      var g_is_guest = false;
+    </script>
+    
+    <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/shortcuts.js"></script>
+    <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/to_top.js"></script>
+    <link href="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/_to_top.css" rel="stylesheet" media="all">
+
+    
+    <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/float_block.js"></script>
+    
+    <!-- <script type="text/javascript" src="/javascripts/1378387764/_parts/float_block.js"></script> //-->
+      <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter19919284 = new Ya.Metrika({id:19919284,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/19919284" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+<script type="text/javascript">
+	/*<![CDATA[*/
+	var ga = document.createElement('script');
+		ga.setAttribute('async', 'true');
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	/* ]]>*/
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(
+	    ['_setAccount', 'UA-726094-1'],
+	    ['_setDomainName', '.habrahabr.ru'],
+	    ["_addOrganic", "mail.ru", "q"],
+	    ["_addOrganic","rambler.ru", "words"],
+	    ["_addOrganic","nigma.ru", "s"],
+	    ["_addOrganic","blogs.yandex.ru", "text"],
+	    ["_addOrganic","webalta.ru", "q"],
+	    ["_addOrganic","aport.ru", "r"],
+	    ["_addOrganic","akavita.by", "z"],
+	    ["_addOrganic","meta.ua", "q"],
+	    ["_addOrganic","bigmir.net", "q"],
+	    ["_addOrganic","tut.by", "query"],
+	    ["_addOrganic","all.by", "query"],
+	    ["_addOrganic","i.ua", "q"],
+	    ["_addOrganic","online.ua", "q"],
+	    ["_addOrganic","a.ua", "s"],
+	    ["_addOrganic","ukr.net", "search_query"],
+	    ["_addOrganic","search.com.ua", "q"],
+	    ["_addOrganic","search.ua", "query"],
+	    ["_addOrganic","poisk.ru", "text"],
+	    ["_addOrganic","km.ru", "sq"],
+	    ["_addOrganic","liveinternet.ru", "ask"],
+	    ["_addOrganic","gogo.ru", "q"],
+	    ["_addOrganic","gde.ru", "keywords"],
+	    ["_addOrganic","quintura.ru", "request"],
+	    ['_trackPageview']
+	);
+	document.documentElement.firstChild.appendChild(ga);
+</script>	
+
+    <script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/advertising.js"></script>
+    	<script type="text/javascript" src="%D0%9A%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%20%D0%B2%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20C%23%20_%20%D0%A5%D0%B0%D0%B1%D1%80%D0%B0%D1%85%D0%B0%D0%B1%D1%80_files/a"></script>
+
+    
+    <div id="footer">
+			<dl>
+				<dd><a href="https://auth.habrahabr.ru/login/">Войти</a></dd>
+				<dd><a href="https://auth.habrahabr.ru/register/">Регистрация</a></dd>
+			</dl>
+			<dl>
+				<dt>Разделы</dt>
+
+				<dd><a href="http://habrahabr.ru/qa/">Q&amp;A</a></dd>
+				<dd><a href="http://habrahabr.ru/hubs/">Хабы</a></dd>
+				<dd><a href="http://habrahabr.ru/events/">События</a></dd>
+				<dd><a href="http://habrahabr.ru/companies/">Компании</a></dd>
+				<dd><a href="http://habrahabr.ru/users/">Пользователи</a></dd>
+			</dl>
+			<dl>
+				<dt>Посты</dt>
+				
+				<dd><a href="http://habrahabr.ru/posts/top/">Лучшие</a></dd>
+				<dd><a href="http://habrahabr.ru/posts/collective/">Тематические</a></dd>
+				<dd><a href="http://habrahabr.ru/posts/corporative/">Корпоративные</a></dd>
+				<dd><a href="http://habrahabr.ru/sandbox/">Песочница</a></dd>
+			</dl>
+			<dl>
+				<dt>Инфо</dt>
+				<dd><a href="http://habrahabr.ru/info/about/">О сайте</a></dd>
+				<dd><a href="http://habrahabr.ru/info/help/rules/">Правила</a></dd>
+				<dd><a href="http://habrahabr.ru/info/help/">Помощь</a></dd>
+				<dd><a href="http://habrahabr.ru/info/agreement/">Соглашение</a></dd>
+				<dd><a href="http://habrahabr.ru/info/stats/">Статистика</a></dd>
+			</dl>
+			<dl>
+				<dt>Услуги</dt>
+				<dd><a href="http://habrahabr.ru/info/advertising/">Реклама</a></dd>
+				<dd><a href="http://habrahabr.ru/info/advertising/corporate/">Корпоративные тарифы</a></dd>
+				<dd><a href="http://habrahabr.ru/info/advertising/workshops/">Семинары</a></dd>
+				<dd><a href="http://habrahabr.ru/special/">Спецпроекты</a></dd>
+			</dl>
+      <div class="copyright">
+
+    		<div class="about">
+    		  <a class="footer_logo" href="http://thematicmedia.ru/">Тематические Медиа</a>
+    			© 2006–2013
+			<br><br>
+			<a href="http://habrahabr.ru/feedback/">Служба поддержки</a><br><br>
+			<a href="http://m.habrahabr.ru/">Мобильная версия</a><br><br>
+			
+			
+			<div class="social_accounts">
+				<a href="https://twitter.com/habrahabr" class="tw"></a>
+				<a href="https://www.facebook.com/habrahabr.ru" class="fb"></a>
+				<a href="http://vk.com/habr" class="vk"></a>
+				<!-- <a href="" class="gp"></a> //-->
+			</div>
+			
+		</div>
+      </div>
+
+</div>    
+    <div class="footer_logos">
+		
+		<div class="project brainstorage">
+			<a href="http://brainstorage.ru/" class="icon "></a>
+			<div class="text">Все мозги в одном месте</div>
+		</div>
+
+		<div class="project freelansim">
+			<a href="http://freelansim.ru/" class="icon "></a>
+			<div class="text">Заказы для фрилансеров</div>
+		</div>
+		
+		
+		<div class="project hantim">
+			<a href="http://hantim.ru/" class="icon "></a>
+			<div class="text">Вакансии для айтишников</div>
+		</div>
+		
+		<div class="project autokadabra">
+			<a href="http://autokadabra.ru/" class="icon "></a>
+			<div class="text ">Уютная и дружелюбная</div>
+		</div>
+		
+</div>
+
+
+    
+    
+    
+  
+
+<div id="AutocompleteContainter_7d46d" style="position: absolute; z-index: 9999; top: 51px; left: 1289.5px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_7d46d" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="AutocompleteContainter_e9c34" style="position: absolute; z-index: 9999; top: 1997px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_e9c34" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="tiptip_holder" style="max-width:300px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div><div style="display: block;" class="to_top"><div class="to_top_panel"><div class="to_top_button" title="Наверх"><span class="arrow">↑</span> <span class="label">наверх</span></div>  </div></div></body></html>

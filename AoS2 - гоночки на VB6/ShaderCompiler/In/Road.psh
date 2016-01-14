@@ -1,0 +1,16 @@
+ps_2_0
+
+dcl t0 //tex
+dcl t1 //texworld
+dcl v0 //fog
+
+dcl_2d s0 //road
+dcl_2d s1 //tarm
+
+texld r0, t0, s0
+texld r1, t1, s1
+
+add r0.rgb, r0, r1
+lrp r0.rgb, v0.a, r0, v0
+mov oC0, r0
+

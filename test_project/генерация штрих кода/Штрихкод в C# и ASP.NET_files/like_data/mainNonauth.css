@@ -1,0 +1,144 @@
+.dialog {
+width: 443px;
+margin: 0px;
+padding: 0px;
+}
+.dialog .tab_UM, .dialog .tab_LM {
+width: 415px;
+}
+.dialog .dialogHeader {
+margin: 0px;
+padding: 0px;
+width: 100%;
+height: 32px;
+}
+.dialogFooter {
+margin: 0px;
+padding: 0px;
+width: 100%;
+height: 15px;
+}
+.dialog .dialogBody {
+width: 435px;
+_width: 443px;
+padding: 3px;
+border: 1px solid #c4c4c4;
+border-bottom: 0px;
+border-top: 0px;
+}
+.dialogBgStrip {
+width: 100%;
+background-image: url(../gfx/login_bg_strip.jpg);
+background-repeat: repeat-y;
+text-align: left;
+}
+.dialogBg {
+padding-left: 140px;
+padding-top: 5px;
+background-image: url(../gfx/login_bg.jpg);
+background-repeat: no-repeat;
+background-position: bottom left;
+}
+.loginCommon {
+padding-top: 20px;
+height: 198px;
+_height: 198px;
+}
+.loginWeb {
+padding-top: 20px;
+}
+
+.dialogBgStripLogout {
+width: 100%;
+text-align: left;
+}
+.dialogBgLogout {
+padding-left: 140px;
+padding-top: 5px;
+background-image: url(../gfx/logout_bg.jpg);
+background-repeat: no-repeat;
+background-position: bottom left;
+}
+.logout {
+padding-top: 50px;
+height: 130px;
+_height: 178px;
+}
+
+.dialogBgStripDeny {
+width: 100%;
+background-image: url(../gfx/accessdenied_bg_strip.jpg);
+background-repeat: repeat-y;
+text-align: left;
+}
+.dialogBgDeny {
+padding-left: 140px;
+padding-top: 5px;
+background-image: url(../gfx/accessdenied_bg.jpg);
+background-repeat: no-repeat;
+background-position: bottom left;
+}
+.cobionCategoryList {
+padding-left: 10px;
+overflow: auto;
+width: 270px;
+_width: 276px;
+max-height: 80px;
+_height: expression(this.scrollHeight > 80? "80px" : "auto" );
+}
+.cobionHeader {
+font-weight: bold;
+text-decoration: underline;
+}
+.denyTable {
+margin-top: 5px;
+margin-bottom: 5px;
+position: realtive;
+}
+.denyTable TD {
+vertical-align: top;
+text-align: left;
+}
+.unlockFailed {
+padding-top: 20px;
+height: 198px;
+_height: 198px;
+}
+.deny {
+padding-top: 20px;
+height: auto;
+}
+.denyReason {
+width: 153px;
+max-height: 80px;
+_height: expression(this.scrollHeight > 80? "80px" : "auto" );
+overflow: auto;
+}
+.loginBlock {
+width: 100%; 
+margin: 15px 0 10px 0;
+text-align: right;
+}
+.heading {
+font-weight: bold;
+}
+.redir {
+font-size: 13px;
+font-weight: bold;
+color: black;
+text-align: center;
+}
+
+#freeSpace {
+height: 10%;
+}
+#contentTable {
+width: 100%;
+}
+#failure{
+font-weight: bold;
+color: #FE660D;
+}
+.textInput {
+width: 160px
+}	

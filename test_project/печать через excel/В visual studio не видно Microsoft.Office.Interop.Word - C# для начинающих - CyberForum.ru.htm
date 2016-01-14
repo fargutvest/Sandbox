@@ -1,0 +1,954 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html data-savefrom-tab-data="{&quot;module&quot;:&quot;lm&quot;,&quot;tooltip&quot;:&quot;Найдено ссылок: 0&quot;}" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru"><head><script src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/context_static_r633.js" charset="utf-8"></script><script src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/cnt.js" type="text/javascript" async=""></script><script async="true" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/context.js" type="text/javascript"></script><script src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/context_static_r633.js" charset="utf-8"></script><script async="true" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/context.js" type="text/javascript"></script>
+<!-- base href="http://www.cyberforum.ru/" --><!--[if IE]></base><![endif]--> <link rel="canonical" href="http://www.cyberforum.ru/csharp-beginners/thread505153.html"> <!-- base href="http://www.cyberforum.ru/" --> <meta http-equiv="Content-Type" content="text/html; charset=windows-1251"> <meta name="keywords" content="В,visual,studio,не,видно,Microsoft,Office,Interop,Word, В visual studio не видно Microsoft.Office.Interop.Word, компьютерный форум программистов киберфорум сайберфорум сайбер компьютеры программирование софт"> <meta name="description" content="у меня в visual studio не видно Microsoft.Office.Interop.Word В чём проблема?"> <meta name="verify-v1" content="z+WrViDt9OodkKaYoo8+s1dOXfL/ka6bQ0jBGkxrRAQ="> <meta name="yandex-verification" content="7313400c5792ee7b"> <meta name="msvalidate.01" content="F8DD8BF8D2F28E27DEEDE322E0C4A048"> <meta name="wmail-verification" content="33380466938a2eaf">  <style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.7 PL3 CSS
+* Style: 'Обычный стиль'; Style ID: 1
+*/
+@import url("http://www.cyberforum.ru/clientscript/vbulletin_css/style-c63b6874-00001.css");
+</style> <link rel="stylesheet" type="text/css" href="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_important.css">  <script src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/ga.js" async="" type="text/javascript"></script><script async="" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/cbgapi.loaded_0"></script><script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/yahoo-dom-event.js"></script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/connection-min.js"></script> <script type="text/javascript"> <!--
+var SESSIONURL = "";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// --> </script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_global.js"></script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_menu.js"></script> <link rel="alternate" type="application/rss+xml" title="Форум программистов и сисадминов CyberForum.ru RSS Feed" href="http://www.cyberforum.ru/external.php?type=RSS2"> <link rel="alternate" type="application/rss+xml" title="C# для начинающих - CyberForum.ru - RSS Feed" href="http://www.cyberforum.ru/external.php?type=RSS2&amp;forumids=91"> <link type="application/opensearchdescription+xml" rel="search" href="http://www.cyberforum.ru/opensearch.xml" title="CyberForum.ru"> <link rel="stylesheet" href="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/geshi.css" type="text/css" media="screen"> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_thanks_collapse.js"></script> <script gapi_processed="true" type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/plusone.js">
+  {lang: 'ru'}
+</script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/jquery.js"></script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_vbpost.js"></script> <script type="text/javascript">
+function initSpoilers(context)
+{
+    var context = context || 'body';
+    $('div.spoiler-head', $(context))
+        .click(function(){
+            $(this).toggleClass('unfolded');
+            $(this).next('div.spoiler-body').slideToggle('fast');
+        })
+    ;
+}
+
+$(document).ready(function(){
+    initSpoilers('body');
+});
+</script> <link rel="stylesheet" type="text/css" href="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/spoiler.css"> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/combo"></script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_thanks.js"></script><script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_thanks_collapse.js"></script><style type="text/css"> <!--
+.admincomment {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 10px;
+ color: #FFFFFF;
+}
+.modcomment {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 10px;
+ color: #FFFFFF;
+}
+.maincomm {
+ border: 1px;
+ border-left: 1px solid #8394B2;
+ border-top: 1px solid #8394B2;
+ border-right: 1px solid #8394B2;
+ border-bottom: 1px solid #8394B2;
+}
+--> </style> <title> В visual studio не видно Microsoft.Office.Interop.Word - C# для начинающих - CyberForum.ru</title> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_post_loader.js"></script> <style type="text/css" id="vbulletin_showthread_css"> <!--
+	
+	#links div { white-space: nowrap; }
+	#links img { vertical-align: middle; }
+	--> </style> <style type="text/css">
+		span.sortarrow {position:absolute;}
+		span.sortarrow img {border:0;}
+		a.sortheader {text-decoration:none; display:block; width:100%;}
+	</style> <script type="text/javascript">
+		var IMGDIR_BUTTON = "images/buttons";
+	</script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/sorttable.js"></script> <style id="ya_share_style" type="text/css">.b-share-popup-wrap{z-index:1073741823;position:absolute;width:500px}.b-share-popup{position:absolute;z-index:1073741823;border:1px solid #888;background:#FFF;color:#000}.b-share-popup-wrap .b-share-popup_down{top:0}.b-share-popup-wrap .b-share-popup_up{bottom:0}.b-share-popup-wrap_state_hidden{position:absolute!important;top:-9999px!important;right:auto!important;bottom:auto!important;left:-9999px!important;visibility:hidden!important}.b-share-popup,x:nth-child(1){border:0;padding:1px!important}@media all and (resolution = 0dpi){.b-share-popup,x:nth-child(1),x:-o-prefocus{padding:0!important;border:1px solid #888}}.b-share-popup__i{display:-moz-inline-box;display:inline-block;padding:5px 0!important;overflow:hidden;vertical-align:top;white-space:nowrap;visibility:visible;background:#FFF;-webkit-box-shadow:0 2px 9px rgba(0,0,0,0.6);-moz-box-shadow:0 2px 9px rgba(0,0,0,0.6);box-shadow:0 2px 9px rgba(0,0,0,0.6)}.b-share-popup__item{font:1em/1.25em Arial,sans-serif;display:block;padding:5px 15px!important;white-space:nowrap;background:#FFF}.b-share-popup__item,a.b-share-popup__item:link,a.b-share-popup__item:visited{text-decoration:none!important;border:0!important}a.b-share-popup__item{cursor:pointer}a.b-share-popup__item .b-share-popup__item__text{display:inline;text-decoration:underline;color:#1a3dc1}a.b-share-popup__item:hover{word-spacing:0}a.b-share-popup__item:hover .b-share-popup__item__text{color:#F00;cursor:pointer}.b-share-popup__icon{display:-moz-inline-box;display:inline-block;margin:-3px 0 0 0;padding:0 5px 0 0!important;vertical-align:middle}.b-share-popup__icon_input{width:21px;height:16px;margin-top:-6px;padding:0!important}.b-share-popup__icon__input{margin-right:0;margin-left:2px;vertical-align:top}.b-share-popup__spacer{display:block;padding-top:10px!important}.b-share-popup__header{font:86%/1em Verdana,sans-serif;display:block;padding:10px 15px 5px 15px!important;color:#999}.b-share-popup__header_first{padding-top:5px!important}.b-share-popup__input{font:86%/1em Verdana,sans-serif;display:block;padding:5px 15px!important;color:#999;text-align:left}.b-share-popup__input__input{font:1em/1em Verdana,sans-serif;display:block;width:10px;margin:5px 0 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;resize:none;text-align:left;direction:ltr}.b-share-popup_down .b-share-popup_with-link .b-share-popup__input_link{position:absolute;top:5px;right:0;left:0}.b-share-popup_up .b-share-popup_with-link .b-share-popup__input_link{position:absolute;right:0;bottom:5px;left:0}.b-share-popup_down .b-share-popup_with-link{padding-top:55px!important}.b-share-popup_up .b-share-popup_with-link{padding-bottom:55px!important}.b-share-popup_down .b-share-popup_expandable .b-share-popup__main{padding-bottom:25px!important}.b-share-popup_up .b-share-popup_expandable .b-share-popup__main{padding-top:25px!important}.b-share-popup_down .b-share-popup_yandexed{padding-bottom:10px!important}.b-share-popup_up .b-share-popup_yandexed{padding-top:10px!important}.b-share-popup__yandex{position:absolute;right:4px;bottom:2px;font:78.125%/1em Verdana,sans-serif;padding:3px!important;background:transparent}a.b-share-popup__yandex:link,a.b-share-popup__yandex:visited{color:#c6c5c5;text-decoration:none}a.b-share-popup__yandex:link:hover,a.b-share-popup__yandex:visited:hover{color:#F00;text-decoration:underline}.b-share-popup_up .b-share-popup__yandex{top:2px;bottom:auto}.b-share-popup_expandable .b-share-popup__yandex{right:auto;left:4px}.b-share-popup_to-right .b-share-popup_expandable .b-share-popup__yandex{right:4px;left:auto}.b-share-popup__expander .b-share-popup__item{position:absolute;bottom:5px;font:86%/1em Verdana,sans-serif;margin:10px 0 0;padding:5px 10px!important;cursor:pointer;color:#999;background:transparent}.b-share-popup_to-right,.b-share-popup_to-right .b-share-popup__expander{direction:rtl}.b-share-popup_to-right .b-share-popup__expander .b-share-popup__icon{padding:0 0 0 5px!important}.b-share-popup_up .b-share-popup__expander .b-share-popup__item{top:-5px;bottom:auto}.b-share-popup__expander .b-share-popup__item:hover .b-share-popup__item__text{text-decoration:underline}.b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup__expander .b-ico_action_larr,.b-share-popup_full .b-share-popup__expander .b-ico_action_larr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup__expander .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__item__text_expand{display:none}.b-share-popup_to-right .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_full .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_larr{display:inline}.b-ico_action_rarr,.b-ico_action_larr{width:8px;height:7px;border:0}.b-share-popup__main,.b-share-popup__extra{direction:ltr;vertical-align:bottom;text-align:left}.b-share-popup_down .b-share-popup__main,.b-share-popup_down .b-share-popup__extra{vertical-align:top}.b-share-popup__main{display:-moz-inline-stack;display:inline-block}.b-share-popup__extra{display:none;margin:0 -10px 0 0}.b-share-popup_full .b-share-popup__extra{display:-moz-inline-stack;display:inline-block}.b-share-popup_to-right .b-share-popup__extra{margin:0 0 0 -10px}.b-share-popup__tail{position:absolute;width:21px;height:10px;margin:0 0 0 -11px}.b-share-popup_down .b-share-popup__tail{top:-10px;background:url(//yandex.st/share/static/b-share-popup_down__tail.gif) 0 0 no-repeat}.b-share-popup_up .b-share-popup__tail{bottom:-10px;background:url(//yandex.st/share/static/b-share-popup_up__tail.gif) 0 0 no-repeat}.b-share-popup_down .b-share-popup__tail,x:nth-child(1){top:-9px;background-image:url(//yandex.st/share/static/b-share-popup_down__tail.png)}.b-share-popup_up .b-share-popup__tail,x:nth-child(1){bottom:-9px;background-image:url(//yandex.st/share/static/b-share-popup_up__tail.png)}@media all and (resolution = 0dpi){.b-share-popup_down .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{top:-10px;background-image:url(//yandex.st/share/static/b-share-popup_down__tail.gif)}.b-share-popup_up .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{bottom:-10px;background-image:url(//yandex.st/share/static/b-share-popup_up__tail.gif)}}.b-share-popup .b-share-popup_show_form_mail,.b-share-popup .b-share-popup_show_form_html{padding:0!important}.b-share-popup .b-share-popup_show_form_mail .b-share-popup__main,.b-share-popup .b-share-popup_show_form_html .b-share-popup__main,.b-share-popup .b-share-popup_show_form .b-share-popup__main,.b-share-popup .b-share-popup_show_form_mail .b-share-popup__extra,.b-share-popup .b-share-popup_show_form_html .b-share-popup__extra,.b-share-popup .b-share-popup_show_form .b-share-popup__extra{height:15px;padding:0!important;overflow:hidden;visibility:hidden}.b-share-popup_show_form_mail .b-share-popup__expander,.b-share-popup_show_form_html .b-share-popup__expander,.b-share-popup_show_form .b-share-popup__expander,.b-share-popup_show_form_mail .b-share-popup__input_link,.b-share-popup_show_form_html .b-share-popup__input_link,.b-share-popup_show_form .b-share-popup__input_link{display:none}.b-share-popup__form{position:relative;display:none;overflow:hidden;padding:5px 0 0!important;margin:0 0 -15px;white-space:normal}.b-share-popup_show_form_mail .b-share-popup__form_mail,.b-share-popup_show_form_html .b-share-popup__form_html,.b-share-popup_show_form .b-share-popup__form{display:block}.b-share-popup__form__link{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline;padding:5px!important;margin:0 0 5px 10px;text-decoration:underline;cursor:pointer;color:#1a3dc1}.b-share-popup__form__button{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline;margin:5px 0 0 15px}.b-share-popup__form__close{font:86%/1.4545em Verdana,sans-serif;float:right;display:inline;padding:5px!important;margin:0 10px 5px 0;cursor:pointer;color:#999}a.b-share-popup__form__link:hover,a.b-share-popup__form__close:hover{text-decoration:underline;color:#F00}.b-share-popup_font_fixed .b-share-popup__item{font-size:12.8px}.b-share-popup_font_fixed .b-share-popup__header,.b-share-popup_font_fixed .b-share-popup__input,.b-share-popup_font_fixed .b-share-popup__expander .b-share-popup__item,.b-share-popup_font_fixed .b-share-popup__form__link,.b-share-popup_font_fixed .b-share-popup__form__button,.b-share-popup_font_fixed .b-share-popup__form__close{font-size:11px}.b-share-popup_font_fixed .b-share-popup__yandex{font-size:10px}.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url(//yandex.st/share/static/b-share-form-button.png) 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url(//yandex.st/share/static/b-share-form-button.png)}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url(//yandex.st/share/static/b-share-icon_size_14.png)}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 3px 1px 4px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;cursor:pointer;text-align:left;text-decoration:none!important;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:#F00}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #e4e4e4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#e4e4e4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1a3dc1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url(//yandex.st/share/static/b-share-form-button_share__icon.png) 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7b7b7b}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url(//yandex.st/share/static/b-share-icon.png) 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_greader{background-position:0 -204px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}.b-share-icon_gplus{background-position:0 -426px}.b-share-icon_pocket{background-position:0 -443px}.b-share-icon_surfingbird{background-position:0 -460px}.b-share-icon_pinterest{background-position:0 -477px}.b-share_theme_dark .b-share-icon{background:url(//yandex.st/share/static/b-share-icons__theme_dark.png) 99px 0 no-repeat}.b-share_theme_dark .b-share-icon_odnoklassniki{background-position:-4px -3px}.b-share_theme_dark .b-share-icon_vkontakte{background-position:-24px -3px}.b-share_theme_dark .b-share-icon_twitter{background-position:-44px -3px}.b-share_theme_dark .b-share-icon_facebook{background-position:-64px -3px}.b-share_theme_dark .b-share-icon_lj{background-position:-85px -3px}.b-share_theme_dark .b-share-icon_yaru{background-position:-105px -3px}.b-share_theme_dark .b-share-popup .b-share-icon_odnoklassniki,.b-share_theme_dark .b-share-icon_odnoklassniki:hover{background-position:-4px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_vkontakte,.b-share_theme_dark .b-share-icon_vkontakte:hover{background-position:-24px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_twitter,.b-share_theme_dark .b-share-icon_twitter:hover{background-position:-44px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_facebook,.b-share_theme_dark .b-share-icon_facebook:hover{background-position:-64px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_lj,.b-share_theme_dark .b-share-icon_lj:hover{background-position:-85px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_yaru,.b-share_theme_dark .b-share-icon_yaru:hover{background-position:-105px -28px}.b-share_theme_dark .b-share__text{color:#fff}.b-share_theme_dark .b-share-form-button_share .b-share-form-button__icon{background-image:url("//yandex.st/share/static/b-share-form-button_share__icon_dark.png")}.b-share_theme_dark .b-share-form-button{color:#fff!important;opacity:.8}.b-share_theme_dark .b-share__handle:hover .b-share-form-button,.b-share_theme_dark .b-share-form-button:hover{opacity:1;cursor:pointer}.b-share_theme_dark .b-share-form-button,.b-share_theme_dark .b-share-form-button__before,.b-share_theme_dark .b-share-form-button__after{background:transparent}.b-share_theme_dark .b-share-popup__i{background-color:#333;border-radius:10px;-webkit-box-shadow:0 2px 9px rgba(255,255,255,0.6);-moz-box-shadow:0 2px 9px rgba(255,255,255,0.6);box-shadow:0 2px 9px rgba(255,255,255,0.6)}.b-share_theme_dark .b-share__text{color:#AAA}.b-share_theme_dark .b-share-popup{color:#AAA;border-radius:10px;background-color:#333;background-color:rgba(50,50,50,0.3)}.b-share_theme_dark .b-share-popup__item{background:transparent;color:#ccc}.b-share_theme_dark .b-share-popup .b-share-popup__item__text{color:#ccc}.b-share_theme_counter .b-share{display:inline-block;vertical-align:middle}.b-share-counter{display:none;float:left;margin:3px 6px 3px 3px;color:#fff;font:14px Arial,sans-serif;line-height:18px}.b-share_theme_counter .b-share_type_small .b-share-counter{margin:2px 6px 2px 1px;font-size:11px;line-height:14px}.b-share_theme_counter .b-share-btn__counter .b-share-counter{display:block}.b-share-btn__counter{text-decoration:none}.b-share_theme_counter .b-share-btn__wrap{position:relative;float:left;margin-left:5px}.b-share_theme_counter .b-share_type_small .b-share-btn__wrap{margin-left:4px}.b-share_theme_counter .b-share-btn__wrap:first-child{margin-left:0}.b-share_theme_counter .b-share__link{display:inline-block;cursor:pointer;-webkit-border-radius:3px;border-radius:3px}.b-share_theme_counter .b-share_type_small .b-share__link{-webkit-border-radius:2px;border-radius:2px}.b-share_theme_counter .b-share-icon{display:block;float:left;width:24px;height:24px;background-image:url(//yandex.st/share/static/b-share_counter_large.png);background-position:-20px 0}.b-share_theme_counter .b-share_type_small .b-share-icon{width:18px;height:18px;background-image:url(//yandex.st/share/static/b-share_counter_small.png)}.b-share_theme_counter .b-share-icon_facebook{background-position:0 0}.b-share_theme_counter .b-share-btn__facebook{background-color:#3c5a98}.b-share_theme_counter .b-share-btn__facebook:hover{background-color:#30487a}.b-share_theme_counter .b-share-btn__facebook:active{border-top:2px solid #24365a;background-color:#334d81}.b-share_theme_counter .b-share-icon_moimir{background-position:0 -29px}.b-share_theme_counter .b-share-btn__moimir{background-color:#226eb7}.b-share_theme_counter .b-share-btn__moimir:hover{background-color:#1b5892}.b-share_theme_counter .b-share-btn__moimir:active{border-top:2px solid #14426d;background-color:#1d5e9c}.b-share_theme_counter .b-share-icon_vkontakte{background-position:0 -58px}.b-share_theme_counter .b-share-btn__vkontakte{background-color:#48729e}.b-share_theme_counter .b-share-btn__vkontakte:hover{background-color:#3a5b7e}.b-share_theme_counter .b-share-btn__vkontakte:active{border-top:2px solid #2b445e;background-color:#3d6186}.b-share_theme_counter .b-share-icon_twitter{background-position:0 -87px}.b-share_theme_counter .b-share-btn__twitter{background-color:#00aced}.b-share_theme_counter .b-share-btn__twitter:hover{background-color:#008abe}.b-share_theme_counter .b-share-btn__twitter:active{border-top:2px solid #00668d;background-color:#0092ca}.b-share_theme_counter .b-share-icon_odnoklassniki{background-position:0 -116px}.b-share_theme_counter .b-share-btn__odnoklassniki{background-color:#ff9f4d}.b-share_theme_counter .b-share-btn__odnoklassniki:hover{background-color:#cc7f3e}.b-share_theme_counter .b-share-btn__odnoklassniki:active{border-top:2px solid #975e2e;background-color:#d98742}.b-share_theme_counter .b-share-icon_gplus{background-position:0 -145px}.b-share_theme_counter .b-share-btn__gplus{background-color:#c25234}.b-share_theme_counter .b-share-btn__gplus:hover{background-color:#9b422a}.b-share_theme_counter .b-share-btn__gplus:active{border-top:2px solid #73311f;background-color:#a5462c}.b-share_theme_counter .b-share-icon_yaru{background-position:0 -174px}.b-share_theme_counter .b-share-btn__yaru{background-color:#d83933}.b-share_theme_counter .b-share-btn__yaru:hover{background-color:#ad2e29}.b-share_theme_counter .b-share-btn__yaru:active{border-top:2px solid #80221e;background-color:#b8312b}.b-share_theme_counter .b-share__link:active{height:22px}.b-share_theme_counter .b-share_type_small .b-share__link:active{height:16px}.b-share_theme_counter .b-share__link:active .b-share-icon,.b-share_theme_counter .b-share__link:active .b-share-counter{position:relative;top:-1px}.b-share_theme_counter .b-share__link::after{position:absolute;top:0;right:0;bottom:0;left:0;content:"";background-image:url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)}.b-share_theme_counter .b-share__handle{height:auto;padding:0!important}</style><style type="text/css">body .ya-partner .ya-partner__hidden {
+    display: none !important;
+}
+ .ya-partner {
+    font-size: 100% !important;
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    line-height: normal !important;
+    border-radius: 4px 4px 4px 4px !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+}
+ .ya-partner__l-table, .ya-partner__l-tr, .ya-partner__l-td {
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: auto !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: middle !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+}
+ .ya-partner__domain-link {
+    text-decoration: none !important;
+}
+ .ya-partner__domain-link:hover {
+    text-decoration: underline !important;
+}
+ .ya-partner, .ya-partner__ads-l, .ya-partner__ads-l em, .ya-partner__ads-r, .ya-partner__item, .ya-partner__title-link-text, .ya-partner__text, .ya-partner__domain-link, .ya-partner__region, ya-partner__pic-container, ya-partner__pic, .ya-partner__list tbody, .ya-partner__list tr, .ya-partner__list td {
+    font-size: inherit !important;
+    font-style: normal !important;
+    text-indent: 0 !important;
+}
+ .ya-partner_text_clickable a.ya-partner__text {
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+ .ya-partner_text_clickable a.ya-partner__text:hover {
+    text-decoration: underline !important;
+}
+ .ya-partner__pic-container {
+    display: block !important;
+    margin: 3px 0 !important;
+}
+ .ya-partner__item_piclayout_left .ya-partner__pic-container {
+    margin: 0 0.4em 0 0 !important;
+}
+ .ya-partner__item_piclayout_float .ya-partner__pic-container {
+    margin: 0.4em 0.4em 0 0 !important;
+    float: left !important;
+}
+ .ya-partner__item_piclayout_float .ya-partner__address, .ya-partner__item_piclayout_float .ya-partner__domain-link, .ya-partner__item_piclayout_float .ya-partner__region {
+    white-space: nowrap !important;
+}
+ .ya-partner__clearfix {
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: both !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: auto !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: 0 !important;
+    letter-spacing: normal !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+    font-size: 0 !important;
+    display: block !important;
+}
+ .ya-partner__pic, .ya-partner__pic:link, .ya-partner__pic:hover, .ya-partner__pic:visited {
+    background: transparent 0 0 no-repeat scroll !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+    display: block !important;
+}
+ .ya-partner yatag {
+    text-align: left !important;
+    font-family: inherit !important;
+}
+ .ya-partner__list {
+    display: block !important;
+    line-height: normal !important;
+    font-size: inherit !important;
+    text-indent: 0 !important;
+}
+ .ya-partner__title-link, .ya-partner__address, .ya-partner__ads-link {
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    border-radius: none !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    empty-cells: show !important;
+    float: none !important;
+    font: inherit !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    table-layout: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-spacing: normal !important;
+    z-index: auto !important;
+    font-size: inherit !important;
+    font-style: normal !important;
+    display: inline !important;
+}
+ a.ya-partner__address:link, a.ya-partner__address:hover, a.ya-partner__address:visited {
+    text-decoration: underline !important;
+}
+ .ya-partner__address {
+    margin-right: 0.3em !important;
+}
+ a.ya-partner__ads-link:link, a.ya-partner__ads-link:hover, a.ya-partner__ads-link:visited {
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+ .ya-partner__ads-link em {
+    font-style: normal !important;
+    font-weight: normal !important;
+    background: none repeat scroll 0 0 transparent !important;
+}
+ .ya-partner__item {
+    border-radius: 4px 4px 4px 4px !important;
+    border: none !important;
+    padding: 0.2em 0.3em !important;
+    line-height: normal !important;
+}
+ body .ya-partner__item_pos_last {
+    margin-bottom: 0 !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__item_pos_first, .ya-partner_ads_inner-up-down .ya-partner__item_pos_first, .ya-partner_ads_inner-down .ya-partner__item_pos_last {
+    border-radius: 0 4px 4px 4px !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__item_pos_last, .ya-partner_ads_inner-up-down .ya-partner__item_pos_last {
+    border-radius: 4px 4px 4px 0 !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__item_pos_first.ya-partner__item_pos_last {
+    border-radius: 4px 4px 4px 0 !important;
+}
+ .ya-partner__url {
+    font-size: 87% !important;
+    display: block !important;
+}
+ .ya-partner__hide-urls .ya-partner__list .ya-partner__url {
+    display: none !important;
+}
+ .ya-partner__warn {
+    font-size: 70% !important;
+    border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    -webkit-border-radius: 2px !important;
+    padding: 0.25em 0.3em 0.25em !important;
+    line-height: 1.1em !important;
+}
+ .ya-partner__agewarn-cont {
+    padding-left: .3em !important;
+    display: inline-block !important;
+    float: right !important;
+}
+ .ya-partner__text .ya-partner__agewarn-cont {
+    display: none !important;
+}
+ .ya-partner__hide-urls .ya-partner__text .ya-partner__agewarn-cont {
+    display: inline-block !important;
+    padding-left: 0 !important;
+}
+ yatag.ya-partner__agewarn {
+    font: normal normal 85% Tahoma, Arial, sans-serif !important;
+    border-radius: 5px !important;
+    padding: 0 1px !important;
+    vertical-align: baseline !important;
+}
+ .ya-partner__url .ya-partner__agewarn {
+    font-size: 90% !important;
+}
+ .ya-partner__ads {
+    white-space: nowrap !important;
+    font-size: 87% !important;
+}
+ .ya-partner__icon {
+    font: 0/0 a !important;
+    margin: 0 4px -2px 0 !important;
+    vertical-align: baseline !important;
+    border: 0 !important;
+    display: inline !important;
+    width: 16px !important;
+    height: 16px !important;
+    float: none !important;
+}
+ .ya-partner__ads-link {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+    line-height: normal !important;
+    white-space: nowrap !important;
+}
+ .ya-partner__ads-l {
+    display: inline-block !important;
+    position: relative !important;
+    background: none repeat scroll 0 0 transparent !important;
+    padding-right: .75em !important;
+}
+ .ya-partner__ads-r {
+    display: inline-block !important;
+    margin-left: -5px !important;
+    padding: 0 0 0 10px !important;
+}
+ .ya-partner__ads-r .ya-partner__ads-link {
+    margin: 0 5px 0 0 !important;
+}
+ a.ya-partner__ads-link-r,a.ya-partner__ads-link-r:link,a.ya-partner__ads-link-r:hover,a.ya-partner__ads-link-r:visited,a.ya-partner__ads-link-r:active,a.ya-partner__ads-link-r:focus,a.ya-partner__ads-link-l,a.ya-partner__ads-link-l:link,a.ya-partner__ads-link-l:hover,a.ya-partner__ads-link-l:visited,a.ya-partner__ads-link-l:active,a.ya-partner__ads-link-l:focus {
+    font-weight: normal !important;
+}
+ a.ya-partner__title-link,a.ya-partner__title-link:link,a.ya-partner__title-link:hover,a.ya-partner__title-link:visited,a.ya-partner__title-link:active,a.ya-partner__title-link:focus {
+    font-weight: normal !important;
+    line-height: normal !important;
+    text-decoration: none !important;
+}
+ a.ya-partner__title-link .ya-partner__title-link-text,a.ya-partner__title-link .ya-partner__title-link-text:link,a.ya-partner__title-link .ya-partner__title-link-text:hover,a.ya-partner__title-link .ya-partner__title-link-text:visited,a.ya-partner__title-link .ya-partner__title-link-text:active,a.ya-partner__title-link .ya-partner__title-link-text:focus {
+    display: inline !important;
+    text-decoration: underline !important;
+}
+ .ya-partner_text_clickable a.ya-partner__title-link .ya-partner__title-link-text, .ya-partner_text_clickable a.ya-partner__address {
+    text-decoration: none !important;
+}
+ .ya-partner_text_clickable a.ya-partner__title-link:hover .ya-partner__title-link-text, .ya-partner_text_clickable a.ya-partner__address:hover {
+    text-decoration: underline !important;
+}
+ .ya-partner_ads-up .ya-partner__ads {
+    position: relative !important;
+    display: block !important;
+}
+ .ya-partner_ads-up .ya-partner__ads-l {
+    padding-bottom: 1px !important;
+    vertical-align: top !important;
+    border-radius: 4px 0 0 0 !important;
+    -moz-border-radius: 4px 0 0 0 !important;
+    -webkit-border-radius: 4px 0 0 0 !important;
+}
+ .ya-partner_ads-up .ya-partner__ads-r {
+    padding-bottom: 1px !important;
+    vertical-align: top !important;
+    border-radius: 0 0 4px 0 !important;
+    -moz-border-radius: 0 0 4px 0 !important;
+    -webkit-border-radius: 0 0 4px 0 !important;
+}
+ .ya-partner_ads-down .ya-partner__ads {
+    position: absolute !important;
+    bottom: 0 !important;
+}
+ .ya-partner_ads-down .ya-partner__list {
+    padding-bottom: 1em !important;
+}
+ .ya-partner_ads-down .ya-partner__ads-l {
+    border-radius: 0 0 0 3px !important;
+    -moz-border-radius: 0 0 0 3px !important;
+    -webkit-border-radius: 0 0 0 3px !important;
+}
+ .ya-partner_ads-down .ya-partner__ads-r {
+    border-radius: 0 4px 0 0 !important;
+    -moz-border-radius: 0 4px 0 0 !important;
+    -webkit-border-radius: 0 4px 0 0 !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__list {
+    margin: 0 0 1em !important;
+}
+ .ya-partner_ads-up-down .ya-partner__list {
+    margin: 1em 0 !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-l, .ya-partner_ads-up-down .ya-partner__ads-l {
+    border-radius: 3px 0 0 0 !important;
+    -moz-border-radius: 3px 0 0 0 !important;
+    -webkit-border-radius: 3px 0 0 0 !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-l {
+    position: absolute !important;
+    top: 0 !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-link {
+    display: inline-block !important;
+    padding-bottom: 2px !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-r .ya-partner__ads-link {
+    padding-bottom: 1px !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-r, .ya-partner_ads-up-down .ya-partner__ads-r {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 0 4px 4px !important;
+    -moz-border-radius: 0 0 4px 4px !important;
+    -webkit-border-radius: 0 0 4px 4px !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-r {
+    left: 0 !important;
+}
+ .ya-partner_ads-up-down .ya-partner__ads-r {
+    border-radius: 0 0 3px 3px !important;
+    -moz-border-radius: 0 0 3px 3px !important;
+    -webkit-border-radius: 0 0 3px 3px !important;
+}
+ .ya-partner_ads_inner-up-down .ya-partner__ads-link, .ya-partner_ads-up-down .ya-partner__ads-link {
+    margin-left: 5px !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads {
+    display: block !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads-l, .ya-partner_ads_inner-up .ya-partner__ads-r {
+    vertical-align: top !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads-l {
+    border-radius: 4px 0 0 0 !important;
+    -moz-border-radius: 4px 0 0 0 !important;
+    -webkit-border-radius: 4px 0 0 0 !important;
+}
+ .ya-partner_ads_inner-up .ya-partner__ads-r {
+    border-radius: 0 4px 0 0 !important;
+    -moz-border-radius: 0 4px 0 0 !important;
+    -webkit-border-radius: 0 4px 0 0 !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads {
+    display: block !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads-l {
+    border-radius: 0 0 0 4px !important;
+    -moz-border-radius: 0 0 0 4px !important;
+    -webkit-border-radius: 0 0 0 4px !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads-r {
+    border-radius: 0 0 4px 0 !important;
+    -moz-border-radius: 0 0 4px 0 !important;
+    -webkit-border-radius: 0 0 4px 0 !important;
+}
+ .ya-partner_ads_inner-down .ya-partner__ads-link, .ya-partner_ads-down .ya-partner__ads-link {
+    display: inline-block !important;
+    padding-bottom: 1px !important;
+}
+ .ya-partner_ads_only-arrow .ya-partner__ads {
+    margin-right: 0.5em !important;
+}
+ .ya-partner_margin_yes .ya-partner__icon {
+    margin-left: -20px !important;
+}
+ .ya-partner_margin_yes .ya-partner__item {
+    padding-left: 20px !important;
+}
+ .ya-partner__wrap-fit {
+    display: block !important;
+    zoom: 1 !important;
+    position: relative !important;
+    padding-bottom: 1px !important;
+    font-size: inherit !important;
+    border-radius: 4px 4px 4px 4px !important;
+}
+ .ya-partner_type_flat .ya-partner__title-link, .ya-partner_type_flat .ya-partner__text, .ya-partner_type_flat .ya-partner__url {
+    display: inline !important;
+    vertical-align: baseline !important;
+}
+ :root .ya-partner_type_flat {
+    display: table\0/IE9 !important;
+    width: 100%\0/IE9 !important;
+}
+ :root .ya-partner_type_flat.ya-partner_border.ya-partner_ads-down .ya-partner__ads {
+    bottom: 1px\0/IE9 !important;
+}
+ .ya-partner_type_flat .ya-partner__item {
+    display: block !important;
+    line-height: normal !important;
+}
+ .ya-partner_type_flat .ya-partner__text {
+    padding-left: 0.5em !important;
+}
+ .ya-partner_type_flat .ya-partner__warn {
+    display: block !important;
+    margin-top: 0.3em !important;
+}
+ .ya-partner_type_flat .ya-partner__text .ya-partner__agewarn-cont {
+    float: none !important;
+}
+ .ya-partner_type_flat .ya-partner__text .ya-partner__clearfix {
+    display: none !important;
+}
+ .ya-partner_type_flat .ya-partner__l-td {
+    vertical-align: middle !important;
+}
+ .ya-partner_type_flat .ya-partner__l-table {
+    width: 100% !important;
+}
+ .ya-partner_type_flat .ya-partner__l-pic-td {
+    width: 1px !important;
+}
+ .ya-partner_type_flat .ya-partner__item_pic_yes .ya-partner__text {
+    display: block !important;
+}
+ .ya-partner_theme_flat_inner .ya-partner__item {
+    margin-bottom: 0.5em !important;
+}
+ .ya-partner_theme_flat_inner .ya-partner__item_pos_last {
+    margin-bottom: 0 !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__list {
+}
+ .ya-partner_type_flat-simple .ya-partner__url {
+    display: block !important;
+    margin-top: 0.3em !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__item {
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__item_pic_yes {
+    padding-top: .2em !important;
+    padding-bottom: .2em !important;
+}
+ .ya-partner_type_flat-simple .ya-partner__text {
+    padding-left: 0 !important;
+}</style><style type="text/css">#ya_partner_yandex_ad-flat .ya-partner__title-link-text:visited {
+    color: #000080 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__title-link-text:link {
+    color: #000080 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__title-link-text:hover {
+    color: #0066FF !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__title-link-text {
+    color: #000080 !important;
+    font-size: 107% !important;
+    font-weight: bold !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__region {
+    color: #666666 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__domain-link {
+    color: #666666 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__address {
+    color: #666666 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner {
+    font-family: inherit !important;
+    color: #000000 !important;
+    font-size: 1em !important;
+    background: undefined !important;
+    border-radius: 0 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__text {
+    font-family: inherit !important;
+    color: #000000 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner_ads-down .ya-partner__ads-l {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner_ads-up .ya-partner__ads-l {
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__wrap-fit {
+    border-radius: 0 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__item {
+    border-radius: 0 !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__warn {
+    border: 1px solid #CFCFCF !important;
+    background-color: #FCFCFC !important;
+}
+ #ya_partner_yandex_ad-flat .ya-partner__agewarn {
+    border: 1px solid #CFCFCF !important;
+    background-color: #FCFCFC !important;
+}
+ #ya_partner_yandex_ad-flat a.ya-partner__ads-link-r:link {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_yandex_ad-flat a.ya-partner__ads-link-r:hover {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_yandex_ad-flat a.ya-partner__ads-link-r:visited {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_yandex_ad-flat a.ya-partner__ads-link-l:link {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_yandex_ad-flat a.ya-partner__ads-link-l:hover {
+    text-decoration: underline !important;
+    color: #000 !important;
+}
+ #ya_partner_yandex_ad-flat a.ya-partner__ads-link-l:visited {
+    text-decoration: underline !important;
+    color: #000 !important;
+}</style></head> <body data-savefrom-link-count="113" onload=""> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-595018-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>  <script src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/watch.js" type="text/javascript"></script> <script type="text/javascript">
+try { var yaCounter29317 = new Ya.Metrika({id:29317,
+          trackLinks:true,type:1});}
+catch(e) { }
+</script> <noscript><div><img src="//mc.yandex.ru/watch/29317?cnt-class=1" style="position:absolute; left:-9999px;" alt="" /></div></noscript>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <table style="margin: 0px 0px 5px 0px;"><tbody><tr> <td align="left" valign="middle" width="285px"><a href="http://www.cyberforum.ru/"><img title="Форум программистов и сисадминов CyberForum.ru" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/cyberforum_logo.jpg" alt="Форум программистов и сисадминов CyberForum.ru" height="50px" border="0"></a></td> <td align="right" valign="middle" width="100%"> <div style="float: right;"> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/share.js" charset="utf-8"></script> <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="none" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,moikrug,gplus"><span class="b-share"><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link b-share-btn__yaru" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a><a rel="nofollow" target="_blank" title="Мой Круг" class="b-share__handle b-share__link b-share-btn__moikrug" href="http://share.yandex.ru/go.xml?service=moikrug&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="moikrug"><span class="b-share-icon b-share-icon_moikrug"></span></a><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span></a></span></div> </div> </td> </tr></tbody></table><div class="vbmenu_popup" id="vbbloglinks_menu" style="display: none; margin-top: 3px; position: absolute; z-index: 50;" align="left"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="vbmenu_option vbmenu_option_alink"><a href="http://www.cyberforum.ru/blogs/">Блоги программистов и сисадминов</a></td> </tr> </tbody></table> </div>  <table class="tborder" align="center" border="0" cellpadding="5" cellspacing="1" width="100%"> <tbody><tr> <td class="alt1" width="100%"> <table border="0" cellpadding="0" cellspacing="0"> <tbody><tr valign="bottom"> <td><a href="http://www.cyberforum.ru/csharp-beginners/thread505153.html#" onclick="history.back(1); return false;"><img title="Вернуться" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/navbits_start.gif" alt="Вернуться" border="0"></a></td> <td>&nbsp;</td> <td width="100%"><span class="navbar"><a href="http://www.cyberforum.ru/" accesskey="1">Форум программистов и сисадминов CyberForum.ru</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/programming/">Форум программистов</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/net-framework/">Форум .NET</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/csharp-net/">Форум C# .NET</a></span> <span class="navbar">&gt; <a href="http://www.cyberforum.ru/csharp-beginners/">Форум C# для начинающих</a></span> </td> </tr> <tr> <td class="navbar" style="font-size:12pt; padding-top:5px" colspan="3"><a href="http://www.cyberforum.ru/csharp-beginners/thread505153.html"><img title="Перезагрузить страницу" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/navbits_finallink_ltr.gif" alt="Перезагрузить страницу" border="0"></a> <h1>
+	 В visual studio не видно Microsoft.Office.Interop.Word
+
+</h1></td> </tr> </tbody></table> </td> <td class="alt2" style="padding:0px" nowrap="nowrap">  <form action="http://www.cyberforum.ru/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)"> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_md5.js"></script> <table border="0" cellpadding="0" cellspacing="3"> <tbody><tr> <td class="smallfont" style="white-space: nowrap;"><label for="navbar_username">E-mail</label></td> <td><input class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="20" accesskey="u" tabindex="101" value="E-mail" onfocus="if (this.value == 'E-mail') this.value = '';" type="text"></td> <td class="smallfont" nowrap="nowrap"><label for="cb_cookieuser_navbar"><input name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" checked="checked" type="checkbox">Запомнить?</label></td> </tr> <tr> <td class="smallfont"><label for="navbar_password">Пароль</label></td> <td><input class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="20" tabindex="102" type="password"></td> <td><input class="button" value="Вход" tabindex="104" title="Введите адрес вашей электронной почты и пароль, чтобы войти, или нажмите кнопку 'Регистрация', чтобы зарегистрироваться." accesskey="s" type="submit"></td> </tr> <tr><td class="smallfont" colspan="2"><a href="http://www.cyberforum.ru/login.php?do=lostpw">Восстановить пароль</a></td> <td class="smallfont"><a href="http://www.cyberforum.ru/register.php">Регистрация</a></td> </tr> <tr> <td class="smallfont" colspan="3"></td> </tr> </tbody></table> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="login" type="hidden"> <input name="vb_login_md5password" type="hidden"> <input name="vb_login_md5password_utf" type="hidden"> </form>  </td> </tr> </tbody></table>   <div class="tborder" style="padding:1px; border-top-width:0px"> <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr align="center"> <td class="vbmenu_control"><a href="http://www.cyberforum.ru/announcement.php?a=3">Правила</a></td> <td class="vbmenu_control"><a style="cursor: pointer;" id="vbbloglinks" href="http://www.cyberforum.ru/blogs/">Блоги <img alt="" title="" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/menu_open.gif" border="0"></a><script type="text/javascript">vbmenu_register("vbbloglinks");</script></td> <td class="vbmenu_control"><a style="cursor: pointer;" id="community" href="http://www.cyberforum.ru/csharp-beginners/thread505153.html?nojs=1#community" rel="nofollow" accesskey="6">Сообщество <img alt="" title="" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/menu_open.gif" border="0"></a> <script type="text/javascript"> vbmenu_register("community"); </script></td> <td class="vbmenu_control"><a href="http://www.cyberforum.ru/search.php" rel="nofollow">Поиск</a></td> </tr> </tbody></table> </div>  <table class="tborder" style="margin: 10px 0px 0px 0px;" align="center" border="0" cellpadding="5" cellspacing="1" width="100%"><tbody><tr> <td class="alt1" align="center" width="100%"> <script type="text/javascript"><!--
+google_ad_client = "ca-pub-6796001588681838";
+/* cyberforum.ru.header, 980x120 */
+google_ad_slot = "4392515799";
+google_ad_width = 980;
+google_ad_height = 120;
+//--> </script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:120px;margin:0;padding:0;position:relative;visibility:visible;width:980px"><ins id="aswift_0_anchor" style="display:block;border:none;height:120px;margin:0;padding:0;position:relative;visibility:visible;width:980px"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" frameborder="0" height="120" scrolling="no" width="980"></iframe></ins></ins> </td> </tr></tbody></table> <br>   <div class="vbmenu_popup" id="community_menu" style="display:none;margin-top:3px" align="left"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr><td class="thead">Ссылки сообщества</td></tr> <tr><td class="vbmenu_option"><a href="http://www.cyberforum.ru/groups/">Социальные группы</a></td></tr> </tbody></table> </div>   <div class="vbmenu_popup" id="navbar_search_menu" style="display:none;margin-top:3px" align="left"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="thead">Поиск по форуму</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/search.php?do=process" method="post"> <input name="do" value="process" type="hidden"> <input name="quicksearch" value="1" type="hidden"> <input name="childforums" value="1" type="hidden"> <input name="exactname" value="1" type="hidden"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <div><input class="bginput" name="query" size="25" tabindex="1001" type="text"><input class="button" value="Вперёд" tabindex="1004" type="submit"></div> <div style="margin-top:5px"> <label for="rb_nb_sp0"><input name="showposts" value="0" id="rb_nb_sp0" tabindex="1002" checked="checked" type="radio">Отобразить темы</label>
+						&nbsp;
+						<label for="rb_nb_sp1"><input name="showposts" value="1" id="rb_nb_sp1" tabindex="1003" type="radio">Отображать сообщения</label> </div> </form> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/tags/" rel="nofollow">Поиск по метке</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php" accesskey="4" rel="nofollow">Расширенный поиск</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/post_thanks.php?do=findallthanks">Найти все сообщения с благодарностями</a></td> </tr><tr> <td class="thead">Поиск по блогам</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/blog_search.php?do=dosearch" method="post"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="dosearch" type="hidden"> <input name="quicksearch" value="1" type="hidden"> <div><input class="bginput" name="text" size="25" tabindex="2003" type="text"><input class="button" value="Вперёд" tabindex="2004" type="submit"></div> </form> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/blogs/tags/" rel="nofollow">Поиск по метке</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/blog_search.php?do=search">Расширенный поиск</a></td> </tr> <tr> <td class="thead">Поиск пользователей</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/members/list/" method="post"> <input name="s" value="" type="hidden"> <input name="securitytoken" value="guest" type="hidden"> <input name="do" value="getall" type="hidden"> <div><input class="bginput" name="ausername" size="25" title="Имя" type="text"><input class="button" value="Вперёд" type="submit"></div> </form> </td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/memberlist.php?do=search">Расширенный поиск пользователей</a></td> </tr> <tr><td class="thead">Мои сообщения и темы</td></tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?do=finduser&amp;u=0">Мои сообщения</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?do=process&amp;showposts=0&amp;starteronly=1&amp;exactname=1&amp;searchuser=%CD%E5%E7%E0%F0%E5%E3%E8%F1%F2%F0%E8%F0%EE%E2%E0%ED%ED%FB%E9">Мои темы</a></td> </tr> <tr> <td class="vbmenu_option"><a href="http://www.cyberforum.ru/search.php?do=process&amp;showposts=0&amp;starteronly=0&amp;exactname=1&amp;searchuser=%CD%E5%E7%E0%F0%E5%E3%E8%F1%F2%F0%E8%F0%EE%E2%E0%ED%ED%FB%E9">Темы с моими сообщениями</a></td> </tr> </tbody></table> </div>    <div class="vbmenu_popup" id="pagenav_menu" style="display:none"> <table border="0" cellpadding="4" cellspacing="1"> <tbody><tr> <td class="thead" nowrap="nowrap">К странице...</td> </tr> <tr> <td class="vbmenu_option" title="nohilite"> <form action="http://www.cyberforum.ru/" method="get" onsubmit="return this.gotopage()" id="pagenav_form"> <input class="bginput" id="pagenav_itxt" style="font-size:11px" size="4" type="text"> <input class="button" id="pagenav_ibtn" value="Вперёд" type="button"> </form> </td> </tr> </tbody></table> </div>  <a name="poststop" id="poststop"></a>  <table style="margin-bottom:3px" border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr valign="bottom"> <td class="smallfont" align="left" width="240px"> <a target="_blank" href="http://www.cyberforum.ru/newreply.php?do=newreply&amp;noquote=1&amp;p=2737107" rel="nofollow"><img title="Ответ" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/reply.gif" alt="Ответ" border="0"></a> <a target="_blank" href="http://www.cyberforum.ru/newthread.php?do=newthread&amp;f=91" rel="nofollow"><img title="Создать новую тему" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/newthread.gif" alt="Создать новую тему" border="0"></a></td> <td class="smallfont" style="padding-left: 5px;"></td> <td class="smallfont" align="left"></td> </tr> </tbody></table>   <table class="tborder" style="border-bottom-width:0px" align="center" border="0" cellpadding="5" cellspacing="1" width="100%"> <tbody><tr> <td class="tcat" width="100%"> <div class="smallfont">
+		
+		&nbsp;
+		</div> </td> </tr> </tbody></table>   </div> </div> </div>   <div id="posts">  <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2737107" style="padding:0px 0px 5px 0px">  <table id="post2737107" class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2737107"><img title="Старый" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			03.08.2006, 21:26
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2737107.html" target="_blank" id="postcount2737107" name="1"><strong>1</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div>
+               
+                     
+                         Marsel
+                     
+               
+            </div> <div class="smallfont">Гость</div> <div class="smallfont">
+				&nbsp;<br> <div>
+					Сообщений: <b>n/a</b> </div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2737107" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>В visual studio не видно Microsoft.Office.Interop.Word</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2737107">
+
+			
+			у меня в visual studio не видно Microsoft.Office.Interop.Word<br>
+В чём проблема?
+
+		</div>  <div style="margin-top: 5px;"> <script type="text/javascript"><!--
+google_ad_client = "ca-pub-6796001588681838";
+/* cyberforum.ru.firstpost, 336x280 */
+google_ad_slot = "7752057143";
+google_ad_width = 336;
+google_ad_height = 280;
+//--> </script> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins> </div> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/share.js" charset="utf-8"></script> <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,moikrug,gplus"><span class="b-share"><a class="b-share__handle" id="ya-share-0.38890830204674287-1378128220261" data-hdirection="" data-vdirection=""><span class="b-share-form-button b-share-form-button_share"><i class="b-share-form-button__before"></i><i class="b-share-form-button__icon"></i>Поделиться…<i class="b-share-form-button__after"></i></span></a><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link b-share-btn__yaru" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a><a rel="nofollow" target="_blank" title="Мой Круг" class="b-share__handle b-share__link b-share-btn__moikrug" href="http://share.yandex.ru/go.xml?service=moikrug&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="moikrug"><span class="b-share-icon b-share-icon_moikrug"></span></a><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span></a></span></div> </td> </tr> </tbody></table>   <div style="margin: 5px 0px 0px 0px">  <table class="tborder" align="center" border="0" cellpadding="5" cellspacing="1" width="100%"> <thead> <tr> <td class="tcat">
+					Другие темы раздела
+				</td> <td class="tcat" align="right"> <span class="smallfont">Форум начинающих программистов C#. Вопросы по C#.NET от начинающих. Помощь в решении задач. </span></td> </tr> </thead> <tbody><tr> <td class="alt1" align="left" valign="top" width="50%"> <strong><a target="_blank" href="http://www.cyberforum.ru/csharp-beginners/thread505154.html"> C# Как в компоненте DataGridView поставить курсор на нужную строку?</a></strong><br><span class="smallfont">Подскажите
+ мне, как в компоненте DataGridView поставить курсор на нужную строку 
+:). Как в компоненте DataGridView поставить курсор на нужную строку?</span> </td> <td class="alt1" align="left" valign="top" width="50%"> <strong><a target="_blank" href="http://www.cyberforum.ru/csharp-beginners/thread505155.html">Нужно сделать прозрачной панель задач C# </a></strong><br><span class="smallfont">всем прив. 
+ 
+Мне нужно для win98 сделать программку,  
+ 
+которая делала бы прозрачной панель задач. 
+ 
+Подскажите с чего начать.... и как продолжить =). Нужно сделать прозрачной панель задач</span> </td></tr></tbody> </table>  </div> </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2737139" style="padding:0px 0px 5px 0px">  <table id="post2737139" class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2737139"><img title="Старый" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			04.08.2006, 18:15
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2737139.html" target="_blank" id="postcount2737139" name="2"><strong>2</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div> <span class="bigusername">Dragon_Oleg</span> </div> <div class="smallfont">Форумчанин</div> <div class="smallfont">
+				&nbsp;<br> <div>Регистрация: 22.06.2010</div> <div>
+					Сообщений: <b>239</b> </div> <div>Репутация: <span id="repdisplay_2737139_233726" title="Репутация пользователя"><b>2</b></span> (<span id="repdisplay_2737139_233726" title="Благодарностей за сообщения">2</span>)</div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2737139" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>RE: C#, Word</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2737139">
+
+			
+			Добавь библиотеку к проекту Add Reference  COM  Microsoft Word 11.0 Object Library
+
+		</div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> <img title="Dragon_Oleg вне форума" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/user_offline.gif" alt="Dragon_Oleg вне форума" border="0"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table> <div id="post_thanks_box_2737139"></div>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2738291" style="padding:0px 0px 5px 0px">  <table id="post2738291" class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2738291"><img title="Старый" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			24.08.2006, 14:24
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2738291.html" target="_blank" id="postcount2738291" name="3"><strong>3</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div>
+               
+                     
+                         slamer
+                     
+               
+            </div> <div class="smallfont">Гость</div> <div class="smallfont">
+				&nbsp;<br> <div>
+					Сообщений: <b>n/a</b> </div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2738291" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>RE: C#, Word</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2738291">
+
+			
+			А если MS OFFICE XP? <br>
+Microsoft Word 10.0 Object Library подойдет?<br>
+Почему-то в namespace Microsoft.Office кроме Core ничего нет.<br>
+Как быть?
+
+		</div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table>   </div> </div> </div> </div>    <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left"> <div id="edit2738297" style="padding:0px 0px 5px 0px"> <table id="post2738297" class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-right: 0px">  <a name="post2738297"><img title="Старый" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			24.08.2006, 15:55
+			
+			 </td> <td colspan="2" class="thead" style="font-weight:normal; border: 1px solid #AAAAAA; border-left: 0px" align="right">
+			&nbsp;
+
+
+
+
+
+			#<a href="http://www.cyberforum.ru/post2738297.html" target="_blank" id="postcount2738297" name="4"><strong>4</strong></a> </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <div>
+               
+                     
+                         slamer
+                     
+               
+            </div> <div class="smallfont">Гость</div> <div class="smallfont">
+				&nbsp;<br> <div>
+					Сообщений: <b>n/a</b> </div>   <div> </div> </div> </td> <td colspan="2" class="alt1" id="td_post_2738297" style="border-right: 1px solid #AAAAAA">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>RE: C#, Word</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="post_message_2738297">
+
+			
+			Усе, понял!!! <img src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/smile3.gif" alt="" title=":)" class="inlineimg" border="0">)
+
+		</div>  </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td colspan="2" class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> </tr> <tr> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-right: 0px; border-top: 0px" align="left" valign="top"> </td> <td class="alt1" style="border: 1px solid #AAAAAA; border-left: 0px; border-top: 0px" align="right"> </td> </tr> </tbody></table>   <div style="margin: 0px 0px 5px 0px"> <table class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr> <td class="thead" style="font-weight:normal; border: 1px solid #AAAAAA" colspan="2">  <a name="post2738297"><img title="Старый" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/post_old.gif" alt="Старый" border="0"></a>
+			24.08.2006, 15:55
+			
+			 </td> </tr> <tr valign="top"> <td class="alt2" style="border: 1px solid #AAAAAA; border-top: 0px; border-bottom: 0px" width="175px"> <span class="bigusername">Yandex</span> <div class="smallfont">Объявления</div> </td> <td class="alt1" style="border-right: 1px solid #AAAAAA" align="left">  <div class="smallfont"> <img title="По умолчанию" class="inlineimg" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/icon1.gif" alt="По умолчанию" border="0"> <strong>RE: C#, Word</strong> </div> <hr style="color:#AAAAAA; background-color:#AAAAAA" size="1">   <div id="yandex_ad"><div id="ya_partner_yandex_ad-flat" style="background:transparent none no-repeat scroll 0 0 !important;border:none !important;border-radius:none !important;border-spacing:0 !important;border-collapse:collapse !important;-moz-box-sizing:content-box !important;box-sizing:content-box !important;clear:none !important;clip:auto !important;color:inherit !important;cursor:auto !important;empty-cells:show !important;float:none !important;font:inherit !important;font-variant:normal !important;font-weight:normal !important;height:auto !important;letter-spacing:normal !important;line-height:normal !important;margin:0 !important;max-height:none !important;max-width:none !important;min-height:0 !important;min-width:0 !important;outline:none !important;overflow:visible !important;padding:0 !important;position:static !important;table-layout:auto !important;text-align:left !important;text-decoration:none !important;text-indent:0 !important;text-transform:none !important;vertical-align:baseline !important;visibility:visible !important;white-space:normal !important;width:auto !important;word-spacing:normal !important;z-index:auto !important;display:block !important;"><yatag class="ya-partner_ads-up ya-partner_theme_flat  ya-partner ya-partner_type_flat ya-partner_type_flat-simple"><yatag class="ya-partner__ads"><yatag class="ya-partner__ads-l"><a href="http://direct.yandex.ru/?partner" class="ya-partner__ads-link ya-partner__ads-link-l" target="_blank">Яндекс.Директ</a></yatag><yatag class="ya-partner__ads-r"><a href="http://direct.yandex.ru/search?from=http://www.cyberforum.ru/csharp-beginners/thread505153.html&amp;ref-page=29317" class="ya-partner__ads-link ya-partner__ads-link-r" target="_blank">Все объявления</a></yatag></yatag><yatag class="ya-partner__list"><yatag class="ya-partner__item ya-partner__item_pic_yes ya-partner__item_piclayout_left ya-partner__item_pos_first"><table class="ya-partner__l-table" cellpadding="0" cellspacing="0"><tbody><tr class="ya-partner__l-tr"><td class="ya-partner__l-td ya-partner__l-pic-td"><yatag class="ya-partner__pic-container"><a href="http://an.yandex.ru/count/G-igQquI_aa40000ZhqLII85XPKe1vK2cm5kGxS2Am68e96-y8claZ3tc36UfXgz0PsOYCkMly6s4m6wzUeFd0EZ5CW3agi-aScc3egWyf1ngW6bf0tx0P6xzjtv0e-m8Tua29-tNzkl1vED2PahGeoGltAWa19whv2_SgU65AYmG5bp1wJ00000RG6i5AxxJUTm5tjcvGImjhUM5m6n0R8mk_m3I3MD4iK90dWK?test-tag=1297&amp;stat-id=2" class="ya-partner__pic" target="_blank" title="browser.yandex.by" style="width:80px !important;height:80px !important;background-image:url('//avatars-fast.yandex.net/get-direct/pkpfUSBztvEFYOTa0HgNdQ/y80') !important;"></a></yatag></td><td class="ya-partner__l-td"><a href="http://an.yandex.ru/count/G-igQquI_aa40000ZhqLII85XPKe1vK2cm5kGxS2Am68e96-y8claZ3tc36UfXgz0PsOYCkMly6s4m6wzUeFd0EZ5CW3agi-aScc3egWyf1ngW6bf0tx0P6xzjtv0e-m8Tua29-tNzkl1vED2PahGeoGltAWa19whv2_SgU65AYmG5bp1wJ00000RG6i5AxxJUTm5tjcvGImjhUM5m6n0R8mk_m3I3MD4iK90dWK?test-tag=1297&amp;stat-id=2" class="ya-partner__title-link" title="browser.yandex.by" target="_blank"><yatag class="ya-partner__title-link-text">Скачайте новый Яндекс.Браузер</yatag></a> <yatag class="ya-partner__text">Простой интерфейс и поиск Яндекса. Быстрый доступ к любимым страницам!</yatag> <yatag class="ya-partner__url"><yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/G-igQquI_aa40000ZhqLII85XPKe1vK2cm5kGxS2Am68e96-y8claZ3tc36UfXgz0PsOYCkMly6s4m6wzUeFd0EZ5CW3agi-aScc3egWyf1ngW6bf0tx0P6xzjtv0e-m8Tua29-tNzkl1vED2PahGeoGltAWa19whv2_SgU65AYmG5bp1wJ00000RG6i5AxxJUTm5tjcvGImjhUM5m6n0R8mk_m3I3MD4iK90dWK?test-tag=1297&amp;stat-id=2" target="_blank">browser.yandex.by</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag></yatag></td></tr></tbody></table></yatag><yatag class="ya-partner__item"><a href="http://an.yandex.ru/count/G-igQzFqHIW40000ZhqLII85XPKe1vK2cm5kGxS2Am4oYAR1ri29bE4Lc36UfXgz0PsUwGoSjUeFd0EMly6s4m6wzUeFd0EZ5CW3cfMMDvAliUhUfWkAhsFgXge1fQPY4WAHk_RT-GAFkMs3k0cVlWWJ8mwJZGcP1aACaDiQe93KCA-GsngdZl-eiBqYjG6am00006q1hljDvt0NUsRb1B2sjvON0R41iX2x_0D8DOqInGa2U1K0?test-tag=1297&amp;stat-id=2" class="ya-partner__title-link" title="company.yandex.ru" target="_blank"><img class="ya-partner__icon" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/company.png" alt=""><yatag class="ya-partner__title-link-text">Открыта вакансия разработчика С++</yatag></a> <yatag class="ya-partner__text">Яндекс ищет талантливых программистов для&nbsp;работы с&nbsp;поисковым кластером.</yatag> <yatag class="ya-partner__url"><yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/G-igQzFqHIW40000ZhqLII85XPKe1vK2cm5kGxS2Am4oYAR1ri29bE4Lc36UfXgz0PsUwGoSjUeFd0EMly6s4m6wzUeFd0EZ5CW3cfMMDvAliUhUfWkAhsFgXge1fQPY4WAHk_RT-GAFkMs3k0cVlWWJ8mwJZGcP1aACaDiQe93KCA-GsngdZl-eiBqYjG6am00006q1hljDvt0NUsRb1B2sjvON0R41iX2x_0D8DOqInGa2U1K0?test-tag=1297&amp;stat-id=2" target="_blank">company.yandex.ru</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag></yatag></yatag><yatag class="ya-partner__item"><a href="http://an.yandex.ru/count/G-igQ-6jO-440000ZhqLII85XPKe1vK2cm5kGxS2Am4pYB1T7m04YQMBXWgOZ2UUfXgz0PsbUkW2bh_1jXC1klNg3vm3enJ80vAYEVc4fZ-AguybCge1fQiMRG6Hk_RT-GAFlNYKuGsVlxRII0MJZGcPOaACaAOEe92c3g-GfWwKc5aNfuopgA1Z9nQam00006q1h1Ik-qtdS1TxPkK4iBQtbXS1iG6o4Bly0qWrZHB52G9_5000?test-tag=1297&amp;stat-id=2" class="ya-partner__title-link" title="ram.by" target="_blank"><img class="ya-partner__icon" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/ram.png" alt=""><yatag class="ya-partner__title-link-text">Ноутбуки в&nbsp;Минске купить недорого</yatag></a> <yatag class="ya-partner__text">Продажа ноутбуков и&nbsp;нетбуков. Доставка по&nbsp;Минску и&nbsp;Беларуси. Нал/Безнал.</yatag> <yatag class="ya-partner__url"><yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/G-igQ-6jO-440000ZhqLII85XPKe1vK2cm5kGxS2Am4pYB1T7m04YQMBXWgOZ2UUfXgz0PsbUkW2bh_1jXC1klNg3vm3enJ80vAYEVc4fZ-AguybCge1fQiMRG6Hk_RT-GAFlNYKuGsVlxRII0MJZGcPOaACaAOEe92c3g-GfWwKc5aNfuopgA1Z9nQam00006q1h1Ik-qtdS1TxPkK4iBQtbXS1iG6o4Bly0qWrZHB52G9_5000?test-tag=1297&amp;stat-id=2" target="_blank">ram.by</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag></yatag></yatag><yatag class="ya-partner__item ya-partner__item_pos_last"><a href="http://an.yandex.ru/count/G-igQusciXC40000ZhqLII85XPKe1vK2cm5kGxS2Am4qYAWat729bXe1c8mddgOQlG6TgoYM3fQ_mROJ0RhrwW-S0wCKo0EIe2oPowO6YgNVc7Eg0QMjVYC2aRlstVa2ZxrubE4Ddx-sqaW5auq9cM92Z91g6A2GdoIla6eOb9Uw3QU1cAYWezxDfC00001j0QmKhljDvt0NUsRb1B2sjvON0R41iX2x_0D8DOqInGa2VHG0?test-tag=1297&amp;stat-id=2" class="ya-partner__title-link" title="westcomp.by" target="_blank"><img class="ya-partner__icon" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/westcomp.png" alt=""><yatag class="ya-partner__title-link-text">Ноутбуки в&nbsp;кредит в&nbsp;Минске!</yatag></a> <yatag class="ya-partner__text">Дешевые компьютеры и&nbsp;ноутбуки в&nbsp;кредит и&nbsp;рассрочку. Без&nbsp;взносов и&nbsp;справок!</yatag> <yatag class="ya-partner__url"><a class="ya-partner__address" href="http://an.yandex.ru/count/G-igQxz-Jga40000ZhqLII85XPKe1vK2cm5kGxS2Am4qYAWat729bXe1c8mddgOQlG6TgoYM3fQ_mROJ0RhrwW-S0wCKo0EIe2oPowO6YgNVc7Eg1wMjVYC2aRlstVa2ZxrubE4Ddx-sqaW5auq9cM92Z91g6A2GdoIla6eOb9Uw3QU1cAYWezxDfC00001j0QmKhljDvt0NUsRb1B2sjvON0R41iX2x_0D8DOqInGa2VHG0?test-tag=1297&amp;stat-id=2" target="_blank">Адрес&nbsp;и&nbsp;телефон</a>&nbsp;<yatag class="ya-partner__domain"><a class="ya-partner__domain-link" href="http://an.yandex.ru/count/G-igQusciXC40000ZhqLII85XPKe1vK2cm5kGxS2Am4qYAWat729bXe1c8mddgOQlG6TgoYM3fQ_mROJ0RhrwW-S0wCKo0EIe2oPowO6YgNVc7Eg0QMjVYC2aRlstVa2ZxrubE4Ddx-sqaW5auq9cM92Z91g6A2GdoIla6eOb9Uw3QU1cAYWezxDfC00001j0QmKhljDvt0NUsRb1B2sjvON0R41iX2x_0D8DOqInGa2VHG0?test-tag=1297&amp;stat-id=2" target="_blank">westcomp.by</a></yatag>&nbsp;<yatag class="ya-partner__region"></yatag></yatag></yatag></yatag></yatag></div></div> <script type="text/javascript">
+(function(w, d, n, s, t) {
+w[n] = w[n] || [];
+w[n].push(function() {
+Ya.Direct.insertInto(29317, "yandex_ad", {
+stat_id: 1823142,
+site_charset: "windows-1251",
+ad_format: "direct",
+font_size: 1,
+type: "flat",
+limit: 3,
+title_font_size: 1,
+site_bg_color: "F4F4F4",
+title_color: "000080",
+url_color: "666666",
+text_color: "000000",
+hover_color: "0066FF",
+favicon: true
+});
+});
+t = d.documentElement.firstChild;
+s = d.createElement("script");
+s.type = "text/javascript";
+s.src = "http://an.yandex.ru/system/context.js";
+s.setAttribute("async", "true");
+t.insertBefore(s, t.firstChild);
+})(window, document, "yandex_context_callbacks");
+</script> </td> </tr> </tbody></table> </div> <div style="background-color: #FFFACD; border: 1px solid #CDBFA2; margin: 10px 0px 5px 0px; padding: 7px; text-align:center; font-size: 15px"> <b>После <a href="http://www.cyberforum.ru/register.php">регистрации</a> реклама в сообщениях будет скрыта.</b> </div> </div> </div> </div> </div>  <div id="lastpost"></div></div>   <div align="center"> <div class="page" style="width:100%; text-align:left"> <div style="margin:0px 2px 0px 2px" align="left">   <table style="margin-top:-2px" border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr valign="top"> <td class="smallfont" width="240px"> <a target="_blank" href="http://www.cyberforum.ru/newreply.php?do=newreply&amp;noquote=1&amp;p=2738297" rel="nofollow"><img title="Ответ" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/reply.gif" alt="Ответ" border="0"></a> <a target="_blank" href="http://www.cyberforum.ru/newthread.php?do=newthread&amp;f=91" rel="nofollow"><img title="Создать новую тему" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/newthread.gif" alt="Создать новую тему" border="0"></a></td> </tr> </tbody></table>  <table> <tbody><tr> <td width="100%"></td> <td> </td> </tr> </tbody></table>  <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/vbulletin_lightbox.js"></script> <script type="text/javascript"> <!--
+	vBulletin.register_control("vB_Lightbox_Container", "posts", 1);
+	//--> </script>  <br> <table class="tborder" align="center" border="0" cellpadding="5" cellspacing="1" width="100%"> <thead> <tr> <td class="tcat" colspan="2" width="100%">
+			Похожие темы<a name="similarthreads"></a> </td> </tr> </thead> <tbody> <tr class="thead" align="center"> <td class="thead">Тема</td> <td class="thead" nowrap="nowrap" width="10%">Автор</td>  </tr> <tr> <td class="alt1" align="left"> <b>C++/CLI</b> <a target="_blank" href="http://www.cyberforum.ru/cpp-cli/thread404203.html"> <b>Microsoft::Office::Interop::Excel: половина методов не видны</b></a><br><span class="smallfont">Всем
+ привет. меня интересует компонент  Microsoft::Office::Interop::Excel...
+ ктонибудь работал с ним в Winforms с++ ? не пойму почему половина 
+методов просто нету (что есть в C#) простой пример 
+ 
+Microsoft.Office.Interop.Excel.Sheets.get_Item(object) 
+в C++ нету такова метода get_Item(object) 
+...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">Style009</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>C# для начинающих</b> <a target="_blank" href="http://www.cyberforum.ru/csharp-beginners/thread635122.html"> <b>Можно ли с помощью Microsoft.Office.Interop.Word, определить середину листа</b></a><br><span class="smallfont">Задача
+ немного специфическая, может кто сталкивался... 
+Есть документ, который надо печатать на половине листа, с двух сторон, 
+т.е. 
+Пусть есть две половинки. 11 - первый лист, 12 - обратная сторона 
+первого листа, 21 - второй лист, 22 - обратная сторона второго листа. 
+Тогда, чтобы без проблем...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">alex0nik</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>C# .NET</b> <a target="_blank" href="http://www.cyberforum.ru/csharp-net/thread422250.html"> <b>Крайне медленная работа Microsoft.Office.Interop.Word</b></a><br><span class="smallfont">Имею конструкцию такого плана: 
+ 
+   Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application(); 
+            Object fileName = @f.FullName; 
+            Object missing = Type.Missing; 
+            app.Documents.Open(ref fileName, ref missing, ref missing, ref...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">Frustrator</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>C# .NET</b> <a target="_blank" href="http://www.cyberforum.ru/csharp-net/thread443984.html"> <b>Interop.Microsoft.Office.Interop.Excel, как исправить ошибку несовместимости версий</b></a><br><span class="smallfont">Error
+	1	Assembly 'Interop.Microsoft.Office.Interop.Excel, Version=1.7.0.0, 
+Culture=neutral, PublicKeyToken=null' uses 'Microsoft.Vbe.Interop, 
+Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' 
+which has a higher version than referenced assembly 
+'Microsoft.Vbe.Interop,...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">Smoke6969</span></td>  </tr> <tr> <td class="alt1" align="left"> <b>C# .NET</b> <a target="_blank" href="http://www.cyberforum.ru/csharp-net/thread246767.html">.NET 2.x <b>Microsoft.Office.Interop.Word поиск и возвращение значений.</b></a><br><span class="smallfont">Доброе время суток. 
+ 
+Занят разработкой парсера между экселем и вордом. Автоматизация работы в родном уже офисе, епт))) 
+Так вот, задача ясна как день. Но по факту возникают вопросы: 
+1. С помощью Word.Range.Find как можно искать вхождение слова соответсвующее введенному регулярному выражению...</span> </td> <td class="alt2" nowrap="nowrap"><span class="smallfont">Nooby.NET</span></td>  </tr> </tbody> </table>  <br>       <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr valign="bottom"> <td valign="top" width="100%"> </td> <td class="smallfont" align="right"> <table border="0" cellpadding="0" cellspacing="0"> </table> </td> </tr> </tbody></table>  <table width="100%"><tbody><tr> <td align="left"> <script type="text/javascript" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/share.js" charset="utf-8"></script> <div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,moikrug,gplus"><span class="b-share"><a class="b-share__handle" id="ya-share-0.6435604697091748-1378128220262" data-hdirection="" data-vdirection=""><span class="b-share-form-button b-share-form-button_share"><i class="b-share-form-button__before"></i><i class="b-share-form-button__icon"></i>Поделиться…<i class="b-share-form-button__after"></i></span></a><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link b-share-btn__yaru" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a><a rel="nofollow" target="_blank" title="Мой Круг" class="b-share__handle b-share__link b-share-btn__moikrug" href="http://share.yandex.ru/go.xml?service=moikrug&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="moikrug"><span class="b-share-icon b-share-icon_moikrug"></span></a><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span></a></span></div> </td> <td align="right"> <span class="smallfont">Текущее время: <span class="time">17:23</span>. Часовой пояс GMT +4.</span> </td> </tr></tbody></table><table class="tborder" style="margin: 10px 0px 0px 0px;" align="center" border="0" cellpadding="5" cellspacing="1" width="100%"><tbody><tr> <td class="alt1" align="center" width="100%">  <div id="yandex_ad"></div> <script type="text/javascript">
+(function(w, d, n, s, t) {
+w[n] = w[n] || [];
+w[n].push(function() {
+Ya.Direct.insertInto(29317, "yandex_ad", {
+stat_id: 2,
+site_charset: "windows-1251",
+ad_format: "direct",
+font_size: 1,
+type: "flat",
+limit: 4,
+title_font_size: 1,
+site_bg_color: "F4F4F4",
+title_color: "000080",
+url_color: "666666",
+text_color: "000000",
+hover_color: "0066FF",
+favicon: true
+});
+});
+t = d.documentElement.firstChild;
+s = d.createElement("script");
+s.type = "text/javascript";
+s.src = "http://an.yandex.ru/system/context.js";
+s.setAttribute("async", "true");
+t.insertBefore(s, t.firstChild);
+})(window, document, "yandex_context_callbacks");
+</script> </td> </tr></tbody></table> <br> </div> </div> </div>   <form action="http://www.cyberforum.ru/" method="get" style="clear:left"> <table class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr> <td class="tfoot"> <select name="langid" onchange="switch_id(this, 'lang')"> <optgroup label="Выбор языка"> <option value="3" class="">-- English (EN)</option> <option value="2" class="" selected="selected">-- Russian (RU)</option> </optgroup> </select> </td> <td class="tfoot" width="50%"> <span class="smallfont">КиберФорум - форум программистов, компьютерный форум, программирование</span> </td> <td class="tfoot" colspan="2" align="right" width="100%"> <div class="smallfont"> <strong> <a href="http://www.cyberforum.ru/advert.php" rel="nofollow">Реклама</a> -
+				<a href="http://www.cyberforum.ru/sendmessage.php" rel="nofollow" accesskey="9">Обратная связь</a> -
+				
+				
+				
+				
+				
+				
+				
+				<a href="http://www.cyberforum.ru/csharp-beginners/thread505153.html#top" onclick="self.scrollTo(0, 0); return false;">Вверх</a> </strong> </div> </td> </tr> </tbody></table> <table class="tborder" align="center" border="0" cellpadding="5" cellspacing="0" width="100%"> <tbody><tr class="alt1" align="right"> <td class="smallfont" align="left" width="500px"> 
+		Powered by vBulletin® Version 3.8.7 PL3<br>Copyright ©2000 - 2013, vBulletin Solutions, Inc.
+		 </td><td align="right" width="300px"> <script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t12.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров за 24"+
+" часа, посетителей за 24 часа и за сегодня' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/hit.gif" alt="" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" height="31" border="0" width="88"></a>  <script type="text/javascript">//<![CDATA[
+var a='',js=10;try{a+=';r='+escape(document.referrer);}catch(e){}try{a+=';j='+navigator.javaEnabled();js=11;}catch(e){}
+try{s=screen;a+=';s='+s.width+'*'+s.height;a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth);js=12;}catch(e){}
+try{if(typeof((new Array).push('t'))==="number")js=13;}catch(e){}
+try{document.write('<a href="http://top.mail.ru/jump?from=1495058">'+
+'<img src="http://d0.cd.b6.a1.top.mail.ru/counter?id=1495058;t=49;js='+js+a+';rand='+Math.random()+
+'" alt="Рейтинг@Mail.ru" style="border:0;" height="31" width="88" \/><\/a>');}catch(e){}//]]></script><a href="http://top.mail.ru/jump?from=1495058"><img title="Рейтинг@Mail.ru" src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/counter.gif" alt="Рейтинг@Mail.ru" style="border:0;" height="31" width="88"></a> <noscript><p><a href="http://top.mail.ru/jump?from=1495058"> <img src="http://d0.cd.b6.a1.top.mail.ru/counter?js=na;id=1495058;t=49" 
+style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /></a></p></noscript>   <span id="openstat1131905"><a href="http://rating.openstat.ru/site/1131905" target="_blank"><img src="%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru_files/digits.gif" alt="Openstat" border="0"></a></span> <script type="text/javascript">
+var openstat = { counter: 1131905, image: 5081, color: "c3c3c3", next: openstat, track_links: "ext" };
+(function(d, t, p) {
+var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
+var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+})(document, "script", document.location.protocol);
+</script>  </td> </tr> </tbody></table> <div class="smallfont" align="center"> </div>  </form> <script type="text/javascript"> <!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//--> </script>  <div style="display:none">   </div> 
+<script type="text/javascript">
+//<![CDATA[
+
+window.orig_onload = window.onload;
+window.onload = function() {
+var cpost=document.location.hash.substring(1);var cpost2='';if(cpost){ var ispost=cpost.substring(0,4)=='post';if(ispost)cpost2='post_'+cpost.substring(4);if((cobj = fetch_object(cpost))||(cobj = fetch_object(cpost2))){cobj.scrollIntoView(true);}else if(ispost){cpostno = cpost.substring(4,cpost.length);if(parseInt(cpostno)>0){location.replace('http://www.cyberforum.ru/showthread.php?p='+cpostno);};} }
+
+if(typeof window.orig_onload == "function") window.orig_onload();
+}
+
+//]]>
+</script>
+ <div class="b-share-popup-wrap b-share-popup-wrap_state_hidden" id="ya-share-0.38890830204674287-1378128220261-popup"><div class="b-share-popup b-share-popup_down b-share-popup_to-right"><div class="b-share-popup__i"><div class="b-share-popup__main  b-share-popup_yandexed"><div class="b-share-popup__header b-share-popup__header_first">Поделитесь с друзьями</div><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="yaru"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_yaru"></span></span><span class="b-share-popup__item__text">Я.ру</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="vkontakte"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_vkontakte"></span></span><span class="b-share-popup__item__text">ВКонтакте</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="odnoklassniki"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_odnoklassniki"></span></span><span class="b-share-popup__item__text">Одноклассники</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="twitter"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_twitter"></span></span><span class="b-share-popup__item__text">Twitter</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="facebook"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_facebook"></span></span><span class="b-share-popup__item__text">Facebook</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="moimir"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_moimir"></span></span><span class="b-share-popup__item__text">Мой Мир</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="lj"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_lj"></span></span><span class="b-share-popup__item__text">LiveJournal</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="gplus"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_gplus"></span></span><span class="b-share-popup__item__text">Google Plus</span></a><a href="http://api.yandex.ru/share/" class="b-share-popup__yandex">Яндекс</a></div></div><div class="b-share-popup__tail"></div></div></div><div class="b-share-popup-wrap b-share-popup-wrap_state_hidden" id="ya-share-0.6435604697091748-1378128220262-popup"><div class="b-share-popup b-share-popup_down b-share-popup_to-right"><div class="b-share-popup__i"><div class="b-share-popup__main  b-share-popup_yandexed"><div class="b-share-popup__header b-share-popup__header_first">Поделитесь с друзьями</div><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=yaru&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="yaru"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_yaru"></span></span><span class="b-share-popup__item__text">Я.ру</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="vkontakte"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_vkontakte"></span></span><span class="b-share-popup__item__text">ВКонтакте</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="odnoklassniki"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_odnoklassniki"></span></span><span class="b-share-popup__item__text">Одноклассники</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="twitter"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_twitter"></span></span><span class="b-share-popup__item__text">Twitter</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="facebook"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_facebook"></span></span><span class="b-share-popup__item__text">Facebook</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="moimir"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_moimir"></span></span><span class="b-share-popup__item__text">Мой Мир</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="lj"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_lj"></span></span><span class="b-share-popup__item__text">LiveJournal</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.cyberforum.ru%2Fcsharp-beginners%2Fthread505153.html&amp;title=%D0%92%20visual%20studio%20%D0%BD%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%BD%D0%BE%20Microsoft.Office.Interop.Word%20-%20C%23%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D1%8E%D1%89%D0%B8%D1%85%20-%20CyberForum.ru" class="b-share-popup__item" data-service="gplus"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_gplus"></span></span><span class="b-share-popup__item__text">Google Plus</span></a><a href="http://api.yandex.ru/share/" class="b-share-popup__yandex">Яндекс</a></div></div><div class="b-share-popup__tail"></div></div></div></body></html>
