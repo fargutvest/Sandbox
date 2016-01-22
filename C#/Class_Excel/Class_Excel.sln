@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class_Excel", "Class_Excel\Class_Excel.csproj", "{AABB981C-F52E-469D-9FA1-5A419B4F7278}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AABB981C-F52E-469D-9FA1-5A419B4F7278}.Debug|x86.ActiveCfg = Debug|x86
+		{AABB981C-F52E-469D-9FA1-5A419B4F7278}.Debug|x86.Build.0 = Debug|x86
+		{AABB981C-F52E-469D-9FA1-5A419B4F7278}.Release|x86.ActiveCfg = Release|x86
+		{AABB981C-F52E-469D-9FA1-5A419B4F7278}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

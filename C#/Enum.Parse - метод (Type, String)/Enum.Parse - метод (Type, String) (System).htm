@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html data-savefrom-tab-data="{&quot;module&quot;:&quot;lm&quot;,&quot;tooltip&quot;:&quot;Найдено ссылок: 0&quot;}" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta content="ru-ru" name="WT.seg_1"><link rel="canonical" href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx">
+        <title>Enum.Parse - метод (Type, String) (System)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/ru-ru/library/essfb559(d=default,l=ru-ru,v=vs.110).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/ru-ru/library/essfb559(d=default,l=ru-ru,v=vs.110).aspx">
+
+<meta name="DCSext.ProductFamily" content="LIB_DG">
+
+<meta name="DCSext.Product" content="NDP_CLR">
+
+<meta name="DCSext.Title" content="Parse - метод (Type, String)">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/ru-ru/library/essfb559(d=default,l=ru-ru,v=vs.110).aspx">
+
+<meta name="MN" content="BF1CA93C-1:19:23 AM">
+
+<meta name="Search.ShortId" content="essfb559">
+
+<meta name="Ms.Locale" content="ru-ru">
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/Combined.css"><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/ms2.js" async="" type="text/javascript"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/jquery-1.js" class="mtps-injected"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/ru-ru/library/essfb559(d=default,l=ru-ru,v=vs.110).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'ru-ru';
+  var wtsp = 'msdnlib_dotnet';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "0d9e5960-910a-40ce-a2cd-905206caee7a";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/Combined_003.js" class="mtps-injected"></script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/SearchBox.js" class="mtps-injected"></script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/Combined_004.js" class="mtps-injected"></script><script class="mtps-injected">try {
+//
+    MTPS = window.MTPS || {};
+    MTPS.Translation = window.MTPS.Translation || {};
+
+    MTPS.Translation.TranslationType =  0;
+    
+    
+        
+        MTPS.Translation.EditorLink = {
+            includeEditor : 0,
+            editLink: "http://msdn.microsoft.com/ru-ru/library/translation/edit/essfb559(v=vs.110).aspx",
+            editLinkText: "Предложите более удачный вариант перевода"
+        };
+        
+    //
+} finally { MTPS._injectNextScript_7 && MTPS._injectNextScript_7(); }</script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/Combined.js" class="mtps-injected"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = 'Развернуть'; MTPS.LocalizedStrings.CollapseButtonTooltip = 'Свернуть'; MTPS.LocalizedStrings.EnhancedExpandTooltip = 'Щелкните, чтобы развернуть. Щелкните дважды, чтобы развернуть все.'; MTPS.LocalizedStrings.EnhancedCollapseTooltip = 'Щелкните, чтобы свернуть. Щелкните дважды, чтобы свернуть все.'; MTPS.LocalizedStrings.ExpandAllButtonTooltip = 'Развернуть все'; MTPS.LocalizedStrings.CollapseAllButtonTooltip = 'Свернуть все';
+} finally { MTPS._injectNextScript_9 && MTPS._injectNextScript_9(); }</script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/Feedback.js" class="mtps-injected"></script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/jquery.js" class="mtps-injected"></script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/Combined_002.js" class="mtps-injected"></script><script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_13 && MTPS._injectNextScript_13(); }</script><link media="print" type="text/css" rel="stylesheet" href="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/PrintView.css"></head>
+    <body data-savefrom-link-count="124" class="library">
+        <div id="page">
+            
+            
+  
+            
+    
+    <div id="ux-header">
+        <header>
+            <div class="row">
+                <div class="top mobile"></div>
+                <div class="left">
+                    <div data-fragmentname="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/ru-ru" id="27762_1" xmlns="http://www.w3.org/1999/xhtml">Developer Network</a>
+</div>     
+                </div>
+                <div id="grip"></div>  
+                <div class="right desktop">
+                    <div class="auxNav">
+                        <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/dn369243" id="27762_5" xmlns="http://www.w3.org/1999/xhtml">Подписки MSDN</a>
+</div>   
+                        <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&amp;clcid=0x0419&amp;slcid=0x0419" id="27762_3" xmlns="http://www.w3.org/1999/xhtml">Получить инструменты</a>
+</div>   
+                        
+
+    <div class="signIn"><a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1389431963&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fru-ru%2flibrary%2fessfb559%2528v%3dvs.110%2529.aspx&amp;lc=1049&amp;id=254354&amp;mkt=ru-RU" title=" Вход  "> Вход  </a></div>
+
+                    </div>
+                    <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/Search" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this, this.title);">
+      <input autocomplete="off" id="HeaderSearchTextBox" name="query" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(this, this.title, 'SearchBoxOnFocus')" onblur="Epx.Controls.SearchBox.watermarkBlur(this, this.title, 'SearchBoxOnFocus')" type="text">
+      <input id="RefinementId" name="refinement" value="" type="hidden">
+      <button title="Search MSDN" id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+    <div style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-family: 'Segoe UI',Tahoma,Helvetica,Sans-Serif; font-size: 13.3333px;" id="SearchFlyoutContainer"><div id="SuggestionContainer"><ul style="list-style: none outside none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+    
+  </div>
+</div> 
+                </div>
+            </div>
+       
+            <div class="row" id="droor">
+                <div class="left">
+                            <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn308572" title="Главная">Главная</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271881" title="Возможности">Возможности</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn338450" title=".Net">.Net</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338159" title="Облако">Облако</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn469160" title="Настольный компьютер">Настольный компьютер</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338268" title="Телефон">Телефон</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn308583" title="Планшеты и ПК">Планшеты и ПК</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338449" title="Интернет">Интернет</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="Платформа">Платформа</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="Подключайтесь">Подключайтесь</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://tech-advisors.msdn.microsoft.com/ru-ru/" title="Tech Advisors">Tech Advisors</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338452" title="Перспективы">Перспективы</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/ru-ru" title="События">События</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="Форумы">Форумы</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="Загрузки">Загрузки</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="Средства разработчика">Средства разработчика</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="Пакеты SDK">Пакеты SDK</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369243" title="Подписки MSDN">Подписки MSDN</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="active current">
+
+                         <a href="http://msdn.microsoft.com/library" title="Библиотека">Библиотека</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://code.msdn.microsoft.com/" title="Примеры">Примеры</a>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+       
+                </div>
+                <div class="right mobile"></div>
+                <div class="right">
+                    <div data-fragmentname="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Присоединяйтесь</div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="https://www.facebook.com/msdnru" target="_blank" id="SocialLinks_430_7" class="facebook" xmlns="http://www.w3.org/1999/xhtml">https://www.facebook.com/msdnru</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/msdevru" target="_blank" id="SocialLinks_430_8" class="twitter" xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdevru</a>
+        </li>
+        <li>
+          <a href="http://vk.com/club14448489" target="_blank" id="SocialLinks_430_9" class="googlePlus" xmlns="http://www.w3.org/1999/xhtml">http://vk.com/club14448489</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> 
+                </div>
+                <span id="singleCol"></span>
+                <span id="doubleCol"></span>
+            </div>
+        </header>
+    </div>
+    
+    
+
+        
+    <div class="printExportMenus ltr">
+        <a style="display: inline;" id="isd_printABook" href="http://msdn.microsoft.com/ru-ru/library/export/help/?returnUrl=%2fru-ru%2flibrary%2fessfb559%28v%3dvs.110%29.aspx">
+            Экспорт (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://msdn.microsoft.com/ru-ru/library/essfb559%28d=printer,v=vs.110%29.aspx" rel="nofollow">
+            Печать 
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)">Свернуть&nbsp;все</a>
+    </div>
+
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+    <div style="width: 223px; max-width: 480px; height: 326px;" id="leftNav">
+
+
+
+<div style="width: 223px; position: fixed; top: 60px;" id="tocnav">
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/ms123401.aspx" id="ms310241_MSDN.10_ru-ru" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_ru-ru" mtpsshortid="ms123401_MSDN.10_ru-ru" title="MSDN Library">MSDN Library</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/aa139615.aspx" id="aa139615_MSDN.10_ru-ru" mtpsaliasid="" mtpsassetid="MSDN|netdev|$\netdev.hxt@0,0_MSDN.10_ru-ru" mtpsshortid="aa139615_MSDN.10_ru-ru" title="Разработка на .NET">Разработка на .NET</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/w0x726c2%28v=vs.110%29.aspx" id="hh201723_VS.110_ru-ru" mtpsaliasid="" mtpsassetid="f61f02f2-2f20-483d-8f56-a9c8f3a54986_VS.110_ru-ru" mtpsshortid="w0x726c2_VS.110_ru-ru" title=".NET Framework 4.5">.NET Framework 4.5</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/gg145045%28v=vs.110%29.aspx" id="bb473327_VS.110_ru-ru" mtpsaliasid="" mtpsassetid="e18143ab-e34f-496a-9092-14147075f668_VS.110_ru-ru" mtpsshortid="gg145045_VS.110_ru-ru" title="Библиотека классов платформы .NET Framework">Библиотека классов платформы .NET Framework</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/System%28v=vs.110%29.aspx" id="bb569678_VS.110_ru-ru" mtpsaliasid="System" mtpsassetid="N:System_VS.110_ru-ru" mtpsshortid="yxcx7skw_VS.110_ru-ru" title="System">System</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/System.Enum%28v=vs.110%29.aspx" id="cc689604_VS.110_ru-ru" mtpsaliasid="System.Enum" mtpsassetid="T:System.Enum_VS.110_ru-ru" mtpsshortid="1zt1ybx4_VS.110_ru-ru" title="Enum - класс">Enum - класс</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_collapsed" href="#">+</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/System.Enum_methods%28v=vs.110%29.aspx" id="dd331715_VS.110_ru-ru" mtpsaliasid="System.Enum_methods" mtpsassetid="Methods.T:System.Enum_VS.110_ru-ru" mtpsshortid="sxxax9w5_VS.110_ru-ru" title="Enum - методы">Enum - методы</a>            </div>
+            <div data-childrenloaded="true" style="padding-left: 17px;" class="toclevel1" data-toclevel="1">
+<a style="width: auto; height: auto; margin-top: 0px;" class="toc_expanded" href="#">-</a><a data-tochassubtree="true" href="http://msdn.microsoft.com/ru-ru/library/System.Enum.Parse%28v=vs.110%29.aspx" id="jj190311_VS.110_ru-ru" mtpsaliasid="System.Enum.Parse" mtpsassetid="Overload:System.Enum.Parse_VS.110_ru-ru" mtpsshortid="sehsc5fz_VS.110_ru-ru" title="Parse - метод">Parse - метод</a>            </div>
+            <div style="padding-left: 34px;" class="toclevel2 current" data-toclevel="2">
+<span style="width: auto; height: auto; margin-top: 0px;" class="toc_empty">●</span><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Parse - метод (Type, String)">Parse - метод (Type, String)</a>            </div>
+            <div style="padding-left: 34px;" class="toclevel2" data-toclevel="2">
+<span style="width: auto; height: auto; margin-top: 0px;" class="toc_empty">●</span><a href="http://msdn.microsoft.com/ru-ru/library/kxydatf9%28v=vs.110%29.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Parse - метод (Type, String, Boolean)">Parse - метод (Type, String, Boolean)</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div style="height: 3605px;" id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+
+<a style="left: 223px; display: inline-block;" id="NavigationResize" href="javascript:void(0)">
+    <img style="" class="cl_nav_resize_open" src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/ImageSprite.png" title="Развернуть" alt="Развернуть">
+    <img style="display: none;" class="cl_nav_resize_close" src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/ImageSprite.png" title="Свернуть" alt="Свернуть">
+</a>
+
+
+
+    </div>
+<div style="margin-left: 223px; width: auto;" id="content" class="content noL2">
+
+
+
+<div id="MTPSTranslator" class="MTPSTranslator">
+    <table class="MTPSTranslatorTable" style="width: 100%">
+        <tbody><tr>
+            <td class="TranslationAlertBox">
+                <div>Данная статья переведена автоматически. Наведите указатель мыши на предложения статьи, чтобы просмотреть исходный текст. <a href="http://msdn.microsoft.com/translate/hh856053">Дополнительные сведения.</a></div>
+            </td>
+                <td class="TranslationViewSwitcher">
+                    <div>
+                        <input title="Показать перевод" value="0" name="TrnaslatorView" class="translatechoice" checked="checked" type="radio"><span>Перевод</span>
+                    </div>
+                    <div>
+                        <input title="Показать текст на английском языке" value="1" name="TrnaslatorView" class="translatechoice" type="radio"><span>Текст оригинала</span>
+                    </div>
+                </td>
+        </tr>
+    </tbody></table>
+</div>
+    
+    
+    
+     
+
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Enum<span xmlns="">.</span>Parse - метод (Type, String)</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            .NET Framework 4.5
+        </strong>
+    </div>
+    <div id="versionclick">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div>
+        <div>
+          <a id="vsLink" href="javascript:;">
+                        Другие версии
+                    </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/ImageSprite.png">
+        </div>
+      </div>
+      <ul style="display: none;" id="vsPanel">
+        <li>
+          <a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.100%29.aspx" title="">.NET Framework 4</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.90%29.aspx" title="">.NET Framework 3.5</a>
+        </li>
+      </ul>
+    </div>
+  <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block;"></div><div style="margin: 0px 0px 0px 13px; display: block;" id="ratingCounter">
+        <span id="rcA" class="ratingText">
+            1 из 1 оценили этот материал как полезный <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="#feedback" title="Оценить эту тему">Оценить эту тему</a>
+            
+        </span>
+    </div></div>
+  <div style="clear:both;"></div>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <p>
+        
+      </p>
+      <div>
+        <div class="summary">
+          <p>
+            <span id="mt1" class="sentence" data-guid="4e3c701849a72dc6620c5e3b2a5826e7" data-source="Converts the string representation of the name or numeric value of one or more enumerated constants to an equivalent enumerated object." xml:space="preserve">
+              <sentencetext xmlns="http://www.w3.org/1999/xhtml">Преобразует
+ строковое представление имени или числового значения одной или 
+нескольких перечислимых констант в эквивалентный перечислимый объект.</sentencetext>
+            </span>
+          </p>
+        </div>
+      </div>
+      <p>
+        
+      </p>
+    <strong>Пространство имен:</strong> 
+  &nbsp;<a href="http://msdn.microsoft.com/ru-ru/library/system%28v=vs.110%29.aspx">System</a><br>
+    <strong>Сборка:</strong>
+  &nbsp;<span>mscorlib</span> (в mscorlib.dll)<div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Синтаксис</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="syntaxToggle"></a>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx?cs-save-lang=1&amp;cs-lang=cpp#code-snippet-1">C++</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx?cs-save-lang=1&amp;cs-lang=fsharp#code-snippet-1">F#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-1">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_15f77c94-682b-4dbe-873c-8d0d40458328');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_15f77c94-682b-4dbe-873c-8d0d40458328" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>[ComVisibleAttribute(<span style="color:Blue;">true</span>)]
+<span style="color:Blue;">public</span> <span style="color:Blue;">static</span> Object Parse(
+	Type enumType,
+	<span style="color:Blue;">string</span> value
+)
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<div id="parameters"><h4 class="subHeading">Параметры</h4><dl><dt><span class="parameter">enumType</span></dt><dd>Тип: <a href="http://msdn.microsoft.com/ru-ru/library/system.type%28v=vs.110%29.aspx">System<span xmlns="">.</span>Type</a><br><span><span><span id="mt2" class="sentence" data-guid="f2fae908773ff879ed0b1bde5052729b" data-source="An enumeration type. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Перечислимый тип. </sentencetext></span></span><br></span></dd></dl><dl><dt><span class="parameter">value</span></dt><dd>Тип: <a href="http://msdn.microsoft.com/ru-ru/library/system.string%28v=vs.110%29.aspx">System<span xmlns="">.</span>String</a><br><span><span><span id="mt3" class="sentence" data-guid="dd98574784b095f756f5cd107fb8e014" data-source="A string containing the name or value to convert. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Строка, содержащая имя или значение для преобразования. </sentencetext></span></span><br></span></dd></dl></div><div id="returns"><h4 class="subHeading">Возвращаемое значение</h4>Тип: <a href="http://msdn.microsoft.com/ru-ru/library/system.object%28v=vs.110%29.aspx">System<span xmlns="">.</span>Object</a><br><span><span><span id="mt4" class="sentence" data-guid="f2408295cb46e8fc990d04ba4ace1cc9" data-source="An object of type &lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt; whose value is represented by &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Объект типа <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span>, значение которого представлено параметром <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span>.</sentencetext></span></span><br></span></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Исключения</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="ddueExceptionsToggle"></a><div class="tableSection"><table><tbody><tr><th class="exceptionNameColumn">Исключение</th><th class="exceptionConditionColumn">Условие</th></tr><tr><td><span><a href="http://msdn.microsoft.com/ru-ru/library/system.argumentnullexception%28v=vs.110%29.aspx">ArgumentNullException</a></span></td><td><p>
+                <span id="mt5" class="sentence" data-guid="9c283b5d9fc1bdadc66de8d4713bbf68" data-source="&lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt; or &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is &lt;span&gt;&lt;span class=&quot;input&quot;&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot;  xmlns=&quot;&quot;&gt;&lt;span&gt;null&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot;  xmlns=&quot;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Значение параметра <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span> или <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> — <span xmlns="http://www.w3.org/1999/xhtml"><span class="input"><span class="mtpsTagOuterHtml" outerhtml="PG10cHM6TGFuZ3VhZ2VTcGVjaWZpY1RleHQgcnVuYXQ9InNlcnZlciIgeG1sbnM6bXRwcz0iaHR0cDovL21zZG4yLm1pY3Jvc29mdC5jb20vbXRwcyI+PHZhcmlhdGlvbiBkZXZMYW5nPSJjcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPm51bGw8L3ZhcmlhdGlvbj48dmFyaWF0aW9uIGRldkxhbmc9InZiIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+Tm90aGluZzwvdmFyaWF0aW9uPjx2YXJpYXRpb24gZGV2TGFuZz0iY3BwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+bnVsbHB0cjwvdmFyaWF0aW9uPjwvbXRwczpMYW5ndWFnZVNwZWNpZmljVGV4dD4=" xmlns=""><span>null</span></span></span><span class="mtpsTagOuterHtml" outerhtml="PG10cHM6TGFuZ3VhZ2VTcGVjaWZpY1RleHQgcnVuYXQ9InNlcnZlciIgeG1sbnM6bXRwcz0iaHR0cDovL21zZG4yLm1pY3Jvc29mdC5jb20vbXRwcyI+PHZhcmlhdGlvbiBkZXZMYW5nPSJudSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPtGB0YHRi9C70LrQsCBOVUxMICg8c3BhbiBjbGFzcz0iaW5wdXQiPk5vdGhpbmc8L3NwYW4+INCyIFZpc3VhbCBCYXNpYyk8L3ZhcmlhdGlvbj48L210cHM6TGFuZ3VhZ2VTcGVjaWZpY1RleHQ+" xmlns=""><span></span></span></span>. </sentencetext></span></p></td></tr><tr><td><span><a href="http://msdn.microsoft.com/ru-ru/library/system.argumentexception%28v=vs.110%29.aspx">ArgumentException</a></span></td><td><p>
+                <span id="mt6" class="sentence" data-guid="b53b676152d608c77bb10d1db6135c2d" data-source="&lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt; is not an &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;Enum&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Значение параметра <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span> не является перечислением <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/ru-ru/library/system.enum%28v=vs.110%29.aspx">Enum</a></span>.</sentencetext></span></p><p><span id="mt7" class="sentence" data-guid="68829fb9e57e5a502fee7f2a248a5c58" data-source="-or- " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">-или- </sentencetext></span></p><p>
+                <span id="mt8" class="sentence" data-guid="7213f93ef2cc62e4838f736e231bfa49" data-source="&lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is either an empty string or only contains white space." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> является пустой строкой или содержит только пробелы.</sentencetext></span></p><p><span id="mt9" class="sentence" data-guid="68829fb9e57e5a502fee7f2a248a5c58" data-source="-or- " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">-или- </sentencetext></span></p><p>
+                <span id="mt10" class="sentence" data-guid="b26e13033fa7ee6275c817b9ab55887e" data-source="&lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is a name, but not one of the named constants defined for the enumeration. " xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">В параметре <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> задано имя, не являющееся именем одной из именованных констант, определенных для данного перечисления. </sentencetext></span></p></td></tr><tr><td><span><a href="http://msdn.microsoft.com/ru-ru/library/system.overflowexception%28v=vs.110%29.aspx">OverflowException</a></span></td><td><p>
+                <span id="mt11" class="sentence" data-guid="9d2e50b0689d9e7396802a9ace12b60c" data-source="&lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is outside the range of the underlying type of &lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">
+  <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> находится вне диапазона базового типа <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span>.</sentencetext></span></p></td></tr></tbody></table></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Заметки</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="remarksToggle"></a><p><span id="mt12" class="sentence" data-guid="ad9fb512eaf8054ecf5ef1fc8ddf6d28" data-source="The &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; parameter contains the string representation of an enumeration member's underlying value or named constant, or a list of named constants delimited by commas (,)." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Параметр <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span>
+ содержит строковое представление базового значения члена перечисления, 
+именованную константу или список именованных констант, разделенных 
+запятыми (,).</sentencetext></span>  <span id="mt13" class="sentence" data-guid="59f97aac67f916bdce9505d85e651aa6" data-source="One or more blank spaces can precede or follow each value, name, or comma in &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">В <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> каждое значение, один или несколько пробелов могут размещать перед или после значений, имен или запятых.</sentencetext></span>  <span id="mt14" class="sentence" data-guid="e26f27ac7fe250ea34709a77bb44f6ea" data-source="If &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is a list, the return value is the value of the specified names combined with a bitwise &lt;span&gt;&lt;span class=&quot;input&quot;&gt;OR&lt;/span&gt;&lt;/span&gt; operation." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Если <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> является списком, то возвращаемым значением является соединение значений указанных имен с помощью побитовой операции <span xmlns="http://www.w3.org/1999/xhtml"><span class="input">OR</span></span>.</sentencetext></span>  </p><p><span id="mt15" class="sentence" data-guid="292f4fbbf1bcc6d5f43fb8c9366e5916" data-source="If &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is a name that does not correspond to a named constant of &lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt;, the method throws an &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;ArgumentException&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Если параметр <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> представляет имя, которое не соответствует именованной константе <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span>, метод вызывает исключение <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/ru-ru/library/system.argumentexception%28v=vs.110%29.aspx">ArgumentException</a></span>.</sentencetext></span>  <span id="mt16" class="sentence" data-guid="cf61169d7d44017b497c72cbbb0748b0" data-source="If &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; is the string representation of an integer that does not represent an underlying value of the &lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt; enumeration, the method returns an enumeration member whose underlying value is &lt;span class=&quot;parameter&quot;&gt;value&lt;/span&gt; converted to an integral type." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Если значение параметра <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span> является строковым представлением целого числа, которое не представляет базовое значение перечисления <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span>, метод возвращает член перечисления, базовым значением которого является значение параметра <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">value</span>, преобразованное в целочисленный тип.</sentencetext></span>  <span id="mt17" class="sentence" data-guid="a0c5d39358796f284994ffee8dd0d1b6" data-source="If this behavior is undesirable, call the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsDefined&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method to ensure that a particular string representation of an integer is actually a member of &lt;span class=&quot;parameter&quot;&gt;enumType&lt;/span&gt;." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Если такое поведение нежелательно, вызовите метод <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/ru-ru/library/system.enum.isdefined%28v=vs.110%29.aspx">IsDefined</a></span>, чтобы убедится в том, что определенное строковое представление целого числа фактически является членом <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">enumType</span>.</sentencetext></span>  <span id="mt18" class="sentence" data-guid="3ad41d4659b0d6cd976f6016003ef614" data-source="The following example defines a &lt;span class=&quot;code&quot;&gt;Colors&lt;/span&gt; enumeration, calls the &lt;span&gt;&lt;span class=&quot;selflink&quot;&gt;Parse(Type, String)&lt;/span&gt;&lt;/span&gt; method to convert strings to their corresponding enumeration values, and calls the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;IsDefined&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method to ensure that particular integral values are underlying values in the &lt;span class=&quot;code&quot;&gt;Colors&lt;/span&gt; enumeration." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">В следующем примере определяется перечисление <span class="code" xmlns="http://www.w3.org/1999/xhtml">Colors</span>, вызывается метод <span xmlns="http://www.w3.org/1999/xhtml"><span class="selflink">Parse(Type, String)</span></span> для преобразования строк в их соответствующие значения перечисления и вызывается метод <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/ru-ru/library/system.enum.isdefined%28v=vs.110%29.aspx">IsDefined</a></span>, гарантирующий, что определенные целые значения являются основными в перечислении <span class="code" xmlns="http://www.w3.org/1999/xhtml">Colors</span>.</sentencetext></span>  </p><div id="snippetGroup">
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-2">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_03dd7db3-944b-4eec-9d7d-972d5fb67151');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_03dd7db3-944b-4eec-9d7d-972d5fb67151" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Blue;">using</span> System;
+
+[Flags] <span style="color:Blue;">enum</span> Colors { None=0, Red = 1, Green = 2, Blue = 4 };
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Example
+{
+   <span style="color:Blue;">public</span> <span style="color:Blue;">static</span> <span style="color:Blue;">void</span> Main()
+   {
+      <span style="color:Blue;">string</span>[] colorStrings = { <span style="color:#A31515;">"0"</span>, <span style="color:#A31515;">"2"</span>, <span style="color:#A31515;">"8"</span>, <span style="color:#A31515;">"blue"</span>, <span style="color:#A31515;">"Blue"</span>, <span style="color:#A31515;">"Yellow"</span>, <span style="color:#A31515;">"Red, Green"</span> };
+      <span style="color:Blue;">foreach</span> (<span style="color:Blue;">string</span> colorString <span style="color:Blue;">in</span> colorStrings)
+      {
+         <span style="color:Blue;">try</span> {
+            Colors colorValue = (Colors) Enum.Parse(<span style="color:Blue;">typeof</span>(Colors), colorString);        
+            <span style="color:Blue;">if</span> (Enum.IsDefined(<span style="color:Blue;">typeof</span>(Colors), colorValue) | colorValue.ToString().Contains(<span style="color:#A31515;">","</span>))  
+               Console.WriteLine(<span style="color:#A31515;">"Converted '{0}' to {1}."</span>, colorString, colorValue.ToString());
+            <span style="color:Blue;">else</span>
+               Console.WriteLine(<span style="color:#A31515;">"{0} is not an underlying value of the Colors enumeration."</span>, colorString);
+         }
+         <span style="color:Blue;">catch</span> (ArgumentException) {
+            Console.WriteLine(<span style="color:#A31515;">"'{0}' is not a member of the Colors enumeration."</span>, colorString);
+         }
+      }
+   }
+}
+<span style="color:Green;">// The example displays the following output:</span>
+<span style="color:Green;">//       Converted '0' to None.</span>
+<span style="color:Green;">//       Converted '2' to Green.</span>
+<span style="color:Green;">//       8 is not an underlying value of the Colors enumeration.</span>
+<span style="color:Green;">//       'blue' is not a member of the Colors enumeration.</span>
+<span style="color:Green;">//       Converted 'Blue' to Blue.</span>
+<span style="color:Green;">//       'Yellow' is not a member of the Colors enumeration.</span>
+<span style="color:Green;">//       Converted 'Red, Green' to Red, Green.</span>
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div><p><span id="mt19" class="sentence" data-guid="b60673f177ab1291413cd5ea6c0ec19e" data-source="This operation is case-sensitive." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">В этой операции учитывается регистр.</sentencetext></span></p></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Примеры</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="exampleToggle"></a><p><span id="mt20" class="sentence" data-guid="6656e2c4e41dab106f2f5db5413a4578" data-source="The following example uses the &lt;span&gt;&lt;span class=&quot;selflink&quot;&gt;Parse(Type, String)&lt;/span&gt;&lt;/span&gt; method to parse an array of strings that are created by calling the &lt;span&gt;&lt;span class=&quot;mtpsTagOuterHtml&quot; &gt;&lt;span&gt;GetNames&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; method." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">В следующем примере метод <span xmlns="http://www.w3.org/1999/xhtml"><span class="selflink">Parse(Type, String)</span></span> используется для синтаксического анализа массива строк, созданных путем вызова метода <span xmlns="http://www.w3.org/1999/xhtml"><a href="http://msdn.microsoft.com/ru-ru/library/system.enum.getnames%28v=vs.110%29.aspx">GetNames</a></span>.</sentencetext></span>  <span id="mt21" class="sentence" data-guid="c36ae7dcd292fdd9cd1a8ef70201c89e" data-source="It also uses the &lt;span&gt;&lt;span class=&quot;selflink&quot;&gt;Parse(Type, String)&lt;/span&gt;&lt;/span&gt; method to parse an enumeration value that consists of a bit field." xml:space="preserve"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Также использует метод <span xmlns="http://www.w3.org/1999/xhtml"><span class="selflink">Parse(Type, String)</span></span> для анализа значения перечисления, которое состоит из битового поля.</sentencetext></span>  </p><div id="snippetGroup1">
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabActive" dir="ltr"><a>C#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx?cs-save-lang=1&amp;cs-lang=cpp#code-snippet-3">C++</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/ru-ru/library/essfb559%28v=vs.110%29.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-3">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Копировать в буфер обмена." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fb3a831f-f976-454f-a0e0-e4f51140c5ca');">Копировать</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fb3a831f-f976-454f-a0e0-e4f51140c5ca" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Blue;">using</span> System;
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> ParseTest
+{
+    [FlagsAttribute]
+    <span style="color:Blue;">enum</span> Colors { Red = 1, Green = 2, Blue = 4, Yellow = 8 };
+
+    <span style="color:Blue;">public</span> <span style="color:Blue;">static</span> <span style="color:Blue;">void</span> Main()
+    {
+        Console.WriteLine(<span style="color:#A31515;">"The entries of the Colors enumeration are:"</span>);
+        <span style="color:Blue;">foreach</span> (<span style="color:Blue;">string</span> colorName <span style="color:Blue;">in</span> Enum.GetNames(<span style="color:Blue;">typeof</span>(Colors)))
+        {
+            Console.WriteLine(<span style="color:#A31515;">"{0} = {1:D}"</span>, colorName, 
+                                         Enum.Parse(<span style="color:Blue;">typeof</span>(Colors), colorName));
+        }
+        Console.WriteLine();
+
+        Colors orange = (Colors) Enum.Parse(<span style="color:Blue;">typeof</span>(Colors), <span style="color:#A31515;">"Red, Yellow"</span>);
+        Console.WriteLine(<span style="color:#A31515;">"The orange value {0:D} has the combined entries of {0}"</span>, 
+                           orange);
+    }
+}
+
+<span style="color:Green;">/*
+This code example produces the following results:
+
+The entries of the Colors Enum are:
+Red = 1
+Green = 2
+Blue = 4
+Yellow = 8
+
+The orange value 9 has the combined entries of Red, Yellow
+
+*/</span>
+
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Сведения о версии</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="versionsTitleToggle"></a><h4 class="subHeading">.NET Framework</h4>Поддерживается в версиях: 4.5, 4, 3.5, 3.0, 2.0, 1.1, 1.0<br><h4 class="subHeading">.NET Framework (клиентский профиль)</h4>Поддерживается в версиях: 4, 3.5 с пакетом обновления 1 (SP1)<br><h4 class="subHeading">Переносимая библиотека классов</h4>Поддерживается в версии: Переносимая библиотека классов<br><h4 class="subHeading">Приложения .NET для Магазина Windows</h4>Поддерживается в версии: Windows 8<br></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Платформы</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="platformsTitleToggle"></a><p>Windows
+ 8, Windows Server 2012, Windows 7, Windows Vista с пакетом обновления 2
+ (SP2), Windows Server 2008 (роль основных серверных компонентов не 
+поддерживается), Windows Server 2008 R2 (роль основных серверных 
+компонентов поддерживается в пакете обновления 1 (SP1) или выше; системы
+ на базе Itanium не поддерживаются)</p><p>
+	  </p><p></p>
+	  <span>
+		  .NET Framework поддерживает не все версии каждой платформы. Поддерживаемые версии перечислены в разделе <a href="http://msdn.microsoft.com/ru-ru/library/8z6watww%28v=vs.110%29.aspx">Требования к системе для .NET Framework</a>.
+	  </span>
+  </div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Щелкните,&nbsp;чтобы&nbsp;свернуть. Щелкните&nbsp;дважды,&nbsp;чтобы&nbsp;свернуть&nbsp;все."><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">См. также</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="seeAlsoToggle"></a><h4 class="subHeading">Ссылки</h4><div class="seeAlsoStyle"><a href="http://msdn.microsoft.com/ru-ru/library/system.enum%28v=vs.110%29.aspx">Enum Класс</a></div><div class="seeAlsoStyle"><a href="http://msdn.microsoft.com/ru-ru/library/system.enum.parse%28v=vs.110%29.aspx">Parse - перегрузка</a></div><div class="seeAlsoStyle"><a href="http://msdn.microsoft.com/ru-ru/library/system%28v=vs.110%29.aspx">System - пространство имен</a></div><div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/ru-ru/library/system.enum.isdefined%28v=vs.110%29.aspx">IsDefined</a></span></div></div></div></div>
+  </div>
+</div>
+
+
+
+
+
+<p style="padding: 15px 0px; margin: 0px;"></p>
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Добавления сообщества</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/ru-ru/library/community/add/essfb559%28v=vs.110%29.aspx">
+                    <span class="communityContentAddButton" title="Add («Добавить»)">
+                        ДОБАВИТЬ
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/ru-ru/library/community/comments/essfb559(v=vs.110).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Показ:</span>
+        <label>
+            <input class="libraryFilterInherited" checked="checked" value="Inherit" type="checkbox">Унаследовано
+        </label>
+        <label>
+            <input class="libraryFilterProtected" checked="checked" value="Protected" type="checkbox">Защищен
+        </label>
+    </div>
+</div>
+    
+<input id="libraryMemberFilterEmptyWarning" value="Для текущих настроек фильтра нет доступных членов." type="hidden">
+
+
+ 
+</div>
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" value="sPvSNBVbyyUsQplwUtkCr041wfYcpo29wWm9rX8Rb0OQUz8eJuXBBdvjse1IBM7XwpUt5B-MnEyL--n0GXyPQLp7rmFULFnY38IHLdKFa_bhJ7LbU3TdPxCF8OcAaJcRm7DPjA2" type="hidden">
+<input id="ratingSubmitUrl" value="http://msdn.microsoft.com/ru-ru/library/feedback/add/essfb559(v=vs.110).aspx" type="hidden">
+<input id="isTopicRated" value="false" type="hidden">
+
+
+
+
+    <div id="ux-footer" class="" style="">
+    <footer class="top">
+        <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Центры разработки</div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/windows" id="27861_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+        </li>
+        <li>
+          <a href="http://dev.windowsphone.com/" id="27861_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/office" id="27861_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+        </li>
+        <li>
+          <a href="http://www.windowsazure.com/en-us/documentation/" id="27861_4" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows Azure</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/vstudio" id="27861_5" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/aa937802" id="27861_6" xmlns="http://www.w3.org/1999/xhtml">Дополнительные материалы…</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <div id="rightLinks">
+            <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Учебные материалы</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoftvirtualacademy.com/" id="27861_14" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+        </li>
+        <li>
+          <a href="http://channel9.msdn.com/" id="27861_16" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+        </li>
+        <li>
+          <a href="http://www.techdays.ru/" id="27861_17" xmlns="http://www.w3.org/1999/xhtml">TechDays</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/ru-ru/magazine/" id="CenterLinks1_427_33" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Сообщество</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://social.msdn.microsoft.com/Forums/ru-RU/home" id="27861_19" xmlns="http://www.w3.org/1999/xhtml">Форумы</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/ru-ru/JJ129558" id="27861_20" xmlns="http://www.w3.org/1999/xhtml">Блоги</a>
+        </li>
+        <li>
+          <a href="http://www.codeplex.com/" id="27861_22" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Поддержка</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_427_34" xmlns="http://www.w3.org/1999/xhtml">Самостоятельная поддержка</a>
+        </li>
+        <li>
+          <a href="http://support.microsoft.com/" id="27861_24" xmlns="http://www.w3.org/1999/xhtml">Другие варианты поддержки</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div class="nth-child-4n" data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Программы</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.ms-start.ru/" id="27861_27" xmlns="http://www.w3.org/1999/xhtml">BizSpark (для стартапов)</a>
+        </li>
+        <li>
+          <a href="http://www.dreamspark.ru/" id="27861_28" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/education/facultyconnection/ru/default.aspx?c1=ru-ru&amp;c2=RU" id="27861_29" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/ru-ru/student/" id="CenterLinks4_427_32" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">Была ли вам полезна эта информация?</div>
+            <div class="left">
+                <div class="left">
+                    <input name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false" type="radio"><label class="feedbackYesClick" for="feedbackYes"> Да</label>
+                </div>
+                <div class="left">
+                    <input name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false" type="radio"><label class="feedbackNoClick" for="feedbackNo"> Нет</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" value="201" data-enhance="false" type="checkbox">
+                        <label for="checkboxNo201">Неточный</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" value="202" data-enhance="false" type="checkbox">
+                        <label for="checkboxNo202">Недостаточно подробный</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" value="203" data-enhance="false" type="checkbox">
+                        <label for="checkboxNo203">Требуется больше примеров кода</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo204" name="chkbxNo" value="204" data-enhance="false" type="checkbox">
+                        <label for="checkboxNo204">Перевод нуждается в правке</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">Сообщите нам дополнительную информацию...</textarea>
+            </div>
+            <div class="left"><span class="counter">(<span id="feedbackTextCounter">1500</span> символов осталось)</span></div>
+            <div class="right">
+                <button type="button" id="feedbackSubmit" title="Щелкните, чтобы отправить отзыв" data-enhance="false">Отправить</button>
+            </div>
+        </div>
+        <div id="feedbackSection5">Спасибо за ваш отзыв</div>
+        <input id="feedbackValue" value="" type="hidden">
+        <input id="tellUsMoreText" value="Сообщите нам дополнительную информацию..." type="hidden">
+        <input id="maxTextBoxCharacters" value="1500" type="hidden">
+        <input id="feedbackSiteName" name="feedbackSiteName" value="" type="hidden">
+        <input id="feedbackPriority" name="feedbackPriority" value="" type="hidden">
+        <input id="feedbackSourceUrl" name="feedbackSourceUrl" value="" type="hidden">
+        <input id="ClientIP" name="ClientIP" value="" type="hidden">
+        <input id="ClientOS" name="ClientOS" value="" type="hidden">
+        <input id="ClientBrowser" name="ClientBrowser" value="" type="hidden">
+        <input id="ClientTime" name="ClientTime" value="" type="hidden">
+        <input id="ClientDate" name="ClientDate" value="" type="hidden">
+    </div>
+    
+        </div>
+    </footer>
+    
+    <footer class="bottom">
+        <span class="localeContainer">
+                <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/ru-ru/selectlocale-dmc">
+        <input name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fru-ru%2flibrary%2fessfb559(v%3dvs.110).aspx" type="hidden">
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Измените язык">Россия (Pусский)</a>
+    </form>    
+
+
+        </span>
+        
+        <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://www.microsoft.com/Rus/Msdn/flash/Default.mspx" id="27861_8" xmlns="http://www.w3.org/1999/xhtml">Подписка на новости</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/dn529288" id="27861_10" xmlns="http://www.w3.org/1999/xhtml">Конфиденциальность</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/cc300389.aspx" id="27861_11" xmlns="http://www.w3.org/1999/xhtml">Условия использования</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" id="27861_12" xmlns="http://www.w3.org/1999/xhtml">Товарные знаки</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <span class="logoLegal">
+            <span class="logo"></span>
+            <span class="copyright">© 2014 Microsoft</span>
+        </span>
+    </footer>
+</div>
+    
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. Все права защищены.</div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" value="17" type="hidden">
+
+
+        
+            <input id="MtpsDevice" value="Default" type="hidden">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com" title="Web Analytics">
+    <img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" value="_LPXyspKH9JpYS6aRxRTh2PutOAd7NO7pB5z5x4s-a3cDFWxq3B02VX2LUpGbRu2f4MLc9lY2Fgpn58iuEP2umE-uL-3Ls46_7mhTB60Drbsi8GhZF66p5uIaepQpjkASxpu4A2" type="hidden">
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/ru-ru/library/essfb559(d=default,l=ru-ru,v=vs.110).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027ru-ru\u0027;\n  var wtsp = \u0027msdnlib_dotnet\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"0d9e5960-910a-40ce-a2cd-905206caee7a\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,2:Rating,2:Footer,0:Topic,3:webtrendsscript,4:omni_rsid_MSDN,5:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Centers/Themes/Base/Content:1,/Areas/Centers/Themes/Msdn/Content:2,/Areas/Global/Content/Webtrends/resources:3,/Areas/Global/Content/Omniture/resources/MSDN:4,/Areas/Epx/Themes/Base/Content:5\u0026amp;hashKey=61C207377CBE579E8408FDB19B9E9D57" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=ru-ru\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Search MSDN" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize;/Areas/Epx/Themes/Base/Content:0,/Areas/Epx/Library/Content:1\u0026amp;hashKey=675F7463D6D2837C878E3584FC52DAB9" },
+	{ txt: "//\n    MTPS = window.MTPS || {};\n    MTPS.Translation = window.MTPS.Translation || {};\n\n    MTPS.Translation.TranslationType =  0;\n    \n    \n        \n        MTPS.Translation.EditorLink = {\n            includeEditor : 0,\n            editLink: \"http://msdn.microsoft.com/ru-ru/library/translation/edit/essfb559(v=vs.110).aspx\",\n            editLinkText: \"Предложите более удачный вариант перевода\"\n        };\n        \n    //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:jquery.popup,0:Translator,1:FeedbackCounter;/Areas/Epx/Library/Content:0,/Areas/Epx/Shared/Content:1\u0026amp;hashKey=1FDD911346A8AAC65E131ED3A9F62283" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Развернуть\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Свернуть\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027Щелкните, чтобы развернуть. Щелкните дважды, чтобы развернуть все.\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027Щелкните, чтобы свернуть. Щелкните дважды, чтобы свернуть все.\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027Развернуть все\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027Свернуть все\u0027;" },
+	{ url: "http://i2.msdn.microsoft.com/Areas/Epx/Shared/Content/Feedback.js" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,1:LibraryMemberFilter,1:Toc_Fixed,0:CodeSnippet,0:TopicNotInScope,0:CollapsibleArea,0:VersionSelector,0:SurveyBroker;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Library/Content:1\u0026amp;hashKey=65EEFA29F96E9A74F5DCF143095A7110" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/broker-config.js"></script><div style="display: none; z-index: 97; width: auto; height: auto; left: 271px; top: 1264px;" id="popup-loading0" class="popup-loading">loading...</div><div style="z-index: 97; width: auto; height: auto; max-width: 1593px; left: 271px; top: 1264px; display: none;" id="popup0" class="MTPopup"><div style="z-index: 97;" class="popup-main"><div class="popup-inner">The following example defines a <span class="code">Colors</span> enumeration, calls the <span><span class="selflink">Parse(Type, String)</span></span> method to convert strings to their corresponding enumeration values, and calls the <span><span class="mtpsTagOuterHtml"><span>IsDefined</span></span></span> method to ensure that particular integral values are underlying values in the <span class="code">Colors</span> enumeration.<div class="EditTranslation"><a href="http://msdn.microsoft.com/ru-ru/library/translation/edit/essfb559%28v=vs.110%29.aspx?sentenceGuid=3ad41d4659b0d6cd976f6016003ef614">Предложите более удачный вариант перевода</a></div></div></div></div><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="Enum.Parse%20-%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%28Type,%20String%29%20%28System%29_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

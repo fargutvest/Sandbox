@@ -1,0 +1,6 @@
+DevExpress.DashboardWin.DashboardDesigner, DevExpress.Dashboard.v13.2.Win, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.DashboardWin.DashboardViewer, DevExpress.Dashboard.v13.2.Win, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Snap.SnapControl, DevExpress.Snap.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Snap.Extensions.SnapDockManager, DevExpress.Snap.v13.2.Extensions, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
