@@ -4,12 +4,17 @@ using System.Text;
 
 namespace SandboxIEnumerable
 {
-    public class Cat
+    public class Cat 
     {
         public string Name { get; private set; }
         public Cat(string name)
         {
             Name = name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

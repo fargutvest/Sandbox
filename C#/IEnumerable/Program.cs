@@ -11,15 +11,21 @@ namespace SandboxIEnumerable
             var catIEnumerable = cats.Cast<Cat>();
             var catList = catIEnumerable.ToList();
 
-            
-            foreach (var item in catIEnumerable)
+            foreach (var item in cats)
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine(item);
             }
 
             Console.WriteLine(new string('-', 50));
 
-            catList.ForEach(_ => Console.WriteLine(_.Name));
+            foreach (var item in catIEnumerable)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine(new string('-', 50));
+
+            catList.ForEach(_ => Console.WriteLine(_));
 
             Console.ReadKey();
         }
