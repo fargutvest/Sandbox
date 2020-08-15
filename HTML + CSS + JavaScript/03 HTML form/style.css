@@ -1,0 +1,20 @@
+CSS (НЕ МЕНЯТЬ)
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 350px;
+  padding: 10px 20px;
+
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: "Arial", sans-serif;
+  color: black;
+}
+
+h1 {
+  margin: 0;
+}
