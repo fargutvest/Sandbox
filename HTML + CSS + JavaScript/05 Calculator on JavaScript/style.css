@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+}
+
+h1 {
+  color: green;
+  font-size: 78px;
+}
+
+p {
+  color: yellow;
+  font-size: 24px;
+}
+
+#testButton {
+	background-color: lightgreen;
+	width: 10em;
+	height: 7em;
+    font-size: 78px;	
+}
+
+input[type="button"] {
+    background-color: purple;
+    font-size: 24px;
+    color: white;
+    width: 3em;
+    height: 3em;
+}
+
+
+
+input[type="text"] {
+  background-color: white;
+  color: purple;
+  font-size: 90px;  
+  width: 100%;
+}
+
+.social-link {
+  width:  50px;
+  height: 50px;
+}
