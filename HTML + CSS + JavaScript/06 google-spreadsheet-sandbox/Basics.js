@@ -13,6 +13,10 @@ console.log(credentials);
 doc.useServiceAccountAuth(credentials);
 await doc.loadInfo();
 console.log(doc.title)
+const sheet = doc.sheetsByIndex[0];
+console.log(sheet.title);
+await sheet.loadCells('A1:Z1000');
+const a1 = sheet.getCell(0, 0);
 
 var currentdate = new Date(); 
 var datetime =  currentdate.getDate() + "/"
@@ -21,6 +25,11 @@ var datetime =  currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
+
+console.log(a1.value);
+a1.value = datetime;
+a1.textFormat = { bold: true };
+await sheet.saveUpdatedCells(); // save all updates in one call
 
 const newSheet = await doc.addSheet({ title: datetime });
 console.log(datetime);
