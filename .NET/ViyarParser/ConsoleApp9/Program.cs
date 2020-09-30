@@ -26,13 +26,11 @@ namespace ConsoleApp9
             var codeToImageMappings = new Dictionary<string, string>();
 
             foreach (var page in pages)
-            {
-                var htmlSnippet = new HtmlDocument();
-                htmlSnippet.LoadHtml(page);
+	    {
+                var doc  = new HtmlDocument();
+                doc.LoadHtml(page);
 
-                var hrefTags = new List<string>();
-
-                foreach (HtmlNode node in htmlSnippet.DocumentNode.SelectNodes("//div[contains(@class, 'col-xs-12 col-sm-6 col-md-6 col-lg-4 product_prewiew-wrapper')]"))
+                foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//div[contains(@class, 'col-xs-12 col-sm-6 col-md-6 col-lg-4 product_prewiew-wrapper')]"))
                 {
                     var innerHtml = node.InnerHtml;
                     var a = innerHtml.Substring(innerHtml.IndexOf("/upload/resize_cache/photos/300_300_1/"));
@@ -40,8 +38,8 @@ namespace ConsoleApp9
 
 
                     a = innerHtml.Substring(innerHtml.IndexOf("<span>Код товара: ") + 18);
-                    var kodTovara = a.Substring(0, a.IndexOf("</span>"));
-                    codeToImageMappings.Add(kodTovara, imgUrl);
+                    var code  = a.Substring(0, a.IndexOf("</span>"));
+                    codeToImageMappings.Add(code, imgUrl);
                 }
             }
 
