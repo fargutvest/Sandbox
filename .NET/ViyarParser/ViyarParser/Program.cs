@@ -1,10 +1,13 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Collections.Generic;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
+using System.Windows;
+using Microsoft.Office.Interop.Excel;
+using System;
+using System.Runtime.InteropServices;
 
 namespace ViyarParser
 {
@@ -25,6 +28,7 @@ namespace ViyarParser
             }
 
             var codeToImageMappings = new Dictionary<string, string>();
+            var codeToPriceMappings = new Dictionary<string, string>();
 
             foreach (var page in pages)
             {
@@ -37,40 +41,84 @@ namespace ViyarParser
                     var imgUrl = "https://viyar.by" + new Regex("src\\s*=\\s*\"(.+?)\"").Match(innerHtml).ToString().Replace("\"","").Replace("src=","");
 
                     var code = new Regex("<span>Код товара:(.+?)</span>").Match(innerHtml).ToString().Replace("<span>Код товара: ", "").Replace("</span>", "");
+                    var price = new Regex("<span class=\"price\">(.+?)</span>").Match(innerHtml).ToString().Replace("<span class=\"price\">", "").Replace("</span>", "");
+                    var strike = new Regex("<strike class=\"price-odd\">(.+?)</strike>").Match(price).ToString();
+                    price = string.IsNullOrEmpty(strike) ? price : price.Replace(strike, "");
                     codeToImageMappings.Add(code, imgUrl);
+                    codeToPriceMappings.Add(code, price);
                 }
             }
 
-            var remainsList = new List<string[]>();
-            using (var reader = new StreamReader(@"stebeneva.csv", Encoding.GetEncoding(1251)))
-            {
+            var fileName = "stebeneva1.xls";
+            new WebClient().DownloadFile("https://viyar.by/upload/ex_files/stebeneva.xls", fileName);
 
-                while (!reader.EndOfStream)
+            var remainsList = new List<EntryModel>();
+            Application xlApp = null;
+            dynamic xlRange = null;
+            dynamic xlWorksheet = null;
+            dynamic xlWorkbook = null;
+            try
+            {
+                xlApp = new Application();
+                xlWorkbook = xlApp.Workbooks.Open($@"{Environment.CurrentDirectory}\{fileName}");
+                xlWorksheet = xlWorkbook.Sheets[1];
+                xlRange = xlWorksheet.UsedRange;
+
+                int row = 2;
+                while (xlRange.Cells[row, 2].Value2 != null)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',').ToList();
-                    var code = values[1];
-                    codeToImageMappings.TryGetValue(code, out var imgUrl);
-                    remainsList.Add(new string[] { line, imgUrl });
-                }
+                    var entry = new EntryModel()
+                    {
+                        Code = xlRange.Cells[row, 2].Value2.ToString(),
+                        Nomenklature = xlRange.Cells[row, 3].Value2.ToString(),
+                        Characteristic = Size.Parse(xlRange.Cells[row, 4].Value2.ToString().Replace("х", ",")),
+                        Thikness = xlRange.Cells[row, 5].Value2.ToString(),
+                        Count = double.Parse(xlRange.Cells[row, 6].Value2.ToString())
+                    };
+
+                    codeToImageMappings.TryGetValue(entry.Code, out var imgUrl);
+                    codeToPriceMappings.TryGetValue(entry.Code, out var price);
+                    entry.ImageUrl = imgUrl;
+                    entry.Price = price;
+                    
+                    entry.Cost = entry.Price!= null ? (entry.Count / (2070 * 2800 / (double)1000000) * double.Parse(entry.Price.Replace(" руб/лист", ""))).ToString("0.##") + "руб" : null;
+                    remainsList.Add(entry);
+                    row++;
+                } 
             }
-
-            var resultHtml = "<!DOCTYPE html>" +
-                             "<html>" +
-                             "<body>" +
-                             "<ul>";
-
-            foreach (var item in remainsList)
+            finally
             {
-                resultHtml += "<li>" +
-                    $"<img src='{item.Last()}' width='300'>" +
-                    $"{item.First()}" +
-                    "</li>";
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+                xlWorkbook.Close();
+                //Marshal.ReleaseComObject(xlWorkbook);
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
             }
 
-            resultHtml += "</ul>" +
-                "</body>" +
-                "</html>";
+            var resultDoc = new HtmlDocument();
+
+            var grouped = remainsList.GroupBy(_ => _.Nomenklature).ToDictionary(_=> _.Key, _=>_.OrderBy(x=>x.Count).ToList());
+
+            foreach (var item in grouped)
+            {
+                
+                resultDoc.DocumentNode.AppendChild(HtmlNode.CreateNode($@"<li>
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <img src = '{item.Value.First().ImageUrl}' width='300'>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div><b>{item.Value.First().Code}</b> - {item.Key}</div>
+                                                                                        {string.Join("", item.Value.Select(_=> $"<div>{_.Characteristic.ToString().Replace(",","х")} ({_.Count}) - <b>{_.Cost}</b> ({_.Price})</div>").ToList())}
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                          </li>"));
+            }
 
             var resultFilePath = "result.html";
             if (File.Exists(resultFilePath))
@@ -80,7 +128,7 @@ namespace ViyarParser
 
             using (StreamWriter file = new StreamWriter(resultFilePath, true))
             {
-                file.WriteLine(resultHtml);
+                file.WriteLine(resultDoc.DocumentNode.OuterHtml);
             }
         }
     }
