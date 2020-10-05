@@ -13,8 +13,12 @@ namespace ViyarParser
 {
     class Program
     {
+        private static double requiredSquare = 0.687;
+
         static void Main(string[] args)
         {
+            var preferedColors = new string[] { "23163", "30753", "26529", "26534", "43097", "43101", "63118" };
+            
             var codeToImageMappings = new Dictionary<string, string>();
             var codeToPriceMappings = new Dictionary<string, string>();
 
@@ -106,20 +110,29 @@ namespace ViyarParser
 
             var resultDoc = new HtmlDocument();
 
-            var grouped = remainsList.GroupBy(_ => _.Nomenklature).ToDictionary(_ => _.Key, _ => _.OrderBy(x => x.Count).ToList());
+            var grouped = remainsList.GroupBy(_ => _.Code).ToDictionary(_ => _.Key, _ => _.OrderBy(x => x.Count).ToList()).ToList();
+            var prefered = grouped.FindAll(_ => preferedColors.Contains(_.Key));
+            var rest = grouped.FindAll(_ => preferedColors.Contains(_.Key) == false);
 
-            foreach (var item in grouped)
+            var sorted = new List<KeyValuePair<string, List<EntryModel>>>();
+            sorted.AddRange(prefered);
+            sorted.AddRange(rest);
+
+            foreach (var item in sorted)
             {
                 Console.Write('"');
                 resultDoc.DocumentNode.AppendChild(HtmlNode.CreateNode($@"<li>
                                                                             <table>
                                                                                 <tr>
                                                                                     <td>
+                                                                                        <img src = 'target.png' width='300'>
+                                                                                    </td>
+                                                                                    <td>
                                                                                         <img src = '{item.Value.First().ImageUrl}' width='300'>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <div><b>{item.Value.First().Code}</b> - {item.Key}</div>
-                                                                                        {string.Join("", item.Value.Select(_ => $"<div>{_.Characteristic.ToString().Replace(",", "х")} ({_.Count}) - <b>{_.Cost}</b> ({_.Price})</div>").ToList())}
+                                                                                        <div><b>{item.Key}</b> - {item.Value.First().Nomenklature}</div>
+                                                                                        {string.Join("", item.Value.Select(Select).ToList())}
                                                                                     </td>
                                                                                 </tr>
                                                                             </table>
@@ -136,6 +149,23 @@ namespace ViyarParser
             {
                 file.WriteLine(resultDoc.DocumentNode.OuterHtml);
             }
+        }
+
+        private static string Select(EntryModel _)
+        {
+
+            var cost = _.Cost;
+            var characteristic = $"{_.Characteristic.ToString().Replace(",", "х")}";
+            var count = $"({_.Count})";
+            
+            var bold = "<b>{0}</b>";
+            if (_.Count > requiredSquare)
+            {
+                cost = string.Format(bold, cost);
+            }
+
+            var result = $"<div>{characteristic} {count} - {cost} ({_.Price})</div>";
+            return result;
         }
     }
 }
