@@ -6,7 +6,7 @@ namespace ViyarParser
 {
     public class EntryModel
     {
-        public string Code { get; set; }
+        public int Code { get; set; }
         public string Nomenklature { get; set; }
         public Size Characteristic { get; set; }
         public string Thikness { get; set; }
