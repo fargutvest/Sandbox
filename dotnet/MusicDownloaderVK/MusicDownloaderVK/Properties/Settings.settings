@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MusicDownloaderVK.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PageId" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UserNoGroup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AppId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4273691</Value>
+    </Setting>
+    <Setting Name="DownloadDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Phone" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ParentDownloadDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\FROM INTERNET</Value>
+    </Setting>
+    <Setting Name="PrefixDownloadDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vk.com page id</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
