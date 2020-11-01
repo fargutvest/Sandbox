@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/sites/default/files/sky_favicon.ico" type="image/x-icon" />
+      <title>RSS-читалка на C# своими руками | VR-online - бесплатный электронный журнал для всех</title>
+      <link type="text/css" rel="stylesheet" media="all" href="/modules/book/book.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/brainstorm_blogger/cck/theme/content-module.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/brainstorm_blogger/filefield/filefield.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/brainstorm_blogger/lightbox2/css/lightbox.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/node/node.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/poll/poll.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/system/defaults.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/system/system.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/user/user.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/modules/ctools/css/ctools.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/modules/geshifilter/geshifilter.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/modules/quote/quote.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/modules/scroll_to_top/scroll_to_top.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/forum/forum.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/modules/extlink/extlink.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/modules/views/css/views.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/modules/comment/comment.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/sky/css/layout.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/sky/style.css?j" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/default/files/sky/custom.css?j" />
+<link type="text/css" rel="stylesheet" media="print" href="/sites/all/themes/sky/css/print.css?j" />
+      
+<!--[if lt IE 7.0]><link rel="stylesheet" href="/sites/all/themes/sky/css/ie-6.css" type="text/css" media="all" charset="utf-8" /><![endif]-->
+<!--[if IE 7.0]><link rel="stylesheet" href="/sites/all/themes/sky/css/ie-7.css" type="text/css" media="all" charset="utf-8" /><![endif]-->
+      <script type="text/javascript" src="/misc/jquery.js?j"></script>
+<script type="text/javascript" src="/misc/drupal.js?j"></script>
+<script type="text/javascript" src="/sites/default/files/languages/ru_343ce7551db03d3c168692f147e868fe.js?j"></script>
+<script type="text/javascript" src="/misc/collapse.js?j"></script>
+<script type="text/javascript" src="/modules/brainstorm_blogger/lightbox2/js/lightbox.js?j"></script>
+<script type="text/javascript" src="/sites/all/modules/scroll_to_top/scroll_to_top.js?j"></script>
+<script type="text/javascript" src="/sites/all/modules/extlink/extlink.js?j"></script>
+<script type="text/javascript" src="/misc/tableheader.js?j"></script>
+<script type="text/javascript" src="/sites/all/themes/sky/scripts/superfish.js?j"></script>
+<script type="text/javascript" src="/sites/all/themes/sky/scripts/sky.js?j"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/", "lightbox2": { "rtl": "0", "file_path": "/(\\w\\w/)sites/default/files", "default_image": "/modules/brainstorm_blogger/lightbox2/images/brokenimage.jpg", "border_size": 10, "font_color": "000", "box_color": "fff", "top_position": "", "overlay_opacity": "0.8", "overlay_color": "000", "disable_close_click": "1", "resize_sequence": 0, "resize_speed": 400, "fade_in_speed": 400, "slide_down_speed": 600, "use_alt_layout": 0, "disable_resize": 0, "disable_zoom": 0, "force_show_nav": 0, "show_caption": true, "loop_items": 0, "node_link_text": "View Image Details", "node_link_target": 0, "image_count": "Image !current of !total", "video_count": "Video !current of !total", "page_count": "Page !current of !total", "lite_press_x_close": "нажмите \x3ca href=\"#\" onclick=\"hideLightbox(); return FALSE;\"\x3e\x3ckbd\x3ex\x3c/kbd\x3e\x3c/a\x3e чтобы закрыть", "download_link_text": "", "enable_login": false, "enable_contact": false, "keys_close": "c x 27", "keys_previous": "p 37", "keys_next": "n 39", "keys_zoom": "z", "keys_play_pause": "32", "display_image_size": "original", "image_node_sizes": "()", "trigger_lightbox_classes": "", "trigger_lightbox_group_classes": "", "trigger_slideshow_classes": "", "trigger_lightframe_classes": "", "trigger_lightframe_group_classes": "", "custom_class_handler": 0, "custom_trigger_classes": "", "disable_for_gallery_lists": true, "disable_for_acidfree_gallery_lists": true, "enable_acidfree_videos": true, "slideshow_interval": 5000, "slideshow_automatic_start": true, "slideshow_automatic_exit": true, "show_play_pause": true, "pause_on_next_click": false, "pause_on_previous_click": true, "loop_slides": false, "iframe_width": 600, "iframe_height": 400, "iframe_border": 1, "enable_video": 0 }, "extlink": { "extTarget": "_blank", "extClass": "ext", "extSubdomains": 1, "extExclude": "", "extInclude": "", "extAlert": 0, "extAlertText": "This link will take you to an external web site. We are not responsible for their content.", "mailtoClass": 0 } });
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+$(document).ready(function() {$('#back-top').css('right','40px');$('#back-top .icon').css('background-color','#CCCCCC').fadeTo('fast',0.5); $('#back-top .icon').mouseover(function(){ $(this).css({'background-color':'#777777','opacity':'1'}).fadeTo('slow',1);}).mouseout(function(){ $(this).css({'background-color':'#CCCCCC'}).fadeTo('fast',0.5);});$('span#link').css('display','none');});
+//--><!]]>
+</script>
+    </head>
+  <body class="page-node page-article page-node-view anonymous-user left" id="page-node-4683">
+    <div id="wrapper">
+    <div id="header" class="layout-region">
+      <div id="header-inner">
+                              </div>
+	  
+	  <div id="header-content">
+		<div id="block-search-0" class="block block-search block-odd region-odd clearfix">
+    <div class="content">
+    <form action="/content/rss-chitalka-na-c-svoimi-rukami-4683"  accept-charset="UTF-8" method="post" id="search-block-form">
+<div><div class="container-inline">
+<div class="form-item form-item-textfield" id="edit-search-block-form-1-wrapper">
+ <input type="text" maxlength="128" name="search_block_form" id="edit-search-block-form-1" size="15" value="" class="form-text noactive" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Поиск"  class="form-submit" />
+    
+</div>
+
+<input type="hidden" name="form_build_id" id="form-3732ccda5585df4e8d052584f44f9be6" value="form-3732ccda5585df4e8d052584f44f9be6"  />
+<input type="hidden" name="form_id" id="edit-search-block-form" value="search_block_form"  />
+
+</div></form>
+  </div>
+</div>
+<!-- /block.tpl.php -->	  </div>
+	  
+    </div>
+          <div id="navigation"><del class="wrap-left"><ul><li class="leaf first"><a href="/" title=""><span></span>Главная</a></li>
+<li class="leaf"><a href="/tracker" title="Последние публикации"><span></span>Последние публикации</a></li>
+<li class="expanded"><a href="/blog" title="Коллективные блоги проекта VR-Online.RU"><span></span>Блоги</a><ul><li class="leaf first"><a href="/blog" title=""><span></span>Последние записи</a></li>
+<li class="leaf last"><a href="/posts" title="Список категорий постов"><span></span>По категориям</a></li>
+</ul></li>
+<li class="leaf"><a href="/magazines" title="Тут можно скачать наши журналы"><span></span>Журналы VR</a></li>
+<li class="expanded"><a href="/last-articles" title=""><span></span>Статьи</a><ul><li class="leaf first"><a href="/last-articles" title="Недавно добавленные статьи"><span></span>Последние статьи</a></li>
+<li class="leaf"><a href="/most-popular-articles" title="Наиболее популярные статьи на нашем ресурсе"><span></span>Самые популярные</a></li>
+<li class="leaf last"><a href="/articles" title=""><span></span>По категориям</a></li>
+</ul></li>
+<li class="leaf"><a href="/podcasts" title=""><span></span>Подкасты</a></li>
+<li class="expanded"><a href="/" title="Старые версии сайта VR-online"><span></span>Старые версии</a><ul><li class="leaf first"><a href="http://www.vr-online.ru/old-2000/index.html" title=""><span></span>VR-Online 2000-2003</a></li>
+<li class="leaf"><a href="http://www.vr-online.ru/old-2004/index.htm" title=""><span></span>VR-Online 2003-2005</a></li>
+<li class="leaf last"><a href="http://www.vr-online.ru/old/index.html" title=""><span></span>VR-Online 2007-2009</a></li>
+</ul></li>
+<li class="leaf"><a href="/forum" title=""><span></span>Форум</a></li>
+<li class="leaf"><a href="/about" title="О проекте VR-Online.RU"><span></span>О проекте</a></li>
+<li class="leaf last"><a href="/contact" title=""><span></span>Контакты</a></li>
+</ul></del></div>
+        <div id="container" class="layout-region">
+              <div id="sidebar-left" class="sidebar">
+          <div class="inner">
+            <div id="block-user-0" class="block block-user block-even region-odd clearfix style-menu">
+      <h3 class="title">Вход в систему</h3>
+    <div class="content">
+    <form action="/content/rss-chitalka-na-c-svoimi-rukami-4683?destination=node%2F4683"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item form-item-textfield form-item-required" id="edit-name-wrapper">
+ <label for="edit-name">Имя пользователя: <span class="form-required" title="Обязательное поле">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item form-item-password form-item-required" id="edit-pass-wrapper">
+ <label for="edit-pass">Пароль: <span class="form-required" title="Обязательное поле">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit-1" value="Вход в систему"  class="form-submit" />
+<div class="item-list"><ul><li class="first"><a href="/user/register" title="Создать новую учетную запись пользователя.">Регистрация</a></li>
+<li class="last"><a href="/user/password" title="Запросить новый пароль по электронной почте.">Забыли пароль?</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-19835f1d05609fb86be61426fb8e5a0d" value="form-19835f1d05609fb86be61426fb8e5a0d"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+</div>
+<!-- /block.tpl.php --><div id="block-user-3" class="block block-user block-odd region-even clearfix">
+      <h3 class="title">Сейчас на сайте</h3>
+    <div class="content">
+    Сейчас на сайте <em>2 пользователя</em> и <em>22 гостя</em>.<div class="item-list"><h3> </h3><ul><li class="first"><a href="/users/belketre" title="Информация о пользователе.">Belketre</a></li>
+<li class="last"><a href="/users/drblack" title="Информация о пользователе.">DrBlack</a></li>
+</ul></div>  </div>
+</div>
+<!-- /block.tpl.php --><div id="block-block-18" class="block block-block block-even region-odd clearfix">
+      <h3 class="title">Помочь проекту</h3>
+    <div class="content">
+    Если у тебя есть лишняя сотня электронных денег и тебе нравится наш ресурс, то можешь поддержать нас финансово. Решился? Кликни на <a href="/donate">копилку</a>.
+
+<center><a href="/donate"><img alt="VR-Копилка" src="/images_for_site/pig-bank-small.jpg"></a></center><br />
+
+Денег нет, а помочь хочется? Не беда! Быть может у тебя есть свой сайт/блог? Если ответ да, то размести на нем нашу кнопку.<br /><br />
+
+<center>
+<a href="http://vr-online.ru"><img src="http://vr-online.ru/images_for_site/vr-button.png" style="width: 88px; height: 31px; border: 0px none" alt="Сообщество умных людей VR-Online.RU Бесплатный журнал для программистов и всех, кто интересуется IT" title="Сообщество умных людей VR-Online.RU Бесплатный журнал для программистов и всех, кто интересуется IT"></a><br />
+
+<a href="http://vr-online.ru/button">Получить код</a>
+<br/><br/>
+<noindex><script type="text/javascript" src="/orphus/orphus.js"></script><a href="http://orphus.ru" id="orphus" target="_blank"><img alt="Система Orphus" src="/orphus/orphus.gif" border="0"/></a></noindex></center>
+
+<!--Код Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24621439-1']);
+  _gaq.push(['_setDomainName', 'vr-online.ru']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </div>
+</div>
+<!-- /block.tpl.php --><div id="block-block-2" class="block block-block block-odd region-even clearfix">
+      <h3 class="title">Счетчики</h3>
+    <div class="content">
+    <center><!--Rating@Mail.ru COUNTER--><script language="JavaScript"><!--
+d=document;a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3"><!--
+js=13//--></script><script language="JavaScript"><!--
+d.write('<noindex><a href="http://top.mail.ru/jump?from=607852"'+
+' target=_top><img src="http://top.list.ru/counter'+
+'?id=607852;t=210;js='+js+a+';rand='+Math.random()+
+'" alt="Рейтинг@Mail.ru"'+' border=0 height=31 width=88></a></noindex>')
+if(js>11)d.write('<'+'!-- ')//--></script><noscript><noindex><a
+target=_top href="http://top.mail.ru/jump?from=607852"><img
+src="http://top.list.ru/counter?js=na;id=607852;t=210"
+border=0 height=31 width=88
+alt="Рейтинг@Mail.ru"></a></noindex></noscript>
+<script>
+-->
+</script><!--/COUNTER--><br /><br />
+
+</center>  </div>
+</div>
+<!-- /block.tpl.php --><div id="block-block-9" class="block block-block block-even region-odd clearfix">
+    <div class="content">
+    <!--check code-->  </div>
+</div>
+<!-- /block.tpl.php -->          </div>
+        </div>
+      <!-- END HEADER -->
+            <div id="main">
+        <div class="main-inner">
+                      <div class="breadcrumb clearfix"><div id="breadcrumbs" class="clearfix"><a href="/">Главная</a></div></div>
+                                                              <h1 class="title">RSS-читалка на C# своими руками</h1>
+                              			  
+          <div id="content" class="clearfix">
+            ﻿<div class="node ">
+<div id="node-4683" class="node clearfix node-article node-full published promoted not-sticky without-photo">
+      <div class="meta">
+                  <!--		        <div class="terms">
+          <span class="icon">&nbsp;</span>
+                  </div> -->
+          </div>
+    <div class="content clearfix">
+    <div class="g-plusone-wrapper" style="margin: 0 1em 1em 1em;float:right" ><g:plusone href="http://www.vr-online.ru/content/rss-chitalka-na-c-svoimi-rukami-4683" annotation="bubble" width="250" ></g:plusone></div> <p><img src="/images_for_site/articles/rss-on-csharp/rss-on-csharp2.jpg" class="alignleft_image_for_news" /> Сегодня  интернет  представляет  собой  огромное  скопление  информации,  но,  чего  греха  таить, полезная  инфа  захламлена  блогерами-графоманами,  религиозными  войнами  и  сомнительными сайтами, но выход есть: пробраться через хлам к свеженьким новостям поможет RSS – эта технология позволяет подписаться на новости интересных сайтов и получать самые свежие их экземпляры  <img src="http://www.vr-online.ru/sites/all/modules/smileys/packs/kolobok/smile.gif" title="Smile" alt="Smile" class="smiley-content"/>. К тому  же  RSS  может  существенно  помочь  в  экономии  трафика,  что  всё  ещё  актуально.  Сегодня  я покажу  как  самостоятельно,  бысто  и  легко  написать  RSS-аггрегатор,  т.е.  прогу,  которая  будет скачивать последние новости и выводить их в удобоваримом формате, а заодно посмотрим насколько просто в C# работать с XML, файлами и регулярными выражениями.</p>
+
+<p>Предполагается,  что  у  читателя  есть  хотя  бы  базовые  знания  C#.  Итак,  приступим.  Для  начала сформулируем требования к нашей программе. Нам надо, чтобы она: </p>
+
+<p>1.  могла подписываться на RSS-ленты и отписываться от них. <br />
+2.  загружала по мере необходимости свежие новости. <br />
+3.  отображала новости в удобном и легко настраиваемом формате. <br />
+4.  могла сохранять по желанию пользователя отдельные RSS-ленты. <br />
+5.  что-то ещё по вкусу, сам допишешь <img src="http://www.vr-online.ru/sites/all/modules/smileys/packs/kolobok/wink.gif" title="Wink" alt="Wink" class="smiley-content"/>  <br />
+ <br />
+Создадим WindowsForm Application. Сразу скажу, что я пользовался для написания этой программы средой разработки SharpDevelop 2.1, но ты можешь использовать и Visual Studio, если конечно она у тебя лицензионная <img src="http://www.vr-online.ru/sites/all/modules/smileys/packs/kolobok/smile.gif" title="Smile" alt="Smile" class="smiley-content"/> или Express. Кидай на форму ListBox –  lbFeeds, WebBrowser – wbIE, TextBox – tbFeedURL, и  три кнопки bNew, bEdit и  bDelete. То, что получилось  у меня, можешь наблюдать на скриншоте: </p>
+
+<p><div style="text-align:center"><img src="/images_for_site/articles/rss-on-csharp/rss-on-csharp1.jpg" alt="" class="bb-image" /></div></p>
+
+<p>Также  для  сохранения  выбранной  ленты нам потребуется  контекстное меня  cmsIE  с  единственным пунктом  –  Сохранить  и  SaveFileDialog  –  sfd1.  Теперь  когда  с  GUI покончено,  можно,  наконец, приступать к самому интересному – кодингу. Подключи пространства имен, которые нам пригодятся в дальнейшем:</p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;"><span style="color: #0600FF; font-weight: bold;">using</span> <span style="color: #008080;">System.Text.RegularExpressions</span><span style="color: #008000;">;</span> 
+<span style="color: #0600FF; font-weight: bold;">using</span> <span style="color: #008080;">System.Xml</span><span style="color: #008000;">;</span> 
+<span style="color: #0600FF; font-weight: bold;">using</span> <span style="color: #008080;">System.Xml.Xsl</span><span style="color: #008000;">;</span> 
+<span style="color: #0600FF; font-weight: bold;">using</span> <span style="color: #008080;">System.Text</span><span style="color: #008000;">;</span> 
+<span style="color: #0600FF; font-weight: bold;">using</span> <span style="color: #008080;">System.IO</span><span style="color: #008000;">;</span> </pre></div></p>
+
+<p>Следуя  идеям  ООП,  давай  напишем  класс  для  работы  c  RSS.  Для  начала,  он  будет  загружать указанную RSS-ленту. И поскольку мы договорились о гибком управлении форматированием вывода, то он будет применять к ленте XSL-трансформацию.  Что в синтаксисе C# выглядит ... </p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;">  <span style="color: #0600FF; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> RSS 
+  <span style="color: #008000;">&#123;</span> 
+    <span style="color: #0600FF; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">string</span> _URL<span style="color: #008000;">;</span> 
+    <span style="color: #0600FF; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">string</span> XML_FileName<span style="color: #008000;">;</span> 
+    <span style="color: #0600FF; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">string</span> HTML_FileName<span style="color: #008000;">;</span> 
+    <span style="color: #0600FF; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">string</span> XSL_FileName<span style="color: #008000;">;</span> 
+    <span style="color: #0600FF; font-weight: bold;">public</span> RSS<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">string</span> URL<span style="color: #008000;">&#41;</span><span style="color: #008000;">:</span> <span style="color: #0600FF; font-weight: bold;">this</span><span style="color: #008000;">&#40;</span>URL, <span style="color: #666666;">&quot;feed.xsl&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#123;</span><span style="color: #008000;">&#125;</span> 
+    <span style="color: #0600FF; font-weight: bold;">public</span> RSS<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">string</span> URL, <span style="color: #6666cc; font-weight: bold;">string</span> XSLT_File<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span><span style="color: #008000;">!</span> Directory<span style="color: #008000;">.</span><span style="color: #0000FF;">Exists</span><span style="color: #008000;">&#40;</span><span style="color: #666666;">&quot;files&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span> Directory<span style="color: #008000;">.</span><span style="color: #0000FF;">CreateDirectory</span><span style="color: #008000;">&#40;</span><span style="color: #666666;">&quot;files&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      XML_FileName <span style="color: #008000;">=</span> <span style="color: #666666;">@&quot;files\&quot;</span><span style="color: #008000;">+</span>EscapeUrl<span style="color: #008000;">&#40;</span>URL<span style="color: #008000;">&#41;</span><span style="color: #008000;">+</span><span style="color: #666666;">&quot;.xml&quot;</span><span style="color: #008000;">;</span> 
+      HTML_FileName <span style="color: #008000;">=</span> <span style="color: #666666;">@&quot;files\&quot;</span><span style="color: #008000;">+</span>EscapeUrl<span style="color: #008000;">&#40;</span>URL<span style="color: #008000;">&#41;</span><span style="color: #008000;">+</span><span style="color: #666666;">&quot;.htm&quot;</span><span style="color: #008000;">;</span> 
+      <span style="color: #6666cc; font-weight: bold;">long</span> dt<span style="color: #008000;">=</span><span style="color: #FF0000;">0</span><span style="color: #008000;">;</span>  
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">Exists</span><span style="color: #008000;">&#40;</span>XML_FileName<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>  
+        dt <span style="color: #008000;">=</span> DateTime<span style="color: #008000;">.</span><span style="color: #0000FF;">Now</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Ticks</span><span style="color: #008000;">-</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">GetCreationTime</span><span style="color: #008000;">&#40;</span>XML_FileName<span style="color: #008000;">&#41;</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Ticks</span><span style="color: #008000;">;</span> 
+      XSL_FileName<span style="color: #008000;">=</span>XSLT_File<span style="color: #008000;">;</span> 
+      _URL <span style="color: #008000;">=</span> URL<span style="color: #008000;">;</span> 
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span><span style="color: #008000;">!</span><span style="color: #008000;">&#40;</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">Exists</span><span style="color: #008000;">&#40;</span>XML_FileName<span style="color: #008000;">&#41;</span> <span style="color: #008000;">&amp;&amp;</span> dt<span style="color: #008000;">&lt;</span>3600e8<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span> 
+        <span style="color: #008080; font-style: italic;">/* если лента уже была обновлена в течении предыдущего часа  
+   * то загрузим её из локального файла */</span> 
+      <span style="color: #0600FF; font-weight: bold;">try</span> <span style="color: #008000;">&#123;</span> 
+        <span style="color: #000000;">System.<span style="color: #0000FF;">Net</span></span><span style="color: #008000;">.</span><span style="color: #0000FF;">WebClient</span> client <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> <span style="color: #000000;">System.<span style="color: #0000FF;">Net</span></span><span style="color: #008000;">.</span><span style="color: #0000FF;">WebClient</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        client<span style="color: #008000;">.</span><span style="color: #0000FF;">DownloadFile</span><span style="color: #008000;">&#40;</span>_URL, XML_FileName<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        <span style="color: #6666cc; font-weight: bold;">string</span> sXML <span style="color: #008000;">=</span> File<span style="color: #008000;">.</span><span style="color: #0000FF;">ReadAllText</span><span style="color: #008000;">&#40;</span>XML_FileName, Encoding<span style="color: #008000;">.</span><span style="color: #0000FF;">GetEncoding</span><span style="color: #008000;">&#40;</span><span style="color: #FF0000;">1251</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        sXML <span style="color: #008000;">=</span> Regex<span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span>sXML, <span style="color: #666666;">@&quot;&lt;\?xml-stylesheet.*\?&gt;&quot;</span>, <span style="color: #666666;">&quot;&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        sXML <span style="color: #008000;">=</span> Regex<span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span>sXML, <span style="color: #666666;">@&quot;&lt;\w+\sxmlns:xsi.*\.xsd.?\s*&gt;&quot;</span>, <span style="color: #666666;">&quot;&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        sXML <span style="color: #008000;">=</span> Regex<span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span>sXML, <span style="color: #666666;">@&quot;&lt;!DOCTYPE.*&gt;&quot;</span>, <span style="color: #666666;">&quot;&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        File<span style="color: #008000;">.</span><span style="color: #0000FF;">WriteAllText</span><span style="color: #008000;">&#40;</span>XML_FileName, sXML, Encoding<span style="color: #008000;">.</span><span style="color: #0000FF;">GetEncoding</span><span style="color: #008000;">&#40;</span><span style="color: #FF0000;">1251</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      <span style="color: #008000;">&#125;</span>  
+      <span style="color: #0600FF; font-weight: bold;">catch</span> <span style="color: #008000;">&#40;</span>XmlException e<span style="color: #008000;">&#41;</span> 
+      <span style="color: #008000;">&#123;</span> 
+        MessageBox<span style="color: #008000;">.</span><span style="color: #0000FF;">Show</span><span style="color: #008000;">&#40;</span>e<span style="color: #008000;">.</span><span style="color: #0000FF;">Message</span>,<span style="color: #666666;">&quot; Ошибка загрузки или обработки XML&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      <span style="color: #008000;">&#125;</span> 
+    <span style="color: #008000;">&#125;</span> 
+&nbsp;
+    <span style="color: #0600FF; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">string</span> EscapeUrl<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">string</span> s<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+  <span style="color: #0600FF; font-weight: bold;">return</span> 
+s<span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span><span style="color: #666666;">'/'</span>,<span style="color: #666666;">'_'</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span><span style="color: #666666;">&quot;.xml&quot;</span>,<span style="color: #666666;">&quot;&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span><span style="color: #666666;">&quot;http:__&quot;</span>,<span style="color: #666666;">&quot;&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Replace</span><span style="color: #008000;">&#40;</span><span style="color: #666666;">&quot;www.&quot;</span>,<span style="color: #666666;">&quot;&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #008000;">&#125;</span> 
+    <span style="color: #0600FF; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">string</span> TransformToHTML<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span>     
+      XslCompiledTransform xslt <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> XslCompiledTransform<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      xslt<span style="color: #008000;">.</span><span style="color: #0000FF;">Load</span><span style="color: #008000;">&#40;</span>XSL_FileName<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span>   
+      xslt<span style="color: #008000;">.</span><span style="color: #0000FF;">Transform</span><span style="color: #008000;">&#40;</span>XML_FileName, HTML_FileName<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      <span style="color: #0600FF; font-weight: bold;">return</span> HTML_FileName<span style="color: #008000;">;</span> 
+    <span style="color: #008000;">&#125;</span>   
+  <span style="color: #008000;">&#125;</span> </pre></div></p>
+
+<p>Итак,  конструктору  передаётся  два  параметра:  адрес  ленты  и  имя  файла  с  XSL-трансформацией, причём  если  второй  параметр  не  задан,  то  используется  трансформация  по  умолчанию  -  feed.xsl. Далее,  если  необходимо,  создаем  директорию,  в  которую  будем  записывать  скачанные  ленты  и  их отформатированное представление. Если запрашиваемая лента уже была скачана, то проверяем когда это было. Для простоты будем считать, что за час лента не обновляется, т.е. будем скачивать одну и ту же ленту не более одного раза за час. </p>
+
+<p>Метод   <span style="font-weight:bold">EscapeUrl  </span>служит  для  преобразования  адреса  ленты  в  уникальное  имя  файла  без  учёта расширения, в который она будет сохраняться, например <span style="display: none"><![CDATA[<noindex>]]></span><a href="http://www.realcoding.net/0/_upload/news.xml"   rel="nofollow" >http://www.realcoding.net/0/_upload/news.xml</a><span style="display: none"><![CDATA[</noindex>]]></span> –&gt;  realcoding.net_0__upload_news.  Обрати  внимание,  как  производятся  операции  над  строками, поскольку  в  .NET  строка-это  объект,  то  любой  метод  обработки  строки  создаёт  новый  объект,  в  который  записывает  результат.  И,  чтобы  не  хранить  эти  временные  объекты  в  локальных переменных, можно записывать все методы обработки строки в одну строку. <img src="http://www.vr-online.ru/sites/all/modules/smileys/packs/kolobok/smile.gif" title="Smile" alt="Smile" class="smiley-content"/>   </p>
+
+<p>Затем  скачиваем  RSS-файл  из  сети  при  помощи  замечательного  класса  <span style="font-weight:bold">System.Net.WebClient</span>,  и  не надо  возмущаться  в  стиле: «Зачем  он  так извращается,  ведь метод XmlDocument.Load и  сам может прекрасно скачать файл?». Да, может, но дело тут вот в чём: метод Load не сможет обработать XML- документы  со  стилями(XSL),  определениями(DTD)  и  схемами(XSD),  а  rss-ленты  очень  часто сопровождаются ими, но для просмотра они нам нафиг не нужны, поэтому вырезаем всё  это добро при  помощи  специально  обученных  регулярных  выражений.  Затем  записываем  очищенный  xml обратно в файл. </p>
+
+<p>Функция  TransformToHTML  применяет  к  сохраненному  XML-файлу  XSL-трансформацию  и возвращает имя htm-файла, в который она записала результат. По умолчанию применяется вот такая трансформация </p>
+
+<p><div class="geshifilter"><pre class="xml geshifilter-xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">&quot;1.0&quot;</span> <span style="color: #000066;">encoding</span>=<span style="color: #ff0000;">&quot;windows-1251&quot;</span><span style="color: #000000; font-weight: bold;">?&gt;</span></span> 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:stylesheet</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">&quot;1.0&quot;</span> <span style="color: #000066;">xmlns:xsl</span>=<span style="color: #ff0000;">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span> 
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:template</span> <span style="color: #000066;">match</span>=<span style="color: #ff0000;">&quot;/&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span> 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;html<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;head<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>RSS<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;style<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+      p {text-align: 'justify';} 
+      div {padding-bottom: 10px; border-bottom: 2px #555 dotted;} 
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/style<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/head<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;body<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;h1</span> <span style="color: #000066;">align</span>=<span style="color: #ff0000;">&quot;center&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">&quot;//channel/title&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/h1<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:for-each</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">&quot;//item&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span> 
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;div<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;h3<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">&quot;title&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/h3<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;p<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">&quot;description&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span></span> 
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;xsl:variable</span> <span style="color: #000066;">name</span>=<span style="color: #ff0000;">&quot;href&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span><span style="color: #000000; font-weight: bold;">&lt;xsl:value-of</span> <span style="color: #000066;">select</span>=<span style="color: #ff0000;">&quot;link&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/xsl:variable<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+          <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;br</span> <span style="color: #000000; font-weight: bold;">/&gt;</span><span style="color: #000000; font-weight: bold;">&lt;a</span> <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;{$href}&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>Подробнее..<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/a<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+        <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/p<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+      <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/div<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:for-each<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/body<span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #000000; font-weight: bold;">&lt;/html<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:template<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/xsl:stylesheet<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> </pre></div></p>
+
+<p>Теперь  остались  сущие  пустяки  связать  наш  класс  с  GUI  интерфейсом:  Объяви  две  глобальных переменных</p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;"><span style="color: #6666cc; font-weight: bold;">string</span> flFName <span style="color: #008000;">=</span> <span style="color: #666666;">&quot;feed_list.log&quot;</span><span style="color: #008000;">;</span> <span style="color: #008080; font-style: italic;">// список лент, на которые мы подписались </span>
+RSS rss<span style="color: #008000;">;</span> <span style="color: #008080; font-style: italic;">// текущая RSS-лента </span></pre></div><br />
+ <br />
+Изменим метод Main  таким  образом,  чтобы  он  загружал  все  ленты,  на  которые мы  подписались  в ListBox: </p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;"><span style="color: #0600FF; font-weight: bold;">public</span> MainForm<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span> 
+<span style="color: #008000;">&#123;</span> 
+  InitializeComponent<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+&nbsp;
+  <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">Exists</span><span style="color: #008000;">&#40;</span>flFName<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span> 
+    lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">Items</span><span style="color: #008000;">.</span><span style="color: #0000FF;">AddRange</span><span style="color: #008000;">&#40;</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">ReadAllLines</span><span style="color: #008000;">&#40;</span>flFName<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span>  
+<span style="color: #008000;">&#125;</span>   </pre></div></p>
+
+<p>Давай напишем еще два вспомогательных метода для загрузки RSS-ленты и для обновления списка подписки. </p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;"><span style="color: #6666cc; font-weight: bold;">void</span> LoadFeed<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">string</span> URL<span style="color: #008000;">&#41;</span> 
+<span style="color: #008000;">&#123;</span> 
+  <span style="color: #0600FF; font-weight: bold;">try</span> <span style="color: #008000;">&#123;</span> 
+    rss <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> RSS<span style="color: #008000;">&#40;</span>URL<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span>   
+    wbIE<span style="color: #008000;">.</span><span style="color: #0000FF;">Navigate</span><span style="color: #008000;">&#40;</span>Application<span style="color: #008000;">.</span><span style="color: #0000FF;">StartupPath</span><span style="color: #008000;">+</span><span style="color: #666666;">&quot;<span style="color: #008080; font-weight: bold;">\\</span>&quot;</span><span style="color: #008000;">+</span>rss<span style="color: #008000;">.</span><span style="color: #0000FF;">TransformToHTML</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+  <span style="color: #008000;">&#125;</span><span style="color: #0600FF; font-weight: bold;">catch</span><span style="color: #008000;">&#40;</span><span style="color: #000000;">System.<span style="color: #0000FF;">Net</span></span><span style="color: #008000;">.</span><span style="color: #0000FF;">WebException</span> exc<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#123;</span> 
+    MessageBox<span style="color: #008000;">.</span><span style="color: #0000FF;">Show</span><span style="color: #008000;">&#40;</span>exc<span style="color: #008000;">.</span><span style="color: #0000FF;">Message</span>,<span style="color: #666666;">&quot; Нет подключения к интернету &quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span>   
+  <span style="color: #008000;">&#125;</span> 
+<span style="color: #008000;">&#125;</span> </pre></div></p>
+
+<p>Как видишь, просмотреть RSS-ленту теперь проще простого: <br />
+<div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;">wbIE<span style="color: #008000;">.</span><span style="color: #0000FF;">Navigate</span><span style="color: #008000;">&#40;</span>Application<span style="color: #008000;">.</span><span style="color: #0000FF;">StartupPath</span><span style="color: #008000;">+</span><span style="color: #666666;">&quot;<span style="color: #008080; font-weight: bold;">\\</span>&quot;</span><span style="color: #008000;">+</span> <span style="color: #008000;">new</span> RSS<span style="color: #008000;">&#40;</span>URL<span style="color: #008000;">&#41;</span><span style="color: #008000;">.</span><span style="color: #0000FF;">TransformToHTML</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> </pre></div></p>
+
+<p>И второй вспомогательный метод:</p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;"><span style="color: #6666cc; font-weight: bold;">void</span> UpdateFeedListFile<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span> 
+<span style="color: #008000;">&#123;</span> 
+  <span style="color: #6666cc; font-weight: bold;">string</span> bak_file <span style="color: #008000;">=</span> <span style="color: #666666;">&quot;feed_list.bak&quot;</span><span style="color: #008000;">;</span> 
+  <span style="color: #0600FF; font-weight: bold;">try</span> <span style="color: #008000;">&#123;</span> 
+    <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">Exists</span><span style="color: #008000;">&#40;</span>bak_file<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span> File<span style="color: #008000;">.</span><span style="color: #0000FF;">Delete</span><span style="color: #008000;">&#40;</span>bak_file<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    File<span style="color: #008000;">.</span><span style="color: #0000FF;">Move</span><span style="color: #008000;">&#40;</span>flFName,bak_file<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>File<span style="color: #008000;">.</span><span style="color: #0000FF;">Exists</span><span style="color: #008000;">&#40;</span>flFName<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span> File<span style="color: #008000;">.</span><span style="color: #0000FF;">Delete</span><span style="color: #008000;">&#40;</span>flFName<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #0600FF; font-weight: bold;">foreach</span> <span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">string</span> item <span style="color: #0600FF; font-weight: bold;">in</span> lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">Items</span><span style="color: #008000;">&#41;</span> 
+      File<span style="color: #008000;">.</span><span style="color: #0000FF;">AppendAllText</span><span style="color: #008000;">&#40;</span>flFName,item<span style="color: #008000;">+</span><span style="color: #666666;">&quot;<span style="color: #008080; font-weight: bold;">\n</span>&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+  <span style="color: #008000;">&#125;</span><span style="color: #0600FF; font-weight: bold;">catch</span> <span style="color: #008000;">&#40;</span>Exception e<span style="color: #008000;">&#41;</span><span style="color: #008000;">&#123;</span> 
+    MessageBox<span style="color: #008000;">.</span><span style="color: #0000FF;">Show</span><span style="color: #008000;">&#40;</span>e<span style="color: #008000;">.</span><span style="color: #0000FF;">Message</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+  <span style="color: #008000;">&#125;</span> 
+<span style="color: #008000;">&#125;</span> </pre></div></p>
+
+<p>Он просто записывает содержимое ListBox`a в файл списка лент, и делает резервную копию предыдущего файла. Остальные методы тривиальны: </p>
+
+<p><div class="geshifilter"><pre class="csharp geshifilter-csharp" style="font-family:monospace;"><span style="color: #008080; font-style: italic;">// выбрать ленту    </span>
+    <span style="color: #6666cc; font-weight: bold;">void</span> LbRSSClick<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+      tbFeedURL<span style="color: #008000;">.</span><span style="color: #0000FF;">Text</span> <span style="color: #008000;">=</span> lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">SelectedItem</span><span style="color: #008000;">.</span><span style="color: #0000FF;">ToString</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #008000;">&#125;</span> 
+&nbsp;
+<span style="color: #008080; font-style: italic;">// показать ленту    </span>
+    <span style="color: #6666cc; font-weight: bold;">void</span> LbRSSDoubleClick<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+      tbFeedURL<span style="color: #008000;">.</span><span style="color: #0000FF;">Text</span> <span style="color: #008000;">=</span> lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">SelectedItem</span><span style="color: #008000;">.</span><span style="color: #0000FF;">ToString</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      LoadFeed<span style="color: #008000;">&#40;</span>tbFeedURL<span style="color: #008000;">.</span><span style="color: #0000FF;">Text</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #008000;">&#125;</span> 
+&nbsp;
+<span style="color: #008080; font-style: italic;">//добавить ленту в подписку </span>
+    <span style="color: #6666cc; font-weight: bold;">void</span> bNewClick<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">&#41;</span>  
+    <span style="color: #008000;">&#123;</span> 
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>tbFeedURL<span style="color: #008000;">.</span><span style="color: #0000FF;">Text</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Length</span><span style="color: #008000;">&gt;</span><span style="color: #FF0000;">0</span><span style="color: #008000;">&#41;</span> 
+      <span style="color: #008000;">&#123;</span> 
+        <span style="color: #6666cc; font-weight: bold;">string</span> newURL <span style="color: #008000;">=</span> tbFeedURL<span style="color: #008000;">.</span><span style="color: #0000FF;">Text</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Trim</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">Items</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Add</span><span style="color: #008000;">&#40;</span>newURL<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+        File<span style="color: #008000;">.</span><span style="color: #0000FF;">AppendAllText</span><span style="color: #008000;">&#40;</span>flFName, newURL<span style="color: #008000;">+</span><span style="color: #666666;">&quot;<span style="color: #008080; font-weight: bold;">\n</span>&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      <span style="color: #008000;">&#125;</span> 
+    <span style="color: #008000;">&#125;</span> 
+ <span style="color: #008080; font-style: italic;">//изменить адрес ленты в подписке </span>
+    <span style="color: #6666cc; font-weight: bold;">void</span> BEditClick<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+      lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">Items</span><span style="color: #008000;">&#91;</span>lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">SelectedIndex</span><span style="color: #008000;">&#93;</span> <span style="color: #008000;">=</span> tbFeedURL<span style="color: #008000;">.</span><span style="color: #0000FF;">Text</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Trim</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      UpdateFeedListFile<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span>    
+    <span style="color: #008000;">&#125;</span> 
+&nbsp;
+<span style="color: #008080; font-style: italic;">//удалить ленту из подписки </span>
+    <span style="color: #6666cc; font-weight: bold;">void</span> BDeleteClick<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+      <span style="color: #6666cc; font-weight: bold;">int</span> idx <span style="color: #008000;">=</span> lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">SelectedIndex</span><span style="color: #008000;">;</span> 
+      lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">Items</span><span style="color: #008000;">.</span><span style="color: #0000FF;">RemoveAt</span><span style="color: #008000;">&#40;</span>idx<span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>idx<span style="color: #008000;">&gt;=</span>lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">Items</span><span style="color: #008000;">.</span><span style="color: #0000FF;">Count</span><span style="color: #008000;">&#41;</span> idx<span style="color: #008000;">--;</span> 
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>idx<span style="color: #008000;">&gt;=</span><span style="color: #FF0000;">0</span><span style="color: #008000;">&#41;</span> lbFeeds<span style="color: #008000;">.</span><span style="color: #0000FF;">SetSelected</span><span style="color: #008000;">&#40;</span>idx, <span style="color: #0600FF; font-weight: bold;">true</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+      UpdateFeedListFile<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #008000;">&#125;</span> 
+&nbsp;
+<span style="color: #008080; font-style: italic;">// сохранить текущую ленту    </span>
+    <span style="color: #6666cc; font-weight: bold;">void</span> SaveAsHTMLToolStripMenuItemClick<span style="color: #008000;">&#40;</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">&#41;</span> 
+    <span style="color: #008000;">&#123;</span> 
+      <span style="color: #0600FF; font-weight: bold;">if</span> <span style="color: #008000;">&#40;</span>sfd1<span style="color: #008000;">.</span><span style="color: #0000FF;">ShowDialog</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">==</span>DialogResult<span style="color: #008000;">.</span><span style="color: #0000FF;">OK</span><span style="color: #008000;">&#41;</span> 
+        File<span style="color: #008000;">.</span><span style="color: #0000FF;">Move</span><span style="color: #008000;">&#40;</span>Application<span style="color: #008000;">.</span><span style="color: #0000FF;">StartupPath</span><span style="color: #008000;">+</span><span style="color: #666666;">&quot;<span style="color: #008080; font-weight: bold;">\\</span>feed.html&quot;</span>,sfd1<span style="color: #008000;">.</span><span style="color: #0000FF;">FileName</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">;</span> 
+    <span style="color: #008000;">&#125;</span> 
+&nbsp;</pre></div></p>
+
+<p>Вот наша собственная RSS-читалка и готова! Для большего удобства осталось перенести подписку в XML-файл  и  дать  лентам  более  внятные  названия,  чем  их  URL.  Можно  ещё  добиться кроссплатформенности  приложения  путём  отказа  от  компонента WebBrowser.  А  также  работать  с каждой  новостью,  как  с  отдельной  сущностью,  тогда  станет  возможным  отмечать  новости прочитанными и в следующий раз показывать только непрочитанные новости. Так что тут есть куда развиваться. Удачи! </p>
+
+<p><span style="font-weight:bold">Written by:</span> Смирнов Роман aka Romul<br />
+E-mail: <script type="text/javascript">eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%72%6f%6d%75%6c%40%76%72%2d%6f%6e%6c%69%6e%65%2e%72%75%22%3e%72%6f%6d%75%6c%40%76%72%2d%6f%6e%6c%69%6e%65%2e%72%75%3c%2f%61%3e%27%29%3b'))</script></p> <div class="table-wrapper clearfix"><table id="attachments" class="sticky-enabled">
+ <thead><tr><th>Вложение</th><th>Размер</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td><a href="http://www.vr-online.ru/sites/default/files/article/2011/08/rss_reader_zip_56356.zip">RSS-reader.zip</a></td><td>39.04 КБ</td> </tr>
+</tbody>
+</table>
+</div>  </div>
+      <div class="links">
+      <ul class="links"><li class="comment_forbidden first"><span><a href="/user/login?destination=node%2F4683%23comment-form">Добавить комментарий</a></span></li>
+<li class="statistics_counter last"><span>4149 просмотров</span></li>
+</ul>    </div>
+  </div>
+</div><div id="comment-wrapper" class=" clearfix">
+      <h3>Комментарии</h3>
+    2 комментария(ев)  <a id="comment-26251"></a>
+<!-- start comment.tpl.php -->
+<div class="comment  clearfix">
+  <div class="inner">
+    <span class="title">         </span>
+        <div class="info">
+      <div class="picture">
+  <a href="/users/zanuda25" title="Информация о пользователе."><img src="http://www.vr-online.ru/sites/default/files/pictures/picture-54.jpg" alt="аватар: Zanuda25" title="аватар: Zanuda25"  /></a></div>
+      <a href="/users/zanuda25" title="Информация о пользователе.">Zanuda25</a> <br /><b>Дата: </b>Пнд, 29/08/2011 - 06:39	  <div class="author-pane-line author-title">
+          		  <b><span class="author-pane-label">Звание:</span></b> Посвященный        </div>
+			    <div class="author-pane-line author-posts">
+          <b><span class="author-pane-label">Сообщений:</span></b> 398        </div>
+    </div>
+	<div class="content"> <p>Этот Romul -- никак наш старожил ВР-Онлайн?</p> </div>
+    </div>
+<ul class="links"><li class="comment_forbidden first last"><span><a href="/user/login?destination=node%2F4683%23comment-form">Добавить комментарий</a></span></li>
+</ul></div>
+<!-- end comment.tpl.php --><div class="indented"><a id="comment-26254"></a>
+<!-- start comment.tpl.php -->
+<div class="comment  clearfix">
+  <div class="inner">
+    <span class="title">         </span>
+        <div class="info">
+      <div class="picture">
+  <a href="/users/spidernet" title="Информация о пользователе."><img src="http://www.vr-online.ru/sites/default/files/pictures/picture-42.png" alt="аватар: Spider_NET" title="аватар: Spider_NET"  /></a></div>
+      <a href="/users/spidernet" title="Информация о пользователе.">Spider_NET</a> <br /><b>Дата: </b>Пнд, 29/08/2011 - 08:13	  <div class="author-pane-line author-title">
+          		  <b><span class="author-pane-label">Звание:</span></b> Мастер        </div>
+			    <div class="author-pane-line author-posts">
+          <b><span class="author-pane-label">Сообщений:</span></b> 2327        </div>
+    </div>
+	<div class="content"> <p>Да, это бывший участник нашего проекта с которым мы не очень мирно разошлись.</p> </div>
+    </div>
+<ul class="links"><li class="comment_forbidden first last"><span><a href="/user/login?destination=node%2F4683%23comment-form">Добавить комментарий</a></span></li>
+</ul></div>
+<!-- end comment.tpl.php --></div></div>
+          </div>
+          <!-- END CONTENT -->	  
+                            </div>
+        <!-- END MAIN INNER -->
+      </div>
+      <!-- END MAIN -->
+          </div>
+    <!-- END CONTAINER -->
+    <div class="push">&nbsp;</div>
+  </div>
+  <!-- END WRAPPER -->
+  <div id="footer" class="layout-region">
+    <div id="footer-inner">
+            Копирование и распространение материалов, находящихся на сайте, <b>запрещено</b>. <br />
+<b>Разработка сайта: Guava27.ru <b>Графика для сайта:</b> Васючков Андрей aka Soffrick. <b>Обложки журналов:</b> Soffrick, JimmyJonezz, zahod5277<br />
+<a href="http://www.vr-online.ru">VR-Online 2012</a><br />    </div>
+  </div>
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+//--><!]]>
+</script>
+  </body>
+</html>

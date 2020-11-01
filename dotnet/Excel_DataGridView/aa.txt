@@ -1,0 +1,21 @@
+OleDbConnection c =
+                        new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;data source=" + filename + ";Extended Properties=\"Excel 8.0;HDR=NO;IMEX=1;\"");
+            c.Open();
+            OleDbDataAdapter d = new OleDbDataAdapter("SELECT * FROM [лист1$]", c);
+            DataTable dt = new DataTable();
+            d.Fill(dt);
+            c.Close();
+            d.Dispose();
+
+
+
+excel.Application app = new excel.Application();
+            excel.Workbook wb1 = app.Workbooks.Add(excel.XlWBATemplate.xlWBATWorksheet);
+            excel.Worksheet ws1 = (excel.Worksheet)wb1.Worksheets[1];
+            excel.Range rng;
+            rng = ws1.get_Range("A1", razmer);
+            rng.Value2 = mas;
+            app.Visible = false;
+            wb1.Saved = true;
+            wb1.SaveCopyAs(filename);            
+            app.Quit();
