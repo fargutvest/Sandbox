@@ -8,6 +8,7 @@ using System.Windows;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace ViyarParser
 {
@@ -19,12 +20,14 @@ namespace ViyarParser
 
             var myClient = new WebClient();
 
+            Console.WriteLine("Grabbing viyar.by ...");
             for (int i = 0; i < 7; i++)
             {
                 var response = myClient.OpenRead($"https://viyar.by/catalog/dsp_1/page-{i + 1}/?view=60");
                 var reader = new StreamReader(response);
                 pages.Add(reader.ReadToEnd());
                 response.Close();
+                Console.Write('.');
             }
 
             var codeToImageMappings = new Dictionary<string, string>();
@@ -46,6 +49,7 @@ namespace ViyarParser
                     price = string.IsNullOrEmpty(strike) ? price : price.Replace(strike, "");
                     codeToImageMappings.Add(code, imgUrl);
                     codeToPriceMappings.Add(code, price);
+                    Console.Write('.');
                 }
             }
 
@@ -69,7 +73,7 @@ namespace ViyarParser
                 {
                     var entry = new EntryModel()
                     {
-                        Code = xlRange.Cells[row, 2].Value2.ToString(),
+                        Code = xlRange.Cells[row, 2].Value2.ToString().Replace(" ", String.Empty),
                         Nomenklature = xlRange.Cells[row, 3].Value2.ToString(),
                         Characteristic = Size.Parse(xlRange.Cells[row, 4].Value2.ToString().Replace("х", ",")),
                         Thikness = xlRange.Cells[row, 5].Value2.ToString(),
@@ -84,6 +88,7 @@ namespace ViyarParser
                     entry.Cost = entry.Price!= null ? (entry.Count / (2070 * 2800 / (double)1000000) * double.Parse(entry.Price.Replace(" руб/лист", ""))).ToString("0.##") + "руб" : null;
                     remainsList.Add(entry);
                     row++;
+                    Console.Write('.');
                 } 
             }
             finally
@@ -104,7 +109,7 @@ namespace ViyarParser
 
             foreach (var item in grouped)
             {
-                
+
                 resultDoc.DocumentNode.AppendChild(HtmlNode.CreateNode($@"<li>
                                                                             <table>
                                                                                 <tr>
@@ -113,11 +118,12 @@ namespace ViyarParser
                                                                                     </td>
                                                                                     <td>
                                                                                         <div><b>{item.Value.First().Code}</b> - {item.Key}</div>
-                                                                                        {string.Join("", item.Value.Select(_=> $"<div>{_.Characteristic.ToString().Replace(",","х")} ({_.Count}) - <b>{_.Cost}</b> ({_.Price})</div>").ToList())}
+                                                                                        {string.Join("", item.Value.Select(_ => $"<div>{_.Characteristic.ToString().Replace(",", "х")} ({_.Count}) - <b>{_.Cost}</b> ({_.Price})</div>").ToList())}
                                                                                     </td>
                                                                                 </tr>
                                                                             </table>
                                                                           </li>"));
+                Console.Write('.');
             }
 
             var resultFilePath = "result.html";
@@ -130,6 +136,12 @@ namespace ViyarParser
             {
                 file.WriteLine(resultDoc.DocumentNode.OuterHtml);
             }
+
+           
+            
+            Process.Start(resultFilePath);
+            Console.WriteLine("Done!");
+            Console.ReadLine();
         }
     }
 }
