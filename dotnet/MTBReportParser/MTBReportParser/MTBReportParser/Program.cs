@@ -17,20 +17,25 @@ namespace MTBReportParser
 {
     class Program
     {
+        private static List<string> _userInputHistory = new List<string>();
+        private static int _historyCurrent = 0;
+
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.InputEncoding = Encoding.UTF8;
+            LoadHistory();
+            
+            Console.OutputEncoding = Encoding.Unicode;
+            Console.InputEncoding = Encoding.Unicode;
             var operations = new List<Operation>();
             operations.AddRange(Load());
             Console.WriteLine(string.Join(Environment.NewLine, operations.Where(_ => _.Status != Status.Decline).Select(_ => _.ToString())));
 
-            var console = new ListeningUserInput();
+            var console = new ListeningUserInput(_userInputHistory);
             var help = "help";
             var exit = "exit";
             while (true)
             {
-                var input = console.Listen();
+                var input = console.Listen(ref _historyCurrent);
 
                 if (input == help)
                 {
@@ -72,11 +77,14 @@ namespace MTBReportParser
                     }
                     catch (Exception ex)
                     {
+                        _userInputHistory.Remove(input);
+                        _historyCurrent = _userInputHistory.Count();
                         Console.WriteLine(ex.Message);
                         Console.WriteLine($"Input '{help}' to get more info.");
                     }
                 }
             }
+            SaveHistory();
         }
 
       
@@ -153,6 +161,23 @@ namespace MTBReportParser
             Console.WriteLine();
 
             return result;
+        }
+
+        private static void SaveHistory()
+        {
+            File.WriteAllLines("userInput.txt", _userInputHistory);
+        }
+
+        private static void LoadHistory()
+        {
+            try
+            {
+                _userInputHistory = File.ReadAllLines("userInput.txt").ToList();
+                _historyCurrent = _userInputHistory.Count();
+            }
+            catch 
+            {
+            }
         }
     }
 

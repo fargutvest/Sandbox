@@ -5,28 +5,32 @@ namespace MyConsole
 {
     public class ListeningUserInput
     {
-        private List<string> _userInputHistory = new List<string>();
+        private List<string> _userInputHistory;
         private string here = ">";
 
-        public string Listen()
+        public ListeningUserInput(List<string> userInputHistory)
+        {
+            _userInputHistory = userInputHistory;
+        }
+
+        public string Listen(ref int historyCurrent)
         {
             Console.Write(here);
 
             ConsoleKeyInfo keyInfo;
             Console.TreatControlCAsInput = true;
-            var historyCurrent = 0;
 
             var chars = new List<char>();
             do
             {
                 keyInfo = Console.ReadKey(true);
-                if ((keyInfo.Key == ConsoleKey.UpArrow || (keyInfo.Key == ConsoleKey.DownArrow && historyCurrent > 0)) && _userInputHistory.Count > 0)
+                if ((keyInfo.Key == ConsoleKey.DownArrow || (keyInfo.Key == ConsoleKey.UpArrow && historyCurrent > 0)) && _userInputHistory.Count > 0)
                 {
-                    if (keyInfo.Key == ConsoleKey.DownArrow)
+                    if (keyInfo.Key == ConsoleKey.UpArrow)
                     {
                         historyCurrent--;
                     }
-                    else if (keyInfo.Key ==  ConsoleKey.UpArrow && historyCurrent < _userInputHistory.Count - 1)
+                    else if (keyInfo.Key ==  ConsoleKey.DownArrow && historyCurrent < _userInputHistory.Count - 1)
                     {
                         historyCurrent++;
                     }
@@ -70,6 +74,7 @@ namespace MyConsole
             if (string.IsNullOrEmpty(userInput) == false && _userInputHistory.Contains(userInput) == false)
             {
                 _userInputHistory.Add(userInput);
+                historyCurrent = _userInputHistory.IndexOf(userInput) + 1;
             }
 
             Console.WriteLine();
@@ -90,7 +95,8 @@ namespace MyConsole
         {
             return (key >= ConsoleKey.D0 && key <= ConsoleKey.Z) ||
                    (key >= ConsoleKey.NumPad0 && key <= ConsoleKey.Divide) ||
-                   (key >= ConsoleKey.Oem1 && key <= ConsoleKey.Oem102);
+                   (key >= ConsoleKey.Oem1 && key <= ConsoleKey.Oem102) ||
+                   key == ConsoleKey.Spacebar;
         }
     }
 }
