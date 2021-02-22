@@ -9,7 +9,7 @@ namespace ListenCursor
         {
             var cts = new CancellationTokenSource();
             var app = new App(cts.Token);
-            app.Start();
+            app.TestHook();
             Task.Delay(3600 * 1000).Wait();
             cts.Cancel();
         }
