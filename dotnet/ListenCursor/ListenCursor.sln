@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListenCursor", "ListenCursor\ListenCursor.csproj", "{DB8EBA98-F526-4322-9D3F-F37E7869496F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHook", "EventHook\EventHook.csproj", "{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
