@@ -4,18 +4,16 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
-using System.Windows.Forms;
 using MouseEventArgs = EventHook.MouseEventArgs;
 
 namespace ListenCursor
 {
     public class App
     {
+        private ContextMenuForm _menu;
 
         public App()
         {
-           
-            
         }
 
         public void Start()
@@ -37,7 +35,7 @@ namespace ListenCursor
             }
         }
 
-      
+
         private void OutToConsole(AutomationElement.AutomationElementInformation elem, int x, int y)
         {
             var str = $"\r'{elem.Name}' '{elem.AutomationId}' '{elem.ControlType.ProgrammaticName}' '{elem.LocalizedControlType}' ({x}:{y})";
@@ -48,26 +46,19 @@ namespace ListenCursor
         {
             Task.Factory.StartNew(() =>
             {
-                var contextMenu = new Form();
-                contextMenu.Width = 600;
-                var ui = AutomationElement.FromPoint(new System.Windows.Point(x, y));
-                contextMenu.Controls.Add(new Label() { Text = $"{ui.Current.Name}", Width = contextMenu.Width, Height = 20, Location = new System.Drawing.Point(0,0)});
-                var supportedPatterns = ui.GetSupportedPatterns();
-                var counter = 0;
-                foreach (var item in supportedPatterns)
-                {
-                    counter++;
-                    contextMenu.Controls.Add(new Label() { Text = $"{item.GetType().Name}: {item.ProgrammaticName}", Width = contextMenu.Width, Height = 20, Location = new System.Drawing.Point(0, 20 * counter) });
-                }
-                
-                contextMenu.StartPosition = FormStartPosition.Manual;
-                contextMenu.Location = new System.Drawing.Point(x, y);
-                contextMenu.Show();
-                contextMenu.TopMost = true;
-                contextMenu.BringToFront();
+                _menu = new ContextMenuForm() { TopMost = true, Top = 99 };
+                _menu.Fill(x, y);
+                var result = _menu.ShowDialog();
+                var r = result;
+                var rr = _menu.Result;
+
             }, CancellationToken.None,
                         TaskCreationOptions.None,
                         new SyncFactory().GetTaskScheduler());
         }
+
+       
+
+      
     }
 }
