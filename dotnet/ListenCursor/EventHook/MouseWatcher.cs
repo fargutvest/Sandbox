@@ -42,7 +42,7 @@ namespace EventHook
         /// <summary>
         ///     Start watching mouse events
         /// </summary>
-        public void Start()
+        public void Start(params MouseMessages[] mouseMessagesToSuppress)
         {
             lock (accesslock)
             {
@@ -56,7 +56,7 @@ namespace EventHook
                         {
                             mouseHook = new MouseHook();
                             mouseHook.MouseAction += MListener;
-                            mouseHook.Start();
+                            mouseHook.Start(mouseMessagesToSuppress);
                         },
                         CancellationToken.None,
                         TaskCreationOptions.None,

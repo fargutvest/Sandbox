@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Automation;
@@ -8,13 +10,12 @@ namespace ListenCursor
 {
     public partial class ContextMenuForm : Form
     {
-        private Dictionary<string, string> _result;
-        public Dictionary<string, string> Result => _result;
+        public ContextMenuResult Result { get; }
 
         public ContextMenuForm()
         {
             InitializeComponent();
-            _result = new Dictionary<string, string>();
+            Result = new ContextMenuResult();
         }
 
         public void Fill(int x, int y)
@@ -40,23 +41,24 @@ namespace ListenCursor
             controls.Add(label);
 
             var supportedPatterns = uiElement.GetSupportedPatterns();
-            foreach (var item in supportedPatterns)
+            var controlsCount = controls.Count;
+            var radioButtons = supportedPatterns.Select(_ =>
             {
-                var key = $"{item.GetType().Name}: {item.ProgrammaticName}";
-                _result[key] = false.ToString();
-                var checkBox = new CheckBox()
+               var rb = new RadioButton()
                 {
-                    Text = key,
+                    Text = $"{_.ProgrammaticName}",
                     AutoSize = true,
-                    Location = new Point(itemIndent, controls.Count * itemHeight + itemIndent)
+                    Location = new Point(itemIndent, controlsCount * itemHeight + itemIndent)
                 };
-                checkBox.CheckedChanged += (sender, e) => 
-                {
-                    _result[key] = checkBox.Checked.ToString(); 
-                };
-
-                controls.Add(checkBox);
+                controlsCount += 1;
+                return rb;
+            }).ToList();
+            
+            if (radioButtons.Count == 1)
+            {
+                radioButtons[0].Checked = true;
             }
+            controls.AddRange(radioButtons);
 
             var buttonOk = new Button()
             {
@@ -72,8 +74,25 @@ namespace ListenCursor
                 Location = new Point(buttonOk.Width + itemIndent, controls.Count * itemHeight + itemIndent)
             };
 
+            var buttonEnd = new Button()
+            {
+                Text = $"End",
+                AutoSize = true,
+                Location = new Point(buttonOk.Width + itemIndent + buttonCancel.Width, controls.Count * itemHeight + itemIndent)
+            };
+
             buttonOk.Click += (sender, e) =>
             {
+                var process = Detect(uiElement.Current.ProcessId);
+                Result.Pattern = controls.Where(_ => _.GetType() == typeof(RadioButton) && (_ as RadioButton)?.Checked == true).Select(_ => _.Text).FirstOrDefault();
+                Result.Locator = new Locator()
+                {
+                    FllePath = OnSafe(() => process?.MainModule?.FileName),
+                    Point = new Point(x, y),
+                    AutomationId = uiElement.Current.AutomationId,
+                    LocalizedControlType = uiElement.Current.LocalizedControlType,
+                    Name = uiElement.Current.Name
+                };
                 DialogResult = DialogResult.OK;
                 Close();
             };
@@ -84,8 +103,14 @@ namespace ListenCursor
                 Close();
             };
 
+            buttonEnd.Click += (sender, e) =>
+            {
+                DialogResult = DialogResult.Yes;
+            };
+
             controls.Add(buttonOk);
             controls.Add(buttonCancel);
+            controls.Add(buttonEnd);
 
             Controls.AddRange(controls.ToArray());
             Height = controls.Sum(_ => _.Height);
@@ -94,5 +119,40 @@ namespace ListenCursor
             BringToFront();
 
         }
+
+        private Process Detect(int pid)
+        {
+            var allProcesses = Process.GetProcesses();
+            AutomationElement root = null;
+            foreach (var item in allProcesses)
+            {
+                try
+                {
+                    if (item.Id == pid)
+                    {
+                        return item;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+            return null;
+        }
+
+        private T OnSafe<T>(Func<T> toDo) where T: class
+        {
+            try
+            {
+                return toDo?.Invoke();
+            }
+            catch (Exception ex)
+            {
+            }
+            return default(T);
+        }
+        
     }
 }

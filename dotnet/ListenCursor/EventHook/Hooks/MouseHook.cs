@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 /// <summary>
@@ -58,15 +59,19 @@ namespace EventHook.Hooks
 
         private readonly LowLevelMouseProc Proc;
 
+        private MouseMessages[] _mouseMessagesToSuppress;
+
         internal MouseHook()
         {
             Proc = HookCallback;
         }
 
         internal event EventHandler<RawMouseEventArgs> MouseAction = delegate { };
+        
 
-        internal void Start()
+        internal void Start(params MouseMessages[] mouseMessagesToSupppress)
         {
+            _mouseMessagesToSuppress = mouseMessagesToSupppress;
             _hookId = SetHook(Proc);
         }
 
@@ -99,7 +104,14 @@ namespace EventHook.Hooks
 
             MouseAction(null, new RawMouseEventArgs { Message = (MouseMessages)wParam, Point = hookStruct.pt, MouseData = hookStruct.mouseData });
 
-            return CallNextHookEx(_hookId, nCode, wParam, lParam);
+            var result = CallNextHookEx(_hookId, nCode, wParam, lParam);
+
+            if (_mouseMessagesToSuppress!= null && _mouseMessagesToSuppress.Any(_=> _ == (MouseMessages)wParam))
+            {
+                return new IntPtr(1);
+            }
+
+            return result;
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
