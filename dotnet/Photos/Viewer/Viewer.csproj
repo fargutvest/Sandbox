@@ -64,6 +64,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Exif\ExifByteOrder.cs" />
+    <Compile Include="Exif\ExifData.cs" />
+    <Compile Include="Exif\ExifDateFormat.cs" />
+    <Compile Include="Exif\ExifErrCode.cs" />
+    <Compile Include="Exif\ExifException.cs" />
+    <Compile Include="Exif\ExifHelper.cs" />
+    <Compile Include="Exif\ExifIfd.cs" />
+    <Compile Include="Exif\ExifLoadOptions.cs" />
+    <Compile Include="Exif\ExifRational.cs" />
+    <Compile Include="Exif\ExifSaveOptions.cs" />
+    <Compile Include="Exif\ExifTag.cs" />
+    <Compile Include="Exif\ExifTagId.cs" />
+    <Compile Include="Exif\ExifTagType.cs" />
+    <Compile Include="Exif\GeoCoordinate.cs" />
+    <Compile Include="Exif\StrCoding.cs" />
+    <Compile Include="Exif\StrCodingFormat.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -107,5 +123,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

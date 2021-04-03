@@ -8,6 +8,6 @@
         Title="Viewer" Height="450" Width="800">
     <Grid x:Name="MainGrid"  Focusable="True" PreviewKeyUp="On_KeyDown" Loaded="On_Loaded" Background="Gray">
         <Image Margin="10" Source="{Binding ImageFilePath}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        <Label Foreground="Yellow" FontSize="20" Content="{Binding Tags}"/>
+        <TextBox x:Name="OutputTextBox" Margin="5" FontSize="20" Foreground="Yellow" Background="Transparent" Text="{Binding Tags}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Consolas" TextWrapping="NoWrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
     </Grid>
 </Window>

@@ -20,6 +20,7 @@ namespace Viewer
             set
             {
                 _imageFilePath = value;
+                Tags = string.Join(Environment.NewLine, _helper.GetTagsOnly(ImageFilePath));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageFilePath)));
             }
         }
@@ -41,11 +42,13 @@ namespace Viewer
         private string _photosFolder;
         private string[] _photos;
         private int _index;
+        private CompactExifLib.ExifHelper _helper;
 
         public MainWindowViewModel()
         {
             _photosFolder = @"C:\Users\henadzi.myslitski\Pictures\";
             _photos = Directory.GetFiles(_photosFolder).Where(_ => Path.GetExtension(_) == ".jpg").ToArray();
+            _helper = new CompactExifLib.ExifHelper();
             ImageFilePath = _photos[_index];
         }
 
@@ -67,36 +70,6 @@ namespace Viewer
             }
 
             ImageFilePath = _photos[_index];
-            var tags = GetTags();
-            Tags = string.Join(Environment.NewLine, tags);
-        }
-
-        private string[] GetTags()
-        {
-            var shell = new Shell32.Shell();
-            var objFolder = shell.NameSpace(_photosFolder);
-            var tagsIndex = -1;
-            for (int i = 0; i < short.MaxValue; i++)
-            {
-                string header = objFolder.GetDetailsOf(null, i);
-                if (header.ToLower() == "tags")
-                {
-                    tagsIndex = i;
-                    break;
-                }
-            }
-
-            var tagsStr = "";
-            foreach (Shell32.FolderItem2 item in objFolder.Items())
-            {
-                if (item.Name == Path.GetFileName(ImageFilePath))
-                {
-                    tagsStr = objFolder.GetDetailsOf(item, tagsIndex);
-                    break;
-                }
-            }
-
-            return tagsStr.Split(';').Select(_ => _.TrimStart(' ')).ToArray();
         }
     }
 }
