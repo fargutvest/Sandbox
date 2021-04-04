@@ -72,38 +72,59 @@ namespace Viewer
         }
 
         private string[] _photos;
-        private int _index = 5;
+        private int _index;
         private CompactExifLib.ExifHelper _helper;
         
         public void On_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Right)
             {
-                if (_index < _photos.Length - 1)
-                {
-                    _index += 1;
-                }
+                Right();
             }
             if (e.Key == Key.Left)
             {
-                if (_index > 0)
-                {
-                    _index -= 1;
-                }
+                Left();
             }
-
-            var markerTag = ConfigurationManager.AppSettings["MarkerTag"];
-
             if (e.Key == Key.Up)
             {
-                _helper.SaveTags(ImageFilePath, new string[] { markerTag });
+                Mark();
             }
 
             if (e.Key == Key.Down)
             {
+                Mark(false);
+            }
+        }
+
+        public void Right()
+        {
+            if (_index < _photos.Length - 1)
+            {
+                _index += 1;
+            }
+            ImageFilePath = _photos[_index];
+        }
+
+        public void Left()
+        {
+            if (_index > 0)
+            {
+                _index -= 1;
+            }
+            ImageFilePath = _photos[_index];
+        }
+
+        public void Mark(bool marked = true)
+        {
+            var markerTag = ConfigurationManager.AppSettings["MarkerTag"];
+            if (marked)
+            {
+                _helper.SaveTags(ImageFilePath, new string[] { markerTag });
+            }
+            else
+            {
                 _helper.SaveTags(ImageFilePath, null, new string[] { markerTag });
             }
-
             ImageFilePath = _photos[_index];
         }
     }

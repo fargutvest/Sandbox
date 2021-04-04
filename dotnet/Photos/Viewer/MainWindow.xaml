@@ -6,14 +6,40 @@
         mc:Ignorable="d"
         DataContext="{StaticResource MainWindowViewModel}"
         Title="Photo Viewer" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="PanelStyle" TargetType="{x:Type WrapPanel}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding TemplateImage}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="MarkStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Content" Value="Mark" />
+
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content" Value="Unmark" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="MainGrid"  Focusable="True" PreviewKeyUp="On_KeyDown" Loaded="On_Loaded" Background="Gray" Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Image x:Name="Img" Margin="10" Source="{Binding TemplateImage}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        <TextBox Margin="5" FontSize="20" Foreground="Yellow" Background="Transparent" Text="{Binding Info}" IsReadOnly="True"
-                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Consolas" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
-        <Button Content="Select folder" Grid.Row="1" Width="Auto" HorizontalAlignment="Left" Margin="5" Padding="5" Click="Button_Click"/>
+        <Label Margin="5" FontSize="20" Foreground="Yellow"  Content="{Binding Info}" 
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Consolas"/>
+        <WrapPanel Grid.Row="1" Background="LightGray">
+            <Button Content="Select folder"  Width="Auto" HorizontalAlignment="Left" Margin="5" Padding="5" Click="SelectFolderClick"/>
+            <WrapPanel Style="{StaticResource PanelStyle}" Margin="50,0,0,0">
+                <Button Content="Left"  Width="100" HorizontalAlignment="Left" Margin="5,5,5,5" Padding="5" Click="LeftClick"/>
+                <Button Content="Right"  Width="100" HorizontalAlignment="Left" Margin="5,5,5,5" Padding="5" Click="RightClick"/>
+                <ToggleButton Style="{StaticResource MarkStyle}"  Width="60" HorizontalAlignment="Left" Margin="50,5,5,5" Padding="5" Click="MarkClick"/>
+            </WrapPanel>
+        </WrapPanel>
+        
     </Grid>
 </Window>

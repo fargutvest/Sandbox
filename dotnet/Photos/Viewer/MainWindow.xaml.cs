@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 
@@ -30,6 +31,30 @@ namespace Viewer
             {
                 ViewModel.PhotosFolder = fbd.SelectedPath;
             }
+        }
+
+        private void SelectFolderClick(object sender, RoutedEventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ViewModel.PhotosFolder = fbd.SelectedPath;
+            }
+        }
+
+        private void RightClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Right();
+        }
+
+        private void LeftClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Left();
+        }
+
+        private void MarkClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Mark((sender as ToggleButton).IsChecked == true);
         }
     }
 }
