@@ -23,16 +23,7 @@ namespace Viewer
         {
             MainGrid.Focus();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                ViewModel.PhotosFolder = fbd.SelectedPath;
-            }
-        }
-
+        
         private void SelectFolderClick(object sender, RoutedEventArgs e)
         {
             var fbd = new FolderBrowserDialog();

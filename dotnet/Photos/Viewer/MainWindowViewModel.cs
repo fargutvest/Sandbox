@@ -10,6 +10,8 @@ namespace Viewer
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private string markerTag => ConfigurationManager.AppSettings["MarkerTag"];
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _imageFilePath;
@@ -21,9 +23,19 @@ namespace Viewer
             }
             set
             {
-                _imageFilePath = value;
-                Info = $"{ImageFilePath}{Environment.NewLine}{string.Join(Environment.NewLine, _helper.GetTags(ImageFilePath))}";
-                TemplateImage = BitmapFrame.Create(new Uri(ImageFilePath), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                if (string.IsNullOrEmpty(value) == false)
+                {
+                    _imageFilePath = value;
+                    var tags = _helper.GetTags(ImageFilePath);
+                    Marked = tags.Contains(markerTag);
+                    Info = $"{ImageFilePath}{Environment.NewLine}{string.Join(Environment.NewLine, tags)}";
+                    TemplateImage = BitmapFrame.Create(new Uri(ImageFilePath), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                }
+                else
+                {
+                    Info = null;
+                    TemplateImage = null;
+                }
             }
         }
 
@@ -38,6 +50,20 @@ namespace Viewer
             {
                 _templateImage = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TemplateImage)));
+            }
+        }
+
+        private bool _marked;
+        public bool Marked
+        {
+            get
+            {
+                return _marked;
+            }
+            set
+            {
+                _marked = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Marked)));
             }
         }
 
@@ -64,17 +90,25 @@ namespace Viewer
             }
             set
             {
+                _photos = Directory.GetFiles(value).Where(_ => Path.GetExtension(_) == ".jpg").ToArray();
                 _photosFolder = value;
-                _photos = Directory.GetFiles(PhotosFolder).Where(_ => Path.GetExtension(_) == ".jpg").ToArray();
                 _helper = new CompactExifLib.ExifHelper();
-                ImageFilePath = _photos[_index];
+                if (_photos.Any())
+                {
+                    _index = 0;
+                    ImageFilePath = _photos[_index];
+                }
+                else
+                {
+                    ImageFilePath = null;
+                }
             }
         }
 
         private string[] _photos;
         private int _index;
         private CompactExifLib.ExifHelper _helper;
-        
+
         public void On_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Right)
@@ -98,25 +132,25 @@ namespace Viewer
 
         public void Right()
         {
-            if (_index < _photos.Length - 1)
+            if (_photos?.Any() == true && _index < _photos.Length - 1)
             {
                 _index += 1;
+                ImageFilePath = _photos[_index];
             }
-            ImageFilePath = _photos[_index];
         }
 
         public void Left()
         {
-            if (_index > 0)
+            if (_photos?.Any() == true && _index > 0)
             {
                 _index -= 1;
+                ImageFilePath = _photos[_index];
             }
-            ImageFilePath = _photos[_index];
         }
 
         public void Mark(bool marked = true)
         {
-            var markerTag = ConfigurationManager.AppSettings["MarkerTag"];
+           
             if (marked)
             {
                 _helper.SaveTags(ImageFilePath, new string[] { markerTag });
