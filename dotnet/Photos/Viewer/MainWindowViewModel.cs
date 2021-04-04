@@ -20,6 +20,8 @@ namespace Viewer
             set
             {
                 _imageFilePath = value;
+                _helper.RemoveTags(ImageFilePath, "ToPrint");
+                //_helper.AppendTags(ImageFilePath, "ToPrint");
                 Tags = string.Join(Environment.NewLine, _helper.GetTagsOnly(ImageFilePath));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageFilePath)));
             }
@@ -46,7 +48,7 @@ namespace Viewer
 
         public MainWindowViewModel()
         {
-            _photosFolder = @"C:\Users\henadzi.myslitski\Pictures\";
+            _photosFolder = @"C:\Users\henadzi.myslitski\Pictures\Camera Roll\";
             _photos = Directory.GetFiles(_photosFolder).Where(_ => Path.GetExtension(_) == ".jpg").ToArray();
             _helper = new CompactExifLib.ExifHelper();
             ImageFilePath = _photos[_index];

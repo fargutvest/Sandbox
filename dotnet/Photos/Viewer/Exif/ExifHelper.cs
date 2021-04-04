@@ -1,9 +1,14 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace CompactExifLib
 {
     public class ExifHelper
     {
+
+        #region Report
+
         public string GetExifReport(string imageFilePath)
         {
             var d = new ExifData(imageFilePath);
@@ -21,36 +26,6 @@ namespace CompactExifLib
             PrintIfdData(sb, ExifIfd.ThumbnailData, d);
             return sb.ToString();
         }
-
-        public string[] GetTagsOnly(string imageFilePath)
-        {
-            var d = new ExifData(imageFilePath);
-            StringBuilder sb = new StringBuilder(200000);
-            
-            d.InitTagEnumeration(ExifIfd.PrimaryData);
-            while (d.EnumerateNextTag(out var TagSpec))
-            {
-                if (TagSpec == ExifTag.XpKeywords)
-                {
-                    d.GetTagRawData(TagSpec, out var TagType, out var ValueCount, out var TagData, out var TagDataIndex);
-                    AppendInterpretedContent(sb, d, TagSpec, TagType, 1000);
-                }
-            }
-
-            return sb.ToString().TrimEnd(' ').Split(';');
-        }
-
-        private void PrintByteOrder(StringBuilder sb, ExifData d)
-        {
-            sb.Append("Byte order: ");
-            if (d.ByteOrder == ExifByteOrder.LittleEndian)
-            {
-                sb.Append("Little Endian");
-            }
-            else sb.Append("Big Endian");
-            sb.Append("\n");
-        }
-
 
         private void PrintIfdData(StringBuilder sb, ExifIfd Ifd, ExifData d)
         {
@@ -213,6 +188,77 @@ namespace CompactExifLib
                 sb.Append(s.Substring(0, CharCount - 1));
                 sb.Append('…');
             }
+        }
+
+        private void PrintByteOrder(StringBuilder sb, ExifData d)
+        {
+            sb.Append("Byte order: ");
+            if (d.ByteOrder == ExifByteOrder.LittleEndian)
+            {
+                sb.Append("Little Endian");
+            }
+            else sb.Append("Big Endian");
+            sb.Append("\n");
+        }
+
+        #endregion
+        
+        public string[] GetTagsOnly(string imageFilePath)
+        {
+            return ReadTags(imageFilePath, out var d).SplitTags();
+        }
+
+        public void AppendTags(string imageFilePath, params string[] tags)
+        {
+            OnSafe(() =>
+            {
+                var tagsStr = ReadTags(imageFilePath, out var d);
+                d.SetTagValue(ExifTag.XpKeywords, $"{tagsStr};{JoinTags(tags)}", StrCoding.Utf16Le_Byte);
+                d.Save();
+            });
+        }
+
+        public void RemoveTags(string imageFilePath, params string[] tags)
+        {
+            OnSafe(() =>
+            {
+                var readed = ReadTags(imageFilePath, out var d).SplitTags();
+                var newTags = readed.Except(tags).ToArray();
+                d.SetTagValue(ExifTag.XpKeywords, JoinTags(newTags), StrCoding.Utf16Le_Byte);
+                d.Save();
+            });
+        }
+
+        private string JoinTags(string[] tagsStr)
+        {
+            return string.Join(";", tagsStr);
+        }
+
+        private void OnSafe(Action toDo)
+        {
+            try
+            {
+                toDo?.Invoke();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private string ReadTags(string imageFilePath, out ExifData d)
+        {
+            if (string.IsNullOrWhiteSpace(imageFilePath))
+            {
+                d = null;
+                return "";
+            }
+
+            d = new ExifData(imageFilePath);
+            d.InitTagEnumeration(ExifIfd.PrimaryData);
+            d.GetTagRawData(ExifTag.XpKeywords, out var TagType, out var ValueCount, out var TagData, out var TagDataIndex);
+            d.GetTagValue(ExifTag.XpKeywords, out var tagsStr, StrCoding.Utf16Le_Byte);
+            return tagsStr;
         }
     }
 }

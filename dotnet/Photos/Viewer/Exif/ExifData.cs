@@ -78,7 +78,7 @@ namespace CompactExifLib
             {
                 CreateEmptyExifBlock();
             }
-            else
+            else if (_FileNameWithPath != null)
             {
                 using (FileStream ImageFile = File.OpenRead(_FileNameWithPath))
                 {
