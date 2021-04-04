@@ -56,18 +56,25 @@ namespace Viewer
         }
 
         private string _photosFolder;
+        public string PhotosFolder
+        {
+            get
+            {
+                return _photosFolder;
+            }
+            set
+            {
+                _photosFolder = value;
+                _photos = Directory.GetFiles(PhotosFolder).Where(_ => Path.GetExtension(_) == ".jpg").ToArray();
+                _helper = new CompactExifLib.ExifHelper();
+                ImageFilePath = _photos[_index];
+            }
+        }
+
         private string[] _photos;
         private int _index = 5;
         private CompactExifLib.ExifHelper _helper;
-
-        public MainWindowViewModel()
-        {
-            _photosFolder = @"C:\Users\henadzi.myslitski\Pictures\Camera Roll\";
-            _photos = Directory.GetFiles(_photosFolder).Where(_ => Path.GetExtension(_) == ".jpg").ToArray();
-            _helper = new CompactExifLib.ExifHelper();
-            ImageFilePath = _photos[_index];
-        }
-
+        
         public void On_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Right)

@@ -6,9 +6,14 @@
         mc:Ignorable="d"
         DataContext="{StaticResource MainWindowViewModel}"
         Title="Photo Viewer" Height="450" Width="800">
-    <Grid x:Name="MainGrid"  Focusable="True" PreviewKeyUp="On_KeyDown" Loaded="On_Loaded" Background="Gray">
+    <Grid x:Name="MainGrid"  Focusable="True" PreviewKeyUp="On_KeyDown" Loaded="On_Loaded" Background="Gray" Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <Image x:Name="Img" Margin="10" Source="{Binding TemplateImage}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <TextBox Margin="5" FontSize="20" Foreground="Yellow" Background="Transparent" Text="{Binding Info}" IsReadOnly="True"
-                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Consolas" TextWrapping="NoWrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Consolas" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+        <Button Content="Select folder" Grid.Row="1" Width="Auto" HorizontalAlignment="Left" Margin="5" Padding="5" Click="Button_Click"/>
     </Grid>
 </Window>
