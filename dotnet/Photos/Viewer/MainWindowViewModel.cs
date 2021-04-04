@@ -11,6 +11,7 @@ namespace Viewer
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private string markerTag => ConfigurationManager.AppSettings["MarkerTag"];
+        private string _cacheFileName = "cache.photos_viewer";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -97,6 +98,7 @@ namespace Viewer
                 {
                     _index = 0;
                     ImageFilePath = _photos[_index];
+                    SaveCache();
                 }
                 else
                 {
@@ -108,6 +110,11 @@ namespace Viewer
         private string[] _photos;
         private int _index;
         private CompactExifLib.ExifHelper _helper;
+
+        public MainWindowViewModel()
+        {
+            LoadCache();
+        }
 
         public void On_KeyDown(object sender, KeyEventArgs e)
         {
@@ -160,6 +167,28 @@ namespace Viewer
                 _helper.SaveTags(ImageFilePath, null, new string[] { markerTag });
             }
             ImageFilePath = _photos[_index];
+        }
+
+        private void LoadCache()
+        {
+            if (File.Exists(_cacheFileName))
+            {
+                var cache = File.ReadAllText(_cacheFileName);
+                if (string.IsNullOrEmpty(cache) == false && Directory.Exists(cache))
+                {
+                    PhotosFolder = cache;
+                }
+            }
+        }
+
+        private void SaveCache()
+        {
+            if (File.Exists(_cacheFileName))
+            {
+                File.Delete(_cacheFileName);
+            }
+
+            File.AppendAllText(_cacheFileName, PhotosFolder);
         }
     }
 }
