@@ -203,29 +203,33 @@ namespace CompactExifLib
 
         #endregion
         
-        public string[] GetTagsOnly(string imageFilePath)
+        public string[] GetTags(string imageFilePath)
         {
             return ReadTags(imageFilePath, out var d).SplitTags();
         }
 
-        public void AppendTags(string imageFilePath, params string[] tags)
+        public void SaveTags(string imageFilePath, string[] tagsToAppend = null, string[] tagsToRemove = null)
         {
             OnSafe(() =>
             {
-                var tagsStr = ReadTags(imageFilePath, out var d);
-                d.SetTagValue(ExifTag.XpKeywords, $"{tagsStr};{JoinTags(tags)}", StrCoding.Utf16Le_Byte);
-                d.Save();
-            });
-        }
+                var tags = ReadTags(imageFilePath, out var d).SplitTags().ToList();
+                bool affected = false;
 
-        public void RemoveTags(string imageFilePath, params string[] tags)
-        {
-            OnSafe(() =>
-            {
-                var readed = ReadTags(imageFilePath, out var d).SplitTags();
-                var newTags = readed.Except(tags).ToArray();
-                d.SetTagValue(ExifTag.XpKeywords, JoinTags(newTags), StrCoding.Utf16Le_Byte);
-                d.Save();
+                if (tagsToAppend?.Any() == true)
+                {
+                    tags.AddRange(tagsToAppend);
+                    affected = true;
+                }
+                if (tagsToRemove?.Any() == true)
+                {
+                    tags.RemoveAll(_ => tagsToRemove.Contains(_));
+                    affected = true;
+                }
+                if (affected)
+                {
+                    d.SetTagValue(ExifTag.XpKeywords, JoinTags(tags.ToArray()), StrCoding.Utf16Le_Byte);
+                    d.Save();
+                }
             });
         }
 
@@ -240,9 +244,9 @@ namespace CompactExifLib
             {
                 toDo?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                System.Diagnostics.Debug.WriteLine(ex);
             }
         }
 

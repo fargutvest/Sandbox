@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace Viewer
 {
@@ -20,30 +22,42 @@ namespace Viewer
             set
             {
                 _imageFilePath = value;
-                _helper.RemoveTags(ImageFilePath, "ToPrint");
-                //_helper.AppendTags(ImageFilePath, "ToPrint");
-                Tags = string.Join(Environment.NewLine, _helper.GetTagsOnly(ImageFilePath));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageFilePath)));
+                Info = $"{ImageFilePath}{Environment.NewLine}{string.Join(Environment.NewLine, _helper.GetTags(ImageFilePath))}";
+                TemplateImage = BitmapFrame.Create(new Uri(ImageFilePath), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
             }
         }
 
-        private string _tags;
-        public string Tags
+        private BitmapFrame _templateImage;
+        public BitmapFrame TemplateImage
         {
             get
             {
-                return _tags;
+                return _templateImage;
             }
             set
             {
-                _tags = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Tags)));
+                _templateImage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TemplateImage)));
+            }
+        }
+
+        private string _info;
+        public string Info
+        {
+            get
+            {
+                return _info;
+            }
+            set
+            {
+                _info = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Info)));
             }
         }
 
         private string _photosFolder;
         private string[] _photos;
-        private int _index;
+        private int _index = 5;
         private CompactExifLib.ExifHelper _helper;
 
         public MainWindowViewModel()
@@ -69,6 +83,18 @@ namespace Viewer
                 {
                     _index -= 1;
                 }
+            }
+
+            var markerTag = ConfigurationManager.AppSettings["MarkerTag"];
+
+            if (e.Key == Key.Up)
+            {
+                _helper.SaveTags(ImageFilePath, new string[] { markerTag });
+            }
+
+            if (e.Key == Key.Down)
+            {
+                _helper.SaveTags(ImageFilePath, null, new string[] { markerTag });
             }
 
             ImageFilePath = _photos[_index];
