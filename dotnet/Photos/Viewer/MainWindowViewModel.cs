@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace Viewer
+namespace PhotosViewer
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {

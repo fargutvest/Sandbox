@@ -3,7 +3,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 
-namespace Viewer
+namespace PhotosViewer
 {
     public partial class MainWindow : Window
     {
