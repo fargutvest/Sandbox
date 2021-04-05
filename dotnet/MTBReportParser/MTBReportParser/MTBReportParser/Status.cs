@@ -5,13 +5,13 @@ namespace MTBReportParser
 {
     public enum Status
     {
-        [Display(Name = "[SUCCESS]")]
+        [Display(Name = "SUCCESS")]
         Success,
-        [Display(Name = "[DECLINE]")]
+        [Display(Name = "DECLINE")]
         Decline,
-        [Display(Name = "[IN_PROGRESS]")]
+        [Display(Name = "IN_PROGRESS")]
         InProgress,
-        [Display(Name = "[UNKNOWN]")]
+        [Display(Name = "UNKNOWN")]
         Unknown
     }
 }

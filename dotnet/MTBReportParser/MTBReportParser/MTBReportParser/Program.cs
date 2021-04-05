@@ -21,7 +21,9 @@ namespace MTBReportParser
         private static int _historyCurrent = 0;
 
         private static string CacheFileName => ConfigurationManager.AppSettings[nameof(CacheFileName)];
-        private static string ReportsFolder => ConfigurationManager.AppSettings["ReportsFolder"];
+        private static string TemplatesFileName => ConfigurationManager.AppSettings[nameof(TemplatesFileName)];
+        private static string ReportsFolder => ConfigurationManager.AppSettings[nameof(ReportsFolder)];
+
 
         static void Main(string[] args)
         {
@@ -31,6 +33,7 @@ namespace MTBReportParser
             Console.InputEncoding = Encoding.Unicode;
             var operations = new List<Operation>();
             operations.AddRange(Load());
+
             foreach (var item in operations)
             {
                 if (item.Amount > 0)
@@ -39,7 +42,7 @@ namespace MTBReportParser
                 }
                 if (item.Status!= Status.Success)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
                 }
                 Console.WriteLine(item);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -48,6 +51,7 @@ namespace MTBReportParser
             var console = new ListeningUserInput(_userInputHistory);
             var help = "help";
             var exit = "exit";
+            var templates = "templates";
             while (true)
             {
                 var input = console.Listen(ref _historyCurrent);
@@ -74,6 +78,20 @@ namespace MTBReportParser
                 {
                     try
                     {
+                        if (input == templates)
+                        {
+                            var lines = File.ReadAllLines(TemplatesFileName).ToList();
+                            Console.WriteLine();
+                            for (int i = 0; i < lines.Count(); i++)
+                            {
+                                Console.WriteLine($"{i + 1}: {lines[i]}");
+                            }
+                            Console.WriteLine("Choose template:");
+                            var choose = int.Parse(Console.ReadKey().KeyChar.ToString()) - 1;
+                            var choosedTemplate = lines[choose];
+                            input = choosedTemplate;
+                        }
+
                         var scriptOptions = ScriptOptions.Default
                             .AddImports("System.Linq")
                             .AddImports("System")
@@ -88,7 +106,10 @@ namespace MTBReportParser
 
                         if (typeof(IEnumerable).IsAssignableFrom(result.GetType()))
                         {
-                            Console.WriteLine(string.Join(Environment.NewLine, (result as IEnumerable<object>).Select(_ => _.ToString())));
+                            var objectsCollection = (result as IEnumerable).Cast<object>();
+                            var stringLines = objectsCollection.Select(_ => _.ToString()).ToList();
+                            var toConsole = string.Join(Environment.NewLine, stringLines);
+                            Console.WriteLine(toConsole);
                         }
                         else
                         {
@@ -162,11 +183,11 @@ namespace MTBReportParser
                         var operationIn = operation.SelectSingleNode("//div[contains(@class, 'operation-status operation-in')]");
                         var status = GetStatus(complete, notCompleted, operationIn);
                         var title = operation.SelectNodes("//div[contains(@class, 'operation-title')]")[1].InnerText.Replace("\r\n", "");
-                        var place = operation.SelectSingleNode("//div[contains(@class, 'operation-place')]").InnerText;
+                        var place = operation.SelectSingleNode("//div[contains(@class, 'operation-place')]").InnerText.Replace("\r\n", "");
                         var time = operation.SelectSingleNode("//div[contains(@class, 'operation-time')]").InnerText;
                         var currencyNode = operation.SelectSingleNode("//div[contains(@class, 'operation-sum-currency-main')]");
                         var amount = currencyNode != null ? double.Parse($"{currencyNode.ChildNodes[0].InnerText}{currencyNode.ChildNodes[1].InnerText}".Replace(" ", "").Replace("\r\n", "").Replace(",", ".")) : 0;
-                        var currency = currencyNode?.ChildNodes[2]?.InnerText;
+                        var currency = currencyNode?.ChildNodes[2]?.InnerText.Replace(" ", "");
 
                         var dateTime = DateTime.Parse($"{date.Replace(",", "").Replace("года", "")} {time}", new CultureInfo("ru-RU"));
                         listNodes.Add(new Operation() { DateTime = dateTime, Title = title, Place = place, Amount = amount, Currency = currency, Status = status });
