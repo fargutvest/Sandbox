@@ -20,15 +20,30 @@ namespace MTBReportParser
         private static List<string> _userInputHistory = new List<string>();
         private static int _historyCurrent = 0;
 
+        private static string CacheFileName => ConfigurationManager.AppSettings[nameof(CacheFileName)];
+        private static string ReportsFolder => ConfigurationManager.AppSettings["ReportsFolder"];
+
         static void Main(string[] args)
         {
-            LoadHistory();
+            LoadCache();
             
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
             var operations = new List<Operation>();
             operations.AddRange(Load());
-            Console.WriteLine(string.Join(Environment.NewLine, operations.Where(_ => _.Status != Status.Decline).Select(_ => _.ToString())));
+            foreach (var item in operations)
+            {
+                if (item.Amount > 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                }
+                if (item.Status!= Status.Success)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                }
+                Console.WriteLine(item);
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
 
             var console = new ListeningUserInput(_userInputHistory);
             var help = "help";
@@ -59,7 +74,13 @@ namespace MTBReportParser
                 {
                     try
                     {
-                        var scriptOptions = ScriptOptions.Default.AddImports("System.Linq").AddImports("System").AddReferences(typeof(Enumerable).Assembly);
+                        var scriptOptions = ScriptOptions.Default
+                            .AddImports("System.Linq")
+                            .AddImports("System")
+                            .AddImports("MTBReportParser")
+                            .AddReferences(typeof(Enumerable).Assembly)
+                            .AddReferences(typeof(Status).Assembly);
+
                         var result = CSharpScript.EvaluateAsync(
                                    input,
                                    scriptOptions, globals: new Global() { _ = operations }).Result;
@@ -73,18 +94,15 @@ namespace MTBReportParser
                         {
                             Console.WriteLine(result);
                         }
-
                     }
                     catch (Exception ex)
                     {
-                        _userInputHistory.Remove(input);
-                        _historyCurrent = _userInputHistory.Count();
                         Console.WriteLine(ex.Message);
                         Console.WriteLine($"Input '{help}' to get more info.");
                     }
+                    SaveCache();
                 }
             }
-            SaveHistory();
         }
 
       
@@ -119,7 +137,7 @@ namespace MTBReportParser
         private static List<Operation> Load()
         {
             var result = new List<Operation>();
-            var files = Directory.GetFiles(ConfigurationManager.AppSettings["Folder"]);
+            var files = Directory.GetFiles(ReportsFolder);
 
             for (int i = 0; i < files.Length; i++)
             {
@@ -143,11 +161,11 @@ namespace MTBReportParser
                         var notCompleted = operation.SelectSingleNode("//div[contains(@class, 'operation-status operation-not-completed')]");
                         var operationIn = operation.SelectSingleNode("//div[contains(@class, 'operation-status operation-in')]");
                         var status = GetStatus(complete, notCompleted, operationIn);
-                        var title = operation.SelectNodes("//div[contains(@class, 'operation-title')]")[1].InnerText;
+                        var title = operation.SelectNodes("//div[contains(@class, 'operation-title')]")[1].InnerText.Replace("\r\n", "");
                         var place = operation.SelectSingleNode("//div[contains(@class, 'operation-place')]").InnerText;
                         var time = operation.SelectSingleNode("//div[contains(@class, 'operation-time')]").InnerText;
                         var currencyNode = operation.SelectSingleNode("//div[contains(@class, 'operation-sum-currency-main')]");
-                        var amount = currencyNode != null ? double.Parse($"{currencyNode.ChildNodes[0].InnerText}{currencyNode.ChildNodes[1].InnerText}".Replace(" ", "").Replace(",", ".")) : 0;
+                        var amount = currencyNode != null ? double.Parse($"{currencyNode.ChildNodes[0].InnerText}{currencyNode.ChildNodes[1].InnerText}".Replace(" ", "").Replace("\r\n", "").Replace(",", ".")) : 0;
                         var currency = currencyNode?.ChildNodes[2]?.InnerText;
 
                         var dateTime = DateTime.Parse($"{date.Replace(",", "").Replace("года", "")} {time}", new CultureInfo("ru-RU"));
@@ -163,16 +181,20 @@ namespace MTBReportParser
             return result;
         }
 
-        private static void SaveHistory()
+        private static void SaveCache()
         {
-            File.WriteAllLines("userInput.txt", _userInputHistory);
+            if (File.Exists(CacheFileName))
+            {
+                File.Delete(CacheFileName);
+            }
+            File.WriteAllLines(CacheFileName, _userInputHistory.Distinct());
         }
 
-        private static void LoadHistory()
+        private static void LoadCache()
         {
             try
             {
-                _userInputHistory = File.ReadAllLines("userInput.txt").ToList();
+                _userInputHistory = File.ReadAllLines(CacheFileName).ToList();
                 _historyCurrent = _userInputHistory.Count();
             }
             catch 
