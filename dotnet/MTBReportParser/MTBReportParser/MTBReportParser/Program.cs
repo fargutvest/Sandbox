@@ -62,10 +62,12 @@ namespace MTBReportParser
                     ;
                     Console.WriteLine(
                         $"Use '_' to access collection." +
+                        $"{Environment.NewLine}Use 'templates YYYY.mm.dd YYYY.mm.dd' to access predefined templates. Example: 'templates 2021.03.01 2021.04.01'" +
                         $"{Environment.NewLine}Last item as json:" +
                         $"{Environment.NewLine}{JsonConvert.SerializeObject(operations.Last(), Formatting.Indented)}" +
                         $"{Environment.NewLine}Types:" +
-                        $"{Environment.NewLine}{string.Join(Environment.NewLine, typeof(Operation).GetProperties(System.Reflection.BindingFlags.Public| System.Reflection.BindingFlags.Instance).Select(_ => $"{_.PropertyType} {_.Name}"))}");
+                        $"{Environment.NewLine}{string.Join(Environment.NewLine, typeof(Operation).GetProperties(System.Reflection.BindingFlags.Public| System.Reflection.BindingFlags.Instance).Select(_ => $"{_.PropertyType} {_.Name}"))}" +
+                        $"{Environment.NewLine}{Environment.NewLine}To get templates input 'templates YYYY.mm.dd YYYY.mm.dd' Example: 'templates 2021.03.01 2021.04.01'");
                     Console.WriteLine($"{new string('*', Console.WindowWidth-1)}{Environment.NewLine}");
                 }
                 else if (input == exit)
@@ -78,10 +80,9 @@ namespace MTBReportParser
                 {
                     try
                     {
-                        if (input == templates)
+                        if (input.Contains(templates))
                         {
                             var lines = File.ReadAllLines(TemplatesFileName).ToList();
-                            Console.WriteLine();
                             for (int i = 0; i < lines.Count(); i++)
                             {
                                 Console.WriteLine($"{i + 1}: {lines[i]}");
@@ -89,7 +90,16 @@ namespace MTBReportParser
                             Console.WriteLine("Choose template:");
                             var choose = int.Parse(Console.ReadKey().KeyChar.ToString()) - 1;
                             var choosedTemplate = lines[choose];
+                            if (choosedTemplate.Contains("%FROM%"))
+                            {
+                                choosedTemplate = choosedTemplate.Replace("%FROM%", $"new DateTime({input.Split(' ')[1].Replace('.', ',')})");
+                            }
+                            if (choosedTemplate.Contains("%TO%"))
+                            {
+                                choosedTemplate = choosedTemplate.Replace("%TO%", $"new DateTime({input.Split(' ')[2].Replace('.', ',')})");
+                            }
                             input = choosedTemplate;
+                            Console.WriteLine();
                         }
 
                         var scriptOptions = ScriptOptions.Default
