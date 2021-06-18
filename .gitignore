@@ -216,3 +216,6 @@ $RECYCLE.BIN/
 *.msp
 
 # Other files
+# out/
+# *.swp
+# *.idea/
