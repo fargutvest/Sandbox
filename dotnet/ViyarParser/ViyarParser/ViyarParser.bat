@@ -1,0 +1,1 @@
+ViyarParser.exe "белый"
