@@ -12,6 +12,7 @@ namespace ListenCursor
     {
         private int _itemHeight = 20;
         private int _itemIndent = 10;
+
         public ContextMenuResult Result { get; }
 
         public ContextMenuForm()
@@ -79,6 +80,7 @@ namespace ListenCursor
             }
         }
 
+
         private void AddButtons(List<Control> controls, AutomationElement uiElement)
         {
             var buttonOk = new Button()
@@ -100,13 +102,6 @@ namespace ListenCursor
                 Text = $"End",
                 AutoSize = true,
                 Location = new Point(buttonOk.Width + _itemIndent + buttonCancel.Width, controls.Count * _itemHeight + _itemIndent)
-            };
-
-            var buttonEnd = new Button()
-            {
-                Text = $"End",
-                AutoSize = true,
-                Location = new Point(buttonOk.Width + itemIndent + buttonCancel.Width, controls.Count * itemHeight + itemIndent)
             };
 
             buttonOk.Click += (sender, e) =>
@@ -143,41 +138,6 @@ namespace ListenCursor
             controls.Add(buttonOk);
             controls.Add(buttonCancel);
             controls.Add(buttonEnd);
-        }
-
-
-        private Process Detect(int pid)
-        {
-            var allProcesses = Process.GetProcesses();
-            AutomationElement root = null;
-            foreach (var item in allProcesses)
-            {
-                try
-                {
-                    if (item.Id == pid)
-                    {
-                        return item;
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-
-            return null;
-        }
-
-        private T OnSafe<T>(Func<T> toDo) where T: class
-        {
-            try
-            {
-                return toDo?.Invoke();
-            }
-            catch (Exception ex)
-            {
-            }
-            return default(T);
         }
 
         private Process Detect(int pid)
