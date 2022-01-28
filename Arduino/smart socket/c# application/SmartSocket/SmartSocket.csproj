@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6BD51CA2-BD70-4287-93C8-586F4F7B9E76}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>HelloArduinoSerialPort</RootNamespace>
-    <AssemblyName>HelloArduinoSerialPort</AssemblyName>
+    <RootNamespace>SmartSocket</RootNamespace>
+    <AssemblyName>SmartSocket</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

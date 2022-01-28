@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.IO.Ports;
 
-namespace HelloArduinoSerialPort
+namespace SmartSocket
 {
     class Program
     {
