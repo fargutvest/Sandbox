@@ -1,0 +1,4 @@
+The main idea to control the acoustic system (turinig it on of off) from pc by miuse clicking.
+There are 2 projects: arduino scketch & c# application.
+Arduino listening the serial port & contrlling digital output pin. This pin connected to power element which controlling the smart socket.
+On pc side just need to launch c# application my double mise click. The app will send to arduino command.
