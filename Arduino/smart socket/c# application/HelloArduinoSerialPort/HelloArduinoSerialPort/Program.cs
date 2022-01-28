@@ -1,4 +1,5 @@
-﻿using System.IO.Ports;
+﻿using System.Configuration;
+using System.IO.Ports;
 
 namespace HelloArduinoSerialPort
 {
@@ -6,7 +7,8 @@ namespace HelloArduinoSerialPort
     {
         static void Main(string[] args)
         {
-            using (var port = new SerialPort() { BaudRate = 9600, PortName = "COM10" })
+            var portName = ConfigurationManager.AppSettings["portName"];
+            using (var port = new SerialPort() { BaudRate = 9600, PortName = portName })
             {
                 port.Open();
                 int hadRead = port.ReadByte();
