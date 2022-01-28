@@ -10,12 +10,6 @@ void loop() {
   while(Serial.available() == 0){
    delay(10);
   }
-  pinLevel = Serial.read();  
-  if (pinLevel > 0){
-  digitalWrite(13, HIGH);  
-  }
-  else{
-    digitalWrite(13, LOW);
-  }
-  
+  pinLevel = Serial.read();
+  digitalWrite(13, pinLevel);    
 }
