@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Base.cs" />
     <Compile Include="Chapter2.cs" />
+    <Compile Include="Chapter3.cs" />
     <Compile Include="IChapter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

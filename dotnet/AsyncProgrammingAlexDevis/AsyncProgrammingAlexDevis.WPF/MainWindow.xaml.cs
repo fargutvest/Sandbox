@@ -18,7 +18,7 @@ namespace AsyncProgrammingAlexDevis.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _chapter = new Chapter2(m_WrapPanel);
+            _chapter = new Chapter3(m_WrapPanel);
 
             foreach (var item in _domains)
             {
