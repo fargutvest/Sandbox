@@ -18,7 +18,7 @@ namespace AsyncProgrammingAlexDevis.WPF
         {
             var chapter = new Chapter7(m_WrapPanel);
 
-            chapter.OnClick(_domains);
+            chapter.OnClickAndWhenAny(_domains);
         }
     }
 }

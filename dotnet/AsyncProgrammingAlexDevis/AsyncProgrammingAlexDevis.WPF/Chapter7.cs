@@ -23,7 +23,27 @@ namespace AsyncProgrammingAlexDevis.WPF
                 AddFavicon(eachImage);
             }
         }
-        
+
+        public async void OnClickAndWhenAny(string[] s_Domains)
+        {
+            IEnumerable<Task<Image>> tasks = s_Domains.Select(GetFavicon);
+            tasks = tasks.ToList();
+            Task<Task<Image>> anyTask = Task.WhenAny(tasks);
+            Task<Image> winner = await anyTask;
+            Image image = await winner;
+
+            AddFavicon(image);
+
+            foreach (Task<Image> eachTask in tasks)
+            {
+                if (eachTask != winner)
+                {
+                    var eachImage = await eachTask;
+                    AddFavicon(eachImage);
+                }
+            }
+        }
+
         private async Task<Image> GetFavicon(string domain)
         {
             WebClient webClient = new WebClient();
