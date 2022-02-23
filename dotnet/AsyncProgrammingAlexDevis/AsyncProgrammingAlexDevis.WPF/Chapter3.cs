@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace AsyncProgrammingAlexDevis.WPF
 {
-    public class Chapter3 : Base, IChapter
+    public class Chapter3 : Base
     {
         public Chapter3(WrapPanel wrapPanel) : base(wrapPanel) { }
 

@@ -4,7 +4,7 @@ using Image = System.Windows.Controls.Image;
 
 namespace AsyncProgrammingAlexDevis.WPF
 {
-    public class Chapter2 : Base,  IChapter
+    public class Chapter2 : Base
     {
         public Chapter2(WrapPanel wrapPanel) : base(wrapPanel) { }
    

@@ -8,9 +8,7 @@ namespace AsyncProgrammingAlexDevis.WPF
     public partial class MainWindow : Window
     {
         private string[] _domains = { "google.com", "microsoft.com", "www.yahoo.com", "youtube.com", "www.facebook.com", "vk.com", "bing.com", "amazon.com", "yandex.by", "instagram.com" };
-
-        private IChapter _chapter;
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -18,12 +16,9 @@ namespace AsyncProgrammingAlexDevis.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _chapter = new Chapter3(m_WrapPanel);
+            var chapter = new Chapter7(m_WrapPanel);
 
-            foreach (var item in _domains)
-            {
-                _chapter.AddAFavicon(item);
-            }
+            chapter.OnClick(_domains);
         }
     }
 }
