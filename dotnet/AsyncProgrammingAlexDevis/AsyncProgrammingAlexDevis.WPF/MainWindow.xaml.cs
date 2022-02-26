@@ -16,9 +16,9 @@ namespace AsyncProgrammingAlexDevis.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var chapter = new Chapter7(m_WrapPanel);
+            var chapter = new Chapter9(m_WrapPanel);
 
-            chapter.OnClickAndWhenAny(_domains);
+            chapter.OnClick(_domains);
         }
     }
 }
