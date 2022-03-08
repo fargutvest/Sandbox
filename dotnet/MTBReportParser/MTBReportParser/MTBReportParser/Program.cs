@@ -196,7 +196,7 @@ namespace MTBReportParser
                         var place = operation.SelectSingleNode("//div[contains(@class, 'operation-place')]").InnerText.Replace("\r\n", "");
                         var time = operation.SelectSingleNode("//div[contains(@class, 'operation-time')]").InnerText;
                         var currencyNode = operation.SelectSingleNode("//div[contains(@class, 'operation-sum-currency-main')]");
-                        var amount = currencyNode != null ? double.Parse($"{currencyNode.ChildNodes[0].InnerText}{currencyNode.ChildNodes[1].InnerText}".Replace(" ", "").Replace("\r\n", "").Replace(",", ".")) : 0;
+                        var amount = currencyNode != null ? double.Parse($"{currencyNode.ChildNodes[0].InnerText}{currencyNode.ChildNodes[1].InnerText}".Replace(" ", "").Replace("\r\n", "").Replace(".", ",")) : 0;
                         var currency = currencyNode?.ChildNodes[2]?.InnerText.Replace(" ", "");
 
                         var dateTime = DateTime.Parse($"{date.Replace(",", "").Replace("года", "")} {time}", new CultureInfo("ru-RU"));

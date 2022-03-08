@@ -19,7 +19,7 @@ namespace MTBReportParser
         public override string ToString()
         {
             var name = (typeof(Status).GetMember(Status.ToString())[0].GetCustomAttributes(typeof(DisplayAttribute), false)[0] as DisplayAttribute).Name;
-            return $"{DateTime.ToString("dd MMMM (dddd) yyyy", new CultureInfo("ru-RU"))} {GetDisplayName(Status)} {Amount.ToString()} {Currency} {Title} {Place}";
+            return $"{DateTime.ToString("dd MMMM (dddd) yyyy hh:mm:ss", new CultureInfo("ru-RU"))} {GetDisplayName(Status)} {Amount.ToString()} {Currency} {Title} {Place}";
         }
        
         public Status Status { get; set; }
