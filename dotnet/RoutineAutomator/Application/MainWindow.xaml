@@ -1,0 +1,50 @@
+﻿<Window x:Class="Application.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:convertors="clr-namespace:Application.Convertors"
+        xmlns:local="clr-namespace:Application"
+        mc:Ignorable="d"
+        DataContext="{StaticResource MainViewModel}"
+        Height="{Binding Height}" Width="400">
+    <Window.Resources>
+        <convertors:ConcatenateStringsConverter x:Key="ConcatenateStringsConverter"/>
+    </Window.Resources>
+    <Window.Title>
+        <MultiBinding StringFormat="{}{0} ({1})">
+            <Binding Path="SelectedCredentials.InstanceId" />
+            <Binding Path="SelectedCredentials.Title" />
+        </MultiBinding>
+    </Window.Title>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Name="ButtonsPanel">
+            <ComboBox ItemsSource="{Binding Path=CredentialsCollection}" SelectedItem="{Binding SelectedCredentials}" HorizontalContentAlignment="Center" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                             <Run Text="{Binding InstanceId}"/>
+                             <Run Text=" (" />
+                             <Run Text="{Binding Title}" />
+                             <Run Text=")" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ItemsControl ItemsSource="{Binding BusinessFlows}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Command="{Binding Path=DataContext.ClickFlowItem, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}" Content="{Binding Title}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" local:ScrollViewerHelper.AutoScroll="true">
+            <TextBox Text="{Binding ReportOut}"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
