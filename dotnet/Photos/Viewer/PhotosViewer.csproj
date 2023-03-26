@@ -58,6 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileInfoToStringConverter.cs" />
+    <Compile Include="FileInfoToImageConverter.cs" />
+    <Compile Include="Duplicates\DuplicatesCollection.cs" />
+    <Compile Include="Duplicates\FileMetadata.cs" />
+    <Compile Include="Duplicates\Filter.cs" />
+    <Compile Include="Duplicates\NameAndSizeKey.cs" />
+    <Page Include="DuplicatesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +76,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Duplicates\DuplicatesHelper.cs" />
     <Compile Include="Exif\ExifByteOrder.cs" />
     <Compile Include="Exif\ExifData.cs" />
     <Compile Include="Exif\ExifDateFormat.cs" />
@@ -83,12 +94,16 @@
     <Compile Include="Exif\StrCoding.cs" />
     <Compile Include="Exif\StrCodingFormat.cs" />
     <Compile Include="Exif\TagsStrExtensions.cs" />
+    <Compile Include="DuplicatesWindow.xaml.cs">
+      <DependentUpon>DuplicatesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DupicatesWindowViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

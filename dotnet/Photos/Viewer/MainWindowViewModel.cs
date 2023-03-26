@@ -53,7 +53,7 @@ namespace PhotosViewer
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TemplateImage)));
             }
         }
-
+        
         private bool _marked;
         public bool Marked
         {
@@ -167,6 +167,12 @@ namespace PhotosViewer
                 _helper.SaveTags(ImageFilePath, null, new string[] { markerTag });
             }
             ImageFilePath = _photos[_index];
+        }
+
+        public void Duplicates()
+        {
+            var modalWindow = new DuplicatesWindow();
+            modalWindow.ShowDialog();
         }
 
         private void LoadCache()

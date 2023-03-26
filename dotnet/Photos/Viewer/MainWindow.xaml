@@ -39,6 +39,7 @@
                 <Button Content="Left"  Width="100" HorizontalAlignment="Left" Margin="5,5,5,5" Padding="5" Click="LeftClick"/>
                 <Button Content="Right"  Width="100" HorizontalAlignment="Left" Margin="5,5,5,5" Padding="5" Click="RightClick"/>
                 <ToggleButton Style="{StaticResource MarkStyle}"  Width="60" HorizontalAlignment="Left" Margin="50,5,5,5" Padding="5" Click="MarkClick" IsChecked="{Binding Marked, Mode=TwoWay}"/>
+                <Button Content="Duplicates Search" Width="100" HorizontalAlignment="Left" Margin=" 50, 5,5,5" Click="DuplicatesClick"/>
             </WrapPanel>
         </WrapPanel>
         

@@ -47,5 +47,10 @@ namespace PhotosViewer
         {
             ViewModel.Mark((sender as ToggleButton).IsChecked == true);
         }
+
+        private void DuplicatesClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Duplicates();
+        }
     }
 }
