@@ -12,5 +12,5 @@ void loop() {
   } 
   digitalWrite(13, pinLevel); 
   Serial.write(pinLevel);
-  delay(1000);
+  delay(500);
 }
