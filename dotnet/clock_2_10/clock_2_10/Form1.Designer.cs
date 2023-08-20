@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace Clock_2_10
 {
     partial class Form1
     {
@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.hourLb = new System.Windows.Forms.Label();
+            this.hour1Lb = new System.Windows.Forms.Label();
+            this.secLb = new System.Windows.Forms.Label();
+            this.lin1Lb = new System.Windows.Forms.Label();
+            this.minLb = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.timeLb = new System.Windows.Forms.Label();
+            this.sec1Lb = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -51,55 +51,55 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // hourLb
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 42);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "0000";
+            this.hourLb.AutoSize = true;
+            this.hourLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.hourLb.Location = new System.Drawing.Point(12, 9);
+            this.hourLb.Name = "hourLb";
+            this.hourLb.Size = new System.Drawing.Size(106, 42);
+            this.hourLb.TabIndex = 1;
+            this.hourLb.Text = "0000";
             // 
-            // label2
+            // hour1Lb
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(124, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 42);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "0000";
+            this.hour1Lb.AutoSize = true;
+            this.hour1Lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.hour1Lb.Location = new System.Drawing.Point(124, 9);
+            this.hour1Lb.Name = "hour1Lb";
+            this.hour1Lb.Size = new System.Drawing.Size(106, 42);
+            this.hour1Lb.TabIndex = 2;
+            this.hour1Lb.Text = "0000";
             // 
-            // label5
+            // secLb
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(472, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 42);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "0000";
+            this.secLb.AutoSize = true;
+            this.secLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.secLb.Location = new System.Drawing.Point(472, 9);
+            this.secLb.Name = "secLb";
+            this.secLb.Size = new System.Drawing.Size(106, 42);
+            this.secLb.TabIndex = 5;
+            this.secLb.Text = "0000";
             // 
-            // label4
+            // lin1Lb
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(354, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 42);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "0000";
+            this.lin1Lb.AutoSize = true;
+            this.lin1Lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lin1Lb.Location = new System.Drawing.Point(354, 9);
+            this.lin1Lb.Name = "lin1Lb";
+            this.lin1Lb.Size = new System.Drawing.Size(106, 42);
+            this.lin1Lb.TabIndex = 4;
+            this.lin1Lb.Text = "0000";
             // 
-            // label3
+            // minLb
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(242, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 42);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "0000";
+            this.minLb.AutoSize = true;
+            this.minLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.minLb.Location = new System.Drawing.Point(242, 9);
+            this.minLb.Name = "minLb";
+            this.minLb.Size = new System.Drawing.Size(106, 42);
+            this.minLb.TabIndex = 3;
+            this.minLb.Text = "0000";
             // 
             // label8
             // 
@@ -111,25 +111,25 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "0";
             // 
-            // label7
+            // timeLb
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(328, 63);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 42);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "0";
+            this.timeLb.AutoSize = true;
+            this.timeLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeLb.Location = new System.Drawing.Point(282, 74);
+            this.timeLb.Name = "timeLb";
+            this.timeLb.Size = new System.Drawing.Size(40, 42);
+            this.timeLb.TabIndex = 9;
+            this.timeLb.Text = "0";
             // 
-            // label6
+            // sec1Lb
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(584, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 42);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "0000";
+            this.sec1Lb.AutoSize = true;
+            this.sec1Lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sec1Lb.Location = new System.Drawing.Point(584, 9);
+            this.sec1Lb.Name = "sec1Lb";
+            this.sec1Lb.Size = new System.Drawing.Size(106, 42);
+            this.sec1Lb.TabIndex = 8;
+            this.sec1Lb.Text = "0000";
             // 
             // label12
             // 
@@ -265,15 +265,16 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.timeLb);
+            this.Controls.Add(this.sec1Lb);
+            this.Controls.Add(this.secLb);
+            this.Controls.Add(this.lin1Lb);
+            this.Controls.Add(this.minLb);
+            this.Controls.Add(this.hour1Lb);
+            this.Controls.Add(this.hourLb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Form1";
+            this.Text = "clock_2_10";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,14 +282,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label hourLb;
+        private System.Windows.Forms.Label hour1Lb;
+        private System.Windows.Forms.Label secLb;
+        private System.Windows.Forms.Label lin1Lb;
+        private System.Windows.Forms.Label minLb;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label timeLb;
+        private System.Windows.Forms.Label sec1Lb;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
