@@ -1,0 +1,7 @@
+to launch: dotnet watch
+to migrate db: dotnet ef database update
+install postgres sql via docker-compose: https://www.youtube.com/watch?v=2vwwwA4AEyk&t=298s
+to setup docker image with postgressql: 
+cd docker  
+docker-compose up --build
+ 
