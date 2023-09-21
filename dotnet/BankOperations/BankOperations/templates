@@ -1,0 +1,2 @@
+_.Where(_ => _.DateTime >= %FROM% && _.DateTime < %TO% && _.Amount < 0 && _.Status == Status.Success).GroupBy(_ => _.Place).ToList().ToDictionary(_ => _.Key, _ => $" ({string.Join("; ", _.Select(x => $"{x.Title} {x.Amount}"))}) {_.Sum(x => x.Amount)}").Select(_ => $"[{_.Key}]: {_.Value}").ToList()
+_
