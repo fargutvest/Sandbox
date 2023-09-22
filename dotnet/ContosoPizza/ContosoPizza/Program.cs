@@ -1,4 +1,5 @@
 using ContosoPizza.Data;
+using ContosoPizza.Hubs;
 using ContosoPizza.Services;
 
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
 var connectionString = "Host=127.0.0.1;Username=admin;Password=root;Database=postgres";
 builder.Services.AddDbContext<PizzaContext>(options =>
@@ -32,5 +34,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

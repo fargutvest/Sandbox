@@ -3,8 +3,9 @@
 @{
     ViewData["Title"] = "CPU & Memory consumption";
 }
-<p> @(Model.Cpu)</p>
-<p> @(Model.Ram)</p>
+<p id="cpu"></p>
+<p id="ram"></p>
 
-
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
 
