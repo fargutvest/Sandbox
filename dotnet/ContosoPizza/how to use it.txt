@@ -4,6 +4,5 @@ install postgres sql via docker-compose: https://www.youtube.com/watch?v=2vwwwA4
 to setup docker image with postgressql: 
 cd docker  
 docker-compose up --build
-Installing WSL on another drive in Windows: https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a
 to backup postgres docker: docker exec -t <your db container> pg_dumpall -c -U <your user name> > dump.sql (docker exec -t db_auth pg_dumpall -c -U admin > dump.sql)
 to restore from backup: cat dump.sql | docker exec -i <your db container> psql -U <your user name> (cat dump.sql | docker exec -i db_auth psql -U admin)
