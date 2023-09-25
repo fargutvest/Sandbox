@@ -1,0 +1,2 @@
+Build and add path to preview.exe file (with no specifying file name) to Environmant variables path, restart pc.
+In command line (cmd or powershell): preview <extension_of_your_file> (preview .yml)
