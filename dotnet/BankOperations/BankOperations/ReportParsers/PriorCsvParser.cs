@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
+using System.Linq;
 
 namespace BankOperations.ReportParsers
 {
@@ -60,8 +61,9 @@ namespace BankOperations.ReportParsers
                     {
                         var splitted = currentRow.Split(';');
                         var operation = new Operation();
-                        operation.DateTime = DateTime.Parse(splitted[0]);
+                        operation.DateTime = DateTime.ParseExact(splitted[0], "dd.MM.yyyy HH:mm:ss", null);
                         operation.Title = splitted[1];
+                        splitted[2] = splitted[2].Replace(',', '.').Replace(" ", "");
                         operation.Amount = double.Parse(splitted[2]);
                         operation.Currency = splitted[3];
                         operation.Place = splitted[8];
@@ -76,7 +78,7 @@ namespace BankOperations.ReportParsers
 
             }
 
-            return result;
+            return result.OrderBy(_=>_.DateTime).ToList();
         }
     }
 }
