@@ -2,7 +2,7 @@
 
 namespace RPA
 {
-    internal class ExectutionContext
+    public class ExectutionContext
     {
         private ExectutionContext() { }
 

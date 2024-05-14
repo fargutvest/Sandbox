@@ -1,9 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using RPA.Report;
 
 namespace RPA.Flows
 {
-    internal class LaunchFlow : BaseFlow
+    public class LaunchFlow : BaseFlow
     {
         private string _parameters;
 
@@ -17,7 +19,7 @@ namespace RPA.Flows
             var info = new ProcessStartInfo();
             info.Arguments = _parameters;
             info.FileName = context.ExecutableFilePath;
-            Process.Start(info);
+            Process process = Process.Start(info);
             var root = AutomationProvider.GetRootAutomationElement(context);
             context.AutomationElement = root;
         }

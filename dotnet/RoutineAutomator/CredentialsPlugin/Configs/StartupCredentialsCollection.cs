@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Application
+namespace CredentialsPlugin
 {
     public class StartupCredentialsCollection : ConfigurationSection
     {

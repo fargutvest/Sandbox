@@ -3,7 +3,7 @@ using RPA.Report;
 
 namespace RPA.Flows
 {
-    internal class ClickButtonFlow : BaseFlow
+    public class ClickButtonFlow : BaseFlow
     {
         private Locator _btnLocator;
         private int _timeoutMilliseconds;

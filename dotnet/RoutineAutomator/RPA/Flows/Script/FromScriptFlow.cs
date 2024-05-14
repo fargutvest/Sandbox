@@ -5,7 +5,7 @@ using System.IO;
 
 namespace RPA.Flows.Script
 {
-    internal class FromScriptFlow : BaseFlow
+    public class FromScriptFlow : BaseFlow
     {
         private string _scriptPath;
 

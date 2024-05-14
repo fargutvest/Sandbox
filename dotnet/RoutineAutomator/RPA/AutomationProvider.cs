@@ -1,14 +1,62 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Management;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using RPA.Report;
 
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Api;
+
+namespace Api
+{
+
+    public class WinStruct
+    {
+        public string WinTitle { get; set; }
+        public int MainWindowHandle { get; set; }
+    }
+
+    public class ApiDef
+    {
+        private delegate bool CallBackPtr(int hwnd, int lParam);
+        private static CallBackPtr callBackPtr = Callback;
+        private static List<WinStruct> _WinStructList = new List<WinStruct>();
+
+        [DllImport("User32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool EnumWindows(CallBackPtr lpEnumFunc, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+        private static bool Callback(int hWnd, int lparam)
+        {
+            StringBuilder sb = new StringBuilder(256);
+            int res = GetWindowText((IntPtr)hWnd, sb, 256);
+            _WinStructList.Add(new WinStruct { MainWindowHandle = hWnd, WinTitle = sb.ToString() });
+            return true;
+        }
+
+        public static List<WinStruct> GetWindows()
+        {
+            _WinStructList = new List<WinStruct>();
+            EnumWindows(callBackPtr, IntPtr.Zero);
+            return _WinStructList;
+        }
+
+    }
+}
+
 namespace RPA
 {
-    internal class AutomationProvider
+    public class AutomationProvider
     {
         private IReport _report;
         private string _findingTemplate = "Finding {0}";
@@ -210,14 +258,20 @@ namespace RPA
 
         private AutomationElement FromFilePath(ExectutionContext context)
         {
-            AutomationElement root = null;
+            List<WinStruct> windows = Api.ApiDef.GetWindows();
+
+            WinStruct winStruct = windows.FirstOrDefault(_ => _.WinTitle.Contains("WindowsCalculator"));
+            AutomationElement root = AutomationElement.FromHandle(new IntPtr(winStruct.MainWindowHandle));
+            return root;
+            string processName = Path.GetFileNameWithoutExtension(context.ExecutableFilePath);
+           // AutomationElement root = null;
             var allProcesses = Process.GetProcesses();
-            var map = allProcesses.Select(_ => _.MainWindowTitle).ToList();
             foreach (var item in allProcesses)
             {
                 try
                 {
-                    if (item.MainModule.FileName == context.ExecutableFilePath)
+                    //string processFilePath = GetMainModuleFilepath(item.Id);
+                    if (item.ProcessName == processName)
                     {
                         root = AutomationElement.FromHandle(item.MainWindowHandle);
                         break;
@@ -236,6 +290,26 @@ namespace RPA
             }
 
             return root;
+        }
+
+        
+        private string GetMainModuleFilepath(int processId)
+        {
+            //https://stackoverflow.com/questions/9501771/how-to-avoid-a-win32-exception-when-accessing-process-mainmodule-filename-in-c
+
+            string wmiQueryString = "SELECT ProcessId, ExecutablePath FROM Win32_Process WHERE ProcessId = " + processId;
+            using (var searcher = new ManagementObjectSearcher(wmiQueryString))
+            {
+                using (var results = searcher.Get())
+                {
+                    ManagementObject mo = results.Cast<ManagementObject>().FirstOrDefault();
+                    if (mo != null)
+                    {
+                        return (string)mo["ExecutablePath"];
+                    }
+                }
+            }
+            return null;
         }
 
         private AutomationElement FindChildAutomationElement(AutomationElement automationElement, Condition condition, int timeoutMilliseconds = 0)
@@ -359,5 +433,6 @@ namespace RPA
         }
 
         #endregion
+
     }
 }

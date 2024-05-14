@@ -1,33 +1,21 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Windows.Data;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using RPA.Report;
+using System.IO;
+using System.Collections.Generic;
+using RPA;
 
 namespace Application.Models
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private CredentialsElement _selectedCredentials;
-        public CredentialsElement SelectedCredentials
-        {
-            get { return _selectedCredentials; }
-            set
-            {
-                _selectedCredentials = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCredentials)));
-            }
-        }
-
         private IReport _report => new Report(() => ReportOut, (text) => ReportOut = text);
 
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public CollectionView CredentialsCollection { get; }
 
         public ObservableCollection<BusinessFlowItemModel> BusinessFlows { get; set; }
 
@@ -47,31 +35,48 @@ namespace Application.Models
 
         public MainViewModel()
         {
-            var business = new Start(_report);
+            BusinessFlows = new ObservableCollection<BusinessFlowItemModel>(LoadPlugins());
+            Height = 19.96 * (BusinessFlows.Count + 1) + 40 + 20;
+        }
 
-            var allCredentials = Settings.GetAllCredentials();
-            CredentialsCollection = new CollectionView(allCredentials);
-            SelectedCredentials = Settings.SelectCredentials();
-            var hiddenButtonsDisplayNames = Settings.GetAllHiddenButtons().Cast<HiddenButtonElement>().Select(_=>_.Id).ToList();
+        private List<BusinessFlowItemModel> LoadPlugins()
+        {
+            string appDirectory = Directory.GetCurrentDirectory();
+            IEnumerable<TypeInfo> pluginsTypes = Directory.EnumerateFiles(appDirectory)
+                .Where(_ => Path.GetExtension(_) == ".dll")
+                .Select(_ => Assembly.LoadFile(_))
+                .SelectMany(_ => _.DefinedTypes)
+                .Where(_ => _.IsClass)
+                .Where(_ => typeof(IPlugin).IsAssignableFrom(_));
+                
 
-            BusinessFlows = new ObservableCollection<BusinessFlowItemModel>();
-            var methods = typeof(Start).GetMethods(BindingFlags.Instance | BindingFlags.Public).Where(_ => _.ReturnType == typeof(void)).ToList();
-            foreach (var item in methods)
+            List<BusinessFlowItemModel> businessFlows = new List<BusinessFlowItemModel>();
+
+            foreach (TypeInfo pluginType in pluginsTypes)
             {
-                var displayName = item.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
-                if (hiddenButtonsDisplayNames.Contains(displayName) == false)
+                object plugin = Activator.CreateInstance(pluginType, new object[] { _report });
+                var methods = pluginType.GetMethods(BindingFlags.Instance | BindingFlags.Public)
+                    .Where(_ => _.ReturnType == typeof(void)).ToList();
+
+                foreach (var method in methods)
                 {
-                    var parameters = item.GetParameters();
+                    var displayName = method.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
+                    var parameters = method.GetParameters();
                     var flowItem = new BusinessFlowItemModel()
                     {
-                        Title = displayName ?? item.Name,
-                        Invokation = () => item.Invoke(business, parameters.Select(p => new object[] { _report, SelectedCredentials }.FirstOrDefault(_ => p.ParameterType.IsAssignableFrom(_.GetType()))).ToArray())
+                        Title = displayName ?? method.Name,
+                        Invocation = () => method.Invoke(plugin,
+                        parameters.Select(p => new object[]
+                        {
+                                _report
+                        }
+                        .FirstOrDefault(_ => p.ParameterType.IsAssignableFrom(_.GetType()))).ToArray())
                     };
-                    BusinessFlows.Add(flowItem);
+                    businessFlows.Add(flowItem);
                 }
             }
 
-            Height = 19.96 * (BusinessFlows.Count + 1) + 40 + 20;
+            return businessFlows;
         }
 
         public RelayCommand ClickFlowItem
@@ -83,7 +88,7 @@ namespace Application.Models
                     var flowItem = obj as BusinessFlowItemModel;
                     OnTask(() =>
                     {
-                        flowItem.Invokation.Invoke();
+                        flowItem.Invocation.Invoke();
                         _report.WriteLine($"{flowItem.Title} done!");
                     });
                 });

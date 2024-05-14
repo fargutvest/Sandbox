@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace RPA.Flows
 {
-    internal abstract class BaseFlow
+    public abstract class BaseFlow
     {
         protected InputSimulator InputSimulator;
 

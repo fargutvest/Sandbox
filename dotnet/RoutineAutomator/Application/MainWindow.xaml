@@ -11,30 +11,12 @@
     <Window.Resources>
         <convertors:ConcatenateStringsConverter x:Key="ConcatenateStringsConverter"/>
     </Window.Resources>
-    <Window.Title>
-        <MultiBinding StringFormat="{}{0} ({1})">
-            <Binding Path="SelectedCredentials.InstanceId" />
-            <Binding Path="SelectedCredentials.Title" />
-        </MultiBinding>
-    </Window.Title>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Name="ButtonsPanel">
-            <ComboBox ItemsSource="{Binding Path=CredentialsCollection}" SelectedItem="{Binding SelectedCredentials}" HorizontalContentAlignment="Center" >
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                             <Run Text="{Binding InstanceId}"/>
-                             <Run Text=" (" />
-                             <Run Text="{Binding Title}" />
-                             <Run Text=")" />
-                        </TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
             <ItemsControl ItemsSource="{Binding BusinessFlows}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

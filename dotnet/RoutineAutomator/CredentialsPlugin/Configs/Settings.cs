@@ -2,7 +2,7 @@
 using System;
 using System.Configuration;
 
-namespace Application
+namespace CredentialsPlugin
 {
     public static class Settings
     {

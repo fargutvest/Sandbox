@@ -1,10 +1,11 @@
-﻿using RPA.Flows.Script;
+﻿using RPA;
+using RPA.Flows.Script;
 using RPA.Report;
 using System.ComponentModel;
 
-namespace Application
+namespace TestPlugin
 {
-    public class Start
+    public class Start : IPlugin
     {
         private IReport _report;
 
@@ -14,7 +15,7 @@ namespace Application
         }
 
         [DisplayName("Hello world!")]
-        public void SayHelloWorld(CredentialsElement cred)
+        public void SayHelloWorld()
         {
             _report.WriteLine("Hello world!");
         }
@@ -22,7 +23,8 @@ namespace Application
         [DisplayName("From script")]
         public void FromScript()
         {
-            new FromScriptFlow(_report, Settings.SCRIPT_PATH).Execute(null);
+            string scriptPath = string.Empty; //TODO
+            new FromScriptFlow(_report, scriptPath).Execute(null);
         }
     }
 }

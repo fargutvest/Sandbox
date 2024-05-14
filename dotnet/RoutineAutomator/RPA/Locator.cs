@@ -4,7 +4,7 @@ using System.Windows.Automation;
 
 namespace RPA
 {
-    internal class Locator
+    public class Locator
     {
         internal AutomationProperty Type { get; }
         internal object Value { get; }
@@ -16,7 +16,7 @@ namespace RPA
         internal List<Locator> GetOrLocators() => _orLocators;
 
 
-        internal Locator(AutomationProperty locatorType, object locatorValue)
+        public Locator(AutomationProperty locatorType, object locatorValue)
         {
             Type = locatorType;
             Value = locatorValue;
