@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34902.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuTrackerParser", "RuTrackerParser\RuTrackerParser.csproj", "{2FC07299-C383-4EBA-8615-84B21FC4300E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FC07299-C383-4EBA-8615-84B21FC4300E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC07299-C383-4EBA-8615-84B21FC4300E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC07299-C383-4EBA-8615-84B21FC4300E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC07299-C383-4EBA-8615-84B21FC4300E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E095EE9B-BC24-4E31-94F5-92F9A5527AC4}
+	EndGlobalSection
+EndGlobal
