@@ -19,7 +19,7 @@ extern int D3;
 extern int D4; 
 
 void define_segment_pins(int a, int b, int c, int d, int e, int f, int g, int dp);
-void define_digits(int d1, int d2, int d3, int d4);
+void define_digit_pins(int d1, int d2, int d3, int d4, int d5, int d6, int d7, int d8);
 void define_segment_on_off(bool segment_on, bool segment_off);
 void define_digit_on_off(bool digit_on, bool digit_off);
 
@@ -39,5 +39,8 @@ void dig1();
 void dig2();
 void dig3();
 void dig4();
+
+void dig_all_off();
+void dig_all_on();
 
 void print_symbol(char symbol);

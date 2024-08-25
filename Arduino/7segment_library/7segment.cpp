@@ -55,16 +55,24 @@ void define_segment_pins(int a, int b, int c, int d, int e, int f, int g, int dp
   pinMode(DP, OUTPUT);
 }
 
-void define_digits(int d1, int d2, int d3, int d4){
+void define_digit_pins(int d1, int d2, int d3, int d4, int d5, int d6, int d7, int d8){
   D1 = d1;
   D2 = d2;
   D3 = d3;
   D4 = d4;
+  D5 = d5;
+  D6 = d6;
+  D7 = d7;
+  D8 = d8;
 
    pinMode(D1, OUTPUT);
    pinMode(D2, OUTPUT);
    pinMode(D3, OUTPUT);
    pinMode(D4, OUTPUT);
+   pinMode(D5, OUTPUT);
+   pinMode(D6, OUTPUT);
+   pinMode(D7, OUTPUT);
+   pinMode(D8, OUTPUT);
 }
 
 void _1() {
@@ -227,6 +235,28 @@ void dig4() {
   digitalWrite(D6, DIGIT_OFF);
   digitalWrite(D7, DIGIT_OFF);
   digitalWrite(D8, DIGIT_OFF);
+}
+
+void dig_all_off() {
+  digitalWrite(D1, DIGIT_OFF);
+  digitalWrite(D2, DIGIT_OFF);
+  digitalWrite(D3, DIGIT_OFF);
+  digitalWrite(D4, DIGIT_OFF);
+  digitalWrite(D5, DIGIT_OFF);
+  digitalWrite(D6, DIGIT_OFF);
+  digitalWrite(D7, DIGIT_OFF);
+  digitalWrite(D8, DIGIT_OFF);
+}
+
+void dig_all_on() {
+  digitalWrite(D1, DIGIT_ON);
+  digitalWrite(D2, DIGIT_ON);
+  digitalWrite(D3, DIGIT_ON);
+  digitalWrite(D4, DIGIT_ON);
+  digitalWrite(D5, DIGIT_ON);
+  digitalWrite(D6, DIGIT_ON);
+  digitalWrite(D7, DIGIT_ON);
+  digitalWrite(D8, DIGIT_ON);
 }
 
 void print_symbol(char symbol) {
