@@ -236,6 +236,49 @@ void dig4() {
   digitalWrite(D7, DIGIT_OFF);
   digitalWrite(D8, DIGIT_OFF);
 }
+void dig5() {
+  digitalWrite(D1, DIGIT_OFF);
+  digitalWrite(D2, DIGIT_OFF);
+  digitalWrite(D3, DIGIT_OFF);
+  digitalWrite(D4, DIGIT_OFF);
+  digitalWrite(D5, DIGIT_ON);
+  digitalWrite(D6, DIGIT_OFF);
+  digitalWrite(D7, DIGIT_OFF);
+  digitalWrite(D8, DIGIT_OFF);
+}
+
+void dig6() {
+  digitalWrite(D1, DIGIT_OFF);
+  digitalWrite(D2, DIGIT_OFF);
+  digitalWrite(D3, DIGIT_OFF);
+  digitalWrite(D4, DIGIT_OFF);
+  digitalWrite(D5, DIGIT_OFF);
+  digitalWrite(D6, DIGIT_ON);
+  digitalWrite(D7, DIGIT_OFF);
+  digitalWrite(D8, DIGIT_OFF);
+}
+
+void dig7() {
+  digitalWrite(D1, DIGIT_OFF);
+  digitalWrite(D2, DIGIT_OFF);
+  digitalWrite(D3, DIGIT_OFF);
+  digitalWrite(D4, DIGIT_OFF);
+  digitalWrite(D5, DIGIT_OFF);
+  digitalWrite(D6, DIGIT_OFF);
+  digitalWrite(D7, DIGIT_ON);
+  digitalWrite(D8, DIGIT_OFF);
+}
+
+void dig8() {
+  digitalWrite(D1, DIGIT_OFF);
+  digitalWrite(D2, DIGIT_OFF);
+  digitalWrite(D3, DIGIT_OFF);
+  digitalWrite(D4, DIGIT_OFF);
+  digitalWrite(D5, DIGIT_OFF);
+  digitalWrite(D6, DIGIT_OFF);
+  digitalWrite(D7, DIGIT_OFF);
+  digitalWrite(D8, DIGIT_ON);
+}
 
 void dig_all_off() {
   digitalWrite(D1, DIGIT_OFF);

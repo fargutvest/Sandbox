@@ -39,6 +39,10 @@ void dig1();
 void dig2();
 void dig3();
 void dig4();
+void dig5();
+void dig6();
+void dig7();
+void dig8();
 
 void dig_all_off();
 void dig_all_on();
