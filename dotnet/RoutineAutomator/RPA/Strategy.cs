@@ -9,14 +9,8 @@ namespace RPA
 {
     internal class Strategy
     {
-        private AutomationProvider _automationProvider;
-
-        public Strategy(AutomationProvider automationProvider)
-        {
-            _automationProvider = automationProvider;
-        }
-
-        internal AutomationElement FindByPropertyName(AutomationElement element, string name) => _automationProvider.FindChildAutomationElement(element, new Locator(AutomationElement.NameProperty, name));
+        internal static AutomationElement FindByNameProperty(AutomationProvider provider, AutomationElement element, string name) =>
+            provider.FindChildAutomationElement(element, new Locator(AutomationElement.NameProperty, name));
 
     }
 }

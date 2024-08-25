@@ -107,7 +107,7 @@ namespace Recorder
 
             buttonOk.Click += (sender, e) =>
             {
-                var process = Detect(uiElement.Current.ProcessId);
+                var process = Process.GetProcessById(uiElement.Current.ProcessId);
 
                 var checkedRb = controls.Where(_ => _.GetType() == typeof(RadioButton) && (_ as RadioButton)?.Checked == true).FirstOrDefault();
 
@@ -116,6 +116,7 @@ namespace Recorder
                 Result.Locator = new LocatorInfo()
                 {
                     FllePath = OnSafe(() => process?.MainModule?.FileName),
+                    MainWindowTitle = OnSafe(() => process?.MainWindowTitle),
                     Point = new System.Windows.Point(Location.X, Location.Y),
                     AutomationId = uiElement.Current.AutomationId,
                     LocalizedControlType = uiElement.Current.LocalizedControlType,
@@ -139,28 +140,6 @@ namespace Recorder
             controls.Add(buttonOk);
             controls.Add(buttonCancel);
             controls.Add(buttonEnd);
-        }
-
-        private Process Detect(int pid)
-        {
-            var allProcesses = Process.GetProcesses();
-            AutomationElement root = null;
-            foreach (var item in allProcesses)
-            {
-                try
-                {
-                    if (item.Id == pid)
-                    {
-                        return item;
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-
-            return null;
         }
 
         private T OnSafe<T>(Func<T> toDo) where T: class

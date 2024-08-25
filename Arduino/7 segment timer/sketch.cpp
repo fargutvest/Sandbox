@@ -85,32 +85,7 @@ void print_hours() {
   }
 }
 
-void setup() {
-  define_pins();
-}
 
-
-void loop() {
-  delay(display_refresh_period_ms);
-
-  time_counter += display_refresh_period_ms;
-
-  if (time_counter == tick_seconds_period_ms) {
-    time_counter = 0;
-    tick_seconds();
-  }
-
-
-  print_seconds();
-  dash();
-  dig3();
-  dig_all_off();
-  print_minutes();
-  dash();
-  dig6();
-  dig_all_off();
-  print_hours();
-}
 
 
 

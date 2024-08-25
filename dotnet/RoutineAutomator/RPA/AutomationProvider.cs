@@ -7,52 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using RPA.Report;
-
-using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Api;
-
-namespace Api
-{
-
-    public class WinStruct
-    {
-        public string WinTitle { get; set; }
-        public int MainWindowHandle { get; set; }
-    }
-
-    public class ApiDef
-    {
-        private delegate bool CallBackPtr(int hwnd, int lParam);
-        private static CallBackPtr callBackPtr = Callback;
-        private static List<WinStruct> _WinStructList = new List<WinStruct>();
-
-        [DllImport("User32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool EnumWindows(CallBackPtr lpEnumFunc, IntPtr lParam);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
-
-        private static bool Callback(int hWnd, int lparam)
-        {
-            StringBuilder sb = new StringBuilder(256);
-            int res = GetWindowText((IntPtr)hWnd, sb, 256);
-            _WinStructList.Add(new WinStruct { MainWindowHandle = hWnd, WinTitle = sb.ToString() });
-            return true;
-        }
-
-        public static List<WinStruct> GetWindows()
-        {
-            _WinStructList = new List<WinStruct>();
-            EnumWindows(callBackPtr, IntPtr.Zero);
-            return _WinStructList;
-        }
-
-    }
-}
 
 namespace RPA
 {
@@ -99,6 +54,7 @@ namespace RPA
             return FindChildAutomationElement(automationElement, LocatorToCondition(locator), timeoutMilliseconds);
         }
 
+
         internal AutomationElement FindChildAutomationElement(AutomationElement automationElement, int position)
         {
             var walker = new TreeWalker(Condition.TrueCondition);
@@ -128,6 +84,14 @@ namespace RPA
             return element;
         }
 
+        internal AutomationElement FindByWindowTitle(string title)
+        {
+            List<kernel32.WinStruct> windows = kernel32.GetWindows();
+            kernel32.WinStruct winStruct = windows.FirstOrDefault(_ => _.WinTitle.Contains(title));
+            AutomationElement root = AutomationElement.FromHandle(new IntPtr(winStruct.MainWindowHandle));
+            return root;
+        }
+
         #endregion
 
 
@@ -145,9 +109,9 @@ namespace RPA
             SetValue(pattern, value);
         }
 
-        internal void Invoke(AutomationElement automationElement, Locator locator)
+        internal void Invoke(AutomationElement automationElement, Locator locator, int timeoutMilliseconds = 0)
         {
-            var pattern = GetCurrentPattern(automationElement, locator, InvokePattern.Pattern) as InvokePattern;
+            var pattern = GetCurrentPattern(automationElement, locator, InvokePattern.Pattern, timeoutMilliseconds) as InvokePattern;
             Invoke(pattern, locator);
         }
 
@@ -200,14 +164,14 @@ namespace RPA
             _report?.WriteLine($"{nameof(SetValue)} '{value}'");
         }
 
-        private BasePattern GetCurrentPattern(AutomationElement automationElement, Locator locator, AutomationPattern pattern)
+        private BasePattern GetCurrentPattern(AutomationElement automationElement, Locator locator, AutomationPattern pattern, int timeoutMilliseconds = 0)
         {
-            return GetCurrentPattern(automationElement, LocatorToCondition(locator), pattern);
+            return GetCurrentPattern(automationElement, LocatorToCondition(locator), pattern, timeoutMilliseconds);
         }
 
-        private BasePattern GetCurrentPattern(AutomationElement automationElement, Condition condition, AutomationPattern pattern)
+        private BasePattern GetCurrentPattern(AutomationElement automationElement, Condition condition, AutomationPattern pattern, int timeoutMilliseconds = 0)
         {
-            var elementResult = FindChildAutomationElement(automationElement, condition);
+            var elementResult = FindChildAutomationElement(automationElement, condition, timeoutMilliseconds);
             return GetCurrentPattern(elementResult, pattern);
         }
 
@@ -229,8 +193,13 @@ namespace RPA
 
         private AutomationElement FromMainWindowTitle(ExectutionContext context)
         {
+            AutomationElement root = Strategy.FindByNameProperty(this, AutomationElement.RootElement, context.MainWindowTitle);
+            if (root != null)
+            {
+                return root;
+            }
+
             var allProcesses = Process.GetProcesses();
-            AutomationElement root = null;
             foreach (var item in allProcesses)
             {
                 try
@@ -258,19 +227,13 @@ namespace RPA
 
         private AutomationElement FromFilePath(ExectutionContext context)
         {
-            List<WinStruct> windows = Api.ApiDef.GetWindows();
-
-            WinStruct winStruct = windows.FirstOrDefault(_ => _.WinTitle.Contains("WindowsCalculator"));
-            AutomationElement root = AutomationElement.FromHandle(new IntPtr(winStruct.MainWindowHandle));
-            return root;
             string processName = Path.GetFileNameWithoutExtension(context.ExecutableFilePath);
-           // AutomationElement root = null;
+            AutomationElement root = null;
             var allProcesses = Process.GetProcesses();
             foreach (var item in allProcesses)
             {
                 try
                 {
-                    //string processFilePath = GetMainModuleFilepath(item.Id);
                     if (item.ProcessName == processName)
                     {
                         root = AutomationElement.FromHandle(item.MainWindowHandle);
@@ -293,7 +256,7 @@ namespace RPA
         }
 
         
-        private string GetMainModuleFilepath(int processId)
+        private string GetMainModuleFilePathByProcessId(int processId)
         {
             //https://stackoverflow.com/questions/9501771/how-to-avoid-a-win32-exception-when-accessing-process-mainmodule-filename-in-c
 
@@ -333,7 +296,6 @@ namespace RPA
                 {
                     Task.Delay(timeoutMilliseconds == 0 ? Timeout.Infinite : timeoutMilliseconds).Wait();
                     cts.Cancel();
-                    _report.WriteLine($"Timeout {timeoutMilliseconds}ms expired.");
                 });
 
                 elementResult = _retryHelper.Retry(() =>
@@ -342,7 +304,12 @@ namespace RPA
                     OnSafe(() =>
                     {
                         var taskResult = Task.Run(() => { foundElement = automationElement.FindFirst(TreeScope.Descendants, condition); });
-                        Task.WaitAny(new Task[] { taskResult, taskTimeout });
+                        int indexOfTask = Task.WaitAny(new Task[] { taskResult, taskTimeout });
+
+                        if (indexOfTask == 1)
+                        {
+                            _report.WriteLine($"Timeout {timeoutMilliseconds}ms expired.");
+                        }
                     });
 
                     return foundElement;

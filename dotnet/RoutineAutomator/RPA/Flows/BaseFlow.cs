@@ -32,26 +32,28 @@ namespace RPA.Flows
             }
         }
 
-        public void Execute(ExectutionContext context)
+        public FlowExecutionResult Execute(ExectutionContext context)
         {
-            OnSafe(()=>
+            return OnSafe(()=>
             {
-                ExecuteInternal(context);
+                return ExecuteInternal(context);
             });
         }
 
-        protected abstract void ExecuteInternal(ExectutionContext context);
+        protected abstract FlowExecutionResult ExecuteInternal(ExectutionContext context);
 
-        private void OnSafe(Action toDo)
+        private FlowExecutionResult OnSafe(Func<FlowExecutionResult> toDo)
         {
             try
             {
-                toDo?.Invoke();
+               return toDo?.Invoke();
             }
             catch (Exception e)
             {
                 Report?.WriteLine(e);
                 Report?.ReadKey();
+
+                return new FlowExecutionResult() { ResultEnum = Result.ResultEnum.Error};
             }
         }
     }

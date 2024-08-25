@@ -14,7 +14,7 @@ namespace RPA.Flows.Script
             _scriptPath = scriptPath;
         }
 
-        protected override void ExecuteInternal(ExectutionContext context)
+        protected override FlowExecutionResult ExecuteInternal(ExectutionContext context)
         {
             var script = File.ReadAllText(_scriptPath);
             var queue = JsonConvert.DeserializeObject<Queue<Node>>(script);
@@ -29,6 +29,7 @@ namespace RPA.Flows.Script
                         break;
                 }
             }
+            return new FlowExecutionResult();
         }
     }
 }

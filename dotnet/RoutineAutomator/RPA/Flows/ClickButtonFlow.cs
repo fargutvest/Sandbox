@@ -1,5 +1,4 @@
-﻿using System.Windows.Automation;
-using RPA.Report;
+﻿using RPA.Report;
 
 namespace RPA.Flows
 {
@@ -13,10 +12,11 @@ namespace RPA.Flows
             _btnLocator = btnLocator;
         }
 
-        protected override void ExecuteInternal(ExectutionContext context)
+        protected override FlowExecutionResult ExecuteInternal(ExectutionContext context)
         {
             var root = context.AutomationElement;
-            AutomationProvider.Invoke(root, _btnLocator);
+            AutomationProvider.Invoke(root, _btnLocator, 1000);
+            return new FlowExecutionResult();
         }
     }
 }

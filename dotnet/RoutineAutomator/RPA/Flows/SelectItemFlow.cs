@@ -11,9 +11,10 @@ namespace RPA.Flows
             _itemLocator = itemLocator;
         }
 
-        protected override void ExecuteInternal(ExectutionContext context)
+        protected override FlowExecutionResult ExecuteInternal(ExectutionContext context)
         {
             AutomationProvider.Select(context.AutomationElement, _itemLocator);
+            return new FlowExecutionResult();
         }
     }
 }

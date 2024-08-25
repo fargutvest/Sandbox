@@ -14,7 +14,7 @@ namespace RPA.Flows
             _parameters = parametrs;
         }
 
-        protected override void ExecuteInternal(ExectutionContext context)
+        protected override FlowExecutionResult ExecuteInternal(ExectutionContext context)
         {
             var info = new ProcessStartInfo();
             info.Arguments = _parameters;
@@ -22,6 +22,7 @@ namespace RPA.Flows
             Process process = Process.Start(info);
             var root = AutomationProvider.GetRootAutomationElement(context);
             context.AutomationElement = root;
+            return new FlowExecutionResult();
         }
         
     }

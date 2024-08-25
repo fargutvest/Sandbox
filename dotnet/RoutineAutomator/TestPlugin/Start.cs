@@ -23,8 +23,9 @@ namespace TestPlugin
         [DisplayName("From script")]
         public void FromScript()
         {
-            string scriptPath = string.Empty; //TODO
-            new FromScriptFlow(_report, scriptPath).Execute(null);
+            string scriptPath = "C:\\test\\script.txt";
+            FromScriptFlow flow = new FromScriptFlow(_report, scriptPath);
+            flow.Execute(null);
         }
     }
 }

@@ -19,10 +19,11 @@ namespace RPA.Flows
             _okBtnLocator = okBtnLocator;
         }
 
-        protected override void ExecuteInternal(ExectutionContext context)
+        protected override FlowExecutionResult ExecuteInternal(ExectutionContext context)
         {
             SetCredentials(context);
             ClickLogin(context);
+            return new FlowExecutionResult();
         }
 
         private void SetCredentials(ExectutionContext context)
