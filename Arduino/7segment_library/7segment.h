@@ -39,3 +39,5 @@ void dig1();
 void dig2();
 void dig3();
 void dig4();
+
+void print_symbol(char symbol);

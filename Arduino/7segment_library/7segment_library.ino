@@ -8,8 +8,16 @@ define_digit_on_off(HIGH,LOW);
 
 }
 
+int i = 0;
 void loop() {
-  // put your main code here, to run repeatedly:
- _1();
- dig3();
+String str = String(i);
+print_symbol(str.charAt(0));
+dig1();
+
+ i = i + 1;
+
+ if (i == 10)
+  i = 0;
+
+ delay(1000);
 }

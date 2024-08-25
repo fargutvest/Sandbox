@@ -228,3 +228,38 @@ void dig4() {
   digitalWrite(D7, DIGIT_OFF);
   digitalWrite(D8, DIGIT_OFF);
 }
+
+void print_symbol(char symbol) {
+  switch (symbol)
+  {
+    case '0':
+      _0();
+      break;
+    case '1':
+      _1();
+      break;
+    case '2':
+      _2();
+      break;
+    case '3':
+      _3();
+      break;
+    case '4':
+      _4();
+      break;
+    case '5':
+      _5();
+      break;
+    case '6':
+      _6();
+      break;
+    case '7':
+      _7();
+      break;
+    case '8':
+      _8();
+      break;
+    case '9':
+      _9();
+  }
+}
