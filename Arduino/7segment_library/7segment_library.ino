@@ -1,5 +1,10 @@
 #include "7segment.h"
 #include "time.h"
+#include <ThreeWire.h>  
+#include <RtcDS1302.h>
+
+ThreeWire myWire(A4,A5,A3); // IO, SCLK, CE
+RtcDS1302<ThreeWire> Rtc(myWire);
 
 void setup() {
   // put your setup code here, to run once:
@@ -10,7 +15,10 @@ define_digit_on_off(HIGH,LOW);
 }
 
 void loop() {
-tick_seconds();
+RtcDateTime now = Rtc.GetDateTime();
+seconds = now.Second();
+minutes = now.Minute();
+hours = now.Hour();
 print_seconds();
 print_minutes();
 print_hours();

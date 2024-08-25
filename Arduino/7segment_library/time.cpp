@@ -6,6 +6,8 @@ int seconds = 0;
 int minutes = 0;
 int hours = 0;
 
+int pulse_width_modulation_delay_microseconds = 2000;
+
 void tick_hours() {
   if (hours == 23) {
     hours = 0;
@@ -43,9 +45,11 @@ void print_seconds() {
 
     print_symbol(str.charAt(0));
     dig2();
+    delayMicroseconds(pulse_width_modulation_delay_microseconds);
     dig_all_off();
     print_symbol(str.charAt(1));
     dig1();
+    delayMicroseconds(pulse_width_modulation_delay_microseconds);
     dig_all_off();
   }
 }
@@ -58,9 +62,11 @@ void print_minutes() {
 
     print_symbol(str.charAt(0));
     dig4();
+    delayMicroseconds(pulse_width_modulation_delay_microseconds);
     dig_all_off();
     print_symbol(str.charAt(1));
     dig3();
+    delayMicroseconds(pulse_width_modulation_delay_microseconds);
     dig_all_off();
   }
 }
@@ -73,9 +79,11 @@ void print_hours() {
 
     print_symbol(str.charAt(0));
     dig6();
+    delayMicroseconds(pulse_width_modulation_delay_microseconds);
     dig_all_off();
     print_symbol(str.charAt(1));
     dig5();
+    delayMicroseconds(pulse_width_modulation_delay_microseconds);
     dig_all_off();
   }
 }
