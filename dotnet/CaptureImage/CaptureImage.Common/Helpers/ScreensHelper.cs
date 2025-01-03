@@ -2,6 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace CaptureImage.Common.Helpers
 {
@@ -30,9 +31,9 @@ namespace CaptureImage.Common.Helpers
             return orderedInfos;
         }
 
-        public static DescktopInfo GetDesctopInfo()
+        public static DescktopInfo GetDesktopInfo()
         {
-            ScreenInfo[] infos = ScreensHelper.GetScreenInfos();
+            ScreenInfo[] infos = GetScreenInfos();
 
             Bitmap background = BitmapHelper.Glue(infos.Select(t => t.Screenshot).ToArray());
 
@@ -45,16 +46,19 @@ namespace CaptureImage.Common.Helpers
             int maxY = (int)path.PathData.Points.Max(p => p.Y);
             Size clientSize = new Size(maxX, maxY);
 
-            DescktopInfo descktopInfo = new DescktopInfo()
+            PathGeometry polygonGeometry = GeometryHelper.GetPathGeometry(path);
+
+            DescktopInfo desktopInfo = new DescktopInfo()
             {
                 ScreenInfos = infos,
                 Background = background,
                 Path = path,
+                PolygonGeometry = polygonGeometry,
                 Location = location,
                 ClientSize = clientSize
             };
 
-            return descktopInfo;
+            return desktopInfo;
 
 
         }

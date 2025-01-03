@@ -1,6 +1,7 @@
 ﻿
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Media;
 
 namespace CaptureImage.Common
 {
@@ -11,6 +12,8 @@ namespace CaptureImage.Common
         public Bitmap Background { get; set; }
 
         public GraphicsPath Path { get; set; } 
+
+        public PathGeometry PolygonGeometry { get; set; } 
 
         public Point Location { get; set; }
         public Size ClientSize { get; set; }

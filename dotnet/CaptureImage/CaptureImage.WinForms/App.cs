@@ -12,7 +12,7 @@ namespace CaptureImage.WinForms
     {
         internal void Run()
         {
-            DescktopInfo info = ScreensHelper.GetDesctopInfo();
+            DescktopInfo info = ScreensHelper.GetDesktopInfo();
             
             FreezeScreen freezeScreen = new FreezeScreen(info.ClientSize, info.Location)
             {
