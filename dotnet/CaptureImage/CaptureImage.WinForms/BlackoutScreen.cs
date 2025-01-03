@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace CaptureImage
+namespace CaptureImage.WinForms
 {
     public partial class BlackoutScreen : ScreenBase
     {
@@ -19,7 +19,6 @@ namespace CaptureImage
             InitializeComponent();
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
-            this.thumb.BackColor = Color.Red;
             this.Controls.Add(thumb);
         }
 

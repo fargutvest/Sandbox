@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{433242D9-A9DB-456B-8283-336EF88EDEE4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CaptureImage</RootNamespace>
-    <AssemblyName>CaptureImage</AssemblyName>
+    <RootNamespace>CaptureImage.WinForms</RootNamespace>
+    <AssemblyName>CaptureImage.WinForms</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,15 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Helpers\BitmapHelper.cs" />
     <Compile Include="FreezeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FreezeScreen.Designer.cs">
       <DependentUpon>FreezeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\GeometryHelper.cs" />
-    <Compile Include="Helpers\CaptureImageHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +91,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="BlackoutScreen.resx">
       <DependentUpon>BlackoutScreen.cs</DependentUpon>
@@ -113,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaptureImage.Common\CaptureImage.Common.csproj">
+      <Project>{de8bfd06-4ccf-4b0a-8129-fd69c51dd5a4}</Project>
+      <Name>CaptureImage.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

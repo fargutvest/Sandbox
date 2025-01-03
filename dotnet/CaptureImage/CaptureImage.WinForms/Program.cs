@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CaptureImage
+namespace CaptureImage.WinForms
 {
     internal static class Program
     {

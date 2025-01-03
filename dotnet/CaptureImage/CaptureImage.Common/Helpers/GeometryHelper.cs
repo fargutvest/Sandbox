@@ -2,11 +2,11 @@
 using System.Drawing.Drawing2D;
 using System.Linq;
 
-namespace CaptureImage.Helpers
+namespace CaptureImage.Common.Helpers
 {
-    internal static class GeometryHelper
+    public static class GeometryHelper
     {
-        internal static GraphicsPath GetGraphicsPath(Rectangle[] rectangles)
+        public static GraphicsPath GetGraphicsPath(Rectangle[] rectangles)
         {
             GraphicsPath path = new GraphicsPath();
 

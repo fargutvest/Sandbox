@@ -1,6 +1,7 @@
-﻿namespace CaptureImage
+﻿
+namespace CaptureImage.WinForms
 {
-    partial class FreezeScreen
+    partial class BlackoutScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +29,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "FreezeScreen";
-            this.DoubleBuffered = true;
+            this.SuspendLayout();
+            // 
+            // SplashScreen
+            // 
+            this.MouseMove += SplashScreen_MouseMove;
+            this.MouseDown += SplashScreen_MouseDown;
+            this.MouseUp += SplashScreen_MouseUp;
+            this.ResumeLayout(false);
         }
 
         #endregion

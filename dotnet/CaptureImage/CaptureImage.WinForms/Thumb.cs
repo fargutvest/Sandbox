@@ -1,7 +1,8 @@
-﻿using System.Drawing;
+﻿using CaptureImage.Common.Helpers;
+using System.Drawing;
 using System.Windows.Forms;
 
-namespace CaptureImage
+namespace CaptureImage.WinForms
 {
     public partial class Thumb : UserControl
     {
@@ -103,7 +104,9 @@ namespace CaptureImage
 
         }
 
-
-
+        private void Thumb_Paint(object sender, PaintEventArgs e)
+        {
+            GraphicsHelper.DrawBorder(e.Graphics, new Rectangle(0,0, this.Width, this.Height));
+        }
     }
 }

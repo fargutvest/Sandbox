@@ -4,14 +4,14 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CaptureImage.Helpers
+namespace CaptureImage.Common.Helpers
 {
-    internal static class BitmapHelper
+    public static class BitmapHelper
     {
         /// <summary>
         /// https://stackoverflow.com/questions/4779027/changing-the-opacity-of-a-bitmap-image
         /// </summary>
-        internal static Bitmap ChangeOpacity(Bitmap image, float opacity)
+        public static Bitmap ChangeOpacity(Bitmap image, float opacity)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace CaptureImage.Helpers
             }
         }
 
-        internal static Bitmap Glue(Bitmap[] bitmaps)
+        public static Bitmap Glue(Bitmap[] bitmaps)
         {
             Bitmap output = new Bitmap(bitmaps.Sum(b => b.Width), bitmaps.Max(b => b.Height));
 
@@ -54,7 +54,7 @@ namespace CaptureImage.Helpers
             return output;
         }
 
-        internal static Bitmap Crop(Bitmap source, Rectangle section)
+        public static Bitmap Crop(Bitmap source, Rectangle section)
         {
             Bitmap bmpImage = new Bitmap(source);
             return bmpImage.Clone(section, bmpImage.PixelFormat);

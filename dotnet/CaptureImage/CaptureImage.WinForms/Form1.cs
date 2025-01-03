@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CaptureImage
+namespace CaptureImage.WinForms
 {
     public partial class Form1 : Form
     {

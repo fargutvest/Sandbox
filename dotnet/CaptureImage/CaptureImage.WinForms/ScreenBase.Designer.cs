@@ -1,7 +1,6 @@
-﻿
-namespace CaptureImage
+﻿namespace CaptureImage.WinForms
 {
-    partial class BlackoutScreen
+    partial class ScreenBase
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +28,9 @@ namespace CaptureImage
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // SplashScreen
-            // 
-            this.MouseMove += SplashScreen_MouseMove;
-            this.MouseDown += SplashScreen_MouseDown;
-            this.MouseUp += SplashScreen_MouseUp;
-            this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Text = "ScreenBase";
         }
 
         #endregion

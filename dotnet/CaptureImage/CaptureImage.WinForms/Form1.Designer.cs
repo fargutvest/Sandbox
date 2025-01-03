@@ -1,4 +1,4 @@
-﻿namespace CaptureImage
+﻿namespace CaptureImage.WinForms
 {
     partial class Form1
     {

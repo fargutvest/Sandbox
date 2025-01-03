@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace CaptureImage
+namespace CaptureImage.WinForms
 {
     public partial class ScreenBase : Form
     {

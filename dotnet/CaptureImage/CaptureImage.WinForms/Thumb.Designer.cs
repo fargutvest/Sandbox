@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace CaptureImage
+namespace CaptureImage.WinForms
 {
     partial class Thumb
     {
@@ -36,16 +36,20 @@ namespace CaptureImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Red;
             this.DoubleBuffered = true;
             this.Name = "Thumb";
-            this.MouseMove += Thumb_MouseMove;
-            this.MouseDown += Thumb_MouseDown;
-            this.MouseUp += Thumb_MouseUp;
-            this.MouseEnter += Thumb_MouseEnter;
-            this.MouseLeave += Thumb_MouseLeave;
+            this.Padding = new System.Windows.Forms.Padding(10);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Thumb_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseDown);
+            this.MouseEnter += new System.EventHandler(this.Thumb_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.Thumb_MouseLeave);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseUp);
             this.ResumeLayout(false);
 
         }
+
 
 
 

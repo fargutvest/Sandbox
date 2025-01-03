@@ -1,6 +1,6 @@
-﻿namespace CaptureImage
+﻿namespace CaptureImage.WinForms
 {
-    partial class ScreenBase
+    partial class FreezeScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "ScreenBase";
+            this.Text = "FreezeScreen";
+            this.DoubleBuffered = true;
         }
 
         #endregion

@@ -3,11 +3,11 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace CaptureImage.Helpers
+namespace CaptureImage.Common.Helpers
 {
-    internal static class CaptureImageHelper
+    public static class CaptureImageHelper
     {
-        internal static Bitmap CaptureMyScreen(Rectangle rect)
+        public static Bitmap CaptureMyScreen(Rectangle rect)
         {
             try
             {
