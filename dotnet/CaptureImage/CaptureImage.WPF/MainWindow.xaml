@@ -6,11 +6,16 @@
         xmlns:local="clr-namespace:CaptureImage.WPF"
         mc:Ignorable="d"
         WindowStyle="None" 
-        AllowsTransparency="True" 
-        Background="Wheat"
-        
-        Title="MainWindow">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow"
+        AllowsTransparency="True"
+        BorderThickness="0" 
+        MouseMove="Window_MouseMove"
+        MouseDown="Window_MouseDown"
+        MouseUp="Window_MouseUp">
+    <Canvas x:Name="MainCanvas">
+        <local:MyThumb x:Name="Thumb"  Background="Red" 
+                       MouseMove="Thumb_MouseMove"
+                       MouseDown="Thumb_MouseDown"
+                       MouseUp="Thumb_MouseUp"/>
+    </Canvas>
 </Window>

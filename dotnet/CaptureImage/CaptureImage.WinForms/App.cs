@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing.Drawing2D;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Drawing;
 using CaptureImage.Common.Helpers;
 using CaptureImage.Common;
 
