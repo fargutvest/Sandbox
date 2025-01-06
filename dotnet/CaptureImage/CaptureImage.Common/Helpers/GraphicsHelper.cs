@@ -27,5 +27,43 @@ namespace CaptureImage.Common.Helpers
             g.FillRectangles(Brushes.Black, rectangles.ToArray());
             g.DrawRectangles(Pens.White, rectangles.ToArray());
         }
+
+        public static void DrawBorder(Graphics gr, Rectangle rect, Pen pen1, Pen pen2)
+        {
+            // Draw stroke around selected area
+            gr.DrawRectangle(pen1, rect);
+
+            // Top-left corner
+            gr.DrawLine(pen2, rect.Left - 5, rect.Top - 5, rect.Left + 5, rect.Top - 5);
+            gr.DrawLine(pen2, rect.Left - 5, rect.Top - 5, rect.Left - 5, rect.Top + 5);
+
+            // Top-right corner
+            gr.DrawLine(pen2, rect.Right + 5, rect.Top - 5, rect.Right - 5, rect.Top - 5);
+            gr.DrawLine(pen2, rect.Right + 5, rect.Top - 5, rect.Right + 5, rect.Top + 5);
+
+            // Down-left corner
+            gr.DrawLine(pen2, rect.Left - 5, rect.Bottom + 5, rect.Left + 5, rect.Bottom + 5);
+            gr.DrawLine(pen2, rect.Left - 5, rect.Bottom + 5, rect.Left - 5, rect.Bottom - 5);
+
+            // Down-right corner
+            gr.DrawLine(pen2, rect.Right + 5, rect.Bottom + 5, rect.Right - 5, rect.Bottom + 5);
+            gr.DrawLine(pen2, rect.Right + 5, rect.Bottom + 5, rect.Right + 5, rect.Bottom - 5);
+
+            // Top middle
+            gr.DrawLine(pen2, rect.Left + rect.Width / 2 - 5, rect.Top - 5,
+                 rect.Left + rect.Width / 2 + 5, rect.Top - 5);
+
+            // Down middle
+            gr.DrawLine(pen2, rect.Left + rect.Width / 2 - 5, rect.Bottom + 5,
+                 rect.Left + rect.Width / 2 + 5, rect.Bottom + 5);
+
+            // Left middle
+            gr.DrawLine(pen2, rect.Left - 5, rect.Top + rect.Height / 2 - 5,
+                rect.Left - 5, rect.Top + rect.Height / 2 + 5);
+
+            // Right middle
+            gr.DrawLine(pen2, rect.Right + 5, rect.Top + rect.Height / 2 - 5,
+                rect.Right + 5, rect.Top + rect.Height / 2 + 5);
+        }
     }
 }

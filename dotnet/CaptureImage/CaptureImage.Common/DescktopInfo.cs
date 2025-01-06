@@ -10,10 +10,13 @@ namespace CaptureImage.Common
         public ScreenInfo[] ScreenInfos { get; set; }
 
         public Bitmap Background { get; set; }
+        public Rectangle BackgroundRect { get; set; }
 
         public GraphicsPath Path { get; set; } 
 
-        public PathGeometry PolygonGeometry { get; set; } 
+        public PathGeometry PolygonGeometry { get; set; }
+
+        public Rectangle Bounds { get; set; }
 
         public Point Location { get; set; }
         public Size ClientSize { get; set; }

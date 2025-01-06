@@ -19,6 +19,11 @@ namespace CaptureImage.Common
         [DllImport("User32.dll")]
         public static extern void ReleaseDC(IntPtr hwnd, IntPtr dc);
 
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
 
         private const int SM_CXSCREEN = 0;

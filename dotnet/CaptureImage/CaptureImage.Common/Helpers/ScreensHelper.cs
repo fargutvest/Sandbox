@@ -52,10 +52,12 @@ namespace CaptureImage.Common.Helpers
             {
                 ScreenInfos = infos,
                 Background = background,
+                BackgroundRect = new Rectangle(0, 0, maxX, maxY),
                 Path = path,
                 PolygonGeometry = polygonGeometry,
                 Location = location,
-                ClientSize = clientSize
+                ClientSize = clientSize,
+                Bounds = new Rectangle(minX, minY, maxX, maxY)
             };
 
             return desktopInfo;

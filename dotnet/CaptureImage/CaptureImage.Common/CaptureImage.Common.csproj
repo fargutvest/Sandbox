@@ -48,13 +48,18 @@
     <Compile Include="Converters\BitmapConverter.cs" />
     <Compile Include="Converters\PointConverter.cs" />
     <Compile Include="DescktopInfo.cs" />
+    <Compile Include="Extensions\ControlExt.cs" />
+    <Compile Include="Extensions\GraphicsExt.cs" />
+    <Compile Include="Extensions\RectangleExt.cs" />
     <Compile Include="Helpers\BitmapHelper.cs" />
     <Compile Include="Helpers\CaptureImageHelper.cs" />
     <Compile Include="Helpers\GeometryHelper.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\HotKeysHelper.cs" />
     <Compile Include="Helpers\ScreensHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenInfo.cs" />
+    <Compile Include="Tools\SelectingTool.cs" />
     <Compile Include="WinAPi.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
