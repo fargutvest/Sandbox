@@ -50,13 +50,13 @@ namespace CaptureImage.WinForms
 
         private void MouseMoveEvent(object sender, EventArgs e)
         {
-            selectingTool.ChangeSelecting(this.GetMousePosition());
+            selectingTool.MouseMove(this.GetMousePosition());
         }
 
         private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)
         {
             // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
-            selectingTool.ChangeSelecting(e.Location);
+            selectingTool.MouseMove(e.Location);
             selectingTool.Pulse(thumb);
         }
 
@@ -64,7 +64,7 @@ namespace CaptureImage.WinForms
         {
             if (e.Button == MouseButtons.Left)
             {
-                selectingTool.StopSelecting(e.Location);
+                selectingTool.MouseUp(e.Location);
             }
         }
 
@@ -72,7 +72,7 @@ namespace CaptureImage.WinForms
         {
             if (e.Button == MouseButtons.Left)
             {
-                selectingTool.StartSelecting(e.Location);
+                selectingTool.MouseDown(e.Location);
             }
         }
 

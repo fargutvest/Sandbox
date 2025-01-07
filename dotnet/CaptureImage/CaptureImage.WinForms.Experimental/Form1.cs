@@ -67,13 +67,13 @@ namespace CaptureImage.WinForms.Experimental
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            selectingTool.StopSelecting(this.GetMousePosition());
+            selectingTool.MouseUp(this.GetMousePosition());
             Refresh();
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            selectingTool.StartSelecting(e.Location);
+            selectingTool.MouseDown(e.Location);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -88,7 +88,7 @@ namespace CaptureImage.WinForms.Experimental
 
         private void MouseMoveEvent(object sender, EventArgs e)
         {
-            selectingTool.ChangeSelecting(this.GetMousePosition());
+            selectingTool.MouseMove(this.GetMousePosition());
             Refresh();
         }
 

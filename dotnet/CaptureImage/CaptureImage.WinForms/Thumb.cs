@@ -106,7 +106,11 @@ namespace CaptureImage.WinForms
 
         private void Thumb_Paint(object sender, PaintEventArgs e)
         {
-            GraphicsHelper.DrawBorder(e.Graphics, new Rectangle(0,0, this.Width, this.Height));
+            int handleSize = 5;
+            Rectangle rect = new Rectangle(handleSize/2, handleSize/2, this.Width, this.Height);
+            rect.Width = rect.Width - handleSize - 1;
+            rect.Height = rect.Height - handleSize - 1;
+            GraphicsHelper.DrawSelectionBorder(e.Graphics, rect, handleSize);
         }
     }
 }

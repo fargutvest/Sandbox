@@ -12,8 +12,8 @@ namespace CaptureImage.Common.Tools
         private Rectangle selectingRect;
         private Pen selectingPen;
         private Pen selectingPen2;
-        private Point selectingMousePos;
-        private Point selectingMouseStartPos;
+        private Point mousePos;
+        private Point mouseStartPos;
 
         public SelectingTool()
         {
@@ -32,7 +32,7 @@ namespace CaptureImage.Common.Tools
         {
             gr.DrawImage(background, selectingRect, selectingRect, GraphicsUnit.Pixel);
 
-            GraphicsHelper.DrawBorder(gr, selectingRect, selectingPen, selectingPen2);
+            GraphicsHelper.DrawSelectionBorder(gr, selectingRect);
         }
 
         public void Pulse(Control control)
@@ -41,37 +41,37 @@ namespace CaptureImage.Common.Tools
             {
                 control.Visible = false;
 
-                int thumbWidth = Math.Abs(selectingMousePos.X - selectingMouseStartPos.X);
-                int thumbHeight = Math.Abs(selectingMousePos.Y - selectingMouseStartPos.Y);
+                int thumbWidth = Math.Abs(mousePos.X - mouseStartPos.X);
+                int thumbHeight = Math.Abs(mousePos.Y - mouseStartPos.Y);
                 control.Size = new Size(thumbWidth, thumbHeight);
 
-                if (selectingMouseStartPos.X < selectingMousePos.X && selectingMouseStartPos.Y < selectingMousePos.Y)
-                    control.Location = new Point(selectingMouseStartPos.X, selectingMouseStartPos.Y);
+                if (mouseStartPos.X < mousePos.X && mouseStartPos.Y < mousePos.Y)
+                    control.Location = new Point(mouseStartPos.X, mouseStartPos.Y);
 
-                if (selectingMouseStartPos.X > selectingMousePos.X && selectingMouseStartPos.Y < selectingMousePos.Y)
-                    control.Location = new Point(selectingMousePos.X, selectingMouseStartPos.Y);
+                if (mouseStartPos.X > mousePos.X && mouseStartPos.Y < mousePos.Y)
+                    control.Location = new Point(mousePos.X, mouseStartPos.Y);
 
-                if (selectingMouseStartPos.X < selectingMousePos.X && selectingMouseStartPos.Y > selectingMousePos.Y)
-                    control.Location = new Point(selectingMouseStartPos.X, selectingMousePos.Y);
+                if (mouseStartPos.X < mousePos.X && mouseStartPos.Y > mousePos.Y)
+                    control.Location = new Point(mouseStartPos.X, mousePos.Y);
 
-                if (selectingMouseStartPos.X > selectingMousePos.X && selectingMouseStartPos.Y > selectingMousePos.Y)
-                    control.Location = new Point(selectingMousePos.X, selectingMousePos.Y);
+                if (mouseStartPos.X > mousePos.X && mouseStartPos.Y > mousePos.Y)
+                    control.Location = new Point(mousePos.X, mousePos.Y);
 
 
                 control.Visible = true;
             }
         }
 
-        public void StartSelecting(Point startSelectingPoint)
+        public void MouseDown(Point startSelectingPoint)
         {
             if (selectingRect.Contains(startSelectingPoint) == false)
             {
                 isSelecting = true;
-                selectingMouseStartPos = startSelectingPoint;
+                mouseStartPos = startSelectingPoint;
             }
         }
 
-        public void ChangeSelecting(Point mousePosition)
+        public void MouseMove(Point mousePosition)
         {
             if (isSelecting)
             {
@@ -79,7 +79,7 @@ namespace CaptureImage.Common.Tools
             }
         }
 
-        public void StopSelecting(Point mousePosition)
+        public void MouseUp(Point mousePosition)
         {
             if (isSelecting)
             {
@@ -100,11 +100,11 @@ namespace CaptureImage.Common.Tools
 
         private void UpdateSelectingRect(Point mousePosition)
         {
-            selectingMousePos = mousePosition;
+            mousePos = mousePosition;
 
             selectingRect = new Rectangle(
-                selectingMouseStartPos.X, selectingMouseStartPos.Y,
-                selectingMousePos.X - selectingMouseStartPos.X, selectingMousePos.Y - selectingMouseStartPos.Y
+                mouseStartPos.X, mouseStartPos.Y,
+                mousePos.X - mouseStartPos.X, mousePos.Y - mouseStartPos.Y
             );
 
             if (selectingRect.Width < 0)
