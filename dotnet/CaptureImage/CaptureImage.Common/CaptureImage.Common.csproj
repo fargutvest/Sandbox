@@ -59,6 +59,7 @@
     <Compile Include="Helpers\ScreensHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenInfo.cs" />
+    <Compile Include="Tools\SelectingState.cs" />
     <Compile Include="Tools\SelectingTool.cs" />
     <Compile Include="WinAPi.cs" />
   </ItemGroup>
