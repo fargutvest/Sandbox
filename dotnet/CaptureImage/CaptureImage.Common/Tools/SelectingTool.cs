@@ -1,5 +1,4 @@
-﻿using CaptureImage.Common.Extensions;
-using CaptureImage.Common.Helpers;
+﻿using CaptureImage.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +10,7 @@ namespace CaptureImage.Common.Tools
     public class SelectingTool
     {
         private bool isSelecting;
+
         private Rectangle selectingRect;
         private Point mousePos;
         private Point mouseStartPos;
@@ -18,6 +18,10 @@ namespace CaptureImage.Common.Tools
         private Rectangle[] handleRectangles;
 
         private Dictionary<int, Cursor> handleCursors = new Dictionary<int, Cursor>();
+
+        private bool IsHandleHovered => handleRectangles.Any(rect => rect.Contains(mousePos));
+
+        private bool IsSelectingRectangleHovered => selectingRect.Contains(mousePos);
 
         public SelectingTool()
         {
@@ -65,14 +69,22 @@ namespace CaptureImage.Common.Tools
             }
         }
 
-        public void MouseDown(Point startSelectingPoint)
+        public void MouseDown(Point mousePosition)
         {
-            if (selectingRect.Contains(startSelectingPoint) == false)
+            if (selectingRect.IsEmpty || IsSelectingRectangleHovered == false)
             {
                 isSelecting = true;
-                mouseStartPos = startSelectingPoint;
             }
+            mouseStartPos = mousePosition;
         }
+
+        public void MouseUp(Point mousePosition)
+        {
+            isSelecting = false;
+            mousePos = mousePosition;
+            UpdateSelectingRect();
+        }
+
 
         public void MouseMove(Point mousePosition, Control control)
         {
@@ -81,28 +93,19 @@ namespace CaptureImage.Common.Tools
             {
                 UpdateSelectingRect();
             }
+            else if (IsHandleHovered)
+            {
+                Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
+                int rectangleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
+                control.Cursor = handleCursors[rectangleIndex];
+            }
+            else if (IsSelectingRectangleHovered)
+            {
+                control.Cursor = Cursors.SizeAll;
+            }
             else
             {
-                if (handleRectangles.Any(rect => rect.Contains(mousePos)))
-                {
-                    Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
-                    int rectangleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
-                    control.Cursor = handleCursors[rectangleIndex];
-                }
-                else
-                {
-                    control.Cursor = Cursors.Default;
-                }
-            }
-        }
-
-        public void MouseUp(Point mousePosition)
-        {
-            if (isSelecting)
-            {
-                isSelecting = false;
-                mousePos = mousePosition;
-                UpdateSelectingRect();
+                control.Cursor = Cursors.Default;
             }
         }
 
