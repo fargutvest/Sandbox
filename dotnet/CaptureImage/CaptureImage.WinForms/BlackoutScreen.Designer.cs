@@ -33,10 +33,17 @@ namespace CaptureImage.WinForms
             // 
             // BlackoutScreen
             // 
-            this.MouseMove += BlackoutScreen_MouseMove;
-            this.MouseDown += BlackoutScreen_MouseDown;
-            this.MouseUp += BlackoutScreen_MouseUp;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Name = "BlackoutScreen";
+            this.Load += new System.EventHandler(this.BlackoutScreen_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.BlackoutScreen_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BlackoutScreen_KeyDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BlackoutScreen_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BlackoutScreen_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BlackoutScreen_MouseUp);
             this.ResumeLayout(false);
+
         }
 
         #endregion

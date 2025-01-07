@@ -1,7 +1,6 @@
 ﻿using CaptureImage.Common;
 using CaptureImage.Common.Helpers;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 using CaptureImage.Common.Extensions;
 using CaptureImage.Common.Tools;
@@ -31,6 +30,7 @@ namespace CaptureImage.WinForms.Experimental
             selectingTool = new SelectingTool();
             hotKeysHelper = new HotKeysHelper();
             hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
+            hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, HideForm);
 
             // TODO: Что быстрее работает ? Задать поместить скриншот фоном формы один раз в конструкторе, или каждый раз рисовать скриншот при перерисовке формы в методе Paint ?
             //BackgroundImage = desktopInfo.Background;
@@ -78,10 +78,7 @@ namespace CaptureImage.WinForms.Experimental
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-                HideForm();
-
-            else if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
             {
                 selectingTool.Select(desktopInfo.BackgroundRect);
                 Refresh();

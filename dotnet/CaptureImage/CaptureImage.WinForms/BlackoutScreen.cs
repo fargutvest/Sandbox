@@ -1,13 +1,17 @@
 ﻿using CaptureImage.Common;
 using CaptureImage.Common.Helpers;
 using CaptureImage.Common.Tools;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CaptureImage.Common.Extensions;
 
 namespace CaptureImage.WinForms
 {
     public partial class BlackoutScreen : ScreenBase
     {
+        private bool isInit = true;
+
         private Thumb thumb;
 
         private DescktopInfo desktopInfo;
@@ -25,7 +29,7 @@ namespace CaptureImage.WinForms
             BackgroundImage = BitmapHelper.ChangeOpacity(desktopInfo.Background, 0.5f);
             TransparencyKey = Color.Red;
             Region = new Region(desktopInfo.Path);
-            //TopMost = true 
+            //TopMost = true;
 
             selectingTool = new SelectingTool();
 
@@ -33,9 +37,25 @@ namespace CaptureImage.WinForms
             this.thumb.Size = new Size(0,0);
             this.Controls.Add(thumb);
         }
+        private void BlackoutScreen_Load(object sender, System.EventArgs e)
+        {
+            Timer timer = new Timer
+            {
+                Interval = 10
+            };
+            timer.Tick += new EventHandler(MouseMoveEvent);
+           // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
+           // timer.Start();
+        }
+
+        private void MouseMoveEvent(object sender, EventArgs e)
+        {
+            selectingTool.ChangeSelecting(this.GetMousePosition());
+        }
 
         private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)
         {
+            // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
             selectingTool.ChangeSelecting(e.Location);
             selectingTool.Pulse(thumb);
         }
@@ -56,5 +76,24 @@ namespace CaptureImage.WinForms
             }
         }
 
+        private void BlackoutScreen_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                selectingTool.Select(desktopInfo.BackgroundRect);
+            }
+        }
+
+
+        private void BlackoutScreen_Paint(object sender, PaintEventArgs e)
+        {
+            if (isInit)
+            {
+                isInit = false;
+            }
+
+            // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
+            // selectingTool.Pulse(thumb);
+        }
     }
 }
