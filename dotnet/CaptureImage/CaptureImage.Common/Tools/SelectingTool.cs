@@ -1,6 +1,8 @@
 ﻿using CaptureImage.Common.Extensions;
 using CaptureImage.Common.Helpers;
+using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
 {
@@ -26,11 +28,38 @@ namespace CaptureImage.Common.Tools
             };
         }
 
-        public void Paint(Graphics gr, Bitmap background)
+        public void Pulse(Graphics gr, Bitmap background)
         {
             gr.DrawImage(background, selectingRect, selectingRect, GraphicsUnit.Pixel);
 
             GraphicsHelper.DrawBorder(gr, selectingRect, selectingPen, selectingPen2);
+        }
+
+        public void Pulse(Control control)
+        {
+            if (isSelecting)
+            {
+                control.Visible = false;
+
+                int thumbWidth = Math.Abs(selectingMousePos.X - selectingMouseStartPos.X);
+                int thumbHeight = Math.Abs(selectingMousePos.Y - selectingMouseStartPos.Y);
+                control.Size = new Size(thumbWidth, thumbHeight);
+
+                if (selectingMouseStartPos.X < selectingMousePos.X && selectingMouseStartPos.Y < selectingMousePos.Y)
+                    control.Location = new Point(selectingMouseStartPos.X, selectingMouseStartPos.Y);
+
+                if (selectingMouseStartPos.X > selectingMousePos.X && selectingMouseStartPos.Y < selectingMousePos.Y)
+                    control.Location = new Point(selectingMousePos.X, selectingMouseStartPos.Y);
+
+                if (selectingMouseStartPos.X < selectingMousePos.X && selectingMouseStartPos.Y > selectingMousePos.Y)
+                    control.Location = new Point(selectingMouseStartPos.X, selectingMousePos.Y);
+
+                if (selectingMouseStartPos.X > selectingMousePos.X && selectingMouseStartPos.Y > selectingMousePos.Y)
+                    control.Location = new Point(selectingMousePos.X, selectingMousePos.Y);
+
+
+                control.Visible = true;
+            }
         }
 
         public void StartSelecting(Point startSelectingPoint)
@@ -69,7 +98,7 @@ namespace CaptureImage.Common.Tools
             this.selectingRect = selectingRect;
         }
 
-        public void UpdateSelectingRect(Point mousePosition)
+        private void UpdateSelectingRect(Point mousePosition)
         {
             selectingMousePos = mousePosition;
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CaptureImage.Common;
+using CaptureImage.Common.Helpers;
+using CaptureImage.Common.Tools;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,66 +8,51 @@ namespace CaptureImage.WinForms
 {
     public partial class BlackoutScreen : ScreenBase
     {
-        private int mouse_x;
-        private int mouse_y;
-        private int start_mouse_x;
-        private int start_mouse_y;
-
-        private bool lmb_down;
         private Thumb thumb;
 
-        public BlackoutScreen(Size clientSize, Point location) : base(clientSize, location)
+        private DescktopInfo desktopInfo;
+
+        private SelectingTool selectingTool;
+
+        public BlackoutScreen()
         {
             InitializeComponent();
+
+            desktopInfo = ScreensHelper.GetDesktopInfo();
+            ClientSize = desktopInfo.ClientSize;
+            Location = desktopInfo.Location;
+            BackColor = Color.Black;
+            BackgroundImage = BitmapHelper.ChangeOpacity(desktopInfo.Background, 0.5f);
+            TransparencyKey = Color.Red;
+            Region = new Region(desktopInfo.Path);
+            //TopMost = true 
+
+            selectingTool = new SelectingTool();
+
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
             this.Controls.Add(thumb);
         }
 
-        private void SplashScreen_MouseMove(object sender, MouseEventArgs e)
+        private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)
         {
-            if (lmb_down)
-            {
-                thumb.Visible = false;
-
-                int thumbWidth = Math.Abs(e.X - start_mouse_x);
-                int thumbHeight = Math.Abs(e.Y - start_mouse_y);
-                thumb.Size = new Size(thumbWidth, thumbHeight);
-
-                if (start_mouse_x < e.X && start_mouse_y < e.Y)
-                    thumb.Location = new Point(start_mouse_x, start_mouse_y);
-
-                if (start_mouse_x > e.X && start_mouse_y < e.Y)
-                    thumb.Location = new Point(e.X, start_mouse_y);
-
-                if (start_mouse_x < e.X && start_mouse_y > e.Y)
-                    thumb.Location = new Point(start_mouse_x, e.Y);
-
-                if (start_mouse_x > e.X && start_mouse_y > e.Y)
-                    thumb.Location = new Point(e.X, e.Y);
-
-
-                thumb.Visible = true;
-            }
+            selectingTool.ChangeSelecting(e.Location);
+            selectingTool.Pulse(thumb);
         }
 
-        private void SplashScreen_MouseUp(object sender, MouseEventArgs e)
+        private void BlackoutScreen_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                lmb_down = false;
+                selectingTool.StopSelecting(e.Location);
             }
         }
 
-        private void SplashScreen_MouseDown(object sender, MouseEventArgs e)
+        private void BlackoutScreen_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.thumb.Size = new Size(0,0);
-
-                lmb_down = true;
-                start_mouse_x = e.X;
-                start_mouse_y = e.Y;
+                selectingTool.StartSelecting(e.Location);
             }
         }
 

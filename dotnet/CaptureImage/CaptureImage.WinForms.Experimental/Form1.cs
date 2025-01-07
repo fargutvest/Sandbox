@@ -31,6 +31,9 @@ namespace CaptureImage.WinForms.Experimental
             selectingTool = new SelectingTool();
             hotKeysHelper = new HotKeysHelper();
             hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
+
+            // TODO: Что быстрее работает ? Задать поместить скриншот фоном формы один раз в конструкторе, или каждый раз рисовать скриншот при перерисовке формы в методе Paint ?
+            //BackgroundImage = desktopInfo.Background;
         }
 
         protected override void WndProc(ref Message m)
@@ -57,11 +60,9 @@ namespace CaptureImage.WinForms.Experimental
                 isInit = false;
             }
 
-            Graphics gr = e.Graphics;
-
-            gr.DrawImage(desktopInfo.Background, desktopInfo.BackgroundRect, desktopInfo.BackgroundRect, opacity: 0.5f);
-
-            selectingTool.Paint(gr, desktopInfo.Background);
+            // TODO: Что быстрее работает ? Задать поместить скриншот фоном формы один раз в конструкторе, или каждый раз рисовать скриншот при перерисовке формы в методе Paint ?
+            e.Graphics.DrawImage(desktopInfo.Background, desktopInfo.BackgroundRect, desktopInfo.BackgroundRect, opacity: 0.5f);
+            selectingTool.Pulse(e.Graphics, desktopInfo.Background);
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)

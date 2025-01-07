@@ -31,11 +31,11 @@ namespace CaptureImage.WinForms
         {
             this.SuspendLayout();
             // 
-            // SplashScreen
+            // BlackoutScreen
             // 
-            this.MouseMove += SplashScreen_MouseMove;
-            this.MouseDown += SplashScreen_MouseDown;
-            this.MouseUp += SplashScreen_MouseUp;
+            this.MouseMove += BlackoutScreen_MouseMove;
+            this.MouseDown += BlackoutScreen_MouseDown;
+            this.MouseUp += BlackoutScreen_MouseUp;
             this.ResumeLayout(false);
         }
 

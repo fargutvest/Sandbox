@@ -12,7 +12,11 @@ namespace CaptureImage.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new App().Run();
+            FreezeScreen freezeScreen = new FreezeScreen();
+            freezeScreen.Show();
+
+            BlackoutScreen blackoutScreen = new BlackoutScreen();
+            blackoutScreen.Show();
         }
     }
 }
