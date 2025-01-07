@@ -1,7 +1,6 @@
 ﻿using CaptureImage.Common;
 using CaptureImage.Common.Helpers;
 using CaptureImage.Common.Tools;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CaptureImage.Common.Extensions;
@@ -35,29 +34,16 @@ namespace CaptureImage.WinForms
 
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
+            this.thumb.MouseDown += (sender, e) => BlackoutScreen_MouseDown(sender, e.Offset(thumb.Location));
+            this.thumb.MouseUp += (sender, e) => BlackoutScreen_MouseUp(sender, e.Offset(thumb.Location));
+            this.thumb.MouseMove += (sender, e) => BlackoutScreen_MouseMove(sender, e.Offset(thumb.Location));
             this.Controls.Add(thumb);
-        }
-        private void BlackoutScreen_Load(object sender, System.EventArgs e)
-        {
-            Timer timer = new Timer
-            {
-                Interval = 10
-            };
-            timer.Tick += new EventHandler(MouseMoveEvent);
-           // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
-           // timer.Start();
-        }
-
-        private void MouseMoveEvent(object sender, EventArgs e)
-        {
-            selectingTool.MouseMove(this.GetMousePosition(), this);
         }
 
         private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)
         {
-            // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
             selectingTool.MouseMove(e.Location, this);
-            selectingTool.Pulse(thumb);
+            selectingTool.Pulse(this.thumb);
         }
 
         private void BlackoutScreen_MouseUp(object sender, MouseEventArgs e)
@@ -82,18 +68,6 @@ namespace CaptureImage.WinForms
             {
                 selectingTool.Select(desktopInfo.BackgroundRect);
             }
-        }
-
-
-        private void BlackoutScreen_Paint(object sender, PaintEventArgs e)
-        {
-            if (isInit)
-            {
-                isInit = false;
-            }
-
-            // TODO: Что работает быстрее ? Обновление позиции мыши и перерисовка по таймеру, или по событию MouseMove ?
-            // selectingTool.Pulse(thumb);
         }
     }
 }

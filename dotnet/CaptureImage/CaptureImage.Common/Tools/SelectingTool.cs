@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+
 namespace CaptureImage.Common.Tools
 {
     public class SelectingTool
@@ -49,8 +50,9 @@ namespace CaptureImage.Common.Tools
             handleRectangles = GraphicsHelper.DrawSelectionBorder(gr, selectingRect);
         }
 
-        public void Pulse(Control selector)
+        public void Pulse(IThumb selector)
         {
+            handleRectangles = selector.HandleRectangles;
             selector.Visible = false;
             selector.Size = selectingRect.Size;
             selector.Location = selectingRect.Location;

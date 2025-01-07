@@ -1,107 +1,19 @@
 ﻿using CaptureImage.Common.Helpers;
 using System.Drawing;
 using System.Windows.Forms;
+using CaptureImage.Common;
 
 namespace CaptureImage.WinForms
 {
-    public partial class Thumb : UserControl
+    public partial class Thumb : UserControl, IThumb
     {
-        private bool lmb_down;
-        private int start_mouse_x;
-        private int start_mouse_y;
-
-        private bool mouseIsOver;
+        public Rectangle[] HandleRectangles { get; private set; }
 
         public Thumb()
         {
             InitializeComponent();
-        }
 
-        private bool IsVerticalBorderHovered(MouseEventArgs e, int borderThickness)
-        {
-            // курсор мыши находится над левой границей
-            if (e.X >= 0 && e.X <= borderThickness)
-                return true;
-
-            // курсор мыши находится над правой границей
-            if (e.X >= (this.Width - borderThickness) && e.X <= this.Width)
-                return true;
-
-
-            return false;
-        }
-
-        private bool IsHorizontalBorderHovered(MouseEventArgs e, int borderThickness)
-        {
-            // курсор мыши находится над верхней границей
-            if (e.Y >= 0 && e.Y <= borderThickness)
-                return true;
-
-            // курсор мыши находится над нижней границей
-            if (e.Y >= (this.Height - borderThickness) && e.Y <= this.Height)
-                return true;
-
-
-            return false;
-        }
-
-        private void Thumb_MouseMove(object sender, MouseEventArgs e)
-        {
-            int borderThickness = 3;
-            this.Cursor = Cursors.SizeAll;
-
-            if (lmb_down)
-            {
-                this.Location = new Point(this.Location.X + e.X - start_mouse_x, this.Location.Y + e.Y - start_mouse_y);
-            }
-            else
-            {
-                if (IsVerticalBorderHovered(e, borderThickness))
-                    this.Cursor = Cursors.SizeWE;
-
-                if (IsHorizontalBorderHovered(e, borderThickness))
-                    this.Cursor = Cursors.SizeNS;
-
-
-                else if (e.X == 0 && e.Y == 0)
-                {
-                    this.Cursor = Cursors.SizeNESW;
-                }
-            }
-        }
-
-        private void Thumb_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                lmb_down = false;
-            }
-        }
-
-        private void Thumb_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                lmb_down = true;
-                start_mouse_x = e.X;
-                start_mouse_y = e.Y;
-            }
-        }
-
-
-        private void Thumb_MouseLeave(object sender, System.EventArgs e)
-        {
-            mouseIsOver = false;
-        }
-
-        private void Thumb_MouseEnter(object sender, System.EventArgs e)
-        {
-            mouseIsOver = true;
-        }
-
-        private void MouseNearBorder()
-        {
-
+            HandleRectangles = new Rectangle[0];
         }
 
         private void Thumb_Paint(object sender, PaintEventArgs e)
@@ -110,7 +22,12 @@ namespace CaptureImage.WinForms
             Rectangle rect = new Rectangle(handleSize/2, handleSize/2, this.Width, this.Height);
             rect.Width = rect.Width - handleSize - 1;
             rect.Height = rect.Height - handleSize - 1;
-            GraphicsHelper.DrawSelectionBorder(e.Graphics, rect, handleSize);
+            HandleRectangles = GraphicsHelper.DrawSelectionBorder(e.Graphics, rect, handleSize);
+
+            for (int i = 0; i< HandleRectangles.Length; i++)
+            {
+                HandleRectangles[i].Offset(this.Location);
+            }
         }
     }
 }

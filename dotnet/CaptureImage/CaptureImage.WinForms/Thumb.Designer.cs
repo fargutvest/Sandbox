@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-
+﻿
 namespace CaptureImage.WinForms
 {
     partial class Thumb
@@ -41,17 +40,9 @@ namespace CaptureImage.WinForms
             this.Name = "Thumb";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Thumb_Paint);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseDown);
-            this.MouseEnter += new System.EventHandler(this.Thumb_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.Thumb_MouseLeave);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseUp);
             this.ResumeLayout(false);
 
         }
-
-
-
 
         #endregion
     }
