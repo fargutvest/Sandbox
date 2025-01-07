@@ -88,7 +88,7 @@ namespace CaptureImage.WinForms.Experimental
 
         private void MouseMoveEvent(object sender, EventArgs e)
         {
-            selectingTool.MouseMove(this.GetMousePosition());
+            selectingTool.MouseMove(this.GetMousePosition(), this);
             Refresh();
         }
 

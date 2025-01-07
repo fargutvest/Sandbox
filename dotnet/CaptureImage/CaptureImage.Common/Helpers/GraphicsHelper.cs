@@ -5,7 +5,7 @@ namespace CaptureImage.Common.Helpers
 {
     public static class GraphicsHelper
     {
-        public static void DrawSelectionBorder(Graphics gr, Rectangle rect, int handleSize = 5)
+        public static Rectangle[] DrawSelectionBorder(Graphics gr, Rectangle rect, int handleSize = 5)
         {
             Pen pen = new Pen(Color.White)
             {
@@ -41,6 +41,8 @@ namespace CaptureImage.Common.Helpers
             r1.Offset(0, -rect.Height / 2); rectangles.Add(r1);
             gr.FillRectangles(Brushes.Black, rectangles.ToArray());
             gr.DrawRectangles(Pens.White, rectangles.ToArray());
+
+            return rectangles.ToArray();
         }
     }
 }

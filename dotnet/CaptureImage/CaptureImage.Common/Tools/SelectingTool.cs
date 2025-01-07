@@ -1,7 +1,9 @@
 ﻿using CaptureImage.Common.Extensions;
 using CaptureImage.Common.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
@@ -10,29 +12,30 @@ namespace CaptureImage.Common.Tools
     {
         private bool isSelecting;
         private Rectangle selectingRect;
-        private Pen selectingPen;
-        private Pen selectingPen2;
         private Point mousePos;
         private Point mouseStartPos;
 
+        private Rectangle[] handleRectangles;
+
+        private Dictionary<int, Cursor> handleCursors = new Dictionary<int, Cursor>();
+
         public SelectingTool()
         {
-            selectingPen = new Pen(Color.Yellow)
-            {
-                Width = 2,
-                DashPattern = new float[] { 5, 5 }
-            };
-            selectingPen2 = new Pen(Color.Violet)
-            {
-                Width = 2
-            };
+            handleCursors.Add(0, Cursors.SizeNWSE); /// угол
+            handleCursors.Add(1, Cursors.SizeNS);
+            handleCursors.Add(2, Cursors.SizeNESW); // угол
+            handleCursors.Add(3, Cursors.SizeWE);
+            handleCursors.Add(4, Cursors.SizeNWSE); // угол
+            handleCursors.Add(5, Cursors.SizeNS);
+            handleCursors.Add(6, Cursors.SizeNESW); // угол
+            handleCursors.Add(7, Cursors.SizeWE);
         }
 
         public void Pulse(Graphics gr, Bitmap background)
         {
             gr.DrawImage(background, selectingRect, selectingRect, GraphicsUnit.Pixel);
 
-            GraphicsHelper.DrawSelectionBorder(gr, selectingRect);
+            handleRectangles = GraphicsHelper.DrawSelectionBorder(gr, selectingRect);
         }
 
         public void Pulse(Control control)
@@ -71,11 +74,25 @@ namespace CaptureImage.Common.Tools
             }
         }
 
-        public void MouseMove(Point mousePosition)
+        public void MouseMove(Point mousePosition, Control control)
         {
+            mousePos = mousePosition;
             if (isSelecting)
             {
-                UpdateSelectingRect(mousePosition);
+                UpdateSelectingRect();
+            }
+            else
+            {
+                if (handleRectangles.Any(rect => rect.Contains(mousePos)))
+                {
+                    Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
+                    int rectangleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
+                    control.Cursor = handleCursors[rectangleIndex];
+                }
+                else
+                {
+                    control.Cursor = Cursors.Default;
+                }
             }
         }
 
@@ -84,7 +101,8 @@ namespace CaptureImage.Common.Tools
             if (isSelecting)
             {
                 isSelecting = false;
-                UpdateSelectingRect(mousePosition);
+                mousePos = mousePosition;
+                UpdateSelectingRect();
             }
         }
 
@@ -98,10 +116,8 @@ namespace CaptureImage.Common.Tools
             this.selectingRect = selectingRect;
         }
 
-        private void UpdateSelectingRect(Point mousePosition)
+        private void UpdateSelectingRect()
         {
-            mousePos = mousePosition;
-
             selectingRect = new Rectangle(
                 mouseStartPos.X, mouseStartPos.Y,
                 mousePos.X - mouseStartPos.X, mousePos.Y - mouseStartPos.Y
