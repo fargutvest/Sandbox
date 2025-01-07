@@ -27,6 +27,8 @@ namespace CaptureImage.Common.Tools
 
         public SelectingTool()
         {
+            handleRectangles = new Rectangle[0];
+
             handleCursors = new Dictionary<int, Cursor>
             {
                 { 0, Cursors.SizeNWSE },/// угол
@@ -50,24 +52,10 @@ namespace CaptureImage.Common.Tools
         public void Pulse(Control selector)
         {
             selector.Visible = false;
-
-            selector.Size = new Size(Math.Abs(mousePos.X - mouseStartPos.X), Math.Abs(mousePos.Y - mouseStartPos.Y));
-
-            if (mouseStartPos.X < mousePos.X && mouseStartPos.Y < mousePos.Y)
-                selector.Location = new Point(mouseStartPos.X, mouseStartPos.Y);
-
-            if (mouseStartPos.X > mousePos.X && mouseStartPos.Y < mousePos.Y)
-                selector.Location = new Point(mousePos.X, mouseStartPos.Y);
-
-            if (mouseStartPos.X < mousePos.X && mouseStartPos.Y > mousePos.Y)
-                selector.Location = new Point(mouseStartPos.X, mousePos.Y);
-
-            if (mouseStartPos.X > mousePos.X && mouseStartPos.Y > mousePos.Y)
-                selector.Location = new Point(mousePos.X, mousePos.Y);
-
-
+            selector.Size = selectingRect.Size;
+            selector.Location = selectingRect.Location;
             selector.Visible = true;
-
+            selector.Refresh();
         }
 
         public void MouseDown(Point mousePosition)
