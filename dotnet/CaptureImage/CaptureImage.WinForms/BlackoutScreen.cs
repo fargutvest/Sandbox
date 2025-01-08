@@ -37,7 +37,8 @@ namespace CaptureImage.WinForms
             this.thumb.MouseDown += (sender, e) => BlackoutScreen_MouseDown(sender, e.Offset(thumb.Location));
             this.thumb.MouseUp += (sender, e) => BlackoutScreen_MouseUp(sender, e.Offset(thumb.Location));
             this.thumb.MouseMove += (sender, e) => BlackoutScreen_MouseMove(sender, e.Offset(thumb.Location));
-            this.Controls.Add(thumb);
+            
+            this.Controls.AddRange(thumb.Components);
         }
 
         private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)

@@ -9,11 +9,26 @@ namespace CaptureImage.WinForms
     {
         public Rectangle[] HandleRectangles { get; private set; }
 
+        private Label displaySizeLabel;
+
+        public Control[] Components { get; }
+
         public Thumb()
         {
             InitializeComponent();
 
+            this.displaySizeLabel = new Label();
+            this.displaySizeLabel.AutoSize = true;
+            this.displaySizeLabel.Font = new Font(displaySizeLabel.Font.FontFamily, 10);
+            this.displaySizeLabel.ForeColor = Color.White;
+
             HandleRectangles = new Rectangle[0];
+
+            Components = new Control[]
+            {
+                this,
+                this.displaySizeLabel
+            };
         }
 
         private void Thumb_Paint(object sender, PaintEventArgs e)
@@ -28,6 +43,10 @@ namespace CaptureImage.WinForms
             {
                 HandleRectangles[i].Offset(this.Location);
             }
+
+            displaySizeLabel.Text = $"{Size.Width}x{Size.Height}";
+            displaySizeLabel.Location = new Point(this.Location.X, this.Location.Y - displaySizeLabel.Height);
+            displaySizeLabel.Refresh();
         }
     }
 }
