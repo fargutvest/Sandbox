@@ -146,18 +146,7 @@ namespace CaptureImage.Common.Tools
                 mousePos.X - mouseStartPos.X, mousePos.Y - mouseStartPos.Y
             );
 
-            if (selectingRect.Width < 0)
-            {
-                selectingRect.X = selectingRect.X + selectingRect.Width;
-                selectingRect.Width = -selectingRect.Width;
-            }
-
-
-            if (selectingRect.Height < 0)
-            {
-                selectingRect.Y = selectingRect.Y + selectingRect.Height;
-                selectingRect.Height = -selectingRect.Height;
-            }
+            FlipIfNeeded();
         }
 
         private void MoveSelectingRect()
@@ -212,6 +201,25 @@ namespace CaptureImage.Common.Tools
                     selectingRect = new Rectangle(selectingRectResizeStart.X + deltaX, selectingRect.Y,
                     selectingRectResizeStart.Width - deltaX, selectingRect.Height);
                     break;
+
+            }
+
+            FlipIfNeeded();
+        }
+
+        private void FlipIfNeeded()
+        {
+            if (selectingRect.Width < 0)
+            {
+                selectingRect.X = selectingRect.X + selectingRect.Width;
+                selectingRect.Width = -selectingRect.Width;
+            }
+
+
+            if (selectingRect.Height < 0)
+            {
+                selectingRect.Y = selectingRect.Y + selectingRect.Height;
+                selectingRect.Height = -selectingRect.Height;
 
             }
         }
