@@ -76,5 +76,18 @@ namespace CaptureImage.WinForms
             panelY.Refresh();
 
         }
+
+        public void HideExtra()
+        {
+            this.panelX.Visible = false;
+            this.panelY.Visible = false;
+        }
+
+        public void ShowExtra()
+        {
+
+            this.panelX.Visible = true;
+            this.panelY.Visible = true;
+        }
     }
 }

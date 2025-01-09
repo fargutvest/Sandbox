@@ -9,5 +9,8 @@ namespace CaptureImage.Common
         Size Size { get; set; }
         Point Location { get; set; }
         void Refresh();
+
+        void HideExtra();
+        void ShowExtra();
     }
 }

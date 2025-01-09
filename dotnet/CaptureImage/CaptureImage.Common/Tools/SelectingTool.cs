@@ -57,6 +57,20 @@ namespace CaptureImage.Common.Tools
             selector.Size = selectingRect.Size;
             selector.Location = selectingRect.Location;
             selector.Visible = true;
+
+
+            switch (selectingState)
+            {
+                case SelectingState.Selecting:
+                case SelectingState.Moving:
+                case SelectingState.Resizing:
+                    selector.HideExtra();
+                    break;
+                case SelectingState.None:
+                    selector.ShowExtra();
+                    break;
+            }
+
             selector.Refresh();
         }
 
