@@ -62,7 +62,7 @@ namespace CaptureImage.WinForms.Experimental
 
             // TODO: Что быстрее работает ? Задать поместить скриншот фоном формы один раз в конструкторе, или каждый раз рисовать скриншот при перерисовке формы в методе Paint ?
             e.Graphics.DrawImage(desktopInfo.Background, desktopInfo.BackgroundRect, desktopInfo.BackgroundRect, opacity: 0.5f);
-            selectingTool.Pulse(e.Graphics, desktopInfo.Background);
+            selectingTool.Paint(e.Graphics, desktopInfo.Background);
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)

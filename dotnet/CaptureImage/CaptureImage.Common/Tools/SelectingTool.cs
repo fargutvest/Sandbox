@@ -1,5 +1,6 @@
 ﻿using CaptureImage.Common.Extensions;
 using CaptureImage.Common.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CaptureImage.Common.Tools
 {
     public class SelectingTool
     {
-        private SelectingState selectingState;
+        private SelectingState state;
 
         private Rectangle selectingRect;
         private Point mousePos;
@@ -20,13 +21,41 @@ namespace CaptureImage.Common.Tools
         private int hoveredHandleIndex;
         private Rectangle selectingRectResizeStart;
         private Dictionary<int, Cursor> handleCursors;
+        private bool isActive;
 
         private bool IsHandleHovered => handleRectangles.Any(rect => rect.Contains(mousePos));
 
         private bool IsSelectingRectangleHovered => selectingRect.Contains(mousePos);
 
-        public SelectingTool()
+        private bool isMouseOver;
+        public bool IsMouseOver
         {
+            get 
+            { 
+                return isMouseOver; 
+            }
+            set
+            {
+                if (isMouseOver != value)
+                {
+                    isMouseOver = value;
+
+                    if (isMouseOver)
+                        MouseEnterSelection?.Invoke(this, mousePos);
+                    else
+                        MouseLeaveSelection?.Invoke(this, mousePos);
+                }
+            }
+        }
+
+        public event EventHandler<Point> MouseEnterSelection;
+
+        public event EventHandler<Point> MouseLeaveSelection;
+
+        public SelectingTool(bool isActive)
+        {
+            this.isActive = isActive;
+
             handleRectangles = new Rectangle[0];
 
             handleCursors = new Dictionary<int, Cursor>
@@ -42,107 +71,118 @@ namespace CaptureImage.Common.Tools
             };
         }
 
-        public bool IsMouseOver(Point point) => selectingRect.Contains(point);
-
         public Point Translate(Point point) => new Point(point.X - selectingRect.X, point.Y - selectingRect.Y);
 
-        public void Pulse(Graphics gr, Bitmap background)
+        public void Paint(Graphics gr, Bitmap background)
         {
             gr.DrawImage(background, selectingRect, selectingRect, GraphicsUnit.Pixel);
 
             handleRectangles = GraphicsHelper.DrawSelectionBorder(gr, selectingRect);
         }
 
-        public void Pulse(IThumb selector)
+        public void Paint(IThumb selector)
         {
-            handleRectangles = selector.HandleRectangles;
-            selector.Visible = false;
-            selector.Size = selectingRect.Size;
-            selector.Location = selectingRect.Location;
-            selector.Visible = true;
-
-
-            switch (selectingState)
+            if (isActive)
             {
-                case SelectingState.Selecting:
-                case SelectingState.Moving:
-                case SelectingState.Resizing:
-                    selector.HideExtra();
-                    break;
-                case SelectingState.None:
-                    selector.ShowExtra();
-                    break;
-            }
+                handleRectangles = selector.HandleRectangles;
+                selector.Visible = false;
+                selector.Size = selectingRect.Size;
+                selector.Location = selectingRect.Location;
+                selector.Visible = true;
 
-            selector.Refresh();
+
+                switch (state)
+                {
+                    case SelectingState.Selecting:
+                    case SelectingState.Moving:
+                    case SelectingState.Resizing:
+                        selector.HideExtra();
+                        break;
+                    case SelectingState.None:
+                        selector.ShowExtra();
+                        break;
+                }
+
+                selector.Refresh();
+            }
         }
 
         public void MouseDown(Point mousePosition)
         {
-            mouseStartPos = mousePosition;
-
-            if ((selectingRect.IsEmpty || IsSelectingRectangleHovered == false) && IsHandleHovered == false)
+            if (isActive)
             {
-                selectingState = SelectingState.Selecting;
-            }
-            else if (selectingRect.IsEmpty == false && IsSelectingRectangleHovered && IsHandleHovered == false)
-            {
-                selectingState = SelectingState.Moving;
+                mouseStartPos = mousePosition;
 
-                relativeMouseStartPos = new Point( mousePosition.X - selectingRect.X, mousePosition.Y - selectingRect.Y);
-            }
-            else if (selectingRect.IsEmpty == false && IsHandleHovered)
-            {
-                selectingState = SelectingState.Resizing;
+                if ((selectingRect.IsEmpty || IsSelectingRectangleHovered == false) && IsHandleHovered == false)
+                {
+                    state = SelectingState.Selecting;
+                }
+                else if (selectingRect.IsEmpty == false && IsSelectingRectangleHovered && IsHandleHovered == false)
+                {
+                    state = SelectingState.Moving;
 
-                Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
-                hoveredHandleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
-                selectingRectResizeStart = selectingRect.Clone();
+                    relativeMouseStartPos = new Point(mousePosition.X - selectingRect.X, mousePosition.Y - selectingRect.Y);
+                }
+                else if (selectingRect.IsEmpty == false && IsHandleHovered)
+                {
+                    state = SelectingState.Resizing;
+
+                    Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
+                    hoveredHandleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
+                    selectingRectResizeStart = selectingRect.Clone();
+                }
             }
         }
 
         public void MouseUp(Point mousePosition)
         {
-            if (selectingState == SelectingState.Selecting)
+            if (isActive)
             {
-                mousePos = mousePosition;
-                UpdateSelectingRect();
-            }
+                if (state == SelectingState.Selecting)
+                {
+                    mousePos = mousePosition;
+                    UpdateSelectingRect();
+                }
 
-            selectingState = SelectingState.None;
+                state = SelectingState.None;
+            }
         }
 
 
         public void MouseMove(Point mousePosition, Control canvas)
         {
             mousePos = mousePosition;
-    
-            if (IsHandleHovered)
+            IsMouseOver = selectingRect.Contains(mousePosition);
+            
+            if (isActive)
             {
-                Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
-                int rectangleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
-                canvas.Cursor = handleCursors[rectangleIndex];
-            }
-            else if (IsSelectingRectangleHovered)
-            {
-                canvas.Cursor = Cursors.SizeAll;
-            }
-            else
-            {
-                canvas.Cursor = Cursors.Default;
-            }
+                if (IsHandleHovered)
+                {
+                    Rectangle hoveredHandleRect = handleRectangles.First(rect => rect.Contains(mousePos));
+                    int rectangleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
+                    canvas.Cursor = handleCursors[rectangleIndex];
+                }
+                else if (IsSelectingRectangleHovered)
+                {
+                    canvas.Cursor = Cursors.SizeAll;
+                }
+                else
+                {
+                    canvas.Cursor = Cursors.Default;
+                }
 
-            switch (selectingState)
-            {
-                case SelectingState.Selecting:
-                    UpdateSelectingRect();
-                    break;
-                case SelectingState.Moving:
-                    MoveSelectingRect();
-                    break;
-                case SelectingState.Resizing:
-                    ResizeSelectingRect();
-                    break;
+                switch (state)
+                {
+                    case SelectingState.Selecting:
+                        UpdateSelectingRect();
+                        break;
+                    case SelectingState.Moving:
+                        MoveSelectingRect();
+                        break;
+                    case SelectingState.Resizing:
+                        ResizeSelectingRect();
+                        break;
+                }
             }
         }
 
@@ -239,6 +279,16 @@ namespace CaptureImage.Common.Tools
                 selectingRect.Height = -selectingRect.Height;
 
             }
+        }
+
+        public void Activate()
+        {
+            isActive = true;
+        }
+
+        public void Deactivate()
+        {
+            isActive = false;
         }
     }
 }

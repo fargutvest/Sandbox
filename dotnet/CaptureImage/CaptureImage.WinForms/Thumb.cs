@@ -3,15 +3,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using CaptureImage.Common;
 using CaptureImage.Common.Extensions;
-using CaptureImage.Common.Tools;
+using System;
 
 namespace CaptureImage.WinForms
 {
     public partial class Thumb : UserControl, IThumb
     {
         public Rectangle[] HandleRectangles { get; private set; }
-
-        private DrawingTool drawingTool;
 
         private Label displaySizeLabel;
         private Panel panelY;
@@ -22,8 +20,11 @@ namespace CaptureImage.WinForms
 
         public Control[] Components { get; }
 
-        public ThumbState ThumbState { get; private set; }
+        private ThumbState state;
+
         public bool IsMouseOver;
+
+        public event EventHandler<ThumbState> StateChanged;
 
         public Thumb()
         {
@@ -66,8 +67,6 @@ namespace CaptureImage.WinForms
 
             HandleRectangles = new Rectangle[0];
 
-            drawingTool = new DrawingTool();
-
             Components = new Control[]
             {
                 this,
@@ -79,12 +78,14 @@ namespace CaptureImage.WinForms
 
         private void BtnDrawing_MouseClick(object sender, MouseEventArgs e)
         {
-            ThumbState = ThumbState.Drawing;
+            state = ThumbState.Drawing;
+            StateChanged?.Invoke(this, state);
         }
 
         private void BtnUndo_MouseClick(object sender, MouseEventArgs e)
         {
-            ThumbState = ThumbState.Selecting;
+            state = ThumbState.Selecting;
+            StateChanged?.Invoke(this, state);
         }
 
         private void Thumb_Paint(object sender, PaintEventArgs e)
@@ -127,25 +128,14 @@ namespace CaptureImage.WinForms
             this.panelY.Visible = true;
         }
 
-        private void Thumb_MouseMove(object sender, MouseEventArgs e)
-        {
-            OnMouseMove(e.Location);
-        }
-
         public void MouseHover(Point point)
         {
             IsMouseOver = true; 
-            drawingTool.MouseDown(point);
         }
 
         public void MouseLeave(Point point)
         {
             IsMouseOver = false;
-        }
-
-        public void OnMouseMove(Point point)
-        {
-            drawingTool.MouseMove(this.CreateGraphics(), point);
         }
     }
 }

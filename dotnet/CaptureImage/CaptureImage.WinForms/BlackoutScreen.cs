@@ -18,6 +18,7 @@ namespace CaptureImage.WinForms
 
         private DrawingTool drawingTool;
 
+
         public BlackoutScreen()
         {
             InitializeComponent();
@@ -31,57 +32,65 @@ namespace CaptureImage.WinForms
             Region = new Region(desktopInfo.Path);
             //TopMost = true;
 
-            selectingTool = new SelectingTool();
+            selectingTool = new SelectingTool(isActive: true);
+            selectingTool.MouseEnterSelection += SelectingTool_MouseEnterSelection;
+            selectingTool.MouseLeaveSelection += SelectingTool_MouseLeaveSelection;
 
-            drawingTool = new DrawingTool();
+            drawingTool = new DrawingTool(isActive: false);
 
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
             this.thumb.MouseDown += (sender, e) => BlackoutScreen_MouseDown(sender, e.Offset(thumb.Location));
             this.thumb.MouseUp += (sender, e) => BlackoutScreen_MouseUp(sender, e.Offset(thumb.Location));
             this.thumb.MouseMove += (sender, e) => BlackoutScreen_MouseMove(sender, e.Offset(thumb.Location));
+            this.thumb.StateChanged += Thumb_StateChanged;
             
             this.Controls.AddRange(thumb.Components);
         }
 
+        private void SelectingTool_MouseLeaveSelection(object sender, Point point)
+        {
+            drawingTool.mousePreviousControlPos = null;
+        }
+
+        private void SelectingTool_MouseEnterSelection(object sender, Point point)
+        {
+            drawingTool.mousePreviousControlPos = selectingTool.Translate(point);
+        }
+
+        private void Thumb_StateChanged(object sender, ThumbState e)
+        {
+            switch (e)
+            {
+                case ThumbState.Selecting:
+                    selectingTool.Activate();
+                    drawingTool.Deactivate();
+                    break;
+                case ThumbState.Drawing:
+                    selectingTool.Deactivate();
+                    drawingTool.Activate();
+                    break;
+            }
+        }
+
         private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)
         {
-            if (thumb.ThumbState == ThumbState.Selecting)
-            {
-                selectingTool.MouseMove(e.Location, this);
-                selectingTool.Pulse(this.thumb);
-            }
+            selectingTool.MouseMove(e.Location, this);
+            selectingTool.Paint(this.thumb);
 
-            if (thumb.ThumbState == ThumbState.Drawing)
-            {
-                drawingTool.MouseMove(this.CreateGraphics(), e.Location);
+            drawingTool.MouseMove(this.CreateGraphics(), e.Location);
 
-                if (selectingTool.IsMouseOver(e.Location))
-                {
-                    Point pointInSelection = selectingTool.Translate(e.Location);
-
-                    if (thumb.IsMouseOver == false)
-                        thumb.MouseHover(pointInSelection);
-                    
-                    thumb.OnMouseMove(pointInSelection);
-                }
-                else
-                {
-                    if (thumb.IsMouseOver)
-                        thumb.MouseLeave(e.Location);   
-                }
-            }
+            if (selectingTool.IsMouseOver)
+                drawingTool.MouseMove(thumb, selectingTool.Translate(e.Location));
+            
         }
 
         private void BlackoutScreen_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (thumb.ThumbState == ThumbState.Selecting)
-                    selectingTool.MouseUp(e.Location);
-
-                if (thumb.ThumbState == ThumbState.Drawing)
-                    drawingTool.MouseUp(e.Location);
+                selectingTool.MouseUp(e.Location);
+                drawingTool.MouseUp();
             }
         }
 
@@ -89,10 +98,12 @@ namespace CaptureImage.WinForms
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (thumb.ThumbState == ThumbState.Selecting)
-                    selectingTool.MouseDown(e.Location);
+                selectingTool.MouseDown(e.Location);
 
-                if (thumb.ThumbState == ThumbState.Drawing)
+                if (sender is Thumb)
+                    drawingTool.MouseDown(selectingTool.Translate( e.Location), onControl: true);
+                
+
                     drawingTool.MouseDown(e.Location);
             }
         }
@@ -101,8 +112,7 @@ namespace CaptureImage.WinForms
         {
             if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
             {
-                if (thumb.ThumbState == ThumbState.Selecting)
-                    selectingTool.Select(desktopInfo.BackgroundRect);
+                selectingTool.Select(desktopInfo.BackgroundRect);
             }
         }
     }

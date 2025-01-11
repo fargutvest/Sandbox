@@ -40,7 +40,6 @@ namespace CaptureImage.WinForms
             this.Name = "Thumb";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Thumb_Paint);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Thumb_MouseMove);
             this.ResumeLayout(false);
 
         }
