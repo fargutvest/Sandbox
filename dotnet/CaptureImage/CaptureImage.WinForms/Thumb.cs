@@ -3,12 +3,15 @@ using System.Drawing;
 using System.Windows.Forms;
 using CaptureImage.Common;
 using CaptureImage.Common.Extensions;
+using CaptureImage.Common.Tools;
 
 namespace CaptureImage.WinForms
 {
     public partial class Thumb : UserControl, IThumb
     {
         public Rectangle[] HandleRectangles { get; private set; }
+
+        private DrawingTool drawingTool;
 
         private Label displaySizeLabel;
         private Panel panelY;
@@ -20,6 +23,7 @@ namespace CaptureImage.WinForms
         public Control[] Components { get; }
 
         public ThumbState ThumbState { get; private set; }
+        public bool IsMouseOver;
 
         public Thumb()
         {
@@ -61,6 +65,8 @@ namespace CaptureImage.WinForms
             this.panelY.Controls.Add(this.btnDrawing);
 
             HandleRectangles = new Rectangle[0];
+
+            drawingTool = new DrawingTool();
 
             Components = new Control[]
             {
@@ -117,9 +123,29 @@ namespace CaptureImage.WinForms
 
         public void ShowExtra()
         {
-
             this.panelX.Visible = true;
             this.panelY.Visible = true;
+        }
+
+        private void Thumb_MouseMove(object sender, MouseEventArgs e)
+        {
+            OnMouseMove(e.Location);
+        }
+
+        public void MouseHover(Point point)
+        {
+            IsMouseOver = true; 
+            drawingTool.MouseDown(point);
+        }
+
+        public void MouseLeave(Point point)
+        {
+            IsMouseOver = false;
+        }
+
+        public void OnMouseMove(Point point)
+        {
+            drawingTool.MouseMove(this.CreateGraphics(), point);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using CaptureImage.Common.Extensions;
 using CaptureImage.Common.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -42,6 +41,10 @@ namespace CaptureImage.Common.Tools
                 { 7, Cursors.SizeWE }
             };
         }
+
+        public bool IsMouseOver(Point point) => selectingRect.Contains(point);
+
+        public Point Translate(Point point) => new Point(point.X - selectingRect.X, point.Y - selectingRect.Y);
 
         public void Pulse(Graphics gr, Bitmap background)
         {

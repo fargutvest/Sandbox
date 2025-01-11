@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
 {
@@ -16,11 +15,11 @@ namespace CaptureImage.Common.Tools
             mousePreviousPos = new Point(0, 0);
             pen = new Pen(Color.Yellow)
             {
-                Width = 1,
+                Width = 2,
             };
         }
 
-        public void Pulse(Graphics gr, Point mouse)
+        public void MouseMove(Graphics gr, Point mouse)
         {
             if (isActive)
             {
@@ -39,11 +38,5 @@ namespace CaptureImage.Common.Tools
         {
             isActive = false;
         }
-
-        public void MouseMove(Graphics gr, Point mousePosition, Control canvas)
-        {
-
-        }
-
     }
 }

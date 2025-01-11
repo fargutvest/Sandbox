@@ -54,7 +54,22 @@ namespace CaptureImage.WinForms
 
             if (thumb.ThumbState == ThumbState.Drawing)
             {
-                Refresh();
+                drawingTool.MouseMove(this.CreateGraphics(), e.Location);
+
+                if (selectingTool.IsMouseOver(e.Location))
+                {
+                    Point pointInSelection = selectingTool.Translate(e.Location);
+
+                    if (thumb.IsMouseOver == false)
+                        thumb.MouseHover(pointInSelection);
+                    
+                    thumb.OnMouseMove(pointInSelection);
+                }
+                else
+                {
+                    if (thumb.IsMouseOver)
+                        thumb.MouseLeave(e.Location);   
+                }
             }
         }
 
@@ -88,14 +103,6 @@ namespace CaptureImage.WinForms
             {
                 if (thumb.ThumbState == ThumbState.Selecting)
                     selectingTool.Select(desktopInfo.BackgroundRect);
-            }
-        }
-
-        private void BlackoutScreen_Paint(object sender, PaintEventArgs e)
-        {
-            if (thumb.ThumbState == ThumbState.Drawing)
-            {
-                drawingTool.Pulse(Graphics.FromImage(BackgroundImage), this.GetMousePosition());
             }
         }
     }
