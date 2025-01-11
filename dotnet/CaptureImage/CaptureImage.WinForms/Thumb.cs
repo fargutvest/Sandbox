@@ -19,6 +19,8 @@ namespace CaptureImage.WinForms
 
         public Control[] Components { get; }
 
+        public ThumbState ThumbState { get; private set; }
+
         public Thumb()
         {
             InitializeComponent();
@@ -71,12 +73,12 @@ namespace CaptureImage.WinForms
 
         private void BtnDrawing_MouseClick(object sender, MouseEventArgs e)
         {
-
+            ThumbState = ThumbState.Drawing;
         }
 
         private void BtnUndo_MouseClick(object sender, MouseEventArgs e)
         {
-
+            ThumbState = ThumbState.Selecting;
         }
 
         private void Thumb_Paint(object sender, PaintEventArgs e)

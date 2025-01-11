@@ -4,7 +4,6 @@ using CaptureImage.Common.Tools;
 using System.Drawing;
 using System.Windows.Forms;
 using CaptureImage.Common.Extensions;
-
 namespace CaptureImage.WinForms
 {
     public partial class BlackoutScreen : ScreenBase
@@ -16,6 +15,8 @@ namespace CaptureImage.WinForms
         private DescktopInfo desktopInfo;
 
         private SelectingTool selectingTool;
+
+        private DrawingTool drawingTool;
 
         public BlackoutScreen()
         {
@@ -32,6 +33,8 @@ namespace CaptureImage.WinForms
 
             selectingTool = new SelectingTool();
 
+            drawingTool = new DrawingTool();
+
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
             this.thumb.MouseDown += (sender, e) => BlackoutScreen_MouseDown(sender, e.Offset(thumb.Location));
@@ -43,15 +46,27 @@ namespace CaptureImage.WinForms
 
         private void BlackoutScreen_MouseMove(object sender, MouseEventArgs e)
         {
-            selectingTool.MouseMove(e.Location, this);
-            selectingTool.Pulse(this.thumb);
+            if (thumb.ThumbState == ThumbState.Selecting)
+            {
+                selectingTool.MouseMove(e.Location, this);
+                selectingTool.Pulse(this.thumb);
+            }
+
+            if (thumb.ThumbState == ThumbState.Drawing)
+            {
+                Refresh();
+            }
         }
 
         private void BlackoutScreen_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                selectingTool.MouseUp(e.Location);
+                if (thumb.ThumbState == ThumbState.Selecting)
+                    selectingTool.MouseUp(e.Location);
+
+                if (thumb.ThumbState == ThumbState.Drawing)
+                    drawingTool.MouseUp(e.Location);
             }
         }
 
@@ -59,7 +74,11 @@ namespace CaptureImage.WinForms
         {
             if (e.Button == MouseButtons.Left)
             {
-                selectingTool.MouseDown(e.Location);
+                if (thumb.ThumbState == ThumbState.Selecting)
+                    selectingTool.MouseDown(e.Location);
+
+                if (thumb.ThumbState == ThumbState.Drawing)
+                    drawingTool.MouseDown(e.Location);
             }
         }
 
@@ -67,7 +86,16 @@ namespace CaptureImage.WinForms
         {
             if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
             {
-                selectingTool.Select(desktopInfo.BackgroundRect);
+                if (thumb.ThumbState == ThumbState.Selecting)
+                    selectingTool.Select(desktopInfo.BackgroundRect);
+            }
+        }
+
+        private void BlackoutScreen_Paint(object sender, PaintEventArgs e)
+        {
+            if (thumb.ThumbState == ThumbState.Drawing)
+            {
+                drawingTool.Pulse(Graphics.FromImage(BackgroundImage), this.GetMousePosition());
             }
         }
     }

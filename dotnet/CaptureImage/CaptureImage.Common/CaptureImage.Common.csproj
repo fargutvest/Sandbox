@@ -61,6 +61,7 @@
     <Compile Include="IThumb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenInfo.cs" />
+    <Compile Include="Tools\DrawingTool.cs" />
     <Compile Include="Tools\SelectingState.cs" />
     <Compile Include="Tools\SelectingTool.cs" />
     <Compile Include="WinAPi.cs" />

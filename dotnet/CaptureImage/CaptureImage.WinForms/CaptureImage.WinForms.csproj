@@ -78,6 +78,7 @@
     <Compile Include="Thumb.Designer.cs">
       <DependentUpon>Thumb.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThumbState.cs" />
     <Compile Include="WinAPi.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
