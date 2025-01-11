@@ -14,6 +14,9 @@ namespace CaptureImage.WinForms
         private Panel panelY;
         private Panel panelX;
 
+        private Button btnUndo;
+        private Button btnDrawing;
+
         public Control[] Components { get; }
 
         public Thumb()
@@ -38,6 +41,23 @@ namespace CaptureImage.WinForms
             this.panelY.Size = new Size(30, 200);
             this.panelY.SetRoundedShape(10);
 
+            // btnRedo
+            this.btnUndo = new Button();
+            this.btnUndo.Size = new Size(24, 24);
+            this.btnUndo.Location = new Point(3, panelY.Location.Y + panelY.Size.Height - btnUndo.Height - 3);
+            this.btnUndo.Text = "U";
+            this.btnUndo.MouseClick += BtnUndo_MouseClick;
+
+            // btnDrawing
+            this.btnDrawing = new Button();
+            this.btnDrawing.Size = new Size(24, 24);
+            this.btnDrawing.Location = new Point(3, 3);
+            this.btnDrawing.Text = "D";
+            this.btnDrawing.MouseClick += BtnDrawing_MouseClick;
+
+            this.panelY.Controls.Add(this.btnUndo);
+            this.panelY.Controls.Add(this.btnDrawing);
+
             HandleRectangles = new Rectangle[0];
 
             Components = new Control[]
@@ -45,8 +65,18 @@ namespace CaptureImage.WinForms
                 this,
                 this.displaySizeLabel,
                 this.panelX,
-                this.panelY
+                this.panelY,
             };
+        }
+
+        private void BtnDrawing_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void BtnUndo_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
 
         private void Thumb_Paint(object sender, PaintEventArgs e)
