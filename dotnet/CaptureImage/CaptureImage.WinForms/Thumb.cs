@@ -16,7 +16,8 @@ namespace CaptureImage.WinForms
         private Panel panelX;
 
         private Button btnUndo;
-        private Button btnDrawing;
+        private Button btnPencil;
+        private Button btnLine;
 
         public Control[] Components { get; }
 
@@ -55,15 +56,23 @@ namespace CaptureImage.WinForms
             this.btnUndo.Text = "U";
             this.btnUndo.MouseClick += BtnUndo_MouseClick;
 
-            // btnDrawing
-            this.btnDrawing = new Button();
-            this.btnDrawing.Size = new Size(24, 24);
-            this.btnDrawing.Location = new Point(3, 3);
-            this.btnDrawing.Text = "D";
-            this.btnDrawing.MouseClick += BtnDrawing_MouseClick;
+            // btnPencil
+            this.btnPencil = new Button();
+            this.btnPencil.Size = new Size(24, 24);
+            this.btnPencil.Location = new Point(3, 3);
+            this.btnPencil.Text = "P";
+            this.btnPencil.MouseClick += BtnPencil_MouseClick;
+
+            // btnLine
+            this.btnLine = new Button();
+            this.btnLine.Size = new Size(24, 24);
+            this.btnLine.Location = new Point(3, 27);
+            this.btnLine.Text = "L";
+            this.btnLine.MouseClick += BtnLine_MouseClick;
 
             this.panelY.Controls.Add(this.btnUndo);
-            this.panelY.Controls.Add(this.btnDrawing);
+            this.panelY.Controls.Add(this.btnPencil);
+            this.panelY.Controls.Add(this.btnLine);
 
             HandleRectangles = new Rectangle[0];
 
@@ -76,9 +85,16 @@ namespace CaptureImage.WinForms
             };
         }
 
-        private void BtnDrawing_MouseClick(object sender, MouseEventArgs e)
+        private void BtnPencil_MouseClick(object sender, MouseEventArgs e)
         {
-            state = ThumbState.Drawing;
+            state = ThumbState.Pencil;
+            StateChanged?.Invoke(this, state);
+        }
+
+
+        private void BtnLine_MouseClick(object sender, MouseEventArgs e)
+        {
+            state = ThumbState.Line;
             StateChanged?.Invoke(this, state);
         }
 

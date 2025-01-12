@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
 {
-    public class PencilTool : ITool
+    public class LineTool : ITool
     {
         private DrawingState state;
         private Point mousePreviousPos;
@@ -11,7 +11,7 @@ namespace CaptureImage.Common.Tools
         private Pen pen;
         private bool isActive;
 
-        public PencilTool()
+        public LineTool()
         {
             this.state = DrawingState.None;
 
@@ -20,30 +20,6 @@ namespace CaptureImage.Common.Tools
             {
                 Width = 2,
             };
-        }
-
-        public void MouseMove(Graphics gr, Point mouse)
-        {
-            if (isActive)
-            {
-                if (state == DrawingState.Drawing)
-                {
-                    gr.DrawLine(pen, mousePreviousPos, mouse);
-                    mousePreviousPos = mouse;
-                }
-            }
-        }
-
-        public void MouseMove(Control canvas, Point mouse)
-        {
-            if (isActive)
-            {
-                if (state == DrawingState.Drawing)
-                {
-                    canvas.CreateGraphics().DrawLine(pen, mousePreviousControlPos, mouse);
-                    mousePreviousControlPos = mouse;
-                }
-            }
         }
 
         public void MouseDown(Point mousePosition, bool onControl = false)
@@ -65,6 +41,16 @@ namespace CaptureImage.Common.Tools
             {
                 mousePreviousControlPos = mousePositionOnControl;
             }
+        }
+
+        public void MouseMove(Graphics gr, Point mouse)
+        {
+            
+        }
+
+        public void MouseMove(Control control, Point mouse)
+        {
+            
         }
 
         public void MouseUp()
