@@ -12,7 +12,6 @@ namespace CaptureImage.Common.Tools
     public class SelectingTool
     {
         private SelectingState state;
-
         private Rectangle selectingRect;
         private Point mousePos;
         private Point mouseStartPos;
@@ -25,16 +24,15 @@ namespace CaptureImage.Common.Tools
 
         private bool IsHandleHovered => handleRectangles.Any(rect => rect.Contains(mousePos));
 
-        private bool IsSelectingRectangleHovered => selectingRect.Contains(mousePos);
-
         private bool isMouseOver;
+
         public bool IsMouseOver
         {
             get 
             { 
                 return isMouseOver; 
             }
-            set
+            private set
             {
                 if (isMouseOver != value)
                 {
@@ -42,20 +40,14 @@ namespace CaptureImage.Common.Tools
 
                     if (isMouseOver)
                         MouseEnterSelection?.Invoke(this, mousePos);
-                    else
-                        MouseLeaveSelection?.Invoke(this, mousePos);
                 }
             }
         }
 
         public event EventHandler<Point> MouseEnterSelection;
 
-        public event EventHandler<Point> MouseLeaveSelection;
-
-        public SelectingTool(bool isActive)
+        public SelectingTool()
         {
-            this.isActive = isActive;
-
             handleRectangles = new Rectangle[0];
 
             handleCursors = new Dictionary<int, Cursor>
@@ -113,11 +105,11 @@ namespace CaptureImage.Common.Tools
             {
                 mouseStartPos = mousePosition;
 
-                if ((selectingRect.IsEmpty || IsSelectingRectangleHovered == false) && IsHandleHovered == false)
+                if ((selectingRect.IsEmpty || IsMouseOver == false) && IsHandleHovered == false)
                 {
                     state = SelectingState.Selecting;
                 }
-                else if (selectingRect.IsEmpty == false && IsSelectingRectangleHovered && IsHandleHovered == false)
+                else if (selectingRect.IsEmpty == false && IsMouseOver && IsHandleHovered == false)
                 {
                     state = SelectingState.Moving;
 
@@ -152,7 +144,7 @@ namespace CaptureImage.Common.Tools
         public void MouseMove(Point mousePosition, Control canvas)
         {
             mousePos = mousePosition;
-            IsMouseOver = selectingRect.Contains(mousePosition);
+            IsMouseOver = selectingRect.Contains(mousePos);
             
             if (isActive)
             {
@@ -162,7 +154,7 @@ namespace CaptureImage.Common.Tools
                     int rectangleIndex = handleRectangles.ToList().IndexOf(hoveredHandleRect);
                     canvas.Cursor = handleCursors[rectangleIndex];
                 }
-                else if (IsSelectingRectangleHovered)
+                else if (IsMouseOver)
                 {
                     canvas.Cursor = Cursors.SizeAll;
                 }

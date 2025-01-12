@@ -9,13 +9,9 @@ namespace CaptureImage.WinForms
     public partial class BlackoutScreen : ScreenBase
     {
         private bool isInit = true;
-
         private Thumb thumb;
-
         private DescktopInfo desktopInfo;
-
         private SelectingTool selectingTool;
-
         private DrawingTool drawingTool;
 
 
@@ -32,11 +28,11 @@ namespace CaptureImage.WinForms
             Region = new Region(desktopInfo.Path);
             //TopMost = true;
 
-            selectingTool = new SelectingTool(isActive: true);
+            selectingTool = new SelectingTool();
             selectingTool.MouseEnterSelection += SelectingTool_MouseEnterSelection;
-            selectingTool.MouseLeaveSelection += SelectingTool_MouseLeaveSelection;
+            selectingTool.Activate();
 
-            drawingTool = new DrawingTool(isActive: false);
+            drawingTool = new DrawingTool();
 
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
@@ -48,14 +44,9 @@ namespace CaptureImage.WinForms
             this.Controls.AddRange(thumb.Components);
         }
 
-        private void SelectingTool_MouseLeaveSelection(object sender, Point point)
-        {
-            drawingTool.mousePreviousControlPos = null;
-        }
-
         private void SelectingTool_MouseEnterSelection(object sender, Point point)
         {
-            drawingTool.mousePreviousControlPos = selectingTool.Translate(point);
+            drawingTool.MouseHoverControl(selectingTool.Translate(point));
         }
 
         private void Thumb_StateChanged(object sender, ThumbState e)
@@ -103,7 +94,6 @@ namespace CaptureImage.WinForms
                 if (sender is Thumb)
                     drawingTool.MouseDown(selectingTool.Translate( e.Location), onControl: true);
                 
-
                     drawingTool.MouseDown(e.Location);
             }
         }

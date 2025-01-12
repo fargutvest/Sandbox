@@ -6,19 +6,13 @@ namespace CaptureImage.Common.Tools
     public class DrawingTool
     {
         private DrawingState state;
-
         private Point mousePreviousPos;
-
-        public Point? mousePreviousControlPos;
-
+        private Point mousePreviousControlPos;
         private Pen pen;
-
         private bool isActive;
 
-        public DrawingTool(bool isActive)
+        public DrawingTool()
         {
-            this.isActive = isActive;
-
             this.state = DrawingState.None;
 
             mousePreviousPos = new Point(0, 0);
@@ -46,9 +40,7 @@ namespace CaptureImage.Common.Tools
             {
                 if (state == DrawingState.Drawing)
                 {
-                    if (mousePreviousControlPos.HasValue)
-                        canvas.CreateGraphics().DrawLine(pen, mousePreviousControlPos.Value, mouse);
-
+                    canvas.CreateGraphics().DrawLine(pen, mousePreviousControlPos, mouse);
                     mousePreviousControlPos = mouse;
                 }
             }
@@ -64,6 +56,14 @@ namespace CaptureImage.Common.Tools
                     mousePreviousPos = mousePosition;
 
                 state = DrawingState.Drawing;
+            }
+        }
+
+        public void MouseHoverControl(Point mousePositionOnControl)
+        {
+            if (isActive)
+            {
+                mousePreviousControlPos = mousePositionOnControl;
             }
         }
 
