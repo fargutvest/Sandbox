@@ -12,7 +12,7 @@ namespace CaptureImage.WinForms
         private Thumb thumb;
         private DescktopInfo desktopInfo;
         private SelectingTool selectingTool;
-        private DrawingTool drawingTool;
+        private PencilTool pencilTool;
 
 
         public BlackoutScreen()
@@ -32,7 +32,7 @@ namespace CaptureImage.WinForms
             selectingTool.MouseEnterSelection += SelectingTool_MouseEnterSelection;
             selectingTool.Activate();
 
-            drawingTool = new DrawingTool();
+            pencilTool = new PencilTool();
 
             this.thumb = new Thumb();
             this.thumb.Size = new Size(0,0);
@@ -46,7 +46,7 @@ namespace CaptureImage.WinForms
 
         private void SelectingTool_MouseEnterSelection(object sender, Point point)
         {
-            drawingTool.MouseHoverControl(selectingTool.Translate(point));
+            pencilTool.MouseHoverControl(selectingTool.Translate(point));
         }
 
         private void Thumb_StateChanged(object sender, ThumbState e)
@@ -55,11 +55,11 @@ namespace CaptureImage.WinForms
             {
                 case ThumbState.Selecting:
                     selectingTool.Activate();
-                    drawingTool.Deactivate();
+                    pencilTool.Deactivate();
                     break;
                 case ThumbState.Drawing:
                     selectingTool.Deactivate();
-                    drawingTool.Activate();
+                    pencilTool.Activate();
                     break;
             }
         }
@@ -69,10 +69,10 @@ namespace CaptureImage.WinForms
             selectingTool.MouseMove(e.Location, this);
             selectingTool.Paint(this.thumb);
 
-            drawingTool.MouseMove(this.CreateGraphics(), e.Location);
+            pencilTool.MouseMove(this.CreateGraphics(), e.Location);
 
             if (selectingTool.IsMouseOver)
-                drawingTool.MouseMove(thumb, selectingTool.Translate(e.Location));
+                pencilTool.MouseMove(thumb, selectingTool.Translate(e.Location));
             
         }
 
@@ -81,7 +81,7 @@ namespace CaptureImage.WinForms
             if (e.Button == MouseButtons.Left)
             {
                 selectingTool.MouseUp(e.Location);
-                drawingTool.MouseUp();
+                pencilTool.MouseUp();
             }
         }
 
@@ -92,9 +92,9 @@ namespace CaptureImage.WinForms
                 selectingTool.MouseDown(e.Location);
 
                 if (sender is Thumb)
-                    drawingTool.MouseDown(selectingTool.Translate( e.Location), onControl: true);
+                    pencilTool.MouseDown(selectingTool.Translate( e.Location), onControl: true);
                 
-                    drawingTool.MouseDown(e.Location);
+                    pencilTool.MouseDown(e.Location);
             }
         }
 

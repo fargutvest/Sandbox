@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
 {
-    public class DrawingTool
+    public class PencilTool
     {
         private DrawingState state;
         private Point mousePreviousPos;
@@ -11,7 +11,7 @@ namespace CaptureImage.Common.Tools
         private Pen pen;
         private bool isActive;
 
-        public DrawingTool()
+        public PencilTool()
         {
             this.state = DrawingState.None;
 
