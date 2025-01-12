@@ -6,7 +6,7 @@ namespace CaptureImage.Common.Tools
     public class LineTool : ITool
     {
         private DrawingState state;
-        private Point mousePreviousPos;
+        private Point mouseStartPos;
         private Point mousePreviousControlPos;
         private Pen pen;
         private bool isActive;
@@ -15,7 +15,7 @@ namespace CaptureImage.Common.Tools
         {
             this.state = DrawingState.None;
 
-            mousePreviousPos = new Point(0, 0);
+            mouseStartPos = new Point(0, 0);
             pen = new Pen(Color.Yellow)
             {
                 Width = 2,
@@ -29,7 +29,7 @@ namespace CaptureImage.Common.Tools
                 if (onControl)
                     mousePreviousControlPos = mousePosition;
                 else
-                    mousePreviousPos = mousePosition;
+                    mouseStartPos = mousePosition;
 
                 state = DrawingState.Drawing;
             }
@@ -37,20 +37,29 @@ namespace CaptureImage.Common.Tools
 
         public void MouseHoverControl(Point mousePositionOnControl)
         {
-            if (isActive)
-            {
-                mousePreviousControlPos = mousePositionOnControl;
-            }
+
         }
 
         public void MouseMove(Graphics gr, Point mouse)
         {
-            
+            if (isActive)
+            {
+                if (state == DrawingState.Drawing)
+                {
+                    gr.DrawLine(pen, mouseStartPos, mouse);
+                }
+            }
         }
 
-        public void MouseMove(Control control, Point mouse)
+        public void MouseMove(Control canvas, Point mouse)
         {
-            
+            if (isActive)
+            {
+                if (state == DrawingState.Drawing)
+                {
+                    canvas.CreateGraphics().DrawLine(pen, mousePreviousControlPos, mouse);
+                }
+            }
         }
 
         public void MouseUp()
