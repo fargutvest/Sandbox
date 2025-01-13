@@ -18,6 +18,7 @@ namespace CaptureImage.WinForms.Thumb
         private Button btnUndo;
         private Button btnPencil;
         private Button btnLine;
+        private Button btnArrow;
         private Button btnRect;
 
         private Button btnCpClipboard;
@@ -75,10 +76,17 @@ namespace CaptureImage.WinForms.Thumb
             this.btnLine.Text = "L";
             this.btnLine.MouseClick += (sender, e) => SelectState(ThumbState.Line);
 
+            // btnArrow
+            this.btnArrow = new Button();
+            this.btnArrow.Size = new Size(24, 24);
+            this.btnArrow.Location = new Point(3, 51);
+            this.btnArrow.Text = "A";
+            this.btnArrow.MouseClick += (sender, e) => SelectState(ThumbState.Arrow);
+
             // btnRect
             this.btnRect = new Button();
             this.btnRect.Size = new Size(24, 24);
-            this.btnRect.Location = new Point(3, 51);
+            this.btnRect.Location = new Point(3, 75);
             this.btnRect.Text = "R";
             this.btnRect.MouseClick += (sender, e) => SelectState(ThumbState.Rect);
 
@@ -92,6 +100,7 @@ namespace CaptureImage.WinForms.Thumb
             this.panelY.Controls.Add(this.btnUndo);
             this.panelY.Controls.Add(this.btnPencil);
             this.panelY.Controls.Add(this.btnLine);
+            this.panelY.Controls.Add(this.btnArrow);
             this.panelY.Controls.Add(this.btnRect);
 
             panelX.Controls.Add(this.btnCpClipboard);
