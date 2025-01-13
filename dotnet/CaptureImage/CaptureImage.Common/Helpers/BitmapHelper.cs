@@ -8,6 +8,40 @@ namespace CaptureImage.Common.Helpers
 {
     public static class BitmapHelper
     {
+        public static Bitmap DarkenImage(Bitmap original, float factor)
+        {
+            // Создаем новое изображение с теми же размерами, что и исходное
+            Bitmap darkenedImage = new Bitmap(original.Width, original.Height);
+
+            // Проходим по каждому пикселю изображения
+            for (int x = 0; x < original.Width; x++)
+            {
+                for (int y = 0; y < original.Height; y++)
+                {
+                    // Получаем текущий цвет пикселя
+                    Color pixelColor = original.GetPixel(x, y);
+
+                    // Уменьшаем яркость пикселя
+                    int r = (int)(pixelColor.R * factor);
+                    int g = (int)(pixelColor.G * factor);
+                    int b = (int)(pixelColor.B * factor);
+
+                    // Ограничиваем значения до 255
+                    r = Math.Min(255, r);
+                    g = Math.Min(255, g);
+                    b = Math.Min(255, b);
+
+                    // Создаем новый цвет с уменьшенной яркостью
+                    Color newColor = Color.FromArgb(r, g, b);
+
+                    // Устанавливаем новый цвет пикселя на изображении
+                    darkenedImage.SetPixel(x, y, newColor);
+                }
+            }
+
+            return darkenedImage;
+        }
+
         /// <summary>
         /// https://stackoverflow.com/questions/4779027/changing-the-opacity-of-a-bitmap-image
         /// </summary>

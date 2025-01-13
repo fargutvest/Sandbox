@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
 {
@@ -7,12 +6,13 @@ namespace CaptureImage.Common.Tools
     {
         private DrawingState state;
         private Point mousePreviousPos;
-        private Point mousePreviousControlPos;
         private Pen pen;
         private bool isActive;
+        private DrawingContext[] drawingContexts;
 
-        public PencilTool()
+        public PencilTool(DrawingContext[] drawingContexts)
         {
+            this.drawingContexts = drawingContexts;
             this.state = DrawingState.None;
 
             mousePreviousPos = new Point(0, 0);
@@ -22,48 +22,30 @@ namespace CaptureImage.Common.Tools
             };
         }
 
-        public void MouseMove(Graphics gr, Point mouse)
+        public void MouseMove(Point mouse)
         {
             if (isActive)
             {
                 if (state == DrawingState.Drawing)
                 {
-                    gr.DrawLine(pen, mousePreviousPos, mouse);
+                    for (int i = 0; i < drawingContexts.Length; i++)
+                    {
+                        DrawingContext dc = drawingContexts[i];
+                        Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mousePreviousPos, mouse);
+                        dc.CanvasControl.CreateGraphics().DrawLine(pen, mousePreviousPos, mouse);
+                    }
+
                     mousePreviousPos = mouse;
                 }
             }
         }
 
-        public void MouseMove(Control canvas, Point mouse)
+        public void MouseDown(Point mousePosition)
         {
             if (isActive)
             {
-                if (state == DrawingState.Drawing)
-                {
-                    canvas.CreateGraphics().DrawLine(pen, mousePreviousControlPos, mouse);
-                    mousePreviousControlPos = mouse;
-                }
-            }
-        }
-
-        public void MouseDown(Point mousePosition, bool onControl = false)
-        {
-            if (isActive)
-            {
-                if (onControl)
-                    mousePreviousControlPos = mousePosition;
-                else
-                    mousePreviousPos = mousePosition;
-
+                mousePreviousPos = mousePosition;
                 state = DrawingState.Drawing;
-            }
-        }
-
-        public void MouseHoverControl(Point mousePositionOnControl)
-        {
-            if (isActive)
-            {
-                mousePreviousControlPos = mousePositionOnControl;
             }
         }
 

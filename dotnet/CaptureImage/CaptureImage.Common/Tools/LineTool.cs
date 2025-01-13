@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
+using System.Linq;
 
 namespace CaptureImage.Common.Tools
 {
@@ -7,57 +7,53 @@ namespace CaptureImage.Common.Tools
     {
         private DrawingState state;
         private Point mouseStartPos;
-        private Point mousePreviousControlPos;
+        private Point mousePreviousPos;
         private Pen pen;
+        private Pen[] erasePens;
         private bool isActive;
 
-        public LineTool()
+        private DrawingContext[] drawingContexts;
+
+        public LineTool(DrawingContext[] drawingContexts)
         {
+            this.drawingContexts = drawingContexts;
             this.state = DrawingState.None;
 
             mouseStartPos = new Point(0, 0);
-            pen = new Pen(Color.Yellow)
-            {
-                Width = 2,
-            };
+            pen = new Pen(Color.Yellow) { Width = 2 };
         }
 
-        public void MouseDown(Point mousePosition, bool onControl = false)
+        public void MouseDown(Point mousePosition)
         {
             if (isActive)
             {
-                if (onControl)
-                    mousePreviousControlPos = mousePosition;
-                else
-                    mouseStartPos = mousePosition;
-
+                erasePens = drawingContexts.Select(dc => new Pen(new TextureBrush(dc.CanvasImage)) { Width = 2 }).ToArray();
+                mouseStartPos = mousePosition;
                 state = DrawingState.Drawing;
             }
         }
 
-        public void MouseHoverControl(Point mousePositionOnControl)
-        {
-
-        }
-
-        public void MouseMove(Graphics gr, Point mouse)
+        public void MouseMove(Point mouse)
         {
             if (isActive)
             {
                 if (state == DrawingState.Drawing)
                 {
-                    gr.DrawLine(pen, mouseStartPos, mouse);
-                }
-            }
-        }
+                    for (int i = 0; i < drawingContexts.Length; i++)
+                    {
+                        DrawingContext dc = drawingContexts[i];
+                        Graphics.FromImage(dc.CanvasImage).DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
+                        dc.CanvasControl.CreateGraphics().DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
+                    }
 
-        public void MouseMove(Control canvas, Point mouse)
-        {
-            if (isActive)
-            {
-                if (state == DrawingState.Drawing)
-                {
-                    canvas.CreateGraphics().DrawLine(pen, mousePreviousControlPos, mouse);
+                    for (int i = 0; i < drawingContexts.Length; i++)
+                    {
+                        DrawingContext dc = drawingContexts[i];
+                        Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mouseStartPos, mouse);
+                        dc.CanvasControl.CreateGraphics().DrawLine(pen, mouseStartPos, mouse);
+                    }
+
+                    mousePreviousPos = mouse;
                 }
             }
         }

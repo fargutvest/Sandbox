@@ -15,7 +15,7 @@ namespace CaptureImage.WinForms
         {
             InitializeComponent();
             freezeScreen = new FreezeScreen();
-            blackoutScreen = new BlackoutScreen();
+            blackoutScreen = new BlackoutScreen(freezeScreen);
             hotKeysHelper = new HotKeysHelper();
             hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
             hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, HideForm);

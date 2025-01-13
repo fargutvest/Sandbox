@@ -61,6 +61,7 @@
     <Compile Include="IThumb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenInfo.cs" />
+    <Compile Include="Tools\DrawingContext.cs" />
     <Compile Include="Tools\DrawingState.cs" />
     <Compile Include="Tools\ITool.cs" />
     <Compile Include="Tools\LineTool.cs" />

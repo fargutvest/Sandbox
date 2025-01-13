@@ -6,16 +6,13 @@ namespace CaptureImage.Common.Tools
     public interface ITool
     {
         void Activate();
+
         void Deactivate();
 
-        void MouseHoverControl(Point mouse);
-
-        void MouseMove(Graphics gr, Point mouse);
-
-        void MouseMove(Control control, Point mouse);
+        void MouseMove(Point mouse);
 
         void MouseUp();
 
-        void MouseDown(Point mouse, bool onControl = false);
+        void MouseDown(Point mouse);
     }
 }
