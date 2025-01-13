@@ -1,5 +1,6 @@
 ﻿using CaptureImage.Common.Tools.Misc;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 
 namespace CaptureImage.Common.Tools
@@ -40,8 +41,12 @@ namespace CaptureImage.Common.Tools
             {
                 if (state == DrawingState.Drawing)
                 {
+                    CustomLineCap cap = new AdjustableArrowCap(4, 7);
+
                     for (int i = 0; i < drawingContexts.Length; i++)
                     {
+                        erasePens[i].CustomEndCap = cap;
+
                         DrawingContext dc = drawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
                         dc.CanvasControl.CreateGraphics().DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
@@ -49,6 +54,8 @@ namespace CaptureImage.Common.Tools
 
                     for (int i = 0; i < drawingContexts.Length; i++)
                     {
+                        pen.CustomEndCap = cap;
+
                         DrawingContext dc = drawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mouseStartPos, mouse);
                         dc.CanvasControl.CreateGraphics().DrawLine(pen, mouseStartPos, mouse);
