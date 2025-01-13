@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CaptureImage.Common.Tools
 {
-    public class LineTool : ITool
+    public class RectTool : ITool
     {
         private DrawingState state;
         private Point mouseStartPos;
@@ -15,7 +15,7 @@ namespace CaptureImage.Common.Tools
 
         private DrawingContext[] drawingContexts;
 
-        public LineTool(DrawingContext[] drawingContexts)
+        public RectTool(DrawingContext[] drawingContexts)
         {
             this.drawingContexts = drawingContexts;
             this.state = DrawingState.None;
@@ -42,16 +42,20 @@ namespace CaptureImage.Common.Tools
                 {
                     for (int i = 0; i < drawingContexts.Length; i++)
                     {
+                        Rectangle rect = new Rectangle(mouseStartPos,  new Size(mousePreviousPos) - new Size(mouseStartPos));
+
                         DrawingContext dc = drawingContexts[i];
-                        Graphics.FromImage(dc.CanvasImage).DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
-                        dc.CanvasControl.CreateGraphics().DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
+                        Graphics.FromImage(dc.CanvasImage).DrawRectangle(erasePens[i], rect);
+                        dc.CanvasControl.CreateGraphics().DrawRectangle(erasePens[i], rect);
                     }
 
                     for (int i = 0; i < drawingContexts.Length; i++)
                     {
+                        Rectangle rect = new Rectangle(mouseStartPos,  new Size(mouse) - new Size(mouseStartPos));
+
                         DrawingContext dc = drawingContexts[i];
-                        Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mouseStartPos, mouse);
-                        dc.CanvasControl.CreateGraphics().DrawLine(pen, mouseStartPos, mouse);
+                        Graphics.FromImage(dc.CanvasImage).DrawRectangle(pen, rect);
+                        dc.CanvasControl.CreateGraphics().DrawRectangle(pen, rect);
                     }
 
                     mousePreviousPos = mouse;

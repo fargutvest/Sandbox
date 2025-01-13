@@ -18,6 +18,7 @@ namespace CaptureImage.WinForms
         private Button btnUndo;
         private Button btnPencil;
         private Button btnLine;
+        private Button btnRect;
 
         public Control[] Components { get; }
 
@@ -70,9 +71,17 @@ namespace CaptureImage.WinForms
             this.btnLine.Text = "L";
             this.btnLine.MouseClick += BtnLine_MouseClick;
 
+            // btnRect
+            this.btnRect = new Button();
+            this.btnRect.Size = new Size(24, 24);
+            this.btnRect.Location = new Point(3, 51);
+            this.btnRect.Text = "R";
+            this.btnRect.MouseClick += BtnRect_MouseClick;
+
             this.panelY.Controls.Add(this.btnUndo);
             this.panelY.Controls.Add(this.btnPencil);
             this.panelY.Controls.Add(this.btnLine);
+            this.panelY.Controls.Add(this.btnRect);
 
             HandleRectangles = new Rectangle[0];
 
@@ -95,6 +104,12 @@ namespace CaptureImage.WinForms
         private void BtnLine_MouseClick(object sender, MouseEventArgs e)
         {
             state = ThumbState.Line;
+            StateChanged?.Invoke(this, state);
+        }
+
+        private void BtnRect_MouseClick(object sender, MouseEventArgs e)
+        {
+            state = ThumbState.Rect;
             StateChanged?.Invoke(this, state);
         }
 

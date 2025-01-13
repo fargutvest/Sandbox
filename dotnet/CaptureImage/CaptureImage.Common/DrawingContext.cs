@@ -2,7 +2,7 @@
 
 using System.Windows.Forms;
 
-namespace CaptureImage.Common.Tools
+namespace CaptureImage.Common
 {
     public class DrawingContext
     {

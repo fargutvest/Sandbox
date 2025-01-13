@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using CaptureImage.Common.Tools.Misc;
+using System.Drawing;
+
 
 namespace CaptureImage.Common.Tools
 {

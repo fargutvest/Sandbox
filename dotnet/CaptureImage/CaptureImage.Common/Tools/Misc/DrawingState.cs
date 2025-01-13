@@ -1,5 +1,5 @@
 ﻿
-namespace CaptureImage.Common.Tools
+namespace CaptureImage.Common.Tools.Misc
 {
     public enum DrawingState
     {

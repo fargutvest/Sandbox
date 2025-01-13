@@ -80,6 +80,11 @@ namespace CaptureImage.WinForms
                     drawingTool = new LineTool(drawingContexts);
                     drawingTool.Activate();
                     break;
+                case ThumbState.Rect:
+                    selectingTool.Deactivate();
+                    drawingTool = new RectTool(drawingContexts);
+                    drawingTool.Activate();
+                    break;
             }
         }
 

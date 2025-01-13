@@ -61,14 +61,16 @@
     <Compile Include="IThumb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenInfo.cs" />
-    <Compile Include="Tools\DrawingContext.cs" />
-    <Compile Include="Tools\DrawingState.cs" />
+    <Compile Include="DrawingContext.cs" />
+    <Compile Include="Tools\Misc\DrawingState.cs" />
     <Compile Include="Tools\ITool.cs" />
     <Compile Include="Tools\LineTool.cs" />
     <Compile Include="Tools\PencilTool.cs" />
-    <Compile Include="Tools\SelectingState.cs" />
+    <Compile Include="Tools\RectTool.cs" />
+    <Compile Include="Tools\Misc\SelectingState.cs" />
     <Compile Include="Tools\SelectingTool.cs" />
     <Compile Include="WinAPi.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
