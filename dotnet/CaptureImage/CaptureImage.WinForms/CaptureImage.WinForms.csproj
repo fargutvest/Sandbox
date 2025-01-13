@@ -72,13 +72,14 @@
     <Compile Include="ScreenBase.Designer.cs">
       <DependentUpon>ScreenBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Thumb.cs">
+    <Compile Include="Thumb\Thumb.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Thumb.Designer.cs">
+    <Compile Include="Thumb\Thumb.Designer.cs">
       <DependentUpon>Thumb.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThumbState.cs" />
+    <Compile Include="Thumb\ThumbAction.cs" />
+    <Compile Include="Thumb\ThumbState.cs" />
     <Compile Include="WinAPi.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -96,7 +97,7 @@
     <EmbeddedResource Include="BlackoutScreen.resx">
       <DependentUpon>BlackoutScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Thumb.resx">
+    <EmbeddedResource Include="Thumb\Thumb.resx">
       <DependentUpon>Thumb.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

@@ -1,5 +1,5 @@
 ﻿
-namespace CaptureImage.WinForms
+namespace CaptureImage.WinForms.Thumb
 {
     partial class Thumb
     {

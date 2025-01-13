@@ -5,7 +5,7 @@ using CaptureImage.Common;
 using CaptureImage.Common.Extensions;
 using System;
 
-namespace CaptureImage.WinForms
+namespace CaptureImage.WinForms.Thumb
 {
     public partial class Thumb : UserControl, IThumb
     {
@@ -20,6 +20,8 @@ namespace CaptureImage.WinForms
         private Button btnLine;
         private Button btnRect;
 
+        private Button btnCpClipboard;
+
         public Control[] Components { get; }
 
         private ThumbState state;
@@ -27,6 +29,8 @@ namespace CaptureImage.WinForms
         public bool IsMouseOver;
 
         public event EventHandler<ThumbState> StateChanged;
+
+        public event EventHandler<ThumbAction> ActionCalled;
 
         public Thumb()
         {
@@ -55,33 +59,42 @@ namespace CaptureImage.WinForms
             this.btnUndo.Size = new Size(24, 24);
             this.btnUndo.Location = new Point(3, panelY.Location.Y + panelY.Size.Height - btnUndo.Height - 3);
             this.btnUndo.Text = "U";
-            this.btnUndo.MouseClick += BtnUndo_MouseClick;
+            this.btnUndo.MouseClick += (sender, e) => CallAction(ThumbAction.Undo);
 
             // btnPencil
             this.btnPencil = new Button();
             this.btnPencil.Size = new Size(24, 24);
             this.btnPencil.Location = new Point(3, 3);
             this.btnPencil.Text = "P";
-            this.btnPencil.MouseClick += BtnPencil_MouseClick;
+            this.btnPencil.MouseClick += (sender, e) => SelectState(ThumbState.Pencil);
 
             // btnLine
             this.btnLine = new Button();
             this.btnLine.Size = new Size(24, 24);
             this.btnLine.Location = new Point(3, 27);
             this.btnLine.Text = "L";
-            this.btnLine.MouseClick += BtnLine_MouseClick;
+            this.btnLine.MouseClick += (sender, e) => SelectState(ThumbState.Line);
 
             // btnRect
             this.btnRect = new Button();
             this.btnRect.Size = new Size(24, 24);
             this.btnRect.Location = new Point(3, 51);
             this.btnRect.Text = "R";
-            this.btnRect.MouseClick += BtnRect_MouseClick;
+            this.btnRect.MouseClick += (sender, e) => SelectState(ThumbState.Rect);
+
+            // btnCpClipboard
+            this.btnCpClipboard = new Button();
+            this.btnCpClipboard.Size = new Size(24, 24);
+            this.btnCpClipboard.Location = new Point(96, 3);
+            this.btnCpClipboard.Text = "C";
+            this.btnCpClipboard.MouseClick += (sender, e) => CallAction(ThumbAction.CopyToClipboard);
 
             this.panelY.Controls.Add(this.btnUndo);
             this.panelY.Controls.Add(this.btnPencil);
             this.panelY.Controls.Add(this.btnLine);
             this.panelY.Controls.Add(this.btnRect);
+
+            panelX.Controls.Add(this.btnCpClipboard);
 
             HandleRectangles = new Rectangle[0];
 
@@ -94,29 +107,15 @@ namespace CaptureImage.WinForms
             };
         }
 
-        private void BtnPencil_MouseClick(object sender, MouseEventArgs e)
+        private void SelectState(ThumbState state)
         {
-            state = ThumbState.Pencil;
+            this.state = state;
             StateChanged?.Invoke(this, state);
         }
 
-
-        private void BtnLine_MouseClick(object sender, MouseEventArgs e)
+        private void CallAction(ThumbAction action)
         {
-            state = ThumbState.Line;
-            StateChanged?.Invoke(this, state);
-        }
-
-        private void BtnRect_MouseClick(object sender, MouseEventArgs e)
-        {
-            state = ThumbState.Rect;
-            StateChanged?.Invoke(this, state);
-        }
-
-        private void BtnUndo_MouseClick(object sender, MouseEventArgs e)
-        {
-            state = ThumbState.Selecting;
-            StateChanged?.Invoke(this, state);
+            ActionCalled?.Invoke(this, action);
         }
 
         private void Thumb_Paint(object sender, PaintEventArgs e)

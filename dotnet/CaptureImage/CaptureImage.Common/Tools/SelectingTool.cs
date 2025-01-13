@@ -13,7 +13,7 @@ namespace CaptureImage.Common.Tools
     public class SelectingTool
     {
         private SelectingState state;
-        private Rectangle selectingRect;
+        public Rectangle selectingRect;
         private Point mousePos;
         private Point mouseStartPos;
         private Point relativeMouseStartPos;
