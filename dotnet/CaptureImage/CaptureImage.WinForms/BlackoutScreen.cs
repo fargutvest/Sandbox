@@ -69,6 +69,7 @@ namespace CaptureImage.WinForms
             {
                 case Thumb.ThumbAction.CopyToClipboard:
                     Clipboard.SetImage(BitmapHelper.Crop((Bitmap)canvas.BackgroundImage, selectingTool.selectingRect));
+                    SendKeys.Send("{ESC}");
                     break;
                 case Thumb.ThumbAction.Undo:
                     selectingTool.Activate();
