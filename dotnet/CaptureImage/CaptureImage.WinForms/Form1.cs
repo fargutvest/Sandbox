@@ -11,6 +11,8 @@ namespace CaptureImage.WinForms
         private FreezeScreen freezeScreen;
         private BlackoutScreen blackoutScreen;
 
+        private bool isHidden;
+
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +20,9 @@ namespace CaptureImage.WinForms
             blackoutScreen = new BlackoutScreen(freezeScreen);
             hotKeysHelper = new HotKeysHelper();
             hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
-            hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, HideForm);
+            hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, OnEscape);
+
+            isHidden = true;
         }
         protected override void WndProc(ref Message m)
         {
@@ -31,16 +35,25 @@ namespace CaptureImage.WinForms
             ShowForm();
         }
 
+        private void OnEscape()
+        {
+            if (isHidden == false)
+                HideForm();
+            else
+                Close();
+        }
         private void HideForm()
         {
             freezeScreen.Hide();
             blackoutScreen.Hide();
+            isHidden = true;
         }
 
         private void ShowForm()
         {
             freezeScreen.Show();
             blackoutScreen.Show();
+            isHidden = false;
         }
     }
 }
