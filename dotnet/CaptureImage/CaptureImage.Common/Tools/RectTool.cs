@@ -1,6 +1,7 @@
 ﻿using CaptureImage.Common.Tools.Misc;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace CaptureImage.Common.Tools
 {
@@ -28,7 +29,7 @@ namespace CaptureImage.Common.Tools
         {
             if (isActive)
             {
-                erasePens = drawingContextsKeeper.DrawingContexts.Select(dc => new Pen(new TextureBrush(dc.CanvasImage)) { Width = 2 }).ToArray();
+                erasePens = drawingContextsKeeper.DrawingContext.CanvasImages.Select(im => new Pen(new TextureBrush(im)) { Width = 2 }).ToArray();
                 mouseStartPos = mousePosition;
                 state = DrawingState.Drawing;
             }
@@ -40,22 +41,25 @@ namespace CaptureImage.Common.Tools
             {
                 if (state == DrawingState.Drawing)
                 {
-                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContext.CanvasImages.Length; i++)
                     {
                         Rectangle rect = new Rectangle(mouseStartPos,  new Size(mousePreviousPos) - new Size(mouseStartPos));
 
-                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
-                        Graphics.FromImage(dc.CanvasImage).DrawRectangle(erasePens[i], rect);
-                        dc.CanvasControl.CreateGraphics().DrawRectangle(erasePens[i], rect);
+                        Image im = drawingContextsKeeper.DrawingContext.CanvasImages[i];
+                        Control ct = drawingContextsKeeper.DrawingContext.CanvasControls[i];
+                        Graphics.FromImage(im).DrawRectangle(erasePens[i], rect);
+                        ct.CreateGraphics().DrawRectangle(erasePens[i], rect);
                     }
 
-                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContext.CanvasImages.Length; i++)
                     {
                         Rectangle rect = new Rectangle(mouseStartPos,  new Size(mouse) - new Size(mouseStartPos));
 
-                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
-                        Graphics.FromImage(dc.CanvasImage).DrawRectangle(pen, rect);
-                        dc.CanvasControl.CreateGraphics().DrawRectangle(pen, rect);
+                        Image im = drawingContextsKeeper.DrawingContext.CanvasImages[i];
+                        Control ct = drawingContextsKeeper.DrawingContext.CanvasControls[i];
+                        Graphics.FromImage(im).DrawRectangle(pen, rect);
+                        ct.CreateGraphics().DrawRectangle(pen, rect);
+                        drawingContextsKeeper.DrawingContext.IsClean = false;
                     }
 
                     mousePreviousPos = mouse;

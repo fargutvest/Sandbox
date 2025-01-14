@@ -2,7 +2,6 @@
 using CaptureImage.Common.Helpers;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace CaptureImage.WinForms
@@ -31,16 +30,15 @@ namespace CaptureImage.WinForms
         {
             DrawingContextsKeeper = new DrawingContextsKeeper();
 
-            for (int i = 0; i < controls.Count; i++)
-            {
-                DrawingContext drawingContext = new DrawingContext()
-                {
-                    CanvasImage = controls[i].BackgroundImage,
-                    CanvasControl = controls[i]
-                };
+            Image[] canvasImages = new Image[controls.Count];
 
-                DrawingContextsKeeper.DrawingContexts.Add(drawingContext);
-            }
+            for (int i = 0; i < controls.Count; i++)
+               canvasImages[i] = controls[i].BackgroundImage;
+
+            DrawingContext drawingContext = DrawingContext.Create(canvasImages, controls.ToArray(), isClean: true);
+
+            DrawingContextsKeeper.DrawingContext = drawingContext;
+            
 
             DrawingContextsKeeper.SaveContext();
         }
@@ -56,7 +54,7 @@ namespace CaptureImage.WinForms
 
             for (int i = 0; i < controls.Count; i++)
             {
-                controls[i].BackgroundImage = DrawingContextsKeeper.DrawingContexts[i].CanvasImage;
+                controls[i].BackgroundImage = DrawingContextsKeeper.DrawingContext.CanvasImages[i];
                 controls[i].Invalidate();
             }
         }

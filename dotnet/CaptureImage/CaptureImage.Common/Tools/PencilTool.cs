@@ -1,5 +1,6 @@
 ﻿using CaptureImage.Common.Tools.Misc;
 using System.Drawing;
+using System.Windows.Forms;
 
 
 namespace CaptureImage.Common.Tools
@@ -30,11 +31,14 @@ namespace CaptureImage.Common.Tools
             {
                 if (state == DrawingState.Drawing)
                 {
-                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContext.CanvasImages.Length; i++)
                     {
-                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
-                        Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mousePreviousPos, mouse);
-                        dc.CanvasControl.CreateGraphics().DrawLine(pen, mousePreviousPos, mouse);
+                        Image im = drawingContextsKeeper.DrawingContext.CanvasImages[i];
+                        Control ct = drawingContextsKeeper.DrawingContext.CanvasControls[i];
+
+                        Graphics.FromImage(im).DrawLine(pen, mousePreviousPos, mouse);
+                        ct.CreateGraphics().DrawLine(pen, mousePreviousPos, mouse);
+                        drawingContextsKeeper.DrawingContext.IsClean = false;
                     }
 
                     mousePreviousPos = mouse;

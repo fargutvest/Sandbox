@@ -60,8 +60,11 @@ namespace CaptureImage.WinForms
                     break;
                 case Thumb.ThumbAction.Undo:
                     appContext.UndoDrawing();
-                    //selectingTool.Activate();
-                    //drawingTool.Deactivate();
+                    if (appContext.DrawingContextsKeeper.DrawingContext.IsClean)
+                    {
+                        selectingTool.Activate();
+                        drawingTool.Deactivate();
+                    }
                     break;
             }
         }
