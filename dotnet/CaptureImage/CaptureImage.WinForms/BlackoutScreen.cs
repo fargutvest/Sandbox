@@ -28,7 +28,7 @@ namespace CaptureImage.WinForms
             ClientSize = desktopInfo.ClientSize;
             Location = desktopInfo.Location;
             BackColor = Color.Black;
-            BackgroundImage = desktopInfo.Background; //BitmapHelper.DarkenImage(desktopInfo.Background, 0.5f);
+            BackgroundImage = BitmapHelper.DarkenImage(desktopInfo.Background, 0.5f);
             TransparencyKey = Color.Red;
             Region = new Region(desktopInfo.Path);
             //TopMost = true;
