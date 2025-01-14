@@ -45,9 +45,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangesHistory.cs" />
     <Compile Include="Converters\BitmapConverter.cs" />
     <Compile Include="Converters\PointConverter.cs" />
     <Compile Include="DescktopInfo.cs" />
+    <Compile Include="DrawingContextsKeeper.cs" />
     <Compile Include="Extensions\ControlExt.cs" />
     <Compile Include="Extensions\GraphicsExt.cs" />
     <Compile Include="Extensions\MouseEventArgsExt.cs" />

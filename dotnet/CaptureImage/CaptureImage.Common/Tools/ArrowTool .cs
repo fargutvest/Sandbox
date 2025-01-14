@@ -14,11 +14,11 @@ namespace CaptureImage.Common.Tools
         private Pen[] erasePens;
         private bool isActive;
 
-        private DrawingContext[] drawingContexts;
+        private DrawingContextsKeeper drawingContextsKeeper;
 
-        public ArrowTool(DrawingContext[] drawingContexts)
+        public ArrowTool(DrawingContextsKeeper drawingContextsKeeper)
         {
-            this.drawingContexts = drawingContexts;
+            this.drawingContextsKeeper = drawingContextsKeeper;
             this.state = DrawingState.None;
 
             mouseStartPos = new Point(0, 0);
@@ -29,7 +29,7 @@ namespace CaptureImage.Common.Tools
         {
             if (isActive)
             {
-                erasePens = drawingContexts.Select(dc => new Pen(new TextureBrush(dc.CanvasImage)) { Width = 2 }).ToArray();
+                erasePens = drawingContextsKeeper.DrawingContexts.Select(dc => new Pen(new TextureBrush(dc.CanvasImage)) { Width = 2 }).ToArray();
                 mouseStartPos = mousePosition;
                 state = DrawingState.Drawing;
             }
@@ -43,20 +43,20 @@ namespace CaptureImage.Common.Tools
                 {
                     CustomLineCap cap = new AdjustableArrowCap(4, 7);
 
-                    for (int i = 0; i < drawingContexts.Length; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
                     {
                         erasePens[i].CustomEndCap = cap;
 
-                        DrawingContext dc = drawingContexts[i];
+                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
                         dc.CanvasControl.CreateGraphics().DrawLine(erasePens[i], mouseStartPos, mousePreviousPos);
                     }
 
-                    for (int i = 0; i < drawingContexts.Length; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
                     {
                         pen.CustomEndCap = cap;
 
-                        DrawingContext dc = drawingContexts[i];
+                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mouseStartPos, mouse);
                         dc.CanvasControl.CreateGraphics().DrawLine(pen, mouseStartPos, mouse);
                     }
@@ -70,6 +70,7 @@ namespace CaptureImage.Common.Tools
         {
             if (isActive)
             {
+                drawingContextsKeeper.SaveContext();
                 state = DrawingState.None;
             }
         }

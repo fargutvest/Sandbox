@@ -13,11 +13,11 @@ namespace CaptureImage.Common.Tools
         private Pen[] erasePens;
         private bool isActive;
 
-        private DrawingContext[] drawingContexts;
+        private DrawingContextsKeeper drawingContextsKeeper;
 
-        public RectTool(DrawingContext[] drawingContexts)
+        public RectTool(DrawingContextsKeeper drawingContextsKeeper)
         {
-            this.drawingContexts = drawingContexts;
+            this.drawingContextsKeeper = drawingContextsKeeper;
             this.state = DrawingState.None;
 
             mouseStartPos = new Point(0, 0);
@@ -28,7 +28,7 @@ namespace CaptureImage.Common.Tools
         {
             if (isActive)
             {
-                erasePens = drawingContexts.Select(dc => new Pen(new TextureBrush(dc.CanvasImage)) { Width = 2 }).ToArray();
+                erasePens = drawingContextsKeeper.DrawingContexts.Select(dc => new Pen(new TextureBrush(dc.CanvasImage)) { Width = 2 }).ToArray();
                 mouseStartPos = mousePosition;
                 state = DrawingState.Drawing;
             }
@@ -40,20 +40,20 @@ namespace CaptureImage.Common.Tools
             {
                 if (state == DrawingState.Drawing)
                 {
-                    for (int i = 0; i < drawingContexts.Length; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
                     {
                         Rectangle rect = new Rectangle(mouseStartPos,  new Size(mousePreviousPos) - new Size(mouseStartPos));
 
-                        DrawingContext dc = drawingContexts[i];
+                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawRectangle(erasePens[i], rect);
                         dc.CanvasControl.CreateGraphics().DrawRectangle(erasePens[i], rect);
                     }
 
-                    for (int i = 0; i < drawingContexts.Length; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
                     {
                         Rectangle rect = new Rectangle(mouseStartPos,  new Size(mouse) - new Size(mouseStartPos));
 
-                        DrawingContext dc = drawingContexts[i];
+                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawRectangle(pen, rect);
                         dc.CanvasControl.CreateGraphics().DrawRectangle(pen, rect);
                     }
@@ -67,6 +67,7 @@ namespace CaptureImage.Common.Tools
         {
             if (isActive)
             {
+                drawingContextsKeeper.SaveContext();
                 state = DrawingState.None;
             }
         }

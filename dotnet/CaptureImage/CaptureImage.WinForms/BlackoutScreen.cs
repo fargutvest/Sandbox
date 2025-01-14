@@ -15,15 +15,13 @@ namespace CaptureImage.WinForms
         private SelectingTool selectingTool;
         private ITool drawingTool;
 
-        private Control canvas;
+        private AppContext appContext;
 
-        private DrawingContext[] drawingContexts;
-
-        public BlackoutScreen(Control canvas)
+        public BlackoutScreen(AppContext appContext)
         {
-            this.canvas = canvas;
             InitializeComponent();
 
+            this.appContext = appContext;
             desktopInfo = ScreensHelper.GetDesktopInfo();
             ClientSize = desktopInfo.ClientSize;
             Location = desktopInfo.Location;
@@ -36,21 +34,10 @@ namespace CaptureImage.WinForms
             selectingTool = new SelectingTool();
             selectingTool.Activate();
 
-            drawingContexts = new DrawingContext[]
-                    {
-                        new DrawingContext()
-                        {
-                            CanvasImage = canvas.BackgroundImage,
-                            CanvasControl = canvas
-                        },
-                        new DrawingContext()
-                        {
-                            CanvasImage = this.BackgroundImage,
-                            CanvasControl = this
-                        }
-                    };
+            appContext.AddControl(this);
+            appContext.RefreshDrawingContext();
 
-            drawingTool = new PencilTool(drawingContexts);
+            drawingTool = new PencilTool(appContext.DrawingContextsKeeper);
 
             this.thumb = new Thumb.Thumb();
             this.thumb.Size = new Size(0, 0);
@@ -68,12 +55,13 @@ namespace CaptureImage.WinForms
             switch (e)
             {
                 case Thumb.ThumbAction.CopyToClipboard:
-                    Clipboard.SetImage(BitmapHelper.Crop((Bitmap)canvas.BackgroundImage, selectingTool.selectingRect));
+                    appContext.MakeScreenshot(selectingTool.selectingRect);
                     SendKeys.Send("{ESC}");
                     break;
                 case Thumb.ThumbAction.Undo:
-                    selectingTool.Activate();
-                    drawingTool.Deactivate();
+                    appContext.UndoDrawing();
+                    //selectingTool.Activate();
+                    //drawingTool.Deactivate();
                     break;
             }
         }
@@ -88,22 +76,22 @@ namespace CaptureImage.WinForms
                     break;
                 case ThumbState.Pencil:
                     selectingTool.Deactivate();
-                    drawingTool = new PencilTool(drawingContexts);
+                    drawingTool = new PencilTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
                     break;
                 case ThumbState.Line:
                     selectingTool.Deactivate();
-                    drawingTool = new LineTool(drawingContexts);
+                    drawingTool = new LineTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
                     break;
                 case ThumbState.Arrow:
                     selectingTool.Deactivate();
-                    drawingTool = new ArrowTool(drawingContexts);
+                    drawingTool = new ArrowTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
                     break;
                 case ThumbState.Rect:
                     selectingTool.Deactivate();
-                    drawingTool = new RectTool(drawingContexts);
+                    drawingTool = new RectTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
                     break;
             }

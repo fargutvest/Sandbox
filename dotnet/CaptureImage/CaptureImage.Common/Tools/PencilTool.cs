@@ -10,11 +10,11 @@ namespace CaptureImage.Common.Tools
         private Point mousePreviousPos;
         private Pen pen;
         private bool isActive;
-        private DrawingContext[] drawingContexts;
+        private DrawingContextsKeeper drawingContextsKeeper;
 
-        public PencilTool(DrawingContext[] drawingContexts)
+        public PencilTool(DrawingContextsKeeper drawingContextsKeeper)
         {
-            this.drawingContexts = drawingContexts;
+            this.drawingContextsKeeper = drawingContextsKeeper;
             this.state = DrawingState.None;
 
             mousePreviousPos = new Point(0, 0);
@@ -30,9 +30,9 @@ namespace CaptureImage.Common.Tools
             {
                 if (state == DrawingState.Drawing)
                 {
-                    for (int i = 0; i < drawingContexts.Length; i++)
+                    for (int i = 0; i < drawingContextsKeeper.DrawingContexts.Count; i++)
                     {
-                        DrawingContext dc = drawingContexts[i];
+                        DrawingContext dc = drawingContextsKeeper.DrawingContexts[i];
                         Graphics.FromImage(dc.CanvasImage).DrawLine(pen, mousePreviousPos, mouse);
                         dc.CanvasControl.CreateGraphics().DrawLine(pen, mousePreviousPos, mouse);
                     }
@@ -55,6 +55,7 @@ namespace CaptureImage.Common.Tools
         {
             if (isActive)
             {
+                drawingContextsKeeper.SaveContext();
                 state = DrawingState.None;
             }
         }

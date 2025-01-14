@@ -1,6 +1,6 @@
-﻿using CaptureImage.Common;
-using CaptureImage.Common.Helpers;
+﻿using CaptureImage.Common.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CaptureImage.WinForms
@@ -13,11 +13,14 @@ namespace CaptureImage.WinForms
 
         private bool isHidden;
 
+        private AppContext appContext;
+
         public Form1()
         {
             InitializeComponent();
-            freezeScreen = new FreezeScreen();
-            blackoutScreen = new BlackoutScreen(freezeScreen);
+            appContext = new AppContext();
+            freezeScreen = new FreezeScreen(appContext);
+            blackoutScreen = new BlackoutScreen(appContext);
             hotKeysHelper = new HotKeysHelper();
             hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
             hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, OnEscape);

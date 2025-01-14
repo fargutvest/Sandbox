@@ -8,9 +8,10 @@ namespace CaptureImage.WinForms
     {
         private DescktopInfo desktopInfo;
 
-        public FreezeScreen()
+        public FreezeScreen(AppContext appContext)
         {
             InitializeComponent();
+            appContext.AddControl(this, isCanvas: true);
             desktopInfo = ScreensHelper.GetDesktopInfo();
             ClientSize = desktopInfo.ClientSize;
             Location = desktopInfo.Location;
