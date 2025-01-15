@@ -1,4 +1,5 @@
 ﻿using CaptureImage.Common.Tools.Misc;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -43,7 +44,11 @@ namespace CaptureImage.Common.Tools
                 {
                     for (int i = 0; i < drawingContextsKeeper.DrawingContext.CanvasImages.Length; i++)
                     {
-                        Rectangle rect = new Rectangle(mouseStartPos,  new Size(mousePreviousPos) - new Size(mouseStartPos));
+                        var rect = Rectangle.FromLTRB(
+                            Math.Min(mouseStartPos.X, mousePreviousPos.X),
+                            Math.Min(mouseStartPos.Y, mousePreviousPos.Y),
+                            Math.Max(mouseStartPos.X, mousePreviousPos.X),
+                            Math.Max(mouseStartPos.Y, mousePreviousPos.Y));
 
                         Image im = drawingContextsKeeper.DrawingContext.CanvasImages[i];
                         Control ct = drawingContextsKeeper.DrawingContext.CanvasControls[i];
@@ -53,7 +58,11 @@ namespace CaptureImage.Common.Tools
 
                     for (int i = 0; i < drawingContextsKeeper.DrawingContext.CanvasImages.Length; i++)
                     {
-                        Rectangle rect = new Rectangle(mouseStartPos,  new Size(mouse) - new Size(mouseStartPos));
+                        var rect = Rectangle.FromLTRB(
+                            Math.Min(mouseStartPos.X, mouse.X),
+                            Math.Min(mouseStartPos.Y, mouse.Y),
+                            Math.Max(mouseStartPos.X, mouse.X),
+                            Math.Max(mouseStartPos.Y, mouse.Y));
 
                         Image im = drawingContextsKeeper.DrawingContext.CanvasImages[i];
                         Control ct = drawingContextsKeeper.DrawingContext.CanvasControls[i];
