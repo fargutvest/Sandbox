@@ -17,6 +17,8 @@ namespace CaptureImage.WinForms
 
         private AppContext appContext;
 
+        public Mode Mode { get; set; }
+
         public BlackoutScreen(AppContext appContext)
         {
             InitializeComponent();
@@ -39,6 +41,8 @@ namespace CaptureImage.WinForms
 
             drawingTool = new PencilTool(appContext.DrawingContextsKeeper);
 
+            Mode = Mode.Selecting;
+
             this.thumb = new Thumb.Thumb();
             this.thumb.Size = new Size(0, 0);
             this.thumb.MouseDown += (sender, e) => BlackoutScreen_MouseDown(sender, e.Offset(thumb.Location));
@@ -48,6 +52,13 @@ namespace CaptureImage.WinForms
             this.thumb.ActionCalled += Thumb_ActionCalled;
             
             this.Controls.AddRange(thumb.Components);
+        }
+
+        public void SwitchToSelectingMode()
+        {
+            selectingTool.Activate();
+            drawingTool.Deactivate();
+            Mode = Mode.Selecting;
         }
 
         private void Thumb_ActionCalled(object sender, Thumb.ThumbAction e)
@@ -62,8 +73,7 @@ namespace CaptureImage.WinForms
                     appContext.UndoDrawing();
                     if (appContext.DrawingContextsKeeper.DrawingContext.IsClean)
                     {
-                        selectingTool.Activate();
-                        drawingTool.Deactivate();
+                        SwitchToSelectingMode();
                     }
                     break;
             }
@@ -76,26 +86,31 @@ namespace CaptureImage.WinForms
                 case ThumbState.Selecting:
                     selectingTool.Activate();
                     drawingTool.Deactivate();
+                    Mode = Mode.Drawing;
                     break;
                 case ThumbState.Pencil:
                     selectingTool.Deactivate();
                     drawingTool = new PencilTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
+                    Mode = Mode.Drawing;
                     break;
                 case ThumbState.Line:
                     selectingTool.Deactivate();
                     drawingTool = new LineTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
+                    Mode = Mode.Drawing;
                     break;
                 case ThumbState.Arrow:
                     selectingTool.Deactivate();
                     drawingTool = new ArrowTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
+                    Mode = Mode.Drawing;
                     break;
                 case ThumbState.Rect:
                     selectingTool.Deactivate();
                     drawingTool = new RectTool(appContext.DrawingContextsKeeper);
                     drawingTool.Activate();
+                    Mode = Mode.Drawing;
                     break;
             }
         }

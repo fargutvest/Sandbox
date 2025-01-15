@@ -40,10 +40,18 @@ namespace CaptureImage.WinForms
 
         private void OnEscape()
         {
-            if (isHidden == false)
-                HideForm();
-            else
-                Close();
+            if (blackoutScreen.Mode == Mode.Drawing)
+            {
+                blackoutScreen.SwitchToSelectingMode();
+                return;
+            }
+            else if (blackoutScreen.Mode == Mode.Selecting)
+            {
+                if (isHidden == false)
+                    HideForm();
+                else
+                    Close();
+            }
         }
         private void HideForm()
         {
