@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using CaptureImage.Common;
 using CaptureImage.Common.Extensions;
 using System;
+using CaptureImage.WinForms.Properties;
 
 namespace CaptureImage.WinForms.Thumb
 {
@@ -64,9 +65,10 @@ namespace CaptureImage.WinForms.Thumb
 
             // btnPencil
             this.btnPencil = new Button();
+            this.btnPencil.Image = Resources.pencil;
             this.btnPencil.Size = new Size(24, 24);
             this.btnPencil.Location = new Point(3, 3);
-            this.btnPencil.Text = "P";
+            //this.btnPencil.Text = "P";
             this.btnPencil.MouseClick += (sender, e) => SelectState(ThumbState.Pencil);
 
             // btnLine
