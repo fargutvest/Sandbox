@@ -7,14 +7,14 @@ namespace CaptureImage.Common.Tools
 {
     public class LineTool : ITool
     {
-        private DrawingState state;
-        private Point mouseStartPos;
+        protected DrawingState state;
+        protected Point mouseStartPos;
         private Point mousePreviousPos;
         protected Pen pen;
-        private Pen[] erasePens;
-        private bool isActive;
+        protected Pen[] erasePens;
+        protected bool isActive;
 
-        private DrawingContextsKeeper drawingContextsKeeper;
+        protected DrawingContextsKeeper drawingContextsKeeper;
         
 
         public LineTool(DrawingContextsKeeper drawingContextsKeeper)
@@ -26,7 +26,7 @@ namespace CaptureImage.Common.Tools
             pen = new Pen(Color.Yellow) { Width = 2 };
         }
 
-        public void MouseDown(Point mousePosition)
+        public virtual void MouseDown(Point mousePosition)
         {
             if (isActive)
             {
