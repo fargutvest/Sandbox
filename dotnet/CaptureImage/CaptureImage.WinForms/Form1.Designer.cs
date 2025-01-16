@@ -52,7 +52,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "CaptureImage.WinForms";
+            this.Text = "A-Shot";
             this.ResumeLayout(false);
 
         }

@@ -7,7 +7,7 @@
     <ProjectGuid>{433242D9-A9DB-456B-8283-336EF88EDEE4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CaptureImage.WinForms</RootNamespace>
-    <AssemblyName>CaptureImage.WinForms</AssemblyName>
+    <AssemblyName>A-Shot</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
