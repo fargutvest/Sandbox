@@ -1,21 +1,47 @@
 ﻿using CaptureImage.Common;
 using CaptureImage.Common.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using CaptureImage.WinForms.Properties;
 
 namespace CaptureImage.WinForms
 {
-    public class AppContext
+    public class AppContext : ApplicationContext
     {
         private List<Control> controls;
         private Control canvas;
+        private NotifyIcon trayIcon;
+        private HotKeysHelper hotKeysHelper;
+        private FreezeScreen freezeScreen;
+        private BlackoutScreen blackoutScreen;
+        private bool isHidden;
 
         public DrawingContextsKeeper DrawingContextsKeeper { get; private set; }
 
         public AppContext()
         {
+            isHidden = true;
             this.controls = new List<Control>();
+
+            freezeScreen = new FreezeScreen(this);
+            blackoutScreen = new BlackoutScreen(this);
+            hotKeysHelper = new HotKeysHelper();
+
+            //hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
+            //hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, OnEscape);
+
+            trayIcon = new NotifyIcon()
+            {
+                Icon = Resources.ashot,
+                ContextMenu = new ContextMenu(new MenuItem[] {
+                    new MenuItem("Сделать скриншот", Show),
+                    new MenuItem("Выход", Exit)})
+            };
+
+            trayIcon.Visible = true;
+
         }
 
         public void AddControl(Control control, bool isCanvas = false)
@@ -39,7 +65,6 @@ namespace CaptureImage.WinForms
 
             DrawingContextsKeeper.DrawingContext = drawingContext;
             
-
             DrawingContextsKeeper.SaveContext();
         }
 
@@ -57,6 +82,53 @@ namespace CaptureImage.WinForms
                 controls[i].BackgroundImage = DrawingContextsKeeper.DrawingContext.CanvasImages[i];
                 controls[i].Invalidate();
             }
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            trayIcon.Visible = false;
+            Application.Exit();
+        }
+
+        private void Show(object sender, EventArgs e)
+        {
+            ShowForm();
+        }
+
+        //protected override void WndProc(ref Message m)
+        //{
+        //    hotKeysHelper.WndProc(ref m);
+        //    base.WndProc(ref m);
+        //}
+
+
+        private void OnEscape()
+        {
+            if (blackoutScreen.Mode == Mode.Drawing)
+            {
+                blackoutScreen.SwitchToSelectingMode();
+                return;
+            }
+            else if (blackoutScreen.Mode == Mode.Selecting)
+            {
+                if (isHidden == false)
+                    HideForm();
+                else
+                    Application.Exit();
+            }
+        }
+        private void HideForm()
+        {
+            freezeScreen.Hide();
+            blackoutScreen.Hide();
+            isHidden = true;
+        }
+
+        private void ShowForm()
+        {
+            freezeScreen.Show();
+            blackoutScreen.Show();
+            isHidden = false;
         }
     }
 }

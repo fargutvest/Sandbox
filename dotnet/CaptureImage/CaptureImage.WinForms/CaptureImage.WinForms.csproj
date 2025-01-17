@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ashot.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -123,6 +126,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ashot.ico" />
+    <Content Include="icons\ashot.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
