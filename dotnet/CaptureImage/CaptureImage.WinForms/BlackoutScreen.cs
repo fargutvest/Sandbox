@@ -27,7 +27,6 @@ namespace CaptureImage.WinForms
             desktopInfo = ScreensHelper.GetDesktopInfo();
             ClientSize = desktopInfo.ClientSize;
             Location = desktopInfo.Location;
-            BackColor = Color.Black;
             BackgroundImage = BitmapHelper.DarkenImage(desktopInfo.Background, 0.5f);
             TransparencyKey = Color.Red;
             Region = new Region(desktopInfo.Path);

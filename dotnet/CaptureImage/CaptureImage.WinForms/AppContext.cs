@@ -13,7 +13,7 @@ namespace CaptureImage.WinForms
         private List<Control> controls;
         private Control canvas;
         private NotifyIcon trayIcon;
-        private HotKeysHelper hotKeysHelper;
+        public HotKeysHelper hotKeysHelper;
         private FreezeScreen freezeScreen;
         private BlackoutScreen blackoutScreen;
         private bool isHidden;
@@ -25,12 +25,14 @@ namespace CaptureImage.WinForms
             isHidden = true;
             this.controls = new List<Control>();
 
+            MainForm = new MainForm(this);
+
             freezeScreen = new FreezeScreen(this);
             blackoutScreen = new BlackoutScreen(this);
             hotKeysHelper = new HotKeysHelper();
 
-            //hotKeysHelper.RegisterHotKey(Handle, Keys.F6, ShowForm);
-            //hotKeysHelper.RegisterHotKey(Handle, Keys.Escape, OnEscape);
+            hotKeysHelper.RegisterHotKey(MainForm.Handle, Keys.F6, ShowForm);
+            hotKeysHelper.RegisterHotKey(MainForm.Handle, Keys.Escape, OnEscape);
 
             trayIcon = new NotifyIcon()
             {
@@ -94,13 +96,6 @@ namespace CaptureImage.WinForms
         {
             ShowForm();
         }
-
-        //protected override void WndProc(ref Message m)
-        //{
-        //    hotKeysHelper.WndProc(ref m);
-        //    base.WndProc(ref m);
-        //}
-
 
         private void OnEscape()
         {

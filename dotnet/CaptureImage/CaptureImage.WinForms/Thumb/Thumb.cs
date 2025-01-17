@@ -43,6 +43,7 @@ namespace CaptureImage.WinForms.Thumb
             this.displaySizeLabel.AutoSize = true;
             this.displaySizeLabel.Font = new Font(displaySizeLabel.Font.FontFamily, 10);
             this.displaySizeLabel.ForeColor = Color.White;
+            this.displaySizeLabel.BackColor = Color.Black;
 
             // panelX
             this.panelX = new Panel();
