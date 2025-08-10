@@ -39,17 +39,15 @@ namespace MouseHook
                 {
                     _cts = new CancellationTokenSource();
                     _mouseQueue = new ConcurrentQueue<object>();
-                    //This needs to run on UI thread context
-                    //So use task factory with the shared UI message pump thread
-                    Task.Factory.StartNew(() =>
-                        {
-                            _mouseHook = new Hooks.MouseHook();
-                            _mouseHook.MouseAction += MListener;
-                            _mouseHook.Start(mouseMessagesToSuppress);
-                        },
+                    _mouseHook = new Hooks.MouseHook();
+                    _mouseHook.MouseAction += MListener;
+           
+                    // This needs to run on UI thread context
+                    // So use task factory with the shared UI message pump thread
+                    Task.Factory.StartNew(() => {  _mouseHook.Start(mouseMessagesToSuppress); },
                         CancellationToken.None,
                         TaskCreationOptions.None,
-                        _factory.GetTaskScheduler()).Wait();
+                        _factory.GetUITaskScheduler()).Wait();
 
                     Task.Factory.StartNew(ConsumeMouseEvents);
 
@@ -79,7 +77,7 @@ namespace MouseHook
                             },
                             CancellationToken.None,
                             TaskCreationOptions.None,
-                            _factory.GetTaskScheduler());
+                            _factory.GetUITaskScheduler());
                     }
 
                     _mouseQueue.Enqueue(false);

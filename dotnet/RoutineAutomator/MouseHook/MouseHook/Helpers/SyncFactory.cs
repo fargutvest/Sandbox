@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
@@ -13,31 +12,17 @@ namespace MouseHook.Helpers
     public class SyncFactory : IDisposable
     {
         private readonly Lazy<MessageHandler> _messageHandler;
-
         private readonly Lazy<TaskScheduler> _scheduler;
-        private bool _hasUiThread;
 
         public SyncFactory()
         {
             _scheduler = new Lazy<TaskScheduler>(() =>
             {
-                // if the calling thread is a UI thread then return its synchronization context
-                // no need to create a message pump
-                var dispatcher = Dispatcher.FromThread(Thread.CurrentThread);
-                if (dispatcher != null)
-                {
-                    if (SynchronizationContext.Current != null)
-                    {
-                        _hasUiThread = true;
-                        return TaskScheduler.FromCurrentSynchronizationContext();
-                    }
-                }
-
                 TaskScheduler current = null;
 
-                //if current task scheduler is null, create a message pump 
-                //http://stackoverflow.com/questions/2443867/message-pump-in-net-windows-service
-                //use async for performance gain!
+                // create a message pump 
+                // http://stackoverflow.com/questions/2443867/message-pump-in-net-windows-service
+                // use async for performance gain!
                 new Task(() =>
                 {
                     Dispatcher.CurrentDispatcher.BeginInvoke(
@@ -62,15 +47,14 @@ namespace MouseHook.Helpers
             {
                 MessageHandler msgHandler = null;
                 // get the message handler dummy window created using the UI sync context
-                new Task(e => { Volatile.Write(ref msgHandler, new MessageHandler()); }, GetTaskScheduler()).Start();
+                new Task(e => { Volatile.Write(ref msgHandler, new MessageHandler()); }, 
+                    GetUITaskScheduler()).Start();
 
                 // wait here until the window is created on UI thread
                 while (Volatile.Read(ref msgHandler) == null)
                 {
                     Thread.Sleep(10);
-                }
-
-                ;
+                };
 
                 return Volatile.Read(ref msgHandler);
             });
@@ -91,7 +75,7 @@ namespace MouseHook.Helpers
         /// </summary>
         private void Initialize()
         {
-            GetTaskScheduler();
+            GetUITaskScheduler();
             GetHandle();
         }
 
@@ -99,7 +83,7 @@ namespace MouseHook.Helpers
         /// Get the UI task scheduler
         /// </summary>
         /// <returns></returns>
-        public TaskScheduler GetTaskScheduler()
+        public TaskScheduler GetUITaskScheduler()
         {
             return _scheduler.Value;
         }
@@ -110,23 +94,6 @@ namespace MouseHook.Helpers
         /// <returns></returns>
         internal IntPtr GetHandle()
         {
-            if (_hasUiThread)
-            {
-                try
-                {
-                    var handle = Process.GetCurrentProcess().MainWindowHandle;
-
-                    if (handle != IntPtr.Zero)
-                    {
-                        return handle;
-                    }
-                }
-                catch
-                {
-                    // ignored
-                }
-            }
-
             return _messageHandler.Value.Handle;
         }
     }

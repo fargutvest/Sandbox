@@ -24,8 +24,12 @@ namespace MouseHook.Hooks
         }
 
         internal event EventHandler<RawMouseEventArgs> MouseAction = delegate { };
-        
 
+        /// <summary>
+        /// This needs to run on UI thread context
+        /// So use task factory with the shared UI message pump thread
+        /// </summary>
+        /// <param name="mouseMessagesToSuppress"></param>
         internal void Start(params MouseMessages[] mouseMessagesToSuppress)
         {
             _mouseMessagesToSuppress = mouseMessagesToSuppress;
