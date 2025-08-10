@@ -21,8 +21,8 @@ namespace MouseHook.Helpers
         {
             _scheduler = new Lazy<TaskScheduler>(() =>
             {
-                //if the calling thread is a UI thread then return its synchronization context
-                //no need to create a message pump
+                // if the calling thread is a UI thread then return its synchronization context
+                // no need to create a message pump
                 var dispatcher = Dispatcher.FromThread(Thread.CurrentThread);
                 if (dispatcher != null)
                 {
@@ -48,8 +48,8 @@ namespace MouseHook.Helpers
                     Dispatcher.Run();
                 }).Start();
 
-                //we called dispatcher begin invoke to get the Message Pump Sync Context
-                //we check every 10ms until synchronization context is copied
+                // we called dispatcher begin invoke to get the Message Pump Sync Context
+                // we check every 10ms until synchronization context is copied
                 while (Volatile.Read(ref current) == null)
                 {
                     Thread.Sleep(10);
@@ -61,10 +61,10 @@ namespace MouseHook.Helpers
             _messageHandler = new Lazy<MessageHandler>(() =>
             {
                 MessageHandler msgHandler = null;
-                //get the mesage handler dummy window created using the UI sync context
+                // get the message handler dummy window created using the UI sync context
                 new Task(e => { Volatile.Write(ref msgHandler, new MessageHandler()); }, GetTaskScheduler()).Start();
 
-                //wait here until the window is created on UI thread
+                // wait here until the window is created on UI thread
                 while (Volatile.Read(ref msgHandler) == null)
                 {
                     Thread.Sleep(10);

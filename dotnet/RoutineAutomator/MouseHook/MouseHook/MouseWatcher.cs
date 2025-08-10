@@ -51,7 +51,7 @@ namespace MouseHook
                         TaskCreationOptions.None,
                         _factory.GetTaskScheduler()).Wait();
 
-                    Task.Factory.StartNew(ConsumeKeyAsync);
+                    Task.Factory.StartNew(ConsumeMouseEvents);
 
                     _isRunning = true;
                 }
@@ -102,8 +102,7 @@ namespace MouseHook
         /// <summary>
         /// Consume mouse events in our producer queue asynchronously
         /// </summary>
-        /// <returns></returns>
-        private void ConsumeKeyAsync()
+        private void ConsumeMouseEvents()
         {
             while (_isRunning)
             {

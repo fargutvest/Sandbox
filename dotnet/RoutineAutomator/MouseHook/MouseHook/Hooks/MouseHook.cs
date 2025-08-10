@@ -62,7 +62,7 @@ namespace MouseHook.Hooks
 
             var result = User32.CallNextHookEx(_hookId, nCode, wParam, lParam);
 
-            if (_mouseMessagesToSuppress!= null && _mouseMessagesToSuppress.Any(_=> _ == (MouseMessages)wParam))
+            if (_mouseMessagesToSuppress!= null && _mouseMessagesToSuppress.Any(msg=> msg == (MouseMessages)wParam))
             {
                 return new IntPtr(1);
             }
