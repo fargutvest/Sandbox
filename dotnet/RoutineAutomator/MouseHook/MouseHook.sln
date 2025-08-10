@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34902.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{DB8EBA98-F526-4322-9D3F-F37E7869496F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseHook", "MouseHook\MouseHook.csproj", "{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8EBA98-F526-4322-9D3F-F37E7869496F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3847A7F4-3F6B-4626-AF4C-8FDFBA6165F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA0DA63F-8F97-4691-802A-9F88EB6B1144}
+	EndGlobalSection
+EndGlobal
